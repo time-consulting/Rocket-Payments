@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Rocket, ChevronDown } from "lucide-react";
+import { Menu, X, Rocket, ChevronDown, CreditCard, Cloud, TrendingUp, ArrowUpRight } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
 export function Header() {
@@ -9,6 +9,7 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProductsOpen, setIsProductsOpen] = useState(false);
+  const [activeCategory, setActiveCategory] = useState("in-person");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,19 +21,32 @@ export function Header() {
 
   const productCategories = [
     {
-      title: "In person payments",
+      id: "in-person",
+      title: "In-person payments",
+      icon: CreditCard,
       products: [
-        { name: "Rocket Go", href: "/products/rocket-go", description: "High pace, face-to-face" },
-        { name: "Rocket Pocket", href: "/products/rocket-pocket", description: "In-the-pocket, on-the-go" },
-        { name: "Tap to Pay on iPhone", href: "/products/tap-to-pay", description: "Fast payments, on tap" },
+        { name: "Rocket Go", href: "/products/rocket-go", description: "Fast, portable payments on 4G" },
+        { name: "Rocket Pocket", href: "/products/rocket-pocket", description: "Orders and payments in one device" },
+        { name: "Tap to Pay on iPhone", href: "/products/tap-to-pay", description: "Take payments with an iPhone" },
+        { name: "Rocket Wired", href: "/products/rocket-wired", description: "Wired countertop card machine" },
       ],
     },
     {
-      title: "More products",
+      id: "remote",
+      title: "Remote payments",
+      icon: Cloud,
       products: [
-        { name: "Rocket Wired", href: "/products/rocket-wired", description: "Wired in, switched on" },
-        { name: "Online Payments", href: "/products/online-payments", description: "Smooth online checkout" },
-        { name: "QR Codes", href: "/products/qr-codes", description: "Pay by scanning" },
+        { name: "Online Payments", href: "/products/online-payments", description: "Smooth online checkout experiences" },
+        { name: "QR Codes", href: "/products/qr-codes", description: "Pay by scanning a code" },
+      ],
+    },
+    {
+      id: "growth",
+      title: "Growth",
+      icon: TrendingUp,
+      products: [
+        { name: "Business Insights", href: "/resources", description: "Data and analytics for your business" },
+        { name: "Integrations", href: "/resources", description: "Connect with 600+ EPOS systems" },
       ],
     },
   ];
@@ -42,6 +56,8 @@ export function Header() {
     { label: "Pricing", href: "/pricing" },
     { label: "Resources", href: "/resources" },
   ];
+
+  const activeProducts = productCategories.find(cat => cat.id === activeCategory)?.products || [];
 
   return (
     <header className="sticky top-0 z-50 w-full py-4 md:py-6">
@@ -70,27 +86,69 @@ export function Header() {
               </Button>
 
               {isProductsOpen && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-screen max-w-5xl">
-                  <div className="bg-card border border-border rounded-2xl shadow-2xl p-8">
-                    <div className="grid grid-cols-2 gap-12">
-                      {productCategories.map((category) => (
-                        <div key={category.title} className="space-y-4">
-                          <h3 className="text-xs font-black uppercase text-muted-foreground tracking-wider">{category.title}</h3>
-                          <div className="space-y-2">
-                            {category.products.map((product) => (
-                              <Link key={product.href} href={product.href}>
-                                <div
-                                  className="group p-3 rounded-lg hover-elevate active-elevate-2 transition-all"
-                                  onClick={() => setIsProductsOpen(false)}
-                                >
-                                  <div className="font-black text-base mb-1">{product.name}</div>
-                                  <div className="text-sm text-muted-foreground">{product.description}</div>
-                                </div>
-                              </Link>
-                            ))}
+                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4">
+                  <div className="bg-card border border-border rounded-3xl shadow-2xl overflow-hidden" style={{ width: '920px' }}>
+                    <div className="flex">
+                      {/* Left Sidebar - Categories */}
+                      <div className="w-64 bg-muted/30 p-6 space-y-2">
+                        {productCategories.map((category) => {
+                          const Icon = category.icon;
+                          const isActive = activeCategory === category.id;
+                          return (
+                            <button
+                              key={category.id}
+                              onMouseEnter={() => setActiveCategory(category.id)}
+                              className={`w-full text-left p-4 rounded-xl transition-all flex items-center justify-between group ${
+                                isActive 
+                                  ? 'bg-primary text-primary-foreground shadow-md' 
+                                  : 'hover-elevate'
+                              }`}
+                            >
+                              <div className="flex items-center gap-3">
+                                <Icon className={`h-5 w-5 ${isActive ? 'text-primary-foreground' : 'text-foreground'}`} />
+                                <span className={`font-black text-sm ${isActive ? 'text-primary-foreground' : 'text-foreground'}`}>
+                                  {category.title}
+                                </span>
+                              </div>
+                              {isActive && <ArrowUpRight className="h-5 w-5 text-primary-foreground" />}
+                            </button>
+                          );
+                        })}
+                      </div>
+
+                      {/* Main Content Area */}
+                      <div className="flex-1 p-8 flex gap-8">
+                        {/* Product List */}
+                        <div className="flex-1 space-y-1">
+                          {activeProducts.map((product) => (
+                            <Link key={product.href} href={product.href}>
+                              <div
+                                className="p-4 rounded-lg hover-elevate active-elevate-2 transition-all"
+                                onClick={() => setIsProductsOpen(false)}
+                              >
+                                <div className="font-black text-base mb-1">{product.name}</div>
+                                <div className="text-sm text-muted-foreground">{product.description}</div>
+                              </div>
+                            </Link>
+                          ))}
+                        </div>
+
+                        {/* Promotional Card */}
+                        <div className="w-72">
+                          <div className="bg-gradient-to-br from-primary/10 via-primary/5 to-background rounded-2xl p-6 space-y-4 border border-primary/20">
+                            <div className="aspect-[2/1] bg-gradient-to-br from-primary/20 to-primary/10 rounded-xl flex items-center justify-center">
+                              <div className="text-center">
+                                <Rocket className="h-16 w-16 text-primary mx-auto mb-2" />
+                                <div className="text-xs font-semibold text-muted-foreground">Payment Solutions</div>
+                              </div>
+                            </div>
+                            <h3 className="text-lg font-black leading-tight">Welcome to Payment Paradise</h3>
+                            <p className="text-sm text-muted-foreground leading-relaxed">
+                              Deliver standout experiences at scale with fast, effortless in-person, online, and mobile payments.
+                            </p>
                           </div>
                         </div>
-                      ))}
+                      </div>
                     </div>
                   </div>
                 </div>
