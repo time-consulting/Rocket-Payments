@@ -251,6 +251,81 @@ function AutoScrollProducts({ products }: { products: any[] }) {
   );
 }
 
+function AutoScrollTestimonials({ testimonials }: { testimonials: any[] }) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const scrollContainer = scrollRef.current;
+    if (!scrollContainer) return;
+
+    let scrollPosition = 0;
+    const scrollSpeed = 0.3;
+    const cardWidth = 380;
+    const gap = 24;
+    const itemWidth = cardWidth + gap;
+    
+    const scroll = () => {
+      scrollPosition += scrollSpeed;
+      
+      if (scrollPosition >= itemWidth * testimonials.length) {
+        scrollPosition = 0;
+      }
+      
+      scrollContainer.scrollLeft = scrollPosition;
+      requestAnimationFrame(scroll);
+    };
+
+    const animationId = requestAnimationFrame(scroll);
+
+    const handleMouseEnter = () => {
+      cancelAnimationFrame(animationId);
+    };
+
+    const handleMouseLeave = () => {
+      requestAnimationFrame(scroll);
+    };
+
+    scrollContainer.addEventListener('mouseenter', handleMouseEnter);
+    scrollContainer.addEventListener('mouseleave', handleMouseLeave);
+
+    return () => {
+      cancelAnimationFrame(animationId);
+      scrollContainer.removeEventListener('mouseenter', handleMouseEnter);
+      scrollContainer.removeEventListener('mouseleave', handleMouseLeave);
+    };
+  }, [testimonials.length]);
+
+  return (
+    <div ref={scrollRef} className="flex gap-6 overflow-x-scroll pb-8 scrollbar-hide">
+      {[...testimonials, ...testimonials, ...testimonials].map((testimonial, index) => (
+        <Card
+          key={index}
+          className="flex-shrink-0 w-[380px] p-8 space-y-6 hover-elevate transition-all duration-300 hover:scale-[1.02] bg-background border-none shadow-lg"
+          data-testid={`card-testimonial-${index % testimonials.length}`}
+        >
+          <div className="flex gap-1">
+            {[...Array(testimonial.rating)].map((_, i) => (
+              <Star key={i} className="h-5 w-5 fill-primary text-primary" />
+            ))}
+          </div>
+          <p className="text-base leading-relaxed font-medium">{testimonial.text}</p>
+          <div className="flex gap-4 items-center pt-4 border-t">
+            <img
+              src={testimonial.image}
+              alt={testimonial.name}
+              className="w-14 h-14 rounded-full object-cover"
+            />
+            <div>
+              <h4 className="font-bold text-base">{testimonial.name}</h4>
+              <p className="text-sm text-muted-foreground font-medium">{testimonial.business}</p>
+            </div>
+          </div>
+        </Card>
+      ))}
+    </div>
+  );
+}
+
 export default function Home() {
   const industries = [
     {
@@ -316,21 +391,56 @@ export default function Home() {
       business: "Café Velocity",
       image: testimonial1,
       rating: 5,
-      text: "Switching to Rocket Payments was the best decision for our business. The setup was incredibly smooth, and the card machines are lightning fast. Our customers love the quick checkout, and we've seen a noticeable increase in throughput during our morning rush.",
+      text: "Switching to Rocket Payments was the best decision for our business. The setup was incredibly smooth, and the card machines are lightning fast.",
     },
     {
       name: "James Chen",
       business: "The Golden Lotus Restaurant",
       image: testimonial2,
       rating: 5,
-      text: "The integration with our POS system has been flawless. End-of-day reconciliation that used to take 30 minutes now takes 5. The support team is phenomenal – they helped us get set up in less than 24 hours. Highly recommend!",
+      text: "The integration with our POS system has been flawless. End-of-day reconciliation that used to take 30 minutes now takes 5.",
     },
     {
       name: "Emma Thompson",
       business: "Urban Threads Boutique",
       image: testimonial3,
       rating: 5,
-      text: "As a small retail business, reliability is everything. Rocket Payments delivers 99.99% uptime, and their portable terminals let us take payments anywhere in the store. The difference in customer experience has been remarkable.",
+      text: "As a small retail business, reliability is everything. Rocket Payments delivers 99.99% uptime, and their portable terminals work perfectly.",
+    },
+    {
+      name: "Marcus Rodriguez",
+      business: "Corner Bakery",
+      image: testimonial1,
+      rating: 5,
+      text: "The customer support is outstanding. When we had questions during setup, they walked us through everything patiently.",
+    },
+    {
+      name: "Olivia Park",
+      business: "The Green Garden Spa",
+      image: testimonial2,
+      rating: 5,
+      text: "Our clients love the contactless payment options. It's made checkout so much faster and more convenient for everyone.",
+    },
+    {
+      name: "David Williams",
+      business: "Tech Haven Electronics",
+      image: testimonial3,
+      rating: 5,
+      text: "We process hundreds of transactions daily. The speed and reliability of Rocket Payments has been game-changing for our business.",
+    },
+    {
+      name: "Sophie Anderson",
+      business: "Bloom Flower Studio",
+      image: testimonial1,
+      rating: 5,
+      text: "Easy setup, beautiful hardware, and the reporting features help us understand our sales patterns better than ever before.",
+    },
+    {
+      name: "Ryan Murphy",
+      business: "Metro Fitness Club",
+      image: testimonial2,
+      rating: 5,
+      text: "The mobile payment terminal is perfect for our personal trainers. They can take payments anywhere in the gym.",
     },
   ];
 
@@ -572,52 +682,25 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 md:py-32 bg-muted/30">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <div className="text-center mb-16 space-y-4">
+      <section className="py-20 md:py-32 bg-background overflow-hidden">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="text-center mb-12 px-6 md:px-8 space-y-4">
             <div className="flex items-center justify-center gap-2">
               <div className="flex">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-6 w-6 fill-primary text-primary" />
+                  <Star key={i} className="h-7 w-7 fill-primary text-primary" />
                 ))}
               </div>
-              <span className="text-2xl font-bold">4.8</span>
+              <span className="text-3xl font-black">4.8</span>
             </div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight" data-testid="text-testimonials-headline">
-              Our customers say
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight" data-testid="text-testimonials-headline">
+              What our customers say
             </h2>
-            <p className="text-lg text-muted-foreground">Based on 4,800+ reviews</p>
+            <p className="text-lg text-muted-foreground">Based on 4,800+ verified reviews</p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {testimonials.map((testimonial, index) => (
-              <Card 
-                key={index} 
-                className="p-6 space-y-4 hover-elevate transition-all" 
-                data-testid={`card-testimonial-${index}`}
-                style={{
-                  animation: `fadeInUp 0.6s ease-out ${index * 0.15}s both`
-                }}
-              >
-                <div className="flex gap-4 items-start">
-                  <img
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    className="w-16 h-16 rounded-full object-cover"
-                  />
-                  <div className="flex-1">
-                    <h4 className="font-bold">{testimonial.name}</h4>
-                    <p className="text-sm text-muted-foreground font-medium">{testimonial.business}</p>
-                    <div className="flex gap-0.5 mt-2">
-                      {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="h-4 w-4 fill-primary text-primary" />
-                      ))}
-                    </div>
-                  </div>
-                </div>
-                <p className="text-sm text-muted-foreground leading-relaxed">{testimonial.text}</p>
-              </Card>
-            ))}
+          <div className="relative px-6 md:px-8">
+            <AutoScrollTestimonials testimonials={testimonials} />
           </div>
         </div>
       </section>
