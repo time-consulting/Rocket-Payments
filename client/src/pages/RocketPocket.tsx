@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ShoppingCart, Wifi, CreditCard, Lock, Zap, Cloud, Users, Cog, ArrowRight, ArrowUpRight, Star } from "lucide-react";
@@ -15,6 +16,61 @@ import rocketGoImage from "@assets/Rocket Go_1761925244580.png";
 import rocketWiredImage from "@assets/generated_images/Countertop_terminal_with_touchscreen_aa8d26cb.png";
 
 export default function RocketPocket() {
+  const [techSpecsVisible, setTechSpecsVisible] = useState(false);
+  const techSpecsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setTechSpecsVisible(true);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (techSpecsRef.current) {
+      observer.observe(techSpecsRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  const techSpecs = [
+    {
+      icon: Wifi,
+      title: "Dual connectivity",
+      description: "Connects automatically to Wi-Fi or any available 4G network.",
+    },
+    {
+      icon: ShoppingCart,
+      title: "Lightweight and portable",
+      description: "Dimensions: 170mm x 70mm x 14.7mm, weight: 143 grams",
+    },
+    {
+      icon: Cloud,
+      title: "Easy to use – and see",
+      description: "Screen size and resolution: 4.95\" (480x960), PPI (Pixel Per Inch) 217",
+    },
+    {
+      icon: Zap,
+      title: "Long-lasting battery life",
+      description: "8-hour Li-ion battery, 3500mAh / 3.8V",
+    },
+    {
+      icon: CreditCard,
+      title: "Integrated payments",
+      description: "Connect to your EPOS with cloud-based integrations.",
+    },
+    {
+      icon: Lock,
+      title: "Secure payments",
+      description: "Point-to-point encryption protects customer card data, and your income.",
+    },
+  ];
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -248,8 +304,9 @@ export default function RocketPocket() {
       </section>
 
       {/* Tech Specs */}
-      <section className="py-20 md:py-32 bg-background">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
+      <section className="py-20 md:py-32 bg-background relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent pointer-events-none" />
+        <div className="max-w-7xl mx-auto px-6 md:px-8 relative">
           <div className="text-center mb-16 space-y-4">
             <h2 className="text-4xl md:text-5xl font-black leading-tight">
               Tech specs
@@ -259,42 +316,32 @@ export default function RocketPocket() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="p-6 space-y-3">
-              <Wifi className="h-10 w-10 text-primary" />
-              <h3 className="text-base font-black">Dual connectivity</h3>
-              <p className="text-sm text-muted-foreground">Connects automatically to Wi-Fi or any available 4G network.</p>
-            </Card>
-
-            <Card className="p-6 space-y-3">
-              <ShoppingCart className="h-10 w-10 text-primary" />
-              <h3 className="text-base font-black">Lightweight and portable</h3>
-              <p className="text-sm text-muted-foreground">Dimensions: 170mm x 70mm x 14.7mm, weight: 143 grams</p>
-            </Card>
-
-            <Card className="p-6 space-y-3">
-              <Cloud className="h-10 w-10 text-primary" />
-              <h3 className="text-base font-black">Easy to use – and see</h3>
-              <p className="text-sm text-muted-foreground">Screen size and resolution: 4.95" (480x960), PPI (Pixel Per Inch) 217</p>
-            </Card>
-
-            <Card className="p-6 space-y-3">
-              <Zap className="h-10 w-10 text-primary" />
-              <h3 className="text-base font-black">Long-lasting battery life</h3>
-              <p className="text-sm text-muted-foreground">8-hour Li-ion battery, 3500mAh / 3.8V</p>
-            </Card>
-
-            <Card className="p-6 space-y-3">
-              <CreditCard className="h-10 w-10 text-primary" />
-              <h3 className="text-base font-black">Integrated payments</h3>
-              <p className="text-sm text-muted-foreground">Connect to your EPOS with cloud-based integrations.</p>
-            </Card>
-
-            <Card className="p-6 space-y-3">
-              <Lock className="h-10 w-10 text-primary" />
-              <h3 className="text-base font-black">Secure payments</h3>
-              <p className="text-sm text-muted-foreground">Point-to-point encryption protects customer card data, and your income.</p>
-            </Card>
+          <div ref={techSpecsRef} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {techSpecs.map((spec, index) => {
+              const Icon = spec.icon;
+              return (
+                <Card
+                  key={index}
+                  className={`group p-8 space-y-4 border-2 hover-elevate active-elevate-2 transition-all duration-500 ${
+                    techSpecsVisible ? "animate-fadeInUp" : "opacity-0"
+                  }`}
+                  style={{
+                    animationDelay: techSpecsVisible ? `${index * 100}ms` : "0ms",
+                  }}
+                >
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-primary/10 rounded-full blur-xl group-hover:bg-primary/20 transition-all duration-300" />
+                    <div className="relative bg-primary/10 w-16 h-16 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <Icon className="h-8 w-8 text-primary" />
+                    </div>
+                  </div>
+                  <h3 className="text-lg font-black">{spec.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {spec.description}
+                  </p>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
