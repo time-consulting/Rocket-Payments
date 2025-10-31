@@ -18,7 +18,7 @@ import treatzLogo from "@assets/Treatz.jpg_1761930744750.webp";
 import cuppLogo from "@assets/ac9be535-cd26-4913-893c-607ef9c65ec9_1761930744747.jpeg";
 import silverstoneLogo from "@assets/silverstone-uk-logo-vectorrwopeh_1761930744750.png";
 import rocketGoImage from "@assets/rocket go device on stand - white bk_1761931715066.png";
-import rocketPocketImage from "@assets/generated_images/Compact_pocket_payment_terminal_c76d8801.png";
+import rocketPocketImage from "@assets/rocket pocket_1761931866361.png";
 import rocketWiredImage from "@assets/generated_images/Countertop_terminal_with_touchscreen_aa8d26cb.png";
 import tapToPayImage from "@assets/generated_images/Tap_to_pay_smartphone_e29cd7d7.png";
 import qsrImage from "@assets/generated_images/Quick_service_restaurant_bc0bbd4b.png";
