@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Clock, Wifi, CreditCard, Lock, Zap, Cloud, Users, Cog, ArrowRight, ArrowUpRight, Star } from "lucide-react";
 
 import heroImage from "@assets/Rocket Go_1761928438332.png";
+import offerBanner from "@assets/offer banner rocket go device_1761930053366.png";
 import securityImage from "@assets/generated_images/Payment_security_protection_image_9f385671.png";
 import plainSailingImage from "@assets/generated_images/Plain_sailing_easy_payments_95d92f6c.png";
 import qsrImage from "@assets/generated_images/QSR_industry_payment_terminal_ea6adaa9.png";
@@ -80,6 +81,19 @@ export default function RocketGo() {
               </p>
             </Card>
           </div>
+        </div>
+      </section>
+
+      {/* Offer Banner */}
+      <section className="py-20 md:py-32 bg-muted/30">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
+          <Link href="/quote">
+            <img 
+              src={offerBanner} 
+              alt="Limited time offer - Get your card machine for just £79" 
+              className="w-full rounded-[2rem] shadow-xl hover:scale-[1.02] transition-transform duration-300 cursor-pointer"
+            />
+          </Link>
         </div>
       </section>
 

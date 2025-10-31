@@ -11,6 +11,7 @@ import {
 import { ArrowRight, ArrowUpRight, Cloud, TrendingUp, Zap, Star, CheckCircle } from "lucide-react";
 
 import heroImage from "@assets/hero image rocket go_1761926380440.png";
+import offerBanner from "@assets/offer banner rocket go device_1761930053366.png";
 import rocketGoImage from "@assets/generated_images/Modern_payment_terminal_product_shot_2af211fa.png";
 import rocketPocketImage from "@assets/generated_images/Compact_pocket_payment_terminal_c76d8801.png";
 import rocketWiredImage from "@assets/generated_images/Countertop_terminal_with_touchscreen_aa8d26cb.png";
@@ -217,6 +218,18 @@ export default function Home() {
           <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
             Deliver standout experiences at scale with fast, effortless in-person, online, and mobile payments.
           </p>
+          
+          {/* Offer Banner */}
+          <div className="py-8">
+            <Link href="/products/rocket-go">
+              <img 
+                src={offerBanner} 
+                alt="Limited time offer - Get your card machine for just £79" 
+                className="w-full rounded-[2rem] shadow-xl hover:scale-[1.02] transition-transform duration-300 cursor-pointer"
+              />
+            </Link>
+          </div>
+
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 pt-8">
             {[
               { icon: CheckCircle, text: "More than 450 EPOS integrations" },
