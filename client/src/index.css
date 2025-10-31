@@ -365,3 +365,20 @@
     transform: translateY(0);
   }
 }
+
+@keyframes logoScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.logo-scroll {
+  animation: logoScroll 20s linear infinite;
+}
+
+.logo-scroll:hover {
+  animation-play-state: paused;
+}

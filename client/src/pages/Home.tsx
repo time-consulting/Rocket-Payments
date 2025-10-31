@@ -12,6 +12,10 @@ import { ArrowRight, ArrowUpRight, Cloud, TrendingUp, Zap, Star, CheckCircle } f
 
 import heroImage from "@assets/hero image rocket go_1761926380440.png";
 import offerBanner from "@assets/offer banner rocket go device_1761930053366.png";
+import costaLogo from "@assets/stock_images/costa_coffee_logo_e54fc0f5.jpg";
+import treatzLogo from "@assets/stock_images/treatz_logo_brand_0d1b4479.jpg";
+import cuppLogo from "@assets/stock_images/cupp_bubble_tea_logo_6fe026fa.jpg";
+import silverstoneLogo from "@assets/stock_images/silverstone_logo_bra_bb1908e0.jpg";
 import rocketGoImage from "@assets/generated_images/Modern_payment_terminal_product_shot_2af211fa.png";
 import rocketPocketImage from "@assets/generated_images/Compact_pocket_payment_terminal_c76d8801.png";
 import rocketWiredImage from "@assets/generated_images/Countertop_terminal_with_touchscreen_aa8d26cb.png";
@@ -122,7 +126,12 @@ export default function Home() {
     },
   ];
 
-  const partnerLogos = ["Partner 1", "Partner 2", "Partner 3", "Partner 4", "Partner 5", "Partner 6"];
+  const partnerLogos = [
+    { name: "Costa Coffee", logo: costaLogo },
+    { name: "Treatz", logo: treatzLogo },
+    { name: "CUPP", logo: cuppLogo },
+    { name: "Silverstone", logo: silverstoneLogo },
+  ];
 
   return (
     <div className="flex flex-col">
@@ -162,12 +171,18 @@ export default function Home() {
               {/* Partner Logos */}
               <div className="pt-8">
                 <p className="text-sm text-muted-foreground mb-4">Trusted by leading businesses</p>
-                <div className="grid grid-cols-3 md:grid-cols-6 gap-6 items-center opacity-60">
-                  {partnerLogos.map((partner, i) => (
-                    <div key={i} className="h-8 bg-muted/50 rounded flex items-center justify-center text-xs font-medium text-muted-foreground">
-                      {partner}
-                    </div>
-                  ))}
+                <div className="relative overflow-hidden">
+                  <div className="logo-scroll flex gap-12 items-center">
+                    {[...partnerLogos, ...partnerLogos].map((partner, i) => (
+                      <div key={i} className="flex-shrink-0">
+                        <img 
+                          src={partner.logo} 
+                          alt={partner.name}
+                          className="h-12 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                        />
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
