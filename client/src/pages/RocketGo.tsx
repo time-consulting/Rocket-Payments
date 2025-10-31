@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Clock, Wifi, CreditCard, Lock, Zap, Cloud, Users, Cog, ArrowRight, ArrowUpRight, Star } from "lucide-react";
 
-import heroImage from "@assets/Rocket Go_1761925244580.png";
+import heroImage from "@assets/Rocket Go_1761928438332.png";
 import securityImage from "@assets/generated_images/Payment_security_protection_image_9f385671.png";
 import plainSailingImage from "@assets/generated_images/Plain_sailing_easy_payments_95d92f6c.png";
 import qsrImage from "@assets/generated_images/QSR_industry_payment_terminal_ea6adaa9.png";
