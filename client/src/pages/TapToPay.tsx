@@ -258,45 +258,73 @@ export default function TapToPay() {
         </div>
       </section>
 
-      {/* Requirements Section */}
+      {/* How It Works Section */}
       <section className="py-32 md:py-40 bg-muted/20">
-        <div className="max-w-4xl mx-auto px-6 md:px-8 text-center space-y-12">
+        <div className="max-w-5xl mx-auto px-6 md:px-8 space-y-16">
           <AnimatedSection>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1]">
-              What you need
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1] text-center">
+              Accepting payments is easy
             </h2>
           </AnimatedSection>
-          <div className="grid md:grid-cols-2 gap-x-12 gap-y-8 pt-8 text-left max-w-2xl mx-auto">
+          
+          <div className="space-y-8">
             <AnimatedSection delay={100}>
-              <div className="space-y-2 p-6 rounded-2xl hover-elevate transition-all duration-300">
-                <h3 className="text-lg font-black">iPhone XS or later</h3>
-                <p className="text-base text-muted-foreground">
-                  With NFC capability
-                </p>
+              <div className="flex gap-6 items-start p-6 rounded-2xl hover-elevate transition-all duration-300">
+                <div className="flex-shrink-0">
+                  <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center">
+                    <span className="text-2xl font-black text-primary-foreground">1</span>
+                  </div>
+                </div>
+                <div className="flex-1 pt-1">
+                  <p className="text-lg leading-relaxed">
+                    Open the Rocket Payments app on your iPhone and enter purchase amount.
+                  </p>
+                </div>
               </div>
             </AnimatedSection>
+
             <AnimatedSection delay={200}>
-              <div className="space-y-2 p-6 rounded-2xl hover-elevate transition-all duration-300">
-                <h3 className="text-lg font-black">iOS 15.5+</h3>
-                <p className="text-base text-muted-foreground">
-                  Keep your iPhone updated
-                </p>
+              <div className="flex gap-6 items-start p-6 rounded-2xl hover-elevate transition-all duration-300">
+                <div className="flex-shrink-0">
+                  <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center">
+                    <span className="text-2xl font-black text-primary-foreground">2</span>
+                  </div>
+                </div>
+                <div className="flex-1 pt-1">
+                  <p className="text-lg leading-relaxed">
+                    Present your iPhone to the customer.
+                  </p>
+                </div>
               </div>
             </AnimatedSection>
+
             <AnimatedSection delay={300}>
-              <div className="space-y-2 p-6 rounded-2xl hover-elevate transition-all duration-300">
-                <h3 className="text-lg font-black">Rocket Payments app</h3>
-                <p className="text-base text-muted-foreground">
-                  Free from the App Store
-                </p>
+              <div className="flex gap-6 items-start p-6 rounded-2xl hover-elevate transition-all duration-300">
+                <div className="flex-shrink-0">
+                  <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center">
+                    <span className="text-2xl font-black text-primary-foreground">3</span>
+                  </div>
+                </div>
+                <div className="flex-1 pt-1">
+                  <p className="text-lg leading-relaxed">
+                    Your customer holds their preferred payment method at the top of your iPhone, over the contactless symbol, for a few seconds.
+                  </p>
+                </div>
               </div>
             </AnimatedSection>
+
             <AnimatedSection delay={400}>
-              <div className="space-y-2 p-6 rounded-2xl hover-elevate transition-all duration-300">
-                <h3 className="text-lg font-black">Internet connection</h3>
-                <p className="text-base text-muted-foreground">
-                  Wi-Fi or cellular data
-                </p>
+              <div className="flex gap-6 items-start p-6 rounded-2xl hover-elevate transition-all duration-300">
+                <div className="flex-shrink-0">
+                  <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center">
+                    <span className="text-2xl font-black text-primary-foreground">4</span>
+                  </div>
+                </div>
+                <div className="flex-1 pt-1">
+                  <p className="text-lg leading-relaxed">
+                    When you see the Done checkmark, the card read is complete and the transaction is being processed.
+                  </p>
+                </div>
               </div>
             </AnimatedSection>
           </div>
