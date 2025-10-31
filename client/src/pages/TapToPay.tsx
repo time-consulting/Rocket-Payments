@@ -15,18 +15,18 @@ export default function TapToPay() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-16 md:py-24 bg-primary text-primary-foreground">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1]" data-testid="text-hero-headline">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] uppercase" data-testid="text-hero-headline">
                 Fast payments, on tap
               </h1>
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+              <p className="text-lg md:text-xl text-primary-foreground/90 leading-relaxed">
                 Turn your iPhone into a payment terminal. Accept contactless payments with just your phone and our app. No extra hardware needed.
               </p>
               <Link href="/quote">
-                <Button size="lg" className="text-base px-8" data-testid="button-hero-get-started">
+                <Button size="lg" variant="secondary" className="text-base px-8 rounded-full" data-testid="button-hero-get-started">
                   Get started
                 </Button>
               </Link>

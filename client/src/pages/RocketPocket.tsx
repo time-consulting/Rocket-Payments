@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ShoppingCart, Wifi, CreditCard, Lock, Zap, Cloud, Users, Cog, ArrowRight, ArrowUpRight, Star } from "lucide-react";
 
-import heroImage from "@assets/generated_images/Rocket_Pocket_hero_image_88ba9b26.png";
+import heroImage from "@assets/pocket rocket_1761928695213.png";
 import securityImage from "@assets/generated_images/Payment_security_protection_image_9f385671.png";
 import plainSailingImage from "@assets/generated_images/Plain_sailing_easy_payments_95d92f6c.png";
 import qsrImage from "@assets/generated_images/QSR_industry_payment_terminal_ea6adaa9.png";
@@ -15,18 +15,18 @@ export default function RocketPocket() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-16 md:py-24 bg-primary text-primary-foreground">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1]" data-testid="text-hero-headline">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] uppercase" data-testid="text-hero-headline">
                 In-the-pocket, on-the-go
               </h1>
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+              <p className="text-lg md:text-xl text-primary-foreground/90 leading-relaxed">
                 Boost revenue and streamline service with our portable device for orders and payments. Connect with your EPOS system in the cloud, take orders on the move, and accept payments, wherever.
               </p>
               <Link href="/quote">
-                <Button size="lg" className="text-base px-8" data-testid="button-hero-get-started">
+                <Button size="lg" variant="secondary" className="text-base px-8 rounded-full" data-testid="button-hero-get-started">
                   Get started
                 </Button>
               </Link>
