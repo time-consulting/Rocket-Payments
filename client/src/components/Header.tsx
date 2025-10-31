@@ -56,7 +56,6 @@ export function Header() {
   const navLinks = [
     { label: "Industries", href: "/industries" },
     { label: "Pricing", href: "/pricing" },
-    { label: "Resources", href: "/resources" },
   ];
 
   const activeProducts = productCategories.find(cat => cat.id === activeCategory)?.products || [];
@@ -170,14 +169,10 @@ export function Header() {
                 </Button>
               </Link>
             ))}
-            <Button variant="ghost" className="font-medium">Help</Button>
           </nav>
 
           <div className="flex items-center gap-3">
             <ThemeToggle />
-            <Button variant="ghost" className="font-medium" data-testid="button-login">
-              Login
-            </Button>
             <Link href="/quote">
               <Button variant="default" className="rounded-full font-medium" data-testid="button-get-started">
                 Get started
@@ -246,9 +241,9 @@ export function Header() {
                   </Button>
                 </Link>
               ))}
-              <Button variant="ghost" className="w-full justify-start font-medium">Help</Button>
+              
               <div className="border-t my-2" />
-              <Button variant="ghost" className="w-full justify-start font-medium">Login</Button>
+              
               <Link href="/quote">
                 <Button
                   variant="default"
