@@ -95,7 +95,8 @@ function CountUpNumber({ end, duration = 2000, suffix = "", prefix = "" }: { end
   return <span ref={ref}>{prefix}{count}{suffix}</span>;
 }
 
-function OverlappingImages({ images }: { images: { src: string; alt: string; delay: number }[] }) {
+function CarouselImages({ images }: { images: { src: string; alt: string }[] }) {
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -116,30 +117,75 @@ function OverlappingImages({ images }: { images: { src: string; alt: string; del
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    if (!isVisible) return;
+    
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, 3500);
+
+    return () => clearInterval(interval);
+  }, [isVisible, images.length]);
+
+  const getImageStyle = (index: number) => {
+    const position = (index - currentIndex + images.length) % images.length;
+    
+    if (position === 0) {
+      return {
+        transform: 'translateY(0%) translateX(0%) rotateX(0deg) scale(1)',
+        opacity: 1,
+        zIndex: 30,
+      };
+    } else if (position === 1) {
+      return {
+        transform: 'translateY(8%) translateX(5%) rotateX(-5deg) scale(0.95)',
+        opacity: 0.8,
+        zIndex: 20,
+      };
+    } else if (position === 2) {
+      return {
+        transform: 'translateY(16%) translateX(10%) rotateX(-10deg) scale(0.9)',
+        opacity: 0.5,
+        zIndex: 10,
+      };
+    } else if (position === images.length - 1) {
+      return {
+        transform: 'translateY(-100%) translateX(-20%) rotateX(20deg) scale(0.8)',
+        opacity: 0,
+        zIndex: 5,
+      };
+    } else {
+      return {
+        transform: 'translateY(-120%) rotateX(30deg) scale(0.7)',
+        opacity: 0,
+        zIndex: 0,
+      };
+    }
+  };
+
   return (
-    <div ref={ref} className="relative h-[500px] md:h-[600px]">
-      {images.map((image, index) => (
-        <div
-          key={index}
-          className={`absolute rounded-3xl overflow-hidden shadow-2xl transition-all duration-1000 ease-out ${
-            isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-20 scale-95'
-          }`}
-          style={{
-            transitionDelay: `${image.delay}ms`,
-            zIndex: images.length - index,
-            top: `${index * 40}px`,
-            left: `${index * 30}px`,
-            right: `${index * 30}px`,
-            bottom: `${(images.length - index - 1) * 40}px`,
-          }}
-        >
-          <img
-            src={image.src}
-            alt={image.alt}
-            className="w-full h-full object-cover"
-          />
-        </div>
-      ))}
+    <div ref={ref} className="relative h-[500px] md:h-[600px] perspective-1000">
+      <div className="relative w-full h-full" style={{ perspective: '1000px' }}>
+        {images.map((image, index) => {
+          const style = getImageStyle(index);
+          return (
+            <div
+              key={index}
+              className="absolute inset-0 rounded-3xl overflow-hidden shadow-2xl transition-all duration-1000 ease-out"
+              style={{
+                ...style,
+                transformStyle: 'preserve-3d',
+              }}
+            >
+              <img
+                src={image.src}
+                alt={image.alt}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
@@ -223,11 +269,11 @@ export default function BusinessFunding() {
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <AnimatedSection>
-              <OverlappingImages
+              <CarouselImages
                 images={[
-                  { src: expansionBistroImage, alt: "Restaurant expansion", delay: 0 },
-                  { src: bakerTeamImage, alt: "Growing team", delay: 300 },
-                  { src: handshakeImage, alt: "Business partnership", delay: 600 },
+                  { src: expansionBistroImage, alt: "Restaurant expansion" },
+                  { src: bakerTeamImage, alt: "Growing team" },
+                  { src: handshakeImage, alt: "Business partnership" },
                 ]}
               />
             </AnimatedSection>
@@ -294,11 +340,11 @@ export default function BusinessFunding() {
             </AnimatedSection>
 
             <AnimatedSection>
-              <OverlappingImages
+              <CarouselImages
                 images={[
-                  { src: christmasMarketImage, alt: "Market trader", delay: 0 },
-                  { src: approvedImage, alt: "Approved funding", delay: 300 },
-                  { src: balanceImage, alt: "Outstanding balance", delay: 600 },
+                  { src: christmasMarketImage, alt: "Market trader" },
+                  { src: approvedImage, alt: "Approved funding" },
+                  { src: balanceImage, alt: "Outstanding balance" },
                 ]}
               />
             </AnimatedSection>
@@ -311,11 +357,11 @@ export default function BusinessFunding() {
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <AnimatedSection>
-              <OverlappingImages
+              <CarouselImages
                 images={[
-                  { src: hairSalonCustomerImage, alt: "Salon customer", delay: 0 },
-                  { src: hairStylistImage, alt: "Hair stylist at work", delay: 300 },
-                  { src: constructionOwnerImage, alt: "Business growth", delay: 600 },
+                  { src: hairSalonCustomerImage, alt: "Salon customer" },
+                  { src: hairStylistImage, alt: "Hair stylist at work" },
+                  { src: approvedImage, alt: "Funding approved" },
                 ]}
               />
             </AnimatedSection>
@@ -335,6 +381,94 @@ export default function BusinessFunding() {
                     "Use for equipment, stock, or staffing",
                     "Renew for higher amounts as you grow",
                     "Great renewal rates for repeat customers"
+                  ].map((point, i) => (
+                    <div key={i} className="flex items-start gap-4">
+                      <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mt-1">
+                        <Check className="h-5 w-5 text-primary" />
+                      </div>
+                      <p className="text-lg leading-relaxed">{point}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </AnimatedSection>
+          </div>
+        </div>
+      </section>
+
+      {/* Success Story 4: The Builder */}
+      <section className="py-32 md:py-40 bg-background">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <AnimatedSection delay={300}>
+              <div className="space-y-8 lg:order-2">
+                <Badge className="text-sm font-black px-6 py-2">SUCCESS STORY</Badge>
+                <h2 className="text-5xl md:text-6xl font-black leading-tight">
+                  Built on solid foundations
+                </h2>
+                <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed">
+                  Construction firm owner Marcus needed £120,000 to take on three major contracts simultaneously. The funding arrived in 48 hours, he delivered all projects on time, and his business grew 200% that year.
+                </p>
+                <div className="space-y-4">
+                  {[
+                    "Large amounts available for established businesses",
+                    "Quick approval for time-sensitive opportunities",
+                    "Repayment scales with your project income",
+                    "Access repeat funding as you grow"
+                  ].map((point, i) => (
+                    <div key={i} className="flex items-start gap-4">
+                      <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mt-1">
+                        <Check className="h-5 w-5 text-primary" />
+                      </div>
+                      <p className="text-lg leading-relaxed">{point}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection>
+              <CarouselImages
+                images={[
+                  { src: constructionOwnerImage, alt: "Construction business owner" },
+                  { src: handshakeImage, alt: "Sealing the deal" },
+                  { src: balanceImage, alt: "Funding balance" },
+                ]}
+              />
+            </AnimatedSection>
+          </div>
+        </div>
+      </section>
+
+      {/* Success Story 5: The Baker's Dream */}
+      <section className="py-32 md:py-40 bg-gradient-to-b from-muted/20 to-background">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <AnimatedSection>
+              <CarouselImages
+                images={[
+                  { src: bakerTeamImage, alt: "Bakery team" },
+                  { src: expansionBistroImage, alt: "New bakery location" },
+                  { src: approvedImage, alt: "Approved notification" },
+                ]}
+              />
+            </AnimatedSection>
+
+            <AnimatedSection delay={300}>
+              <div className="space-y-8">
+                <Badge className="text-sm font-black px-6 py-2">SUCCESS STORY</Badge>
+                <h2 className="text-5xl md:text-6xl font-black leading-tight">
+                  Rising to the occasion
+                </h2>
+                <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed">
+                  Artisan bakery owner Elena secured £45,000 to purchase a new industrial oven and hire four additional bakers. Within months, she was supplying five local restaurants and her retail sales tripled.
+                </p>
+                <div className="space-y-4">
+                  {[
+                    "Invest in equipment that pays for itself",
+                    "Hire the team you need to scale",
+                    "Flexible terms that match your growth",
+                    "Simple application, fast decision"
                   ].map((point, i) => (
                     <div key={i} className="flex items-start gap-4">
                       <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mt-1">
