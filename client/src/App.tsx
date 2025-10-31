@@ -12,6 +12,8 @@ import RocketGo from "@/pages/RocketGo";
 import RocketPocket from "@/pages/RocketPocket";
 import RocketWired from "@/pages/RocketWired";
 import TapToPay from "@/pages/TapToPay";
+import OnlinePayments from "@/pages/OnlinePayments";
+import PaymentLinks from "@/pages/PaymentLinks";
 import Quote from "@/pages/Quote";
 import Industries from "@/pages/Industries";
 import Pricing from "@/pages/Pricing";
@@ -28,6 +30,8 @@ function Router() {
       <Route path="/products/rocket-pocket" component={RocketPocket} />
       <Route path="/products/rocket-wired" component={RocketWired} />
       <Route path="/products/tap-to-pay" component={TapToPay} />
+      <Route path="/products/online-payments" component={OnlinePayments} />
+      <Route path="/products/payment-links" component={PaymentLinks} />
       <Route path="/products/:slug" component={ProductDetail} />
       <Route path="/industries" component={Industries} />
       <Route path="/pricing" component={Pricing} />
