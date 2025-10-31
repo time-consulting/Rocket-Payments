@@ -56,14 +56,14 @@ function SwitchPriceAnimation() {
     if (!isVisible) return;
 
     let startTime: number | null = null;
-    const duration = 2000;
+    const duration = 1200;
 
     const animate = (currentTime: number) => {
       if (!startTime) startTime = currentTime;
       const progress = Math.min((currentTime - startTime) / duration, 1);
       
-      const easeInQuad = progress * progress;
-      const currentPrice = Math.floor(3000 - (3000 * easeInQuad));
+      const easeInCubic = progress * progress * progress;
+      const currentPrice = Math.floor(3000 - (3000 * easeInCubic));
       setPrice(currentPrice);
 
       if (progress < 1) {
@@ -77,9 +77,9 @@ function SwitchPriceAnimation() {
   }, [isVisible]);
 
   return (
-    <div ref={ref} className="text-6xl md:text-8xl font-black transition-all duration-500">
+    <div ref={ref} className="text-6xl md:text-8xl font-black">
       {showFree ? (
-        <span className="animate-fadeInUp">FREE</span>
+        <span className="inline-block animate-[scaleIn_0.5s_ease-out]">FREE</span>
       ) : (
         <span>£{price.toLocaleString()}</span>
       )}
@@ -309,29 +309,25 @@ export default function Home() {
       </section>
 
       {/* Switch for FREE Banner */}
-      <section className="bg-primary text-primary-foreground py-20 md:py-32 relative overflow-hidden">
+      <section className="bg-primary text-primary-foreground py-12 md:py-16 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary-foreground/5 via-transparent to-transparent pointer-events-none" />
         <div className="max-w-5xl mx-auto px-6 md:px-8 text-center relative">
-          <div className="space-y-8">
-            <div className="space-y-4">
-              <h2 className="text-4xl md:text-6xl lg:text-7xl font-black uppercase leading-[1.1]">
+          <div className="space-y-6">
+            <div className="space-y-3">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase leading-[1.1]">
                 Switch for
               </h2>
               <SwitchPriceAnimation />
-              <p className="text-xl md:text-2xl font-bold text-primary-foreground/90 mt-6">
+              <p className="text-lg md:text-xl font-bold text-primary-foreground/90">
                 £3,000 cover towards your exit fees
               </p>
             </div>
-            <p className="text-base md:text-lg text-primary-foreground/80 max-w-2xl mx-auto leading-relaxed">
-              Sign up to Rocket Payments and we could cover your exit fees up to £3,000. No fixed contracts, simple setup, and seamless switching.
-            </p>
             <Link href="/quote">
               <Button size="lg" variant="secondary" className="text-base px-8 rounded-full">
                 Get started
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
-            <p className="text-sm text-primary-foreground/60">Subject to your annual card turnover.</p>
           </div>
         </div>
       </section>
