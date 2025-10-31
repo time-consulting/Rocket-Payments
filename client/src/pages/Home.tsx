@@ -178,6 +178,79 @@ function AnimatedFeatureCard({ icon: Icon, text, delay }: { icon: any; text: str
   );
 }
 
+function AutoScrollProducts({ products }: { products: any[] }) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const scrollContainer = scrollRef.current;
+    if (!scrollContainer) return;
+
+    let scrollPosition = 0;
+    const scrollSpeed = 0.5;
+    const cardWidth = 340;
+    const gap = 16;
+    const itemWidth = cardWidth + gap;
+    
+    const scroll = () => {
+      scrollPosition += scrollSpeed;
+      
+      if (scrollPosition >= itemWidth * products.length) {
+        scrollPosition = 0;
+      }
+      
+      scrollContainer.scrollLeft = scrollPosition;
+      requestAnimationFrame(scroll);
+    };
+
+    const animationId = requestAnimationFrame(scroll);
+
+    const handleMouseEnter = () => {
+      cancelAnimationFrame(animationId);
+    };
+
+    const handleMouseLeave = () => {
+      requestAnimationFrame(scroll);
+    };
+
+    scrollContainer.addEventListener('mouseenter', handleMouseEnter);
+    scrollContainer.addEventListener('mouseleave', handleMouseLeave);
+
+    return () => {
+      cancelAnimationFrame(animationId);
+      scrollContainer.removeEventListener('mouseenter', handleMouseEnter);
+      scrollContainer.removeEventListener('mouseleave', handleMouseLeave);
+    };
+  }, [products.length]);
+
+  return (
+    <div ref={scrollRef} className="flex gap-4 md:gap-6 overflow-x-scroll pb-8 px-6 md:px-8 scrollbar-hide">
+      {[...products, ...products].map((product, index) => (
+        <Link key={index} href={product.link}>
+          <div 
+            className="flex-shrink-0 w-[340px] md:w-[420px] h-[500px] md:h-[580px] rounded-[2rem] overflow-hidden group cursor-pointer transition-transform duration-300 hover:scale-[1.02]" 
+            data-testid={`card-product-${index % products.length}`}
+          >
+            <div className={`h-full relative ${(index % products.length) % 2 === 0 ? 'bg-foreground text-background' : 'bg-muted/50 text-foreground'}`}>
+              <div className="absolute top-8 left-8 right-8 z-10 space-y-2">
+                <h3 className="text-3xl md:text-4xl font-black">{product.name}</h3>
+                <p className="text-lg md:text-xl font-semibold opacity-90">{product.tagline}</p>
+                <p className={`text-sm ${(index % products.length) % 2 === 0 ? 'text-background/70' : 'text-muted-foreground'}`}>{product.description}</p>
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 h-[65%] flex items-end justify-center pb-8">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="max-h-full w-auto object-contain transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+            </div>
+          </div>
+        </Link>
+      ))}
+    </div>
+  );
+}
+
 export default function Home() {
   const industries = [
     {
@@ -493,34 +566,7 @@ export default function Home() {
           </div>
 
           <div className="relative">
-            <div className="flex gap-4 md:gap-6 overflow-x-scroll pb-8 px-6 md:px-8 snap-x snap-mandatory">
-              {products.map((product, index) => (
-                <Link key={index} href={product.link}>
-                  <div 
-                    className="flex-shrink-0 w-[340px] md:w-[420px] h-[500px] md:h-[580px] rounded-[2rem] overflow-hidden group cursor-pointer snap-start transition-transform duration-300 hover:scale-[1.02]" 
-                    data-testid={`card-product-${index}`}
-                    style={{
-                      animation: `fadeInUp 0.6s ease-out ${index * 0.1}s both`
-                    }}
-                  >
-                    <div className={`h-full relative ${index % 2 === 0 ? 'bg-foreground text-background' : 'bg-muted/50 text-foreground'}`}>
-                      <div className="absolute top-8 left-8 right-8 z-10 space-y-2">
-                        <h3 className="text-3xl md:text-4xl font-black">{product.name}</h3>
-                        <p className="text-lg md:text-xl font-semibold opacity-90">{product.tagline}</p>
-                        <p className={`text-sm ${index % 2 === 0 ? 'text-background/70' : 'text-muted-foreground'}`}>{product.description}</p>
-                      </div>
-                      <div className="absolute bottom-0 left-0 right-0 h-[65%] flex items-end justify-center pb-8">
-                        <img
-                          src={product.image}
-                          alt={product.name}
-                          className="max-h-full w-auto object-contain transition-transform duration-500 group-hover:scale-105"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
+            <AutoScrollProducts products={products} />
           </div>
         </div>
       </section>
