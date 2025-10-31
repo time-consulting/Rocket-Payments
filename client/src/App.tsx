@@ -16,6 +16,7 @@ import OnlinePayments from "@/pages/OnlinePayments";
 import PaymentLinks from "@/pages/PaymentLinks";
 import FlexFunds from "@/pages/FlexFunds";
 import Sidekick from "@/pages/Sidekick";
+import Integrations from "@/pages/Integrations";
 import Quote from "@/pages/Quote";
 import Industries from "@/pages/Industries";
 import Pricing from "@/pages/Pricing";
@@ -36,6 +37,7 @@ function Router() {
       <Route path="/products/payment-links" component={PaymentLinks} />
       <Route path="/products/flex-funds" component={FlexFunds} />
       <Route path="/products/sidekick" component={Sidekick} />
+      <Route path="/integrations" component={Integrations} />
       <Route path="/products/:slug" component={ProductDetail} />
       <Route path="/industries" component={Industries} />
       <Route path="/pricing" component={Pricing} />

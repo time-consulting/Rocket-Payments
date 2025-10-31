@@ -48,7 +48,7 @@ export function Header() {
       products: [
         { name: "Flex Funds", href: "/products/flex-funds", description: "Fast, flexible access to cash" },
         { name: "Sidekick", href: "/products/sidekick", description: "Your digital business partner" },
-        { name: "Integrations", href: "/resources#integrations", description: "Connect with 600+ EPOS systems" },
+        { name: "Integrations", href: "/integrations", description: "Connect with 600+ EPOS systems" },
       ],
     },
   ];
