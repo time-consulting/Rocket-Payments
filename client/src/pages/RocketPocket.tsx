@@ -4,6 +4,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { ShoppingCart, Wifi, CreditCard, Lock, Zap, Cloud, Users, Cog, ArrowRight, ArrowUpRight, Star } from "lucide-react";
 
 import heroImage from "@assets/pocket rocket_1761928695213.png";
+import ordersPaymentsImage from "@assets/rocket pocket_1761931985667.png";
+import stockTabsImage from "@assets/pocket 2_1761931985666.png";
 import securityImage from "@assets/generated_images/Payment_security_protection_image_9f385671.png";
 import plainSailingImage from "@assets/generated_images/Plain_sailing_easy_payments_95d92f6c.png";
 import qsrImage from "@assets/generated_images/QSR_industry_payment_terminal_ea6adaa9.png";
@@ -96,7 +98,7 @@ export default function RocketPocket() {
             </div>
             <div className="relative">
               <img
-                src={securityImage}
+                src={ordersPaymentsImage}
                 alt="Orders and payments simplified"
                 className="rounded-2xl w-full h-auto"
               />
@@ -119,7 +121,7 @@ export default function RocketPocket() {
             </div>
             <div className="relative lg:order-1">
               <img
-                src={plainSailingImage}
+                src={stockTabsImage}
                 alt="Real-time stock updates"
                 className="rounded-2xl w-full h-auto"
               />
