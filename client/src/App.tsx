@@ -10,6 +10,7 @@ import Products from "@/pages/Products";
 import ProductDetail from "@/pages/ProductDetail";
 import RocketGo from "@/pages/RocketGo";
 import RocketPocket from "@/pages/RocketPocket";
+import RocketWired from "@/pages/RocketWired";
 import TapToPay from "@/pages/TapToPay";
 import Quote from "@/pages/Quote";
 import Industries from "@/pages/Industries";
@@ -25,6 +26,7 @@ function Router() {
       <Route path="/products" component={Products} />
       <Route path="/products/rocket-go" component={RocketGo} />
       <Route path="/products/rocket-pocket" component={RocketPocket} />
+      <Route path="/products/rocket-wired" component={RocketWired} />
       <Route path="/products/tap-to-pay" component={TapToPay} />
       <Route path="/products/:slug" component={ProductDetail} />
       <Route path="/industries" component={Industries} />
