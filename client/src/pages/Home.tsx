@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -27,6 +28,54 @@ import retailImage from "@assets/generated_images/Retail_store_checkout_665cbb72
 import testimonial1 from "@assets/generated_images/Business_owner_testimonial_1_a41a1226.png";
 import testimonial2 from "@assets/generated_images/Restaurant_manager_testimonial_45d19cf6.png";
 import testimonial3 from "@assets/generated_images/Retail_owner_testimonial_379ad525.png";
+
+function CountUpAnimation({ end, duration = 2000 }: { end: number; duration?: number }) {
+  const [count, setCount] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !isVisible) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => observer.disconnect();
+  }, [isVisible]);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
+    let startTime: number | null = null;
+    const animate = (currentTime: number) => {
+      if (!startTime) startTime = currentTime;
+      const progress = Math.min((currentTime - startTime) / duration, 1);
+      
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+      setCount(Math.floor(easeOutQuart * end));
+
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      }
+    };
+
+    requestAnimationFrame(animate);
+  }, [isVisible, end, duration]);
+
+  return (
+    <div ref={ref} className="text-6xl font-bold text-primary">
+      {count}+
+    </div>
+  );
+}
 
 export default function Home() {
   const industries = [
@@ -324,9 +373,9 @@ export default function Home() {
                 </Button>
               </Link>
             </div>
-            <div className="bg-muted/50 rounded-2xl p-12 flex items-center justify-center min-h-[400px]">
+            <div className="bg-muted/50 rounded-2xl p-12 flex items-center justify-center min-h-[400px] hover-elevate transition-all">
               <div className="text-center space-y-4">
-                <div className="text-6xl font-bold text-primary">450+</div>
+                <CountUpAnimation end={450} duration={2500} />
                 <p className="text-xl font-semibold">EPOS Integrations</p>
                 <p className="text-muted-foreground">More than any other provider</p>
               </div>
@@ -350,7 +399,13 @@ export default function Home() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {products.map((product, index) => (
               <Link key={index} href={product.link}>
-                <Card className="h-full overflow-hidden hover-elevate active-elevate-2 transition-all duration-300 group cursor-pointer border-none shadow-lg" data-testid={`card-product-${index}`}>
+                <Card 
+                  className="h-full overflow-hidden hover-elevate active-elevate-2 transition-all duration-300 group cursor-pointer border-none shadow-lg" 
+                  data-testid={`card-product-${index}`}
+                  style={{
+                    animation: `fadeInUp 0.6s ease-out ${index * 0.1}s both`
+                  }}
+                >
                   <CardContent className="p-6 space-y-4">
                     <div className="flex items-start justify-between gap-2">
                       <h3 className="text-xl font-black">{product.name}</h3>
@@ -393,7 +448,14 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {testimonials.map((testimonial, index) => (
-              <Card key={index} className="p-6 space-y-4" data-testid={`card-testimonial-${index}`}>
+              <Card 
+                key={index} 
+                className="p-6 space-y-4 hover-elevate transition-all" 
+                data-testid={`card-testimonial-${index}`}
+                style={{
+                  animation: `fadeInUp 0.6s ease-out ${index * 0.15}s both`
+                }}
+              >
                 <div className="flex gap-4 items-start">
                   <img
                     src={testimonial.image}
@@ -451,7 +513,14 @@ export default function Home() {
                 image: retailImage,
               },
             ].map((story, index) => (
-              <Card key={index} className="overflow-hidden hover-elevate transition-all group cursor-pointer border-none shadow-lg" data-testid={`card-success-story-${index}`}>
+              <Card 
+                key={index} 
+                className="overflow-hidden hover-elevate transition-all group cursor-pointer border-none shadow-lg" 
+                data-testid={`card-success-story-${index}`}
+                style={{
+                  animation: `fadeInUp 0.6s ease-out ${index * 0.15}s both`
+                }}
+              >
                 <div className="aspect-[16/10] overflow-hidden relative">
                   <img
                     src={story.image}
