@@ -17,7 +17,7 @@ import costaLogo from "@assets/Costa-Coffee-Logo_1761930744749.jpg";
 import treatzLogo from "@assets/Treatz.jpg_1761930744750.webp";
 import cuppLogo from "@assets/ac9be535-cd26-4913-893c-607ef9c65ec9_1761930744747.jpeg";
 import silverstoneLogo from "@assets/silverstone-uk-logo-vectorrwopeh_1761930744750.png";
-import rocketGoImage from "@assets/generated_images/Modern_payment_terminal_product_shot_2af211fa.png";
+import rocketGoImage from "@assets/rocket go device on stand - white bk_1761931715066.png";
 import rocketPocketImage from "@assets/generated_images/Compact_pocket_payment_terminal_c76d8801.png";
 import rocketWiredImage from "@assets/generated_images/Countertop_terminal_with_touchscreen_aa8d26cb.png";
 import tapToPayImage from "@assets/generated_images/Tap_to_pay_smartphone_e29cd7d7.png";
