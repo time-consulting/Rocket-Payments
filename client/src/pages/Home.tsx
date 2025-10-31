@@ -484,45 +484,43 @@ export default function Home() {
       </section>
 
       {/* Products Section */}
-      <section className="py-20 md:py-32 bg-background">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <div className="text-center mb-16 space-y-4">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight" data-testid="text-products-headline">
-              Our products
+      <section className="py-20 md:py-32 bg-background overflow-hidden">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="text-left mb-12 px-6 md:px-8">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight" data-testid="text-products-headline">
+              The latest. <span className="text-muted-foreground font-normal">Take a look at what's new right now.</span>
             </h2>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-              Explore our range of hard-working hardware for the right solution for your business.
-            </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {products.map((product, index) => (
-              <Link key={index} href={product.link}>
-                <Card 
-                  className="h-full overflow-hidden hover-elevate active-elevate-2 transition-all duration-300 group cursor-pointer border-none shadow-lg" 
-                  data-testid={`card-product-${index}`}
-                  style={{
-                    animation: `fadeInUp 0.6s ease-out ${index * 0.1}s both`
-                  }}
-                >
-                  <CardContent className="p-6 space-y-4">
-                    <div className="flex items-start justify-between gap-2">
-                      <h3 className="text-xl font-black">{product.name}</h3>
-                      <ArrowUpRight className="h-7 w-7 text-foreground flex-shrink-0" />
+          <div className="relative">
+            <div className="flex gap-4 md:gap-6 overflow-x-auto pb-8 px-6 md:px-8 snap-x snap-mandatory scrollbar-hide">
+              {products.map((product, index) => (
+                <Link key={index} href={product.link}>
+                  <div 
+                    className="flex-shrink-0 w-[340px] md:w-[420px] h-[500px] md:h-[580px] rounded-[2rem] overflow-hidden group cursor-pointer snap-start transition-transform duration-300 hover:scale-[1.02]" 
+                    data-testid={`card-product-${index}`}
+                    style={{
+                      animation: `fadeInUp 0.6s ease-out ${index * 0.1}s both`
+                    }}
+                  >
+                    <div className={`h-full relative ${index % 2 === 0 ? 'bg-foreground text-background' : 'bg-muted/50 text-foreground'}`}>
+                      <div className="absolute top-8 left-8 right-8 z-10 space-y-2">
+                        <h3 className="text-3xl md:text-4xl font-black">{product.name}</h3>
+                        <p className="text-lg md:text-xl font-semibold opacity-90">{product.tagline}</p>
+                        <p className={`text-sm ${index % 2 === 0 ? 'text-background/70' : 'text-muted-foreground'}`}>{product.description}</p>
+                      </div>
+                      <div className="absolute bottom-0 left-0 right-0 h-[65%] flex items-end justify-center pb-8">
+                        <img
+                          src={product.image}
+                          alt={product.name}
+                          className="max-h-full w-auto object-contain transition-transform duration-500 group-hover:scale-105"
+                        />
+                      </div>
                     </div>
-                    <p className="text-base font-bold">{product.tagline}</p>
-                    <p className="text-sm text-muted-foreground leading-relaxed font-normal">{product.description}</p>
-                  </CardContent>
-                  <div className="aspect-[4/3] overflow-hidden">
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
                   </div>
-                </Card>
-              </Link>
-            ))}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </section>
