@@ -448,6 +448,21 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Products Section */}
+      <section className="py-20 md:py-32 bg-background overflow-hidden">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="text-left mb-12 px-6 md:px-8">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight" data-testid="text-products-headline">
+              The latest. <span className="text-muted-foreground font-normal">Take a look at what's new right now.</span>
+            </h2>
+          </div>
+
+          <div className="relative">
+            <AutoScrollProducts products={products} />
+          </div>
+        </div>
+      </section>
+
       {/* Value Proposition */}
       <section className="py-20 md:py-32 bg-background">
         <div className="max-w-6xl mx-auto px-6 md:px-8 text-center space-y-6">
@@ -552,21 +567,6 @@ export default function Home() {
                 className="w-full h-full object-cover"
               />
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Products Section */}
-      <section className="py-20 md:py-32 bg-background overflow-hidden">
-        <div className="max-w-[1400px] mx-auto">
-          <div className="text-left mb-12 px-6 md:px-8">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight" data-testid="text-products-headline">
-              The latest. <span className="text-muted-foreground font-normal">Take a look at what's new right now.</span>
-            </h2>
-          </div>
-
-          <div className="relative">
-            <AutoScrollProducts products={products} />
           </div>
         </div>
       </section>
