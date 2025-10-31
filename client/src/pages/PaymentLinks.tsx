@@ -1,8 +1,11 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Link as LinkIcon, Smartphone, Lock, CheckCircle, CreditCard, Shield, MessageSquare, Zap, ArrowRight } from "lucide-react";
+import { Smartphone, Lock, CheckCircle, CreditCard, Shield, MessageSquare, Zap, ArrowRight, Mail, Send } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+
+import shareLinksImage from "@assets/810x720_1761941137171.webp";
+import phoneScreenImage from "@assets/tap to pay watch_1761941137172.webp";
 
 function AnimatedSection({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
   const [isVisible, setIsVisible] = useState(false);
@@ -41,10 +44,14 @@ export default function PaymentLinks() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="pt-20 pb-12 md:pt-32 md:pb-20 bg-gradient-to-b from-background to-muted/30">
+      <section className="pt-20 pb-12 md:pt-32 md:pb-20 bg-gradient-to-b from-background to-muted/30 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="text-center space-y-8 max-w-4xl mx-auto">
             <div className="space-y-6 animate-in fade-in slide-in-from-bottom-8 duration-1000">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full border border-primary/20 animate-in fade-in slide-in-from-top-4 duration-700">
+                <Send className="h-4 w-4 text-primary" />
+                <span className="text-sm font-black text-primary">Remote Payments</span>
+              </div>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tight">
                 Send a link,<br />secure your payment
               </h1>
@@ -64,42 +71,109 @@ export default function PaymentLinks() {
         </div>
       </section>
 
-      {/* Simple Steps Section */}
-      <section className="py-32 md:py-40 bg-background">
-        <div className="max-w-4xl mx-auto px-6 md:px-8 text-center space-y-8">
-          <AnimatedSection>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1]">
-              Get paid in a few simple steps
-            </h2>
-          </AnimatedSection>
-          <AnimatedSection delay={200}>
-            <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-              In just a few clicks, you can create a payment link, share with a customer, and land them on a secure checkout page.
-            </p>
-          </AnimatedSection>
+      {/* Share Links Section with Image */}
+      <section className="py-32 md:py-40 bg-background overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <AnimatedSection>
+              <div className="space-y-6">
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1]">
+                  Share unique links, instantly
+                </h2>
+                <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+                  Send your link the way that works for you – using social media, messaging apps, or email. Your customer can pay with a card or digital wallet.
+                </p>
+                <div className="flex flex-wrap gap-4 pt-4">
+                  <div className="flex items-center gap-2 px-4 py-2 bg-muted rounded-lg">
+                    <MessageSquare className="h-5 w-5 text-primary" />
+                    <span className="text-sm font-semibold">WhatsApp</span>
+                  </div>
+                  <div className="flex items-center gap-2 px-4 py-2 bg-muted rounded-lg">
+                    <Mail className="h-5 w-5 text-primary" />
+                    <span className="text-sm font-semibold">Email</span>
+                  </div>
+                  <div className="flex items-center gap-2 px-4 py-2 bg-muted rounded-lg">
+                    <Send className="h-5 w-5 text-primary" />
+                    <span className="text-sm font-semibold">SMS</span>
+                  </div>
+                </div>
+              </div>
+            </AnimatedSection>
+            <AnimatedSection delay={300}>
+              <div className="relative group">
+                <div className="absolute -inset-8 bg-gradient-to-r from-primary/20 via-primary/10 to-transparent rounded-3xl blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                <img
+                  src={shareLinksImage}
+                  alt="Share payment links via messaging apps"
+                  className="relative w-full h-auto rounded-3xl shadow-2xl hover:scale-[1.02] transition-transform duration-700"
+                />
+              </div>
+            </AnimatedSection>
+          </div>
         </div>
       </section>
 
-      {/* Share Links Section */}
-      <section className="py-32 md:py-40 bg-muted/20">
-        <div className="max-w-4xl mx-auto px-6 md:px-8 text-center space-y-8">
-          <AnimatedSection>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1]">
-              Share unique links,<br />instantly
-            </h2>
-          </AnimatedSection>
-          <AnimatedSection delay={200}>
-            <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-              Send your link the way that works for you – using social media, messaging apps, or email. Your customer can pay with a card or digital wallet.
-            </p>
-          </AnimatedSection>
+      {/* Phone Screen Section */}
+      <section className="py-32 md:py-40 bg-muted/20 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <AnimatedSection delay={300} className="lg:order-1">
+              <div className="relative group">
+                <div className="absolute -inset-6 bg-gradient-to-r from-primary/15 to-primary/5 rounded-3xl blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                <img
+                  src={phoneScreenImage}
+                  alt="Payment link interface on mobile"
+                  className="relative w-full h-auto rounded-3xl shadow-2xl hover:scale-[1.03] transition-transform duration-700"
+                />
+              </div>
+            </AnimatedSection>
+            <AnimatedSection className="lg:order-2">
+              <div className="space-y-6">
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1]">
+                  Get paid in a few simple steps
+                </h2>
+                <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+                  In just a few clicks, you can create a payment link, share with a customer, and land them on a secure checkout page.
+                </p>
+                <div className="space-y-4 pt-4">
+                  <div className="flex items-start gap-4">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary flex items-center justify-center">
+                      <span className="text-sm font-black text-primary-foreground">1</span>
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-base leading-relaxed">Create a payment link in seconds</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary flex items-center justify-center">
+                      <span className="text-sm font-black text-primary-foreground">2</span>
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-base leading-relaxed">Share via your preferred channel</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary flex items-center justify-center">
+                      <span className="text-sm font-black text-primary-foreground">3</span>
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-base leading-relaxed">Customer pays securely</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </AnimatedSection>
+          </div>
         </div>
       </section>
 
-      {/* Sell Online Section */}
+      {/* Sell Online CTA Section */}
       <section className="py-32 md:py-40 bg-background">
         <div className="max-w-4xl mx-auto px-6 md:px-8 text-center space-y-8">
           <AnimatedSection>
+            <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-primary/10 mb-6">
+              <CreditCard className="h-10 w-10 text-primary" />
+            </div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1]">
               Sell online at no extra cost
             </h2>
@@ -116,9 +190,12 @@ export default function PaymentLinks() {
       <section className="py-32 md:py-40 bg-muted/20">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <AnimatedSection>
-            <h2 className="text-4xl md:text-5xl font-black leading-tight text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-black leading-tight text-center mb-4">
               Your link to getting paid
             </h2>
+            <p className="text-xl text-muted-foreground text-center mb-16 max-w-2xl mx-auto">
+              Discover how payment links work for you
+            </p>
           </AnimatedSection>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -161,18 +238,20 @@ export default function PaymentLinks() {
               }
             ].map((feature, index) => (
               <AnimatedSection key={index} delay={feature.delay}>
-                <div className="group p-8 rounded-2xl hover-elevate transition-all duration-300 cursor-default space-y-4">
+                <Card className="group p-8 rounded-2xl hover-elevate transition-all duration-300 cursor-default space-y-4 border-none shadow-lg h-full">
                   <div className="flex justify-start">
                     <div className="relative">
                       <div className="absolute inset-0 bg-primary/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      <feature.icon className="relative h-12 w-12 text-primary group-hover:scale-110 transition-transform duration-500" />
+                      <div className="relative w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                        <feature.icon className="h-7 w-7 text-primary" />
+                      </div>
                     </div>
                   </div>
                   <h3 className="text-xl font-black">{feature.title}</h3>
                   <p className="text-base text-muted-foreground leading-relaxed">
                     {feature.description}
                   </p>
-                </div>
+                </Card>
               </AnimatedSection>
             ))}
           </div>
@@ -204,13 +283,15 @@ export default function PaymentLinks() {
               }
             ].map((benefit, index) => (
               <AnimatedSection key={index} delay={benefit.delay}>
-                <Card className="p-8 space-y-4 hover-elevate transition-all duration-300 border-none shadow-lg">
-                  <benefit.icon className="h-12 w-12 text-primary" />
+                <div className="group p-8 rounded-2xl hover-elevate transition-all duration-300 space-y-4 bg-gradient-to-br from-muted/50 to-background border border-border">
+                  <div className="relative w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                    <benefit.icon className="h-7 w-7 text-primary" />
+                  </div>
                   <h3 className="text-xl font-black">{benefit.title}</h3>
                   <p className="text-base text-muted-foreground leading-relaxed">
                     {benefit.description}
                   </p>
-                </Card>
+                </div>
               </AnimatedSection>
             ))}
           </div>
@@ -218,7 +299,7 @@ export default function PaymentLinks() {
       </section>
 
       {/* How It Works Section */}
-      <section className="py-32 md:py-40 bg-muted/20">
+      <section className="py-32 md:py-40 bg-gradient-to-b from-muted/20 to-background">
         <div className="max-w-5xl mx-auto px-6 md:px-8 space-y-16">
           <AnimatedSection>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1] text-center">
@@ -226,58 +307,67 @@ export default function PaymentLinks() {
             </h2>
           </AnimatedSection>
           
-          <div className="space-y-8">
-            <AnimatedSection delay={100}>
-              <div className="flex gap-6 items-start p-6 rounded-2xl hover-elevate transition-all duration-300">
-                <div className="flex-shrink-0">
-                  <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center">
-                    <span className="text-2xl font-black text-primary-foreground">1</span>
+          <div className="relative">
+            {/* Connecting line */}
+            <div className="absolute left-6 top-12 bottom-12 w-0.5 bg-gradient-to-b from-primary via-primary/50 to-primary hidden md:block" />
+            
+            <div className="space-y-8">
+              <AnimatedSection delay={100}>
+                <div className="flex gap-6 items-start p-8 rounded-2xl hover-elevate transition-all duration-300 bg-card border border-border shadow-lg">
+                  <div className="flex-shrink-0 relative z-10">
+                    <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center shadow-lg">
+                      <span className="text-2xl font-black text-primary-foreground">1</span>
+                    </div>
+                  </div>
+                  <div className="flex-1 pt-1">
+                    <h3 className="text-xl font-black mb-2">Log in to your account</h3>
+                    <p className="text-base leading-relaxed text-muted-foreground">
+                      Access your Rocket account and navigate to "Payment links" in the "Account" section.
+                    </p>
                   </div>
                 </div>
-                <div className="flex-1 pt-1">
-                  <p className="text-lg leading-relaxed">
-                    Log in to your Rocket account and select "Payment links" in the "Account" section.
-                  </p>
-                </div>
-              </div>
-            </AnimatedSection>
+              </AnimatedSection>
 
-            <AnimatedSection delay={200}>
-              <div className="flex gap-6 items-start p-6 rounded-2xl hover-elevate transition-all duration-300">
-                <div className="flex-shrink-0">
-                  <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center">
-                    <span className="text-2xl font-black text-primary-foreground">2</span>
+              <AnimatedSection delay={200}>
+                <div className="flex gap-6 items-start p-8 rounded-2xl hover-elevate transition-all duration-300 bg-card border border-border shadow-lg">
+                  <div className="flex-shrink-0 relative z-10">
+                    <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center shadow-lg">
+                      <span className="text-2xl font-black text-primary-foreground">2</span>
+                    </div>
+                  </div>
+                  <div className="flex-1 pt-1">
+                    <h3 className="text-xl font-black mb-2">Create your link</h3>
+                    <p className="text-base leading-relaxed text-muted-foreground">
+                      Click 'Create a payment link' and add the desired payment amount and description.
+                    </p>
                   </div>
                 </div>
-                <div className="flex-1 pt-1">
-                  <p className="text-lg leading-relaxed">
-                    Click on 'Create a payment link' and add the desired payment amount and description.
-                  </p>
-                </div>
-              </div>
-            </AnimatedSection>
+              </AnimatedSection>
 
-            <AnimatedSection delay={300}>
-              <div className="flex gap-6 items-start p-6 rounded-2xl hover-elevate transition-all duration-300">
-                <div className="flex-shrink-0">
-                  <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center">
-                    <span className="text-2xl font-black text-primary-foreground">3</span>
+              <AnimatedSection delay={300}>
+                <div className="flex gap-6 items-start p-8 rounded-2xl hover-elevate transition-all duration-300 bg-card border border-border shadow-lg">
+                  <div className="flex-shrink-0 relative z-10">
+                    <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center shadow-lg">
+                      <span className="text-2xl font-black text-primary-foreground">3</span>
+                    </div>
+                  </div>
+                  <div className="flex-1 pt-1">
+                    <h3 className="text-xl font-black mb-2">Share and get paid</h3>
+                    <p className="text-base leading-relaxed text-muted-foreground">
+                      A custom URL will be created for you to share via WhatsApp, social media, or text message.
+                    </p>
                   </div>
                 </div>
-                <div className="flex-1 pt-1">
-                  <p className="text-lg leading-relaxed">
-                    A custom URL will be created for you to share with a customer via your preferred channel – be it WhatsApp, social media, or text message.
-                  </p>
-                </div>
-              </div>
-            </AnimatedSection>
+              </AnimatedSection>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Final CTA */}
-      <section className="py-32 md:py-40 bg-primary text-primary-foreground">
-        <div className="max-w-4xl mx-auto px-6 md:px-8 text-center space-y-10">
+      <section className="py-32 md:py-40 bg-primary text-primary-foreground overflow-hidden relative">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1),transparent_50%)]" />
+        <div className="max-w-4xl mx-auto px-6 md:px-8 text-center space-y-10 relative z-10">
           <AnimatedSection>
             <h2 className="text-5xl md:text-6xl lg:text-7xl font-black leading-[1.05]">
               Switching made simple

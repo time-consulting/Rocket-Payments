@@ -36,6 +36,7 @@ export function Header() {
       title: "Remote payments",
       icon: Cloud,
       products: [
+        { name: "Payment Links", href: "/products/payment-links", description: "Send a link, secure your payment" },
         { name: "Online Payments", href: "/products/online-payments", description: "Smooth online checkout experiences" },
         { name: "QR Codes", href: "/products/qr-codes", description: "Pay by scanning a code" },
       ],
