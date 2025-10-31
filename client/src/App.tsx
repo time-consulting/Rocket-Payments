@@ -14,6 +14,7 @@ import RocketWired from "@/pages/RocketWired";
 import TapToPay from "@/pages/TapToPay";
 import OnlinePayments from "@/pages/OnlinePayments";
 import PaymentLinks from "@/pages/PaymentLinks";
+import FlexFunds from "@/pages/FlexFunds";
 import Quote from "@/pages/Quote";
 import Industries from "@/pages/Industries";
 import Pricing from "@/pages/Pricing";
@@ -32,6 +33,7 @@ function Router() {
       <Route path="/products/tap-to-pay" component={TapToPay} />
       <Route path="/products/online-payments" component={OnlinePayments} />
       <Route path="/products/payment-links" component={PaymentLinks} />
+      <Route path="/products/flex-funds" component={FlexFunds} />
       <Route path="/products/:slug" component={ProductDetail} />
       <Route path="/industries" component={Industries} />
       <Route path="/pricing" component={Pricing} />

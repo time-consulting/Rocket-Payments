@@ -46,6 +46,7 @@ export function Header() {
       title: "Growth",
       icon: TrendingUp,
       products: [
+        { name: "Flex Funds", href: "/products/flex-funds", description: "Fast, flexible access to cash" },
         { name: "Business Insights", href: "/resources#insights", description: "Data and analytics for your business" },
         { name: "Integrations", href: "/resources#integrations", description: "Connect with 600+ EPOS systems" },
       ],

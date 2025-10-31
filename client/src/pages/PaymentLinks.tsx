@@ -117,17 +117,20 @@ export default function PaymentLinks() {
       <section className="py-32 md:py-40 bg-muted/20 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <AnimatedSection delay={300} className="lg:order-1">
-              <div className="relative group">
-                <div className="absolute -inset-6 bg-gradient-to-r from-primary/15 to-primary/5 rounded-3xl blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                <img
-                  src={phoneScreenImage}
-                  alt="Payment link interface on mobile"
-                  className="relative w-full h-auto rounded-3xl shadow-2xl hover:scale-[1.03] transition-transform duration-700"
-                />
-              </div>
-            </AnimatedSection>
-            <AnimatedSection className="lg:order-2">
+            <div className="lg:order-1">
+              <AnimatedSection delay={300}>
+                <div className="relative group">
+                  <div className="absolute -inset-6 bg-gradient-to-r from-primary/15 to-primary/5 rounded-3xl blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                  <img
+                    src={phoneScreenImage}
+                    alt="Payment link interface on mobile"
+                    className="relative w-full h-auto rounded-3xl shadow-2xl hover:scale-[1.03] transition-transform duration-700"
+                  />
+                </div>
+              </AnimatedSection>
+            </div>
+            <div className="lg:order-2">
+              <AnimatedSection>
               <div className="space-y-6">
                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1]">
                   Get paid in a few simple steps
@@ -162,7 +165,8 @@ export default function PaymentLinks() {
                   </div>
                 </div>
               </div>
-            </AnimatedSection>
+              </AnimatedSection>
+            </div>
           </div>
         </div>
       </section>
