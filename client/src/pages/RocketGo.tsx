@@ -1,436 +1,485 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Clock, Wifi, CreditCard, Lock, Zap, Cloud, Users, Cog, ArrowRight, ArrowUpRight, Star } from "lucide-react";
+import { Card } from "@/components/ui/card";
+import { Sparkles, Zap, Shield, Wifi, Clock, CreditCard, TrendingUp, CheckCircle2, ArrowRight, Lock, Settings } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
-import heroImage from "@assets/Rocket Go_1761928438332.png";
-import offerBanner from "@assets/offer banner rocket go device_1761930053366.png";
-import securityImage from "@assets/generated_images/Payment_security_protection_image_9f385671.png";
-import plainSailingImage from "@assets/generated_images/Plain_sailing_easy_payments_95d92f6c.png";
-import qsrImage from "@assets/generated_images/QSR_industry_payment_terminal_ea6adaa9.png";
-import fsrImage from "@assets/generated_images/Full_service_restaurant_payment_d2377dfa.png";
-import rocketPocketImage from "@assets/generated_images/Compact_pocket_payment_terminal_c76d8801.png";
-import rocketWiredImage from "@assets/generated_images/Countertop_terminal_with_touchscreen_aa8d26cb.png";
+import heroImage from "@assets/hero image rocket go_1761942966646.png";
+import pubImage from "@assets/rocket go pub_1761942966648.png";
+import outdoorImage from "@assets/tap rocket go_1761942966648.png";
+import approvedImage from "@assets/terminal approved_1761942966648.png";
+import offerBanner from "@assets/offer banner rocket go device_1761942983114.png";
+import switchBanner from "@assets/switch for free banner_1761942983115.png";
+
+function AnimatedSection({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => setIsVisible(true), delay);
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => observer.disconnect();
+  }, [delay]);
+
+  return (
+    <div
+      ref={ref}
+      className={`transition-all duration-1000 ease-out ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
+      }`}
+    >
+      {children}
+    </div>
+  );
+}
 
 export default function RocketGo() {
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="py-16 md:py-24 bg-primary text-primary-foreground">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] uppercase" data-testid="text-hero-headline">
-                On-the-move payments. On-point tech.
-              </h1>
-              <p className="text-lg md:text-xl text-primary-foreground/90 leading-relaxed">
-                Take ultra-fast, secure card payments, anywhere. Portable, reliable, and with built-in Wi-Fi and 4G, the Rocket Go card machine helps your business capture every sale.
-              </p>
+    <div className="min-h-screen bg-background">
+      {/* Epic Cinematic Hero */}
+      <section className="relative pt-20 pb-16 md:pt-32 md:pb-20 overflow-hidden">
+        {/* Animated gradient mesh */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-primary/15" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(var(--primary-rgb,59,130,246),0.3),transparent_40%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_70%,rgba(var(--primary-rgb,59,130,246),0.25),transparent_40%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(var(--primary-rgb,59,130,246),0.15),transparent_60%)]" />
+        </div>
+        
+        <div className="relative max-w-7xl mx-auto px-6 md:px-8">
+          <div className="text-center space-y-8 animate-in fade-in slide-in-from-bottom-8 duration-1000">
+            <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-primary/20 to-primary/10 rounded-full border border-primary/30 shadow-xl animate-in fade-in slide-in-from-top-4 duration-700">
+              <Sparkles className="h-5 w-5 text-primary animate-pulse" />
+              <span className="text-sm font-black tracking-wide text-primary">ROCKET GO</span>
+            </div>
+            
+            <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-[0.95] tracking-tighter max-w-5xl mx-auto">
+              On-the-move payments.<br />
+              <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">On-point tech.</span>
+            </h1>
+            
+            <p className="text-xl md:text-2xl lg:text-3xl font-semibold text-muted-foreground leading-tight max-w-4xl mx-auto">
+              Take ultra-fast, secure card payments, anywhere. Portable, reliable, and with built-in Wi-Fi and 4G.
+            </p>
+            
+            <div className="pt-4 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200">
               <Link href="/quote">
-                <Button size="lg" variant="secondary" className="text-base px-8 rounded-full" data-testid="button-hero-get-started">
+                <Button 
+                  size="lg" 
+                  className="text-xl px-12 py-7 rounded-full hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-primary/50"
+                  data-testid="button-hero-get-started"
+                >
                   Get started
+                  <ArrowRight className="ml-2 h-6 w-6" />
                 </Button>
               </Link>
             </div>
-            <div className="relative">
+          </div>
+        </div>
+      </section>
+
+      {/* Hero Image - Full Width Cinematic */}
+      <section className="py-16 md:py-24 bg-background">
+        <div className="max-w-[1600px] mx-auto px-4 md:px-8">
+          <AnimatedSection>
+            <div className="relative group">
+              <div className="absolute -inset-12 bg-gradient-to-r from-primary/30 via-primary/20 to-primary/30 rounded-3xl blur-3xl opacity-70 group-hover:opacity-100 transition-opacity duration-1000 animate-pulse" />
               <img
                 src={heroImage}
-                alt="Rocket Go in action"
-                className="rounded-2xl w-full h-auto"
+                alt="Rocket Go in action at coffee shop"
+                className="relative w-full h-auto rounded-3xl shadow-2xl hover:scale-[1.01] transition-transform duration-700"
                 data-testid="img-hero"
               />
             </div>
-          </div>
+          </AnimatedSection>
         </div>
       </section>
 
-      {/* 4 Key Benefits */}
-      <section className="py-20 md:py-32 bg-muted/30">
+      {/* Key Features Grid */}
+      <section className="py-32 md:py-40 bg-gradient-to-b from-muted/20 to-background">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <Card className="p-8 space-y-4">
-              <Clock className="h-16 w-16 text-foreground" />
-              <h3 className="text-xl font-black">High-pace payments, face-to-face impressions</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Take your efficiency to new heights and speed up service with blazing fast transaction speeds – 58% faster than market average*.
-              </p>
-              <p className="text-xs text-muted-foreground italic">*In an independent research study with Savanta 2023.</p>
-            </Card>
-
-            <Card className="p-8 space-y-4">
-              <Wifi className="h-16 w-16 text-foreground" />
-              <h3 className="text-xl font-black">Reliable tech, dependable service</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Capture every sale with our always-on platform and automatic Wi-Fi and 4G connectivity.
-              </p>
-            </Card>
-
-            <Card className="p-8 space-y-4">
-              <CreditCard className="h-16 w-16 text-foreground" />
-              <h3 className="text-xl font-black">Intuitive design, adaptable device</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Easy to use for staff and customers, Rocket Go accepts all major types of card payments.
-              </p>
-            </Card>
-
-            <Card className="p-8 space-y-4">
-              <Lock className="h-16 w-16 text-foreground" />
-              <h3 className="text-xl font-black">Secure transactions, simple compliance</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Encrypted transactions, strong customer authentication, simplified PCI compliance. We've got you covered.
-              </p>
-            </Card>
+            {[
+              {
+                icon: Zap,
+                title: "High-pace payments, face-to-face impressions",
+                description: "Take your efficiency to new heights with transaction speeds 58% faster than market average.",
+                gradient: "from-orange-500/10 to-orange-500/5",
+                iconBg: "bg-orange-500/10",
+                iconColor: "text-orange-600 dark:text-orange-400",
+                delay: 0
+              },
+              {
+                icon: Wifi,
+                title: "Reliable tech, dependable service",
+                description: "Capture every sale with our always-on platform and automatic Wi-Fi and 4G connectivity.",
+                gradient: "from-blue-500/10 to-blue-500/5",
+                iconBg: "bg-blue-500/10",
+                iconColor: "text-blue-600 dark:text-blue-400",
+                delay: 100
+              },
+              {
+                icon: CreditCard,
+                title: "Intuitive design, adaptable device",
+                description: "Easy to use for staff and customers, Rocket Go accepts all major types of card payments.",
+                gradient: "from-green-500/10 to-green-500/5",
+                iconBg: "bg-green-500/10",
+                iconColor: "text-green-600 dark:text-green-400",
+                delay: 200
+              },
+              {
+                icon: Lock,
+                title: "Secure transactions, simple compliance",
+                description: "Encrypted transactions, strong customer authentication, simplified PCI compliance.",
+                gradient: "from-purple-500/10 to-purple-500/5",
+                iconBg: "bg-purple-500/10",
+                iconColor: "text-purple-600 dark:text-purple-400",
+                delay: 300
+              }
+            ].map((feature, index) => (
+              <AnimatedSection key={index} delay={feature.delay}>
+                <Card className={`group relative p-8 rounded-3xl hover-elevate transition-all duration-500 cursor-default border-none shadow-xl overflow-hidden h-full bg-gradient-to-br ${feature.gradient}`}>
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/10 to-transparent rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                  <div className="relative space-y-5">
+                    <div className={`w-16 h-16 rounded-2xl ${feature.iconBg} flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-lg`}>
+                      <feature.icon className={`h-8 w-8 ${feature.iconColor}`} />
+                    </div>
+                    <h3 className="text-xl font-black leading-tight">{feature.title}</h3>
+                    <p className="text-base text-muted-foreground leading-relaxed">
+                      {feature.description}
+                    </p>
+                  </div>
+                </Card>
+              </AnimatedSection>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Offer Banner */}
-      <section className="py-20 md:py-32 bg-muted/30">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <Link href="/quote">
-            <img 
-              src={offerBanner} 
-              alt="Limited time offer - Get your card machine for just £79" 
-              className="w-full rounded-[2rem] shadow-xl hover:scale-[1.02] transition-transform duration-300 cursor-pointer"
-            />
-          </Link>
-        </div>
-      </section>
-
-      {/* Stats Banner */}
-      <section className="py-20 md:py-32 bg-background">
-        <div className="max-w-5xl mx-auto px-6 md:px-8 text-center space-y-8">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight">
-            Create more time to shine
-          </h2>
-          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-            Help staff give their best to customers with Rocket Go's market-leading transaction speeds, time-saving bill-splitting and tipping features, and seamless EPOS integrations.
-          </p>
-          <div className="grid md:grid-cols-2 gap-12 pt-8">
-            <div className="space-y-4">
-              <div className="text-6xl md:text-7xl font-black text-primary">58%</div>
-              <p className="text-base font-semibold">Serve more customers with transactions 58% faster than market average*.</p>
-            </div>
-            <div className="space-y-4">
-              <div className="text-6xl md:text-7xl font-black text-primary">#1</div>
-              <p className="text-base font-semibold">We're Britain's #1 SME payments provider.*</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Security Section */}
-      <section className="py-20 md:py-32 bg-muted/30">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <h2 className="text-4xl md:text-5xl font-black leading-tight">
-                Your payments, protected
-              </h2>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                Keep transactions and customer data safe. Featuring point-to-point encryption and strong customer authentication, Rocket Go has your security needs baked in. Plus, simplify your PCI compliance reporting with a simple two-step process.
-              </p>
-            </div>
-            <div className="relative">
+      {/* Offer Banner - Creative Integration */}
+      <section className="py-20 bg-background">
+        <div className="max-w-6xl mx-auto px-6 md:px-8">
+          <AnimatedSection>
+            <div className="relative group overflow-hidden rounded-3xl">
+              <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-primary/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
               <img
-                src={securityImage}
-                alt="Payment security"
-                className="rounded-2xl w-full h-auto"
+                src={offerBanner}
+                alt="Limited time offer - £79 card machine"
+                className="relative w-full h-auto hover:scale-[1.02] transition-transform duration-700 shadow-2xl"
               />
             </div>
-          </div>
+          </AnimatedSection>
         </div>
       </section>
 
-      {/* Plain Sailing Section */}
-      <section className="py-20 md:py-32 bg-background">
+      {/* Stats Section - Bold & Impactful */}
+      <section className="py-32 md:py-40 bg-gradient-to-b from-background to-muted/20">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6 lg:order-2">
-              <h2 className="text-4xl md:text-5xl font-black leading-tight">
-                Make payments plain-sailing
+          <AnimatedSection>
+            <div className="text-center space-y-8 mb-20">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-tight" data-testid="text-hero-headline">
+                Create more time to shine
               </h2>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                With our intuitive card machine, upskilling staff is super easy and the payments process is effortless for customers. Truly portable, the lightweight Rocket Go can be used anywhere in your business – and beyond. So you can keep service smooth, customers smiling, and business booming.
+              <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+                Help staff give their best to customers with Rocket Go's market-leading transaction speeds, time-saving bill-splitting and tipping features, and seamless EPOS integrations.
               </p>
-              <Link href="/quote">
-                <Button size="lg" className="text-base px-8">
-                  Get started
-                </Button>
-              </Link>
             </div>
-            <div className="relative lg:order-1">
-              <img
-                src={plainSailingImage}
-                alt="Easy payments"
-                className="rounded-2xl w-full h-auto"
-              />
-            </div>
+          </AnimatedSection>
+
+          <div className="grid md:grid-cols-2 gap-12 mt-20">
+            <AnimatedSection delay={100}>
+              <Card className="relative p-16 rounded-3xl border-none shadow-2xl overflow-hidden bg-gradient-to-br from-primary/15 via-primary/10 to-background">
+                <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-br from-primary/30 to-transparent rounded-full blur-3xl opacity-50" />
+                <div className="relative text-center space-y-6">
+                  <div className="text-8xl md:text-9xl font-black bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
+                    58%
+                  </div>
+                  <p className="text-2xl font-black">Faster than market average</p>
+                  <p className="text-lg text-muted-foreground">
+                    Serve more customers with lightning-fast transactions
+                  </p>
+                </div>
+              </Card>
+            </AnimatedSection>
+
+            <AnimatedSection delay={200}>
+              <Card className="relative p-16 rounded-3xl border-none shadow-2xl overflow-hidden bg-gradient-to-br from-green-500/15 via-green-500/10 to-background">
+                <div className="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tl from-green-500/30 to-transparent rounded-full blur-3xl opacity-50" />
+                <div className="relative text-center space-y-6">
+                  <div className="text-8xl md:text-9xl font-black bg-gradient-to-r from-green-600 to-green-500 dark:from-green-400 dark:to-green-300 bg-clip-text text-transparent">
+                    #1
+                  </div>
+                  <p className="text-2xl font-black">Britain's #1 SME payments provider</p>
+                  <p className="text-lg text-muted-foreground">
+                    Trusted by over 110,000 businesses
+                  </p>
+                </div>
+              </Card>
+            </AnimatedSection>
           </div>
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-20 md:py-32 bg-muted/30">
+      {/* Security Section with Approved Image */}
+      <section className="py-32 md:py-40 bg-muted/20 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <div className="text-center mb-16 space-y-4">
-            <div className="flex items-center justify-center gap-2">
-              <div className="flex">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-6 w-6 fill-primary text-primary" />
-                ))}
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
+            <AnimatedSection>
+              <div className="space-y-8">
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-500/10 rounded-full border border-green-500/20">
+                  <Shield className="h-4 w-4 text-green-600 dark:text-green-400 animate-pulse" />
+                  <span className="text-sm font-black text-green-600 dark:text-green-400">Secure & Protected</span>
+                </div>
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.05]">
+                  Your payments, protected
+                </h2>
+                <div className="space-y-6">
+                  <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed">
+                    Keep transactions and customer data safe. Featuring <span className="font-black text-foreground">point-to-point encryption</span> and <span className="font-black text-foreground">strong customer authentication</span>, Rocket Go has your security needs baked in.
+                  </p>
+                  <p className="text-lg text-muted-foreground leading-relaxed">
+                    Plus, simplify your PCI compliance reporting with a simple two-step process.
+                  </p>
+                </div>
               </div>
-              <span className="text-2xl font-black">4.4</span>
+            </AnimatedSection>
+            
+            <AnimatedSection delay={300}>
+              <div className="relative group">
+                <div className="absolute -inset-8 bg-gradient-to-r from-green-500/20 to-green-500/10 rounded-3xl blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                <img
+                  src={approvedImage}
+                  alt="Secure payment approved"
+                  className="relative w-full h-auto rounded-3xl shadow-2xl hover:scale-[1.02] transition-transform duration-700"
+                />
+              </div>
+            </AnimatedSection>
+          </div>
+        </div>
+      </section>
+
+      {/* Portable & Effortless Section */}
+      <section className="py-32 md:py-40 bg-background overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
+            <div className="lg:order-1">
+              <AnimatedSection delay={300}>
+                <div className="relative group">
+                  <div className="absolute -inset-8 bg-gradient-to-r from-orange-500/20 to-orange-500/10 rounded-3xl blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                  <img
+                    src={outdoorImage}
+                    alt="Portable payments outdoors"
+                    className="relative w-full h-auto rounded-3xl shadow-2xl hover:scale-[1.02] transition-transform duration-700"
+                  />
+                </div>
+              </AnimatedSection>
             </div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight">Our customers say</h2>
-            <p className="text-lg text-muted-foreground">Excellent - 4.4 out of 5 based on 4,901 reviews</p>
-            <p className="text-base font-semibold text-primary">Join over 110,000 global businesses now using Rocket.</p>
+            
+            <div className="lg:order-2">
+              <AnimatedSection>
+                <div className="space-y-8">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-500/10 rounded-full border border-orange-500/20">
+                    <Zap className="h-4 w-4 text-orange-600 dark:text-orange-400" />
+                    <span className="text-sm font-black text-orange-600 dark:text-orange-400">Truly Portable</span>
+                  </div>
+                  <h2 className="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.05]">
+                    Make payments plain-sailing
+                  </h2>
+                  <div className="space-y-6">
+                    <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed">
+                      With our intuitive card machine, upskilling staff is super easy and the payments process is <span className="font-black text-foreground">effortless for customers</span>.
+                    </p>
+                    <p className="text-lg text-muted-foreground leading-relaxed">
+                      Truly portable, the lightweight Rocket Go can be used anywhere in your business – and beyond. So you can keep service smooth, customers smiling, and business booming.
+                    </p>
+                  </div>
+                </div>
+              </AnimatedSection>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* One Machine All Benefits */}
-      <section className="py-20 md:py-32 bg-background">
+      {/* EPOS Integration Section with Pub Image */}
+      <section className="py-32 md:py-40 bg-gradient-to-b from-muted/20 to-background overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <div className="text-center mb-16 space-y-4">
-            <h2 className="text-4xl md:text-5xl font-black leading-tight">
-              One machine. All the benefits.
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Discover all the ways Rocket Go can help your business thrive.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <Card className="p-8 space-y-4">
-              <Cog className="h-16 w-16 text-primary" />
-              <h3 className="text-xl font-black">Automate admin</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Rocket Go integrates with over 600 EPOS systems, so you can streamline service, cash up quicker, and reduce miskeying errors.
-              </p>
-            </Card>
-
-            <Card className="p-8 space-y-4">
-              <Zap className="h-16 w-16 text-primary" />
-              <h3 className="text-xl font-black">Keep connected</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Serve more customers faster and boost business with high-speed transactions, an easy-to-use interface, and dual Wi-Fi and 4G connectivity.
-              </p>
-            </Card>
-
-            <Card className="p-8 space-y-4">
-              <Users className="h-16 w-16 text-primary" />
-              <h3 className="text-xl font-black">Streamline service</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Keep service smooth and customers satisfied with Rocket Go. Super easy to use, customers can pay effortlessly – and you can onboard staff quickly.
-              </p>
-            </Card>
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
+            <AnimatedSection>
+              <div className="space-y-8">
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-500/10 rounded-full border border-purple-500/20">
+                  <Settings className="h-4 w-4 text-purple-600 dark:text-purple-400 animate-spin" style={{ animationDuration: '3s' }} />
+                  <span className="text-sm font-black text-purple-600 dark:text-purple-400">Seamless Integration</span>
+                </div>
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.05]">
+                  One machine. All the benefits.
+                </h2>
+                <div className="space-y-6">
+                  <div className="flex items-start gap-4">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                      <CheckCircle2 className="h-6 w-6 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-black mb-2">Automate admin</h3>
+                      <p className="text-muted-foreground leading-relaxed">
+                        Rocket Go integrates with over 600 EPOS systems, so you can streamline service, cash up quicker, and reduce miskeying errors.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                      <CheckCircle2 className="h-6 w-6 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-black mb-2">Keep connected</h3>
+                      <p className="text-muted-foreground leading-relaxed">
+                        Serve more customers faster with high-speed transactions, easy-to-use interface, and dual Wi-Fi and 4G connectivity.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </AnimatedSection>
+            
+            <AnimatedSection delay={300}>
+              <div className="relative group">
+                <div className="absolute -inset-8 bg-gradient-to-r from-purple-500/20 to-purple-500/10 rounded-3xl blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                <img
+                  src={pubImage}
+                  alt="Rocket Go with EPOS integration"
+                  className="relative w-full h-auto rounded-3xl shadow-2xl hover:scale-[1.02] transition-transform duration-700"
+                />
+              </div>
+            </AnimatedSection>
           </div>
         </div>
       </section>
 
-      {/* Take All Payments */}
-      <section className="py-20 md:py-32 bg-muted/30">
-        <div className="max-w-5xl mx-auto px-6 md:px-8 text-center space-y-8">
-          <h2 className="text-4xl md:text-5xl font-black leading-tight">
-            Take all payments
-          </h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            Let customers pay however suits them and help staff take payment seamlessly. Rocket Go accepts all major cards, contactless payments, and mobile wallets like Apple Pay and Google Pay. And with its durable design, you can count on this card machine in the busiest and most demanding environments.
-          </p>
-          <Link href="/quote">
-            <Button size="lg" className="text-base px-8">
-              Get started
-            </Button>
-          </Link>
-        </div>
-      </section>
-
-      {/* Tech Specs */}
-      <section className="py-20 md:py-32 bg-background">
+      {/* Tech Specs - Feature Grid */}
+      <section className="py-32 md:py-40 bg-background">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <div className="text-center mb-16 space-y-4">
-            <h2 className="text-4xl md:text-5xl font-black leading-tight">
+          <AnimatedSection>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-center mb-20">
               Tech specs
             </h2>
-            <p className="text-lg text-muted-foreground">
-              Get the lowdown on the Rocket Go card machine.
-            </p>
-          </div>
+          </AnimatedSection>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Card className="p-6 space-y-3">
-              <Wifi className="h-10 w-10 text-primary" />
-              <h3 className="text-base font-black">Dual connectivity</h3>
-              <p className="text-sm text-muted-foreground">Connects automatically to Wi-Fi or any available 4G network.</p>
-            </Card>
-
-            <Card className="p-6 space-y-3">
-              <CreditCard className="h-10 w-10 text-primary" />
-              <h3 className="text-base font-black">On-the-go receipts</h3>
-              <p className="text-sm text-muted-foreground">Print receipts on the go with a built-in, fast thermal printer.</p>
-            </Card>
-
-            <Card className="p-6 space-y-3">
-              <Cloud className="h-10 w-10 text-primary" />
-              <h3 className="text-base font-black">Portable and user friendly</h3>
-              <p className="text-sm text-muted-foreground">Truly mobile: measures just 175.7 x 78 x 57 mm and weighs 458g. Easy to use: 5-inch HD touchscreen.</p>
-            </Card>
-
-            <Card className="p-6 space-y-3">
-              <Zap className="h-10 w-10 text-primary" />
-              <h3 className="text-base font-black">Long-lasting battery life</h3>
-              <p className="text-sm text-muted-foreground">Keep taking payments with a 10-hour, long-lasting Li-ion battery, 5250mAH, 3.7V.</p>
-            </Card>
-
-            <Card className="p-6 space-y-3">
-              <Cog className="h-10 w-10 text-primary" />
-              <h3 className="text-base font-black">Integrated payments</h3>
-              <p className="text-sm text-muted-foreground">Connect to your EPOS with over 400 integrations, supported through your existing Connect Cloud integration.</p>
-            </Card>
-
-            <Card className="p-6 space-y-3">
-              <Lock className="h-10 w-10 text-primary" />
-              <h3 className="text-base font-black">Secure payments</h3>
-              <p className="text-sm text-muted-foreground">Point-to-point encryption protects customer card data, and your income.</p>
-            </Card>
-
-            <Card className="p-6 space-y-3">
-              <CreditCard className="h-10 w-10 text-primary" />
-              <h3 className="text-base font-black">Card and contactless</h3>
-              <p className="text-sm text-muted-foreground">Accepts payments with Chip & PIN, NFC contactless, and magnetic stripe.</p>
-            </Card>
-
-            <Card className="p-6 space-y-3">
-              <Cloud className="h-10 w-10 text-primary" />
-              <h3 className="text-base font-black">Accessories</h3>
-              <p className="text-sm text-muted-foreground">Complete your setup with a silicone case, stand, and receipt rolls.</p>
-            </Card>
+            {[
+              {
+                icon: Wifi,
+                title: "Dual connectivity",
+                description: "Connects automatically to Wi-Fi or any available 4G network.",
+                color: "text-blue-600 dark:text-blue-400",
+                bg: "bg-blue-500/10"
+              },
+              {
+                icon: Clock,
+                title: "Long-lasting battery",
+                description: "10-hour battery life with 5250mAH Li-ion battery.",
+                color: "text-green-600 dark:text-green-400",
+                bg: "bg-green-500/10"
+              },
+              {
+                icon: CreditCard,
+                title: "Card and contactless",
+                description: "Accepts Chip & PIN, NFC contactless, and magnetic stripe.",
+                color: "text-purple-600 dark:text-purple-400",
+                bg: "bg-purple-500/10"
+              },
+              {
+                icon: Lock,
+                title: "Secure payments",
+                description: "Point-to-point encryption protects customer card data.",
+                color: "text-orange-600 dark:text-orange-400",
+                bg: "bg-orange-500/10"
+              }
+            ].map((spec, index) => (
+              <AnimatedSection key={index} delay={index * 100}>
+                <Card className="p-8 rounded-3xl hover-elevate transition-all duration-500 cursor-default border-none shadow-lg h-full">
+                  <div className="space-y-4">
+                    <div className={`w-12 h-12 rounded-xl ${spec.bg} flex items-center justify-center`}>
+                      <spec.icon className={`h-6 w-6 ${spec.color}`} />
+                    </div>
+                    <h3 className="text-lg font-black">{spec.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {spec.description}
+                    </p>
+                  </div>
+                </Card>
+              </AnimatedSection>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Industry Applications */}
-      <section className="py-20 md:py-32 bg-muted/30">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <div className="text-center mb-16 space-y-4">
-            <h2 className="text-4xl md:text-5xl font-black leading-tight">
-              A card machine for every industry
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Powerful, portable, and versatile, Rocket Go is the perfect solution for every type of business – in any sector.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            <Card className="overflow-hidden hover-elevate active-elevate-2 transition-all">
-              <Link href="/industries">
-                <div className="relative aspect-[3/4]">
-                  <img src={qsrImage} alt="Quick-service restaurants" className="w-full h-full object-cover" />
-                </div>
-                <CardContent className="p-6 space-y-3">
-                  <h3 className="text-2xl font-black">Quick-service restaurants</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    Power through queues, speed up service, track payments across locations, and reduce your running costs.
-                  </p>
-                  <div className="flex items-center gap-2 text-primary font-semibold">
-                    Learn more
-                    <ArrowUpRight className="h-5 w-5" />
-                  </div>
-                </CardContent>
-              </Link>
-            </Card>
-
-            <Card className="overflow-hidden hover-elevate active-elevate-2 transition-all">
-              <Link href="/industries">
-                <div className="relative aspect-[3/4]">
-                  <img src={fsrImage} alt="Full-service restaurants" className="w-full h-full object-cover" />
-                </div>
-                <CardContent className="p-6 space-y-3">
-                  <h3 className="text-2xl font-black">Full-service restaurants</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    Streamline your front of house, integrate your payments and EPOS, and simplify your end-of-day reconciliation.
-                  </p>
-                  <div className="flex items-center gap-2 text-primary font-semibold">
-                    Learn more
-                    <ArrowUpRight className="h-5 w-5" />
-                  </div>
-                </CardContent>
-              </Link>
-            </Card>
-          </div>
+      {/* Switch Banner */}
+      <section className="py-20 bg-muted/20">
+        <div className="max-w-6xl mx-auto px-6 md:px-8">
+          <AnimatedSection>
+            <div className="relative group overflow-hidden rounded-3xl">
+              <div className="absolute -inset-4 bg-gradient-to-r from-green-500/20 to-green-500/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <img
+                src={switchBanner}
+                alt="Switch for free with £3,000 towards exit fees"
+                className="relative w-full h-auto hover:scale-[1.02] transition-transform duration-700 shadow-2xl"
+              />
+            </div>
+          </AnimatedSection>
         </div>
       </section>
 
-      {/* More Products */}
-      <section className="py-20 md:py-32 bg-background">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <div className="text-center mb-16 space-y-4">
-            <h2 className="text-4xl md:text-5xl font-black leading-tight">
-              More Rocket payments products
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Explore our range of payments products for even more ways to optimise your business.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            <Card className="overflow-hidden hover-elevate active-elevate-2 transition-all">
-              <Link href="/products/rocket-pocket">
-                <div className="relative aspect-video bg-muted/30 p-8">
-                  <img src={rocketPocketImage} alt="Rocket Pocket" className="w-full h-full object-contain" />
-                </div>
-                <CardContent className="p-6 space-y-3">
-                  <h3 className="text-2xl font-black">Rocket Pocket</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    Boost revenue and streamline service with our portable device for orders and payments. Connect with your EPOS system in the cloud, take orders on the move, and accept payments, wherever.
-                  </p>
-                  <div className="flex items-center gap-2 text-primary font-semibold">
-                    Learn more
-                    <ArrowRight className="h-5 w-5" />
-                  </div>
-                </CardContent>
-              </Link>
-            </Card>
-
-            <Card className="overflow-hidden hover-elevate active-elevate-2 transition-all">
-              <Link href="/products/rocket-wired">
-                <div className="relative aspect-video bg-muted/30 p-8">
-                  <img src={rocketWiredImage} alt="Rocket Wired" className="w-full h-full object-contain" />
-                </div>
-                <CardContent className="p-6 space-y-3">
-                  <h3 className="text-2xl font-black">Rocket Wired</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    Our new wired-in card machine for stationary countertop payments and kiosks lets you free up valuable counter space and reduce device damage. No charging, no staff – just intuitive, integrated payments.
-                  </p>
-                  <div className="flex items-center gap-2 text-primary font-semibold">
-                    Learn more
-                    <ArrowRight className="h-5 w-5" />
-                  </div>
-                </CardContent>
-              </Link>
-            </Card>
-          </div>
+      {/* Final CTA - Epic Cinematic */}
+      <section className="relative py-40 md:py-52 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-primary/90">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.25),transparent_50%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(255,255,255,0.2),transparent_50%)]" />
         </div>
-      </section>
-
-      {/* Final CTA */}
-      <section className="py-20 md:py-32 bg-primary text-primary-foreground">
-        <div className="max-w-4xl mx-auto px-6 md:px-8 text-center space-y-8">
-          <h2 className="text-4xl md:text-5xl font-black leading-tight">
-            Switching made simple
-          </h2>
-          <p className="text-lg leading-relaxed text-primary-foreground/90">
-            Sign up to Rocket in just a few steps and enjoy a simple setup, an easy 2-step PCI compliance reporting process, and we could even cover your exit fees up to £3,000.*
-          </p>
-          <p className="text-sm text-primary-foreground/80 italic">
-            *Subject to your annual card turnover. See our Help Centre for more info.
-          </p>
-          <Link href="/quote">
-            <Button size="lg" variant="secondary" className="text-base px-8">
-              Get started
-            </Button>
-          </Link>
+        
+        <div className="relative max-w-5xl mx-auto px-6 md:px-8 text-center">
+          <AnimatedSection>
+            <div className="space-y-12">
+              <h2 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-[0.95] text-primary-foreground tracking-tight">
+                Ready to accelerate your business?
+              </h2>
+              
+              <p className="text-2xl md:text-3xl text-primary-foreground/90 leading-relaxed max-w-3xl mx-auto">
+                Join over 110,000 businesses using Rocket Payments. Get started today.
+              </p>
+              
+              <div className="pt-8 flex flex-col sm:flex-row gap-6 justify-center items-center">
+                <Link href="/quote">
+                  <Button 
+                    size="lg" 
+                    variant="secondary"
+                    className="text-xl px-12 py-7 rounded-full hover:scale-105 transition-all duration-300 shadow-2xl"
+                  >
+                    Get started
+                    <ArrowRight className="ml-2 h-6 w-6" />
+                  </Button>
+                </Link>
+                <Link href="/pricing">
+                  <Button 
+                    size="lg" 
+                    variant="outline"
+                    className="text-xl px-12 py-7 rounded-full hover:scale-105 transition-all duration-300 bg-primary-foreground/10 backdrop-blur-sm border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/20"
+                  >
+                    View pricing
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </AnimatedSection>
         </div>
       </section>
     </div>
