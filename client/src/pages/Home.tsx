@@ -8,7 +8,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { ArrowRight, Cloud, TrendingUp, Zap, Star, CheckCircle } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Cloud, TrendingUp, Zap, Star, CheckCircle } from "lucide-react";
 
 import heroImage from "@assets/generated_images/Hero_payment_terminal_coffee_shop_07c7ebb4.png";
 import rocketGoImage from "@assets/generated_images/Rocket_Go_product_shot_ed6f0f19.png";
@@ -109,27 +109,15 @@ export default function Home() {
   const faqs = [
     {
       question: "What is Rocket Payments?",
-      answer: "Rocket Payments is a payment provider offering robust, flexible, and secure card machines for small businesses and enterprises. Get ready to take contactless debit and credit card payments via Apple Pay, Google Pay, and Samsung Pay – often within 24 hours of signing up.",
+      answer: "Rocket Payments is a payment provider providing small business and enterprise card machines that are robust, flexible and secure. If you sign up today, you could be ready to take contactless debit and credit card payments by tomorrow. You'll be able to take payments via Apple Pay, Google Pay and Samsung Pay too.",
     },
     {
-      question: "Why choose Rocket Payments card machines?",
-      answer: "Our card machines come with built-in 4G connectivity, so if your Wi-Fi drops out, you can continue accepting contactless payments without interruption. Plus, we offer industry-leading 99.99% uptime and next-day settlement.",
+      question: "Why choose a Rocket Payments card machine?",
+      answer: "Rocket Payments card machines come with built-in 4G connectivity, so if your Wi-Fi drops out, you can continue accepting contactless payments.",
     },
     {
       question: "Are Rocket Payments card machines secure?",
-      answer: "Absolutely. Protecting your profits and your customers' card data is paramount. Our card machines come with point-to-point encryption built-in, instant fraud detection, and full PCI DSS compliance. It's first-class payment security.",
-    },
-    {
-      question: "How fast do I get my takings?",
-      answer: "Payments you take with your card machine arrive in your bank account the next business day. No waiting, no delays – just fast, reliable settlement.",
-    },
-    {
-      question: "Can I integrate with my existing EPOS system?",
-      answer: "Yes! We integrate with over 450 EPOS systems – more than any other payments provider. Connected systems mean fewer errors, quicker service, and easier reconciliation.",
-    },
-    {
-      question: "What support is available?",
-      answer: "We offer award-winning customer support with UK-based teams available to help you. From setup to troubleshooting, we're here to ensure your payments run smoothly.",
+      answer: "We know protecting your profits and your customers' card data is paramount. That's why Rocket Payments card machines come with point-to-point encryption built-in as well as instant fraud detection. It's first-class payment security, so you don't have to worry.",
     },
   ];
 
@@ -148,14 +136,11 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
               <div className="space-y-4">
-                <Badge variant="secondary" className="text-sm font-medium" data-testid="badge-hero-claim">
-                  Join 110,000+ global businesses
-                </Badge>
                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight" data-testid="text-hero-headline">
-                  Payment solutions built for your success
+                  Join the UK's #1 payments provider
                 </h1>
                 <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl">
-                  Fast, reliable payments with hard-working tech and stellar customer support. Get started today and experience the difference.
+                  Put your business success first with our fast, reliable payments, hard-working tech, and stellar customer support.
                 </p>
               </div>
               
@@ -205,17 +190,17 @@ export default function Home() {
             <div className="flex flex-col items-center text-center space-y-3" data-testid="stat-uptime">
               <Cloud className="h-12 w-12" />
               <div className="text-4xl md:text-5xl font-bold tabular-nums">99.99%</div>
-              <p className="text-base text-primary-foreground/90">Industry-leading uptime. Take payments anytime.</p>
+              <p className="text-base text-primary-foreground/90">Take payments whenever with our always-on payments platform.</p>
             </div>
             <div className="flex flex-col items-center text-center space-y-3" data-testid="stat-volume">
               <TrendingUp className="h-12 w-12" />
               <div className="text-4xl md:text-5xl font-bold tabular-nums">1.8bn</div>
-              <p className="text-base text-primary-foreground/90">Transactions processed every year.</p>
+              <p className="text-base text-primary-foreground/90">We process over 1.8 billion transactions every year.</p>
             </div>
             <div className="flex flex-col items-center text-center space-y-3" data-testid="stat-speed">
               <Zap className="h-12 w-12" />
               <div className="text-4xl md:text-5xl font-bold tabular-nums">58%</div>
-              <p className="text-base text-primary-foreground/90">Faster than market average payment speed.</p>
+              <p className="text-base text-primary-foreground/90">Take payments 58% faster than market average.</p>
             </div>
           </div>
         </div>
@@ -332,24 +317,22 @@ export default function Home() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {products.map((product, index) => (
               <Link key={index} href={product.link}>
-                <Card className="h-full overflow-hidden hover-elevate active-elevate-2 transition-all duration-300 group cursor-pointer" data-testid={`card-product-${index}`}>
-                  <div className="aspect-[3/4] overflow-hidden bg-muted/30">
+                <Card className="h-full overflow-hidden hover-elevate active-elevate-2 transition-all duration-300 group cursor-pointer border-none shadow-lg" data-testid={`card-product-${index}`}>
+                  <CardContent className="p-6 space-y-4">
+                    <div className="flex items-start justify-between gap-2">
+                      <h3 className="text-xl font-bold">{product.name}</h3>
+                      <ArrowUpRight className="h-7 w-7 text-foreground flex-shrink-0" />
+                    </div>
+                    <p className="text-base font-semibold">{product.tagline}</p>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{product.description}</p>
+                  </CardContent>
+                  <div className="aspect-[4/3] overflow-hidden">
                     <img
                       src={product.image}
                       alt={product.name}
                       className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                     />
                   </div>
-                  <CardContent className="p-6 space-y-3">
-                    <div className="flex items-start justify-between gap-2">
-                      <div className="space-y-1 flex-1">
-                        <h3 className="text-lg font-bold">{product.name}</h3>
-                        <p className="text-sm font-medium text-primary">{product.tagline}</p>
-                      </div>
-                      <ArrowRight className="h-5 w-5 text-muted-foreground group-hover:translate-x-1 transition-transform flex-shrink-0" />
-                    </div>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{product.description}</p>
-                  </CardContent>
                 </Card>
               </Link>
             ))}
@@ -435,27 +418,22 @@ export default function Home() {
                 image: retailImage,
               },
             ].map((story, index) => (
-              <Card key={index} className="overflow-hidden hover-elevate transition-all group cursor-pointer" data-testid={`card-success-story-${index}`}>
-                <div className="aspect-[16/10] overflow-hidden">
+              <Card key={index} className="overflow-hidden hover-elevate transition-all group cursor-pointer border-none shadow-lg" data-testid={`card-success-story-${index}`}>
+                <div className="aspect-[16/10] overflow-hidden relative">
                   <img
                     src={story.image}
                     alt={story.company}
                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                   />
+                  <div className="absolute top-4 right-4 bg-white rounded-full p-2">
+                    <ArrowUpRight className="h-6 w-6 text-foreground" />
+                  </div>
                 </div>
-                <CardContent className="p-6 space-y-4">
-                  <div className="space-y-2">
-                    <div className="text-3xl font-bold text-primary">{story.metric}</div>
-                    <p className="font-semibold">{story.achievement}</p>
+                <CardContent className="p-6 space-y-3">
+                  <div className="h-12 flex items-center">
+                    <h3 className="font-bold text-base">{story.company}</h3>
                   </div>
-                  <div className="space-y-2">
-                    <h3 className="font-bold text-lg">{story.company}</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{story.description}</p>
-                  </div>
-                  <Button variant="link" className="p-0 h-auto group-hover:translate-x-1 transition-transform">
-                    Read story
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{story.description}</p>
                 </CardContent>
               </Card>
             ))}
