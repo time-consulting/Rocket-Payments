@@ -189,18 +189,18 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             <div className="flex flex-col items-center text-center space-y-3" data-testid="stat-uptime">
               <Cloud className="h-12 w-12" />
-              <div className="text-4xl md:text-5xl font-bold tabular-nums">99.99%</div>
-              <p className="text-base text-primary-foreground/90">Take payments whenever with our always-on payments platform.</p>
+              <div className="text-4xl md:text-5xl font-black tabular-nums">99.99%</div>
+              <p className="text-base text-primary-foreground/90 font-normal">Take payments whenever with our always-on payments platform.</p>
             </div>
             <div className="flex flex-col items-center text-center space-y-3" data-testid="stat-volume">
               <TrendingUp className="h-12 w-12" />
-              <div className="text-4xl md:text-5xl font-bold tabular-nums">1.8bn</div>
-              <p className="text-base text-primary-foreground/90">We process over 1.8 billion transactions every year.</p>
+              <div className="text-4xl md:text-5xl font-black tabular-nums">1.8bn</div>
+              <p className="text-base text-primary-foreground/90 font-normal">We process over 1.8 billion transactions every year.</p>
             </div>
             <div className="flex flex-col items-center text-center space-y-3" data-testid="stat-speed">
               <Zap className="h-12 w-12" />
-              <div className="text-4xl md:text-5xl font-bold tabular-nums">58%</div>
-              <p className="text-base text-primary-foreground/90">Take payments 58% faster than market average.</p>
+              <div className="text-4xl md:text-5xl font-black tabular-nums">58%</div>
+              <p className="text-base text-primary-foreground/90 font-normal">Take payments 58% faster than market average.</p>
             </div>
           </div>
         </div>
@@ -224,7 +224,7 @@ export default function Home() {
             ].map((item, i) => (
               <div key={i} className="flex flex-col items-center gap-3 text-center">
                 <item.icon className="h-10 w-10 text-primary" />
-                <p className="text-base font-medium">{item.text}</p>
+                <p className="text-base font-semibold">{item.text}</p>
               </div>
             ))}
           </div>
