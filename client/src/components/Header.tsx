@@ -45,8 +45,8 @@ export function Header() {
       title: "Growth",
       icon: TrendingUp,
       products: [
-        { name: "Business Insights", href: "/resources", description: "Data and analytics for your business" },
-        { name: "Integrations", href: "/resources", description: "Connect with 600+ EPOS systems" },
+        { name: "Business Insights", href: "/resources#insights", description: "Data and analytics for your business" },
+        { name: "Integrations", href: "/resources#integrations", description: "Connect with 600+ EPOS systems" },
       ],
     },
   ];
