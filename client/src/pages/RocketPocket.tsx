@@ -7,7 +7,7 @@ import heroImage from "@assets/pocket rocket_1761928695213.png";
 import ordersPaymentsImage from "@assets/rocket pocket_1761931985667.png";
 import stockTabsImage from "@assets/pocket 2_1761931985666.png";
 import securityImage from "@assets/generated_images/Payment_security_protection_image_9f385671.png";
-import plainSailingImage from "@assets/generated_images/Plain_sailing_easy_payments_95d92f6c.png";
+import plainSailingImage from "@assets/Gemini_Generated_Image_56kibq56kibq56ki_1761932343908.png";
 import qsrImage from "@assets/generated_images/QSR_industry_payment_terminal_ea6adaa9.png";
 import fsrImage from "@assets/generated_images/Full_service_restaurant_payment_d2377dfa.png";
 import rocketGoImage from "@assets/Rocket Go_1761925244580.png";
