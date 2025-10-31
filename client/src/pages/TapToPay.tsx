@@ -9,23 +9,29 @@ import cardTapImage from "@assets/2400x1040_1761939495759.webp";
 export default function TapToPay() {
   return (
     <div className="min-h-screen bg-background">
-      {/* Hero Section - Full Width */}
-      <section className="relative min-h-[85vh] flex items-center justify-center bg-gradient-to-b from-muted/30 to-background overflow-hidden">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <img
-            src={heroImage}
-            alt="Tap to Pay on iPhone"
-            className="w-full max-w-5xl h-auto object-contain px-6"
-            data-testid="img-hero"
-          />
-        </div>
-        <div className="relative z-10 text-center px-6 md:px-8 pt-20">
+      {/* Headline Section */}
+      <section className="pt-20 pb-12 md:pt-32 md:pb-16 bg-background">
+        <div className="max-w-4xl mx-auto text-center px-6 md:px-8">
           <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-[1.05] tracking-tight mb-6" data-testid="text-hero-headline">
             Tap to Pay<br />on iPhone
           </h1>
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-8">
+          <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Your iPhone is all you need to accept contactless payments.
           </p>
+        </div>
+      </section>
+
+      {/* Hero Image Section */}
+      <section className="py-12 md:py-20 bg-gradient-to-b from-background to-muted/30">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
+          <div className="flex items-center justify-center">
+            <img
+              src={heroImage}
+              alt="Tap to Pay on iPhone"
+              className="w-full max-w-5xl h-auto object-contain rounded-3xl"
+              data-testid="img-hero"
+            />
+          </div>
         </div>
       </section>
 
