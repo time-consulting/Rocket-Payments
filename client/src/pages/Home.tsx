@@ -25,6 +25,7 @@ import qsrImage from "@assets/generated_images/Quick_service_restaurant_bc0bbd4b
 import fsrImage from "@assets/pocket - pub_1761934804766.png";
 import dentalImage from "@assets/generated_images/Dental_office_payment_88d7359b.png";
 import retailImage from "@assets/generated_images/Retail_store_checkout_665cbb72.png";
+import eposIntegrationImage from "@assets/Gemini_Generated_Image_56kibq56kibq56ki (2)_1761934932850.png";
 import testimonial1 from "@assets/generated_images/Business_owner_testimonial_1_a41a1226.png";
 import testimonial2 from "@assets/generated_images/Restaurant_manager_testimonial_45d19cf6.png";
 import testimonial3 from "@assets/generated_images/Retail_owner_testimonial_379ad525.png";
@@ -432,12 +433,12 @@ export default function Home() {
                 </Button>
               </Link>
             </div>
-            <div className="bg-muted/50 rounded-2xl p-12 flex items-center justify-center min-h-[400px] hover-elevate transition-all">
-              <div className="text-center space-y-4">
-                <CountUpAnimation end={450} duration={2500} />
-                <p className="text-xl font-semibold">EPOS Integrations</p>
-                <p className="text-muted-foreground">More than any other provider</p>
-              </div>
+            <div className="rounded-2xl overflow-hidden hover-elevate transition-all">
+              <img
+                src={eposIntegrationImage}
+                alt="EPOS integration - 450+ providers"
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
         </div>
