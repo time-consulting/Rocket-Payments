@@ -12,10 +12,10 @@ import { ArrowRight, ArrowUpRight, Cloud, TrendingUp, Zap, Star, CheckCircle } f
 
 import heroImage from "@assets/hero image rocket go_1761926380440.png";
 import offerBanner from "@assets/offer banner rocket go device_1761930053366.png";
-import costaLogo from "@assets/stock_images/costa_coffee_logo_e54fc0f5.jpg";
-import treatzLogo from "@assets/stock_images/treatz_logo_brand_0d1b4479.jpg";
-import cuppLogo from "@assets/stock_images/cupp_bubble_tea_logo_6fe026fa.jpg";
-import silverstoneLogo from "@assets/stock_images/silverstone_logo_bra_bb1908e0.jpg";
+import costaLogo from "@assets/Costa-Coffee-Logo_1761930744749.jpg";
+import treatzLogo from "@assets/Treatz.jpg_1761930744750.webp";
+import cuppLogo from "@assets/ac9be535-cd26-4913-893c-607ef9c65ec9_1761930744747.jpeg";
+import silverstoneLogo from "@assets/silverstone-uk-logo-vectorrwopeh_1761930744750.png";
 import rocketGoImage from "@assets/generated_images/Modern_payment_terminal_product_shot_2af211fa.png";
 import rocketPocketImage from "@assets/generated_images/Compact_pocket_payment_terminal_c76d8801.png";
 import rocketWiredImage from "@assets/generated_images/Countertop_terminal_with_touchscreen_aa8d26cb.png";
