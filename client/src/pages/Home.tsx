@@ -85,8 +85,9 @@ function AnimatedSection({ children, delay = 0 }: { children: React.ReactNode; d
   );
 }
 
-function CountUpStat({ end, suffix = "", label }: { end: number; suffix?: string; label: string }) {
-  const [count, setCount] = useState(0);
+function SwitchPriceAnimation() {
+  const [showFree, setShowFree] = useState(false);
+  const [price, setPrice] = useState(3000);
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -111,29 +112,106 @@ function CountUpStat({ end, suffix = "", label }: { end: number; suffix?: string
     if (!isVisible) return;
 
     let startTime: number | null = null;
-    const duration = 2000;
+    const duration = 1200;
 
     const animate = (currentTime: number) => {
       if (!startTime) startTime = currentTime;
       const progress = Math.min((currentTime - startTime) / duration, 1);
       
-      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-      setCount(Math.floor(easeOutQuart * end));
+      const easeInCubic = progress * progress * progress;
+      const currentPrice = Math.floor(3000 - (3000 * easeInCubic));
+      setPrice(currentPrice);
 
       if (progress < 1) {
         requestAnimationFrame(animate);
+      } else {
+        setShowFree(true);
       }
     };
 
     requestAnimationFrame(animate);
-  }, [isVisible, end]);
+  }, [isVisible]);
 
   return (
-    <div ref={ref} className="text-center space-y-4">
-      <div className="text-6xl md:text-7xl lg:text-8xl font-black bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
-        {count === end && suffix.includes('.') ? end : count}{suffix}
-      </div>
-      <p className="text-xl md:text-2xl font-bold">{label}</p>
+    <div ref={ref} className="text-6xl md:text-8xl font-black">
+      {showFree ? (
+        <span className="inline-block animate-[scaleIn_0.5s_ease-out]">FREE</span>
+      ) : (
+        <span>£{price.toLocaleString()}</span>
+      )}
+    </div>
+  );
+}
+
+function AutoScrollProducts({ products }: { products: any[] }) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const scrollContainer = scrollRef.current;
+    if (!scrollContainer) return;
+
+    let scrollPosition = 0;
+    const scrollSpeed = 0.5;
+    const cardWidth = 340;
+    const gap = 16;
+    const itemWidth = cardWidth + gap;
+    
+    const scroll = () => {
+      scrollPosition += scrollSpeed;
+      
+      if (scrollPosition >= itemWidth * products.length) {
+        scrollPosition = 0;
+      }
+      
+      scrollContainer.scrollLeft = scrollPosition;
+      requestAnimationFrame(scroll);
+    };
+
+    const animationId = requestAnimationFrame(scroll);
+
+    const handleMouseEnter = () => {
+      cancelAnimationFrame(animationId);
+    };
+
+    const handleMouseLeave = () => {
+      requestAnimationFrame(scroll);
+    };
+
+    scrollContainer.addEventListener('mouseenter', handleMouseEnter);
+    scrollContainer.addEventListener('mouseleave', handleMouseLeave);
+
+    return () => {
+      cancelAnimationFrame(animationId);
+      scrollContainer.removeEventListener('mouseenter', handleMouseEnter);
+      scrollContainer.removeEventListener('mouseleave', handleMouseLeave);
+    };
+  }, [products.length]);
+
+  return (
+    <div ref={scrollRef} className="flex gap-4 md:gap-6 overflow-x-scroll pb-8 px-6 md:px-8 scrollbar-hide">
+      {[...products, ...products].map((product, index) => (
+        <Link key={index} href={product.link}>
+          <div 
+            className="flex-shrink-0 w-[340px] md:w-[420px] h-[500px] md:h-[580px] rounded-[2rem] overflow-hidden group cursor-pointer transition-transform duration-300 hover:scale-[1.02]" 
+            data-testid={`card-product-${index % products.length}`}
+          >
+            <div className={`h-full relative ${(index % products.length) % 2 === 0 ? 'bg-foreground text-background' : 'bg-muted/50 text-foreground'}`}>
+              <div className="absolute top-8 left-8 right-8 z-10 space-y-2">
+                <h3 className="text-3xl md:text-4xl font-black">{product.name}</h3>
+                <p className="text-lg md:text-xl font-semibold opacity-90">{product.tagline}</p>
+                <p className={`text-sm ${(index % products.length) % 2 === 0 ? 'text-background/70' : 'text-muted-foreground'}`}>{product.description}</p>
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 h-[65%] flex items-end justify-center pb-8">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="max-h-full w-auto object-contain transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+            </div>
+          </div>
+        </Link>
+      ))}
     </div>
   );
 }
@@ -150,38 +228,30 @@ export default function Home() {
     {
       name: "Rocket Go",
       tagline: "High pace, face-to-face",
-      description: "58% faster transactions. Take payments anywhere.",
+      description: "Serve more customers, faster. Take payments in seconds.",
       image: rocketGoImage,
       link: "/products/rocket-go",
-      gradient: "from-orange-500/15 to-orange-500/5",
-      icon: Zap,
     },
     {
       name: "Rocket Pocket",
-      tagline: "Orders and payments, unified",
-      description: "Streamline service with one powerful device.",
+      tagline: "In-the-pocket, on-the-go",
+      description: "Boost revenue and streamline service with our portable device.",
       image: rocketPocketImage,
       link: "/products/rocket-pocket",
-      gradient: "from-blue-500/15 to-blue-500/5",
-      icon: Rocket,
     },
     {
       name: "Rocket Wired",
       tagline: "Wired in, switched on",
-      description: "Countertop perfection. No charging needed.",
+      description: "Countertop and kiosk payments. No charging, no fuss.",
       image: rocketWiredImage,
       link: "/products/rocket-wired",
-      gradient: "from-green-500/15 to-green-500/5",
-      icon: Cloud,
     },
     {
       name: "Tap to Pay",
-      tagline: "iPhone as your terminal",
-      description: "Accept payments with just an iPhone.",
+      tagline: "Fast payments, on tap",
+      description: "Take contactless payments with an iPhone and our app.",
       image: tapToPayImage,
       link: "/products/tap-to-pay",
-      gradient: "from-purple-500/15 to-purple-500/5",
-      icon: Star,
     },
   ];
 
@@ -246,22 +316,6 @@ export default function Home() {
                   </Button>
                 </Link>
               </div>
-
-              {/* Trusted By Logos */}
-              <div className="pt-8 space-y-4 animate-in fade-in duration-1000 delay-300">
-                <p className="text-sm font-black text-muted-foreground tracking-wide">TRUSTED BY</p>
-                <div className="flex flex-wrap gap-8 items-center">
-                  {partnerLogos.map((partner, i) => (
-                    <div key={i} className="hover:scale-110 transition-transform duration-300">
-                      <img 
-                        src={partner.logo} 
-                        alt={partner.name}
-                        className="h-10 md:h-12 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
             </div>
 
             <div className="relative animate-in fade-in slide-in-from-right-8 duration-1000 delay-400">
@@ -284,79 +338,42 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Stats Banner - Cinematic */}
-      <section className="py-32 md:py-40 bg-gradient-to-b from-muted/20 to-background">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <div className="grid md:grid-cols-3 gap-12">
-            <AnimatedSection delay={0}>
-              <CountUpStat end={99.99} suffix="%" label="Uptime Guarantee" />
-            </AnimatedSection>
-            <AnimatedSection delay={200}>
-              <CountUpStat end={110000} suffix="+" label="Businesses Powered" />
-            </AnimatedSection>
-            <AnimatedSection delay={400}>
-              <CountUpStat end={450} suffix="+" label="EPOS Integrations" />
-            </AnimatedSection>
+      {/* Switch for FREE Banner */}
+      <section className="bg-primary text-primary-foreground py-16 md:py-20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-foreground/5 via-transparent to-transparent pointer-events-none" />
+        <div className="max-w-5xl mx-auto px-6 md:px-8 text-center relative">
+          <div className="space-y-6">
+            <div className="space-y-3">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase leading-[1.1]">
+                Switch for
+              </h2>
+              <SwitchPriceAnimation />
+              <p className="text-lg md:text-xl font-bold text-primary-foreground/90">
+                £3,000 cover towards your exit fees
+              </p>
+            </div>
+            <Link href="/quote">
+              <Button size="lg" variant="secondary" className="text-base px-8 rounded-full">
+                Get started
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Products - Apple-Style Showcase */}
-      <section className="py-32 md:py-40 bg-background">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <AnimatedSection>
-            <div className="text-center space-y-6 mb-20">
-              <h2 className="text-5xl md:text-6xl lg:text-7xl font-black leading-tight" data-testid="text-products-headline">
-                The latest.
-              </h2>
-              <p className="text-2xl md:text-3xl text-muted-foreground font-semibold">
-                Take a look at what's new right now.
-              </p>
-            </div>
-          </AnimatedSection>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {products.map((product, index) => (
-              <AnimatedSection key={index} delay={index * 150}>
-                <Link href={product.link}>
-                  <Card className={`group relative p-10 md:p-12 rounded-3xl hover-elevate transition-all duration-700 cursor-pointer border-none shadow-2xl overflow-hidden min-h-[600px] flex flex-col bg-gradient-to-br ${product.gradient}`}>
-                    <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-br from-primary/20 to-transparent rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                    
-                    <div className="relative space-y-6 z-10">
-                      <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
-                        <product.icon className="h-8 w-8 text-primary" />
-                      </div>
-                      <div>
-                        <h3 className="text-4xl md:text-5xl font-black mb-3">{product.name}</h3>
-                        <p className="text-xl font-bold text-muted-foreground mb-2">{product.tagline}</p>
-                        <p className="text-base text-muted-foreground">{product.description}</p>
-                      </div>
-                    </div>
-
-                    <div className="relative mt-auto pt-8 flex items-end justify-center">
-                      <img
-                        src={product.image}
-                        alt={product.name}
-                        className="max-h-72 w-auto object-contain group-hover:scale-105 transition-transform duration-700"
-                        data-testid={`img-product-${index}`}
-                      />
-                    </div>
-                  </Card>
-                </Link>
-              </AnimatedSection>
-            ))}
+      {/* Products - Apple-Style Auto-Scroll */}
+      <section className="py-20 md:py-32 bg-background overflow-hidden">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="text-left mb-12 px-6 md:px-8">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight" data-testid="text-products-headline">
+              The latest. <span className="text-muted-foreground font-normal">Take a look at what's new right now.</span>
+            </h2>
           </div>
 
-          <AnimatedSection delay={600}>
-            <div className="text-center mt-16">
-              <Link href="/products">
-                <Button size="lg" variant="outline" className="text-lg px-10 py-6 rounded-full">
-                  View all products
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </Link>
-            </div>
-          </AnimatedSection>
+          <div className="relative">
+            <AutoScrollProducts products={products} />
+          </div>
         </div>
       </section>
 
@@ -411,6 +428,31 @@ export default function Home() {
                 </Card>
               </AnimatedSection>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Trusted By - Scrolling Logos */}
+      <section className="py-16 bg-white dark:bg-muted/30">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
+          <AnimatedSection>
+            <div className="text-center mb-10">
+              <p className="text-sm font-black text-muted-foreground tracking-wider">TRUSTED BY LEADING BUSINESSES</p>
+            </div>
+          </AnimatedSection>
+
+          <div className="relative overflow-hidden">
+            <div className="logo-scroll flex gap-16 items-center">
+              {[...partnerLogos, ...partnerLogos, ...partnerLogos].map((partner, i) => (
+                <div key={i} className="flex-shrink-0 hover:scale-110 transition-transform duration-300">
+                  <img 
+                    src={partner.logo} 
+                    alt={partner.name}
+                    className="h-10 md:h-12 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
