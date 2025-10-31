@@ -136,6 +136,48 @@ function CountUpAnimation({ end, duration = 2000 }: { end: number; duration?: nu
   );
 }
 
+function AnimatedFeatureCard({ icon: Icon, text, delay }: { icon: any; text: string; delay: number }) {
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      className={`relative group transition-all duration-700 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+      }`}
+      style={{ transitionDelay: `${delay}ms` }}
+    >
+      <div className="flex flex-col items-center gap-4 text-center p-6 rounded-2xl hover-elevate transition-all duration-300 hover:scale-105">
+        <div className="relative">
+          <div className="absolute inset-0 bg-primary/20 rounded-full blur-xl scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          <div className="relative bg-primary/10 p-4 rounded-full group-hover:bg-primary/20 transition-all duration-300">
+            <Icon className="h-10 w-10 text-primary transition-transform duration-300 group-hover:scale-110" />
+          </div>
+        </div>
+        <p className="text-base font-semibold transition-colors duration-300 group-hover:text-primary">{text}</p>
+      </div>
+    </div>
+  );
+}
+
 export default function Home() {
   const industries = [
     {
@@ -361,10 +403,7 @@ export default function Home() {
               { icon: Star, text: "Award-winning customer support" },
               { icon: TrendingUp, text: "Powerful customer insights tools" },
             ].map((item, i) => (
-              <div key={i} className="flex flex-col items-center gap-3 text-center">
-                <item.icon className="h-10 w-10 text-primary" />
-                <p className="text-base font-semibold">{item.text}</p>
-              </div>
+              <AnimatedFeatureCard key={i} icon={item.icon} text={item.text} delay={i * 150} />
             ))}
           </div>
         </div>
