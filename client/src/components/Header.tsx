@@ -25,26 +25,21 @@ export function Header() {
   ];
 
   return (
-    <header
-      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-        isScrolled
-          ? "bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 shadow-sm"
-          : "bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60"
-      }`}
-    >
+    <header className="sticky top-0 z-50 w-full py-4 md:py-6">
       <div className="max-w-7xl mx-auto px-6 md:px-8">
-        <div className="flex h-16 items-center justify-between">
+        {/* Desktop: White rounded pill container */}
+        <div className="hidden md:flex items-center justify-between bg-card border border-border rounded-full px-6 py-3 shadow-md">
           <Link href="/" className="flex items-center gap-2 hover-elevate active-elevate-2 rounded-lg px-2 py-1 -ml-2 transition-transform" data-testid="link-home">
-            <Rocket className="h-8 w-8 text-primary" />
-            <span className="text-xl font-bold text-foreground">Rocket Payments</span>
+            <Rocket className="h-7 w-7 text-primary" />
+            <span className="text-xl font-black text-foreground">ROCKET</span>
           </Link>
 
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="flex items-center gap-1">
             {navLinks.map((link) => (
               <Link key={link.href} href={link.href}>
                 <Button
                   variant="ghost"
-                  className={`${
+                  className={`font-medium ${
                     location === link.href ? "bg-accent" : ""
                   }`}
                   data-testid={`link-${link.label.toLowerCase()}`}
@@ -53,18 +48,30 @@ export function Header() {
                 </Button>
               </Link>
             ))}
+            <Button variant="ghost" className="font-medium">Help</Button>
           </nav>
 
-          <div className="hidden md:flex items-center gap-3">
+          <div className="flex items-center gap-3">
             <ThemeToggle />
+            <Button variant="ghost" className="font-medium" data-testid="button-login">
+              Login
+            </Button>
             <Link href="/quote">
-              <Button variant="default" data-testid="button-get-started">
-                Get Started
+              <Button variant="default" className="rounded-full font-medium" data-testid="button-get-started">
+                Get started
               </Button>
             </Link>
           </div>
+        </div>
 
-          <div className="flex md:hidden items-center gap-2">
+        {/* Mobile: Simple header */}
+        <div className="flex md:hidden items-center justify-between bg-card border border-border rounded-full px-4 py-2 shadow-md">
+          <Link href="/" className="flex items-center gap-2" data-testid="link-home">
+            <Rocket className="h-6 w-6 text-primary" />
+            <span className="text-lg font-black text-foreground">ROCKET</span>
+          </Link>
+
+          <div className="flex items-center gap-2">
             <ThemeToggle />
             <Button
               variant="ghost"
@@ -79,31 +86,36 @@ export function Header() {
       </div>
 
       {isMobileMenuOpen && (
-        <div className="md:hidden border-t bg-background/95 backdrop-blur">
-          <nav className="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-2">
-            {navLinks.map((link) => (
-              <Link key={link.href} href={link.href}>
+        <div className="md:hidden mt-4 mx-6">
+          <div className="bg-card border border-border rounded-2xl shadow-lg p-4">
+            <nav className="flex flex-col gap-2">
+              {navLinks.map((link) => (
+                <Link key={link.href} href={link.href}>
+                  <Button
+                    variant="ghost"
+                    className="w-full justify-start font-medium"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    data-testid={`link-mobile-${link.label.toLowerCase()}`}
+                  >
+                    {link.label}
+                  </Button>
+                </Link>
+              ))}
+              <Button variant="ghost" className="w-full justify-start font-medium">Help</Button>
+              <div className="border-t my-2" />
+              <Button variant="ghost" className="w-full justify-start font-medium">Login</Button>
+              <Link href="/quote">
                 <Button
-                  variant="ghost"
-                  className="w-full justify-start"
+                  variant="default"
+                  className="w-full mt-2 rounded-full font-medium"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  data-testid={`link-mobile-${link.label.toLowerCase()}`}
+                  data-testid="button-mobile-get-started"
                 >
-                  {link.label}
+                  Get started
                 </Button>
               </Link>
-            ))}
-            <Link href="/quote">
-              <Button
-                variant="default"
-                className="w-full mt-2"
-                onClick={() => setIsMobileMenuOpen(false)}
-                data-testid="button-mobile-get-started"
-              >
-                Get Started
-              </Button>
-            </Link>
-          </nav>
+            </nav>
+          </div>
         </div>
       )}
     </header>

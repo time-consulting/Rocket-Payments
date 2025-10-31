@@ -11,10 +11,10 @@ import {
 import { ArrowRight, ArrowUpRight, Cloud, TrendingUp, Zap, Star, CheckCircle } from "lucide-react";
 
 import heroImage from "@assets/generated_images/Hero_payment_terminal_coffee_shop_07c7ebb4.png";
-import rocketGoImage from "@assets/generated_images/Rocket_Go_product_shot_ed6f0f19.png";
-import rocketPocketImage from "@assets/generated_images/Rocket_Pocket_mobile_payment_3b62149f.png";
-import rocketWiredImage from "@assets/generated_images/Rocket_Wired_countertop_terminal_57e8157c.png";
-import tapToPayImage from "@assets/generated_images/Tap_to_Pay_iPhone_a1c38f15.png";
+import rocketGoImage from "@assets/generated_images/Modern_payment_terminal_product_shot_2af211fa.png";
+import rocketPocketImage from "@assets/generated_images/Compact_pocket_payment_terminal_c76d8801.png";
+import rocketWiredImage from "@assets/generated_images/Countertop_terminal_with_touchscreen_aa8d26cb.png";
+import tapToPayImage from "@assets/generated_images/Tap_to_pay_smartphone_e29cd7d7.png";
 import qsrImage from "@assets/generated_images/Quick_service_restaurant_bc0bbd4b.png";
 import fsrImage from "@assets/generated_images/Full_service_restaurant_eb7f483a.png";
 import dentalImage from "@assets/generated_images/Dental_office_payment_88d7359b.png";
@@ -136,10 +136,10 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
               <div className="space-y-4">
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight" data-testid="text-hero-headline">
+                <h1 className="text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] tracking-tight uppercase" data-testid="text-hero-headline">
                   Join the UK's #1 payments provider
                 </h1>
-                <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl">
+                <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl font-normal">
                   Put your business success first with our fast, reliable payments, hard-working tech, and stellar customer support.
                 </p>
               </div>
@@ -209,7 +209,7 @@ export default function Home() {
       {/* Value Proposition */}
       <section className="py-20 md:py-32 bg-background">
         <div className="max-w-6xl mx-auto px-6 md:px-8 text-center space-y-6">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold" data-testid="text-value-prop-headline">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight" data-testid="text-value-prop-headline">
             Welcome to Payment Paradise
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
@@ -235,7 +235,7 @@ export default function Home() {
       <section className="py-20 md:py-32 bg-muted/30">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="text-center mb-20 space-y-4">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold" data-testid="text-industries-headline">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight" data-testid="text-industries-headline">
               Payments tailored for your industry
             </h2>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -257,7 +257,7 @@ export default function Home() {
                 </div>
                 <div className={index % 2 === 1 ? "lg:order-1" : "lg:order-2"}>
                   <div className="space-y-4">
-                    <h3 className="text-3xl md:text-4xl font-bold">{industry.title}</h3>
+                    <h3 className="text-3xl md:text-4xl font-black leading-tight">{industry.title}</h3>
                     <p className="text-lg text-muted-foreground leading-relaxed">{industry.description}</p>
                     <Link href={industry.link}>
                       <Button variant="default" data-testid={`button-learn-more-${index}`}>
@@ -278,7 +278,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight">
                 Make your day-to-day more plug-and-play
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
@@ -306,7 +306,7 @@ export default function Home() {
       <section className="py-20 md:py-32 bg-background">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="text-center mb-16 space-y-4">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold" data-testid="text-products-headline">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight" data-testid="text-products-headline">
               Our products
             </h2>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -320,11 +320,11 @@ export default function Home() {
                 <Card className="h-full overflow-hidden hover-elevate active-elevate-2 transition-all duration-300 group cursor-pointer border-none shadow-lg" data-testid={`card-product-${index}`}>
                   <CardContent className="p-6 space-y-4">
                     <div className="flex items-start justify-between gap-2">
-                      <h3 className="text-xl font-bold">{product.name}</h3>
+                      <h3 className="text-xl font-black">{product.name}</h3>
                       <ArrowUpRight className="h-7 w-7 text-foreground flex-shrink-0" />
                     </div>
-                    <p className="text-base font-semibold">{product.tagline}</p>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{product.description}</p>
+                    <p className="text-base font-bold">{product.tagline}</p>
+                    <p className="text-sm text-muted-foreground leading-relaxed font-normal">{product.description}</p>
                   </CardContent>
                   <div className="aspect-[4/3] overflow-hidden">
                     <img
@@ -352,7 +352,7 @@ export default function Home() {
               </div>
               <span className="text-2xl font-bold">4.8</span>
             </div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold" data-testid="text-testimonials-headline">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight" data-testid="text-testimonials-headline">
               Our customers say
             </h2>
             <p className="text-lg text-muted-foreground">Based on 4,800+ reviews</p>
@@ -368,8 +368,8 @@ export default function Home() {
                     className="w-16 h-16 rounded-full object-cover"
                   />
                   <div className="flex-1">
-                    <h4 className="font-semibold">{testimonial.name}</h4>
-                    <p className="text-sm text-muted-foreground">{testimonial.business}</p>
+                    <h4 className="font-bold">{testimonial.name}</h4>
+                    <p className="text-sm text-muted-foreground font-medium">{testimonial.business}</p>
                     <div className="flex gap-0.5 mt-2">
                       {[...Array(testimonial.rating)].map((_, i) => (
                         <Star key={i} className="h-4 w-4 fill-primary text-primary" />
@@ -388,7 +388,7 @@ export default function Home() {
       <section className="py-20 md:py-32 bg-background">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="text-center mb-16 space-y-4">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">Success stories</h2>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight">Success stories</h2>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
               Explore real stories and industry insights from our community.
             </p>
@@ -444,7 +444,7 @@ export default function Home() {
       {/* CTA Section */}
       <section className="py-20 md:py-32 bg-primary text-primary-foreground">
         <div className="max-w-4xl mx-auto px-6 md:px-8 text-center space-y-8">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold" data-testid="text-cta-headline">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight" data-testid="text-cta-headline">
             Switching made simple
           </h2>
           <p className="text-lg md:text-xl leading-relaxed text-primary-foreground/90">
@@ -464,7 +464,7 @@ export default function Home() {
       <section className="py-20 md:py-32 bg-background">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
           <div className="text-center mb-12 space-y-4">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold" data-testid="text-faq-headline">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight" data-testid="text-faq-headline">
               Frequently asked questions
             </h2>
           </div>
