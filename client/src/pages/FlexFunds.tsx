@@ -187,16 +187,18 @@ export default function FlexFunds() {
       <section className="py-32 md:py-40 bg-muted/20 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
-            <AnimatedSection delay={300} className="lg:order-1">
-              <div className="relative group">
-                <div className="absolute -inset-6 bg-gradient-to-r from-green-500/20 to-green-500/10 rounded-3xl blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                <img
-                  src={approvedImage}
-                  alt="Fee-free portion and clear pricing"
-                  className="relative w-full h-auto rounded-3xl shadow-2xl hover:scale-[1.03] transition-transform duration-700 border border-border/50"
-                />
-              </div>
-            </AnimatedSection>
+            <div className="lg:order-1">
+              <AnimatedSection delay={300}>
+                <div className="relative group">
+                  <div className="absolute -inset-6 bg-gradient-to-r from-green-500/20 to-green-500/10 rounded-3xl blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                  <img
+                    src={approvedImage}
+                    alt="Fee-free portion and clear pricing"
+                    className="relative w-full h-auto rounded-3xl shadow-2xl hover:scale-[1.03] transition-transform duration-700 border border-border/50"
+                  />
+                </div>
+              </AnimatedSection>
+            </div>
             <div className="lg:order-2">
               <AnimatedSection>
                 <div className="space-y-8">
@@ -263,16 +265,18 @@ export default function FlexFunds() {
       <section className="py-32 md:py-40 bg-gradient-to-b from-muted/20 to-background overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
-            <AnimatedSection delay={300} className="lg:order-1">
-              <div className="relative group">
-                <div className="absolute -inset-6 bg-gradient-to-r from-purple-500/20 to-purple-500/10 rounded-3xl blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                <img
-                  src={performanceImage}
-                  alt="Performance-based payments"
-                  className="relative w-full h-auto rounded-3xl shadow-2xl hover:scale-[1.03] transition-transform duration-700 border border-border/50"
-                />
-              </div>
-            </AnimatedSection>
+            <div className="lg:order-1">
+              <AnimatedSection delay={300}>
+                <div className="relative group">
+                  <div className="absolute -inset-6 bg-gradient-to-r from-purple-500/20 to-purple-500/10 rounded-3xl blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                  <img
+                    src={performanceImage}
+                    alt="Performance-based payments"
+                    className="relative w-full h-auto rounded-3xl shadow-2xl hover:scale-[1.03] transition-transform duration-700 border border-border/50"
+                  />
+                </div>
+              </AnimatedSection>
+            </div>
             <div className="lg:order-2">
               <AnimatedSection>
                 <div className="space-y-8">
