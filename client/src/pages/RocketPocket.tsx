@@ -6,6 +6,7 @@ import { ShoppingCart, Wifi, CreditCard, Lock, Zap, Cloud, Users, Cog, ArrowRigh
 import heroImage from "@assets/pocket rocket_1761928695213.png";
 import ordersPaymentsImage from "@assets/rocket pocket_1761931985667.png";
 import stockTabsImage from "@assets/pocket 2_1761931985666.png";
+import paymentsVideo from "@assets/payments_1761932474462.mp4";
 import securityImage from "@assets/generated_images/Payment_security_protection_image_9f385671.png";
 import plainSailingImage from "@assets/Gemini_Generated_Image_56kibq56kibq56ki_1761932343908.png";
 import qsrImage from "@assets/generated_images/QSR_industry_payment_terminal_ea6adaa9.png";
@@ -143,9 +144,12 @@ export default function RocketPocket() {
               </p>
             </div>
             <div className="relative">
-              <img
-                src={securityImage}
-                alt="Instant payments"
+              <video
+                src={paymentsVideo}
+                autoPlay
+                loop
+                muted
+                playsInline
                 className="rounded-2xl w-full h-auto"
               />
             </div>
