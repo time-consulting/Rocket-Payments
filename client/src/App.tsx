@@ -8,6 +8,7 @@ import { Footer } from "@/components/Footer";
 import Home from "@/pages/Home";
 import Products from "@/pages/Products";
 import ProductDetail from "@/pages/ProductDetail";
+import RocketGo from "@/pages/RocketGo";
 import Quote from "@/pages/Quote";
 import Industries from "@/pages/Industries";
 import Pricing from "@/pages/Pricing";
@@ -20,6 +21,7 @@ function Router() {
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/products" component={Products} />
+      <Route path="/products/rocket-go" component={RocketGo} />
       <Route path="/products/:slug" component={ProductDetail} />
       <Route path="/industries" component={Industries} />
       <Route path="/pricing" component={Pricing} />
