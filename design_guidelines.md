@@ -3,6 +3,30 @@
 ## Design Approach
 **Reference-Based Approach**: Modeled after Dojo.tech's design system - a modern, clean payment processing platform aesthetic. The design emphasizes trust, speed, and simplicity with generous whitespace, clear hierarchy, and professional polish suitable for B2B payment solutions.
 
+## Color System
+
+**Brand Colors** (Based on Dojo.tech):
+- **Primary (Teal)**: HSL(180, 75%, 35%) - Bright teal/turquoise used for CTAs, links, and primary branding
+- **Primary Hover**: HSL(180, 75%, 30%) - Darker teal for hover states
+- **Accent (Yellow/Gold)**: HSL(45, 100%, 55%) - Warm yellow for highlights and secondary accents
+- **Background**: Pure white (#FFFFFF) for main backgrounds
+- **Muted Background**: HSL(210, 20%, 98%) - Very light gray for alternating sections
+- **Text Primary**: HSL(220, 15%, 15%) - Near black for main text
+- **Text Secondary**: HSL(220, 10%, 45%) - Medium gray for supporting text
+- **Text Tertiary**: HSL(220, 8%, 60%) - Light gray for captions
+
+**Dark Mode Colors**:
+- Background: HSL(220, 15%, 10%) - Deep charcoal
+- Foreground: HSL(0, 0%, 98%) - Off-white text
+- Primary: HSL(180, 75%, 45%) - Brighter teal for dark backgrounds
+- Muted: HSL(220, 15%, 18%) - Lighter charcoal for cards
+
+**Usage Guidelines**:
+- Use teal primary for all CTAs, important buttons, and key interactive elements
+- Yellow accent sparingly for highlights and attention-grabbing elements
+- Maintain clean white backgrounds with subtle gray sections for variety
+- Ensure sufficient contrast between text and backgrounds (WCAG AA minimum)
+
 ## Typography System
 
 **Font Stack**: 
