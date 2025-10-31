@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/accordion";
 import { ArrowRight, ArrowUpRight, Cloud, TrendingUp, Zap, Star, CheckCircle } from "lucide-react";
 
-import heroImage from "@assets/generated_images/Hero_payment_terminal_coffee_shop_07c7ebb4.png";
+import heroImage from "@assets/image_1761925334157.png";
 import rocketGoImage from "@assets/generated_images/Modern_payment_terminal_product_shot_2af211fa.png";
 import rocketPocketImage from "@assets/generated_images/Compact_pocket_payment_terminal_c76d8801.png";
 import rocketWiredImage from "@assets/generated_images/Countertop_terminal_with_touchscreen_aa8d26cb.png";
@@ -171,11 +171,11 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="relative hidden lg:block">
+            <div className="relative">
               <img
                 src={heroImage}
-                alt="Payment terminal in use"
-                className="rounded-2xl shadow-2xl w-full h-auto"
+                alt="Limited time offer - Get your card machine for just £79"
+                className="rounded-2xl w-full h-auto"
                 data-testid="img-hero"
               />
             </div>
