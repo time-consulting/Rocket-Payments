@@ -54,6 +54,7 @@ export function Header() {
 
   const navLinks = [
     { label: "Bookings", href: "/bookings" },
+    { label: "Business Funding", href: "/business-funding" },
     { label: "Industries", href: "/industries" },
     { label: "Pricing", href: "/pricing" },
   ];

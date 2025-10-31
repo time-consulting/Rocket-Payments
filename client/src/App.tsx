@@ -18,6 +18,7 @@ import FlexFunds from "@/pages/FlexFunds";
 import Sidekick from "@/pages/Sidekick";
 import Integrations from "@/pages/Integrations";
 import Bookings from "@/pages/Bookings";
+import BusinessFunding from "@/pages/BusinessFunding";
 import Quote from "@/pages/Quote";
 import Industries from "@/pages/Industries";
 import Pricing from "@/pages/Pricing";
@@ -41,6 +42,7 @@ function Router() {
       <Route path="/integrations" component={Integrations} />
       <Route path="/products/:slug" component={ProductDetail} />
       <Route path="/bookings" component={Bookings} />
+      <Route path="/business-funding" component={BusinessFunding} />
       <Route path="/industries" component={Industries} />
       <Route path="/pricing" component={Pricing} />
       <Route path="/resources" component={Resources} />
