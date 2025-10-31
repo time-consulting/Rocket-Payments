@@ -53,6 +53,7 @@ export function Header() {
   ];
 
   const navLinks = [
+    { label: "Bookings", href: "/bookings" },
     { label: "Industries", href: "/industries" },
     { label: "Pricing", href: "/pricing" },
   ];
