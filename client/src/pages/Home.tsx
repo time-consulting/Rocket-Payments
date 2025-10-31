@@ -22,7 +22,7 @@ import rocketPocketImage from "@assets/rocket pocket_1761931866361.png";
 import rocketWiredImage from "@assets/generated_images/Countertop_terminal_with_touchscreen_aa8d26cb.png";
 import tapToPayImage from "@assets/generated_images/Tap_to_pay_smartphone_e29cd7d7.png";
 import qsrImage from "@assets/generated_images/Quick_service_restaurant_bc0bbd4b.png";
-import fsrImage from "@assets/generated_images/Full_service_restaurant_eb7f483a.png";
+import fsrImage from "@assets/pocket - pub_1761934804766.png";
 import dentalImage from "@assets/generated_images/Dental_office_payment_88d7359b.png";
 import retailImage from "@assets/generated_images/Retail_store_checkout_665cbb72.png";
 import testimonial1 from "@assets/generated_images/Business_owner_testimonial_1_a41a1226.png";
