@@ -82,44 +82,22 @@ export default function RocketPocket() {
         </div>
       </section>
 
-      {/* Stats Banner */}
+      {/* Orders. Payments. Easy. */}
       <section className="py-20 md:py-32 bg-background">
-        <div className="max-w-5xl mx-auto px-6 md:px-8 text-center space-y-8">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight">
-            Transform your service
-          </h2>
-          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-            Rocket Pocket combines ordering and payment in one intuitive device. Boost table turnover, reduce errors, and create a better experience for staff and customers alike.
-          </p>
-          <div className="grid md:grid-cols-2 gap-12 pt-8">
-            <div className="space-y-4">
-              <div className="text-6xl md:text-7xl font-black text-primary">2-in-1</div>
-              <p className="text-base font-semibold">One device for orders and payments—streamline your entire workflow.</p>
-            </div>
-            <div className="space-y-4">
-              <div className="text-6xl md:text-7xl font-black text-primary">600+</div>
-              <p className="text-base font-semibold">Integrates with over 600 EPOS systems for seamless operations.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Security Section */}
-      <section className="py-20 md:py-32 bg-muted/30">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <h2 className="text-4xl md:text-5xl font-black leading-tight">
-                Built for busy environments
+                Orders. Payments. Easy.
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Durable, reliable, and designed for the demands of fast-paced hospitality. Rocket Pocket keeps up with your busiest shifts with long battery life and a rugged design that can handle drops and spills.
+                Forget endless trips to the till. Take orders and payments at the table and free your team to focus on creating great experiences.
               </p>
             </div>
             <div className="relative">
               <img
                 src={securityImage}
-                alt="Reliable performance"
+                alt="Orders and payments simplified"
                 className="rounded-2xl w-full h-auto"
               />
             </div>
@@ -127,27 +105,116 @@ export default function RocketPocket() {
         </div>
       </section>
 
-      {/* Plain Sailing Section */}
-      <section className="py-20 md:py-32 bg-background">
+      {/* Keep tabs on stock */}
+      <section className="py-20 md:py-32 bg-muted/30">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6 lg:order-2">
               <h2 className="text-4xl md:text-5xl font-black leading-tight">
-                Simple to use, easy to train
+                Keep tabs on stock
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Intuitive touchscreen interface means staff can start taking orders and payments in minutes, not days. Less training time, fewer errors, happier teams.
+                Get instant updates on out-of-stock products or menu items, with live data-sharing, and keep staff and customers in the know as they order.
+              </p>
+            </div>
+            <div className="relative lg:order-1">
+              <img
+                src={plainSailingImage}
+                alt="Real-time stock updates"
+                className="rounded-2xl w-full h-auto"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* No pay delays */}
+      <section className="py-20 md:py-32 bg-background">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              <h2 className="text-4xl md:text-5xl font-black leading-tight">
+                No pay delays
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Take payments instantly where your customers are so they can settle up without slowing down their day – and you can turn more tables.
+              </p>
+            </div>
+            <div className="relative">
+              <img
+                src={securityImage}
+                alt="Instant payments"
+                className="rounded-2xl w-full h-auto"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Sync POS and payments */}
+      <section className="py-20 md:py-32 bg-muted/30">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6 lg:order-2">
+              <h2 className="text-4xl md:text-5xl font-black leading-tight">
+                Sync POS and payments
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Serve more customers, cash up quicker, and make miskeying mistakes a thing of the past with seamless integration.
               </p>
               <Link href="/quote">
-                <Button size="lg" className="text-base px-8">
-                  Get started
+                <Button size="lg" className="text-base px-8 rounded-full">
+                  Get a quote
                 </Button>
               </Link>
             </div>
             <div className="relative lg:order-1">
               <img
                 src={plainSailingImage}
-                alt="Easy to use"
+                alt="Seamless POS integration"
+                className="rounded-2xl w-full h-auto"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Business efficiency in your back pocket */}
+      <section className="py-20 md:py-32 bg-background">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-8">
+              <h2 className="text-4xl md:text-5xl font-black leading-tight">
+                Business efficiency in your back pocket
+              </h2>
+              
+              <div className="space-y-6">
+                <div className="space-y-3">
+                  <h3 className="text-xl font-black">Receipts reduced</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Cut down on customer wait time with a paperless experience that streamlines staff admin. Display the bill on screen and offer digital receipts by email or QR code.
+                  </p>
+                </div>
+
+                <div className="space-y-3">
+                  <h3 className="text-xl font-black">Secure, safe, strong</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Rocket Pocket features secure data encryption ensuring your customer data is always safe. Plus, rely on instant fraud detection to protect you and your customers.
+                  </p>
+                </div>
+
+                <div className="space-y-3">
+                  <h3 className="text-xl font-black">Flexible payments, seamless service</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Let customers pay however suits them best. Rocket Pocket accepts all major cards using contactless payments, as well as mobile wallets like Apple Pay and Google Pay. So staff can take payments, seamlessly.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="relative">
+              <img
+                src={securityImage}
+                alt="Business efficiency"
                 className="rounded-2xl w-full h-auto"
               />
             </div>
@@ -182,57 +249,45 @@ export default function RocketPocket() {
               Tech specs
             </h2>
             <p className="text-lg text-muted-foreground">
-              Everything you need in one compact device.
+              Get the lowdown on the Rocket Pocket card machine.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <Card className="p-6 space-y-3">
               <Wifi className="h-10 w-10 text-primary" />
               <h3 className="text-base font-black">Dual connectivity</h3>
-              <p className="text-sm text-muted-foreground">Wi-Fi and 4G for reliable connection anywhere.</p>
+              <p className="text-sm text-muted-foreground">Connects automatically to Wi-Fi or any available 4G network.</p>
             </Card>
 
             <Card className="p-6 space-y-3">
               <ShoppingCart className="h-10 w-10 text-primary" />
-              <h3 className="text-base font-black">EPOS integration</h3>
-              <p className="text-sm text-muted-foreground">Works seamlessly with 600+ EPOS systems.</p>
+              <h3 className="text-base font-black">Lightweight and portable</h3>
+              <p className="text-sm text-muted-foreground">Dimensions: 170mm x 70mm x 14.7mm, weight: 143 grams</p>
             </Card>
 
             <Card className="p-6 space-y-3">
               <Cloud className="h-10 w-10 text-primary" />
-              <h3 className="text-base font-black">Compact design</h3>
-              <p className="text-sm text-muted-foreground">Lightweight and pocket-sized for maximum portability.</p>
+              <h3 className="text-base font-black">Easy to use – and see</h3>
+              <p className="text-sm text-muted-foreground">Screen size and resolution: 4.95" (480x960), PPI (Pixel Per Inch) 217</p>
             </Card>
 
             <Card className="p-6 space-y-3">
               <Zap className="h-10 w-10 text-primary" />
-              <h3 className="text-base font-black">All-day battery</h3>
-              <p className="text-sm text-muted-foreground">Long-lasting battery keeps you powered through busy shifts.</p>
+              <h3 className="text-base font-black">Long-lasting battery life</h3>
+              <p className="text-sm text-muted-foreground">8-hour Li-ion battery, 3500mAh / 3.8V</p>
             </Card>
 
             <Card className="p-6 space-y-3">
               <CreditCard className="h-10 w-10 text-primary" />
-              <h3 className="text-base font-black">All payment types</h3>
-              <p className="text-sm text-muted-foreground">Chip & PIN, contactless, and mobile wallets.</p>
+              <h3 className="text-base font-black">Integrated payments</h3>
+              <p className="text-sm text-muted-foreground">Connect to your EPOS with cloud-based integrations.</p>
             </Card>
 
             <Card className="p-6 space-y-3">
               <Lock className="h-10 w-10 text-primary" />
               <h3 className="text-base font-black">Secure payments</h3>
-              <p className="text-sm text-muted-foreground">End-to-end encryption and PCI DSS certified.</p>
-            </Card>
-
-            <Card className="p-6 space-y-3">
-              <Users className="h-10 w-10 text-primary" />
-              <h3 className="text-base font-black">Easy to use</h3>
-              <p className="text-sm text-muted-foreground">Intuitive touchscreen with minimal training required.</p>
-            </Card>
-
-            <Card className="p-6 space-y-3">
-              <Cog className="h-10 w-10 text-primary" />
-              <h3 className="text-base font-black">Cloud-based</h3>
-              <p className="text-sm text-muted-foreground">Real-time updates and remote management.</p>
+              <p className="text-sm text-muted-foreground">Point-to-point encryption protects customer card data, and your income.</p>
             </Card>
           </div>
         </div>
