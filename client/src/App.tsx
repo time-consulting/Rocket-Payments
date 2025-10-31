@@ -9,6 +9,8 @@ import Home from "@/pages/Home";
 import Products from "@/pages/Products";
 import ProductDetail from "@/pages/ProductDetail";
 import RocketGo from "@/pages/RocketGo";
+import RocketPocket from "@/pages/RocketPocket";
+import TapToPay from "@/pages/TapToPay";
 import Quote from "@/pages/Quote";
 import Industries from "@/pages/Industries";
 import Pricing from "@/pages/Pricing";
@@ -22,6 +24,8 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/products" component={Products} />
       <Route path="/products/rocket-go" component={RocketGo} />
+      <Route path="/products/rocket-pocket" component={RocketPocket} />
+      <Route path="/products/tap-to-pay" component={TapToPay} />
       <Route path="/products/:slug" component={ProductDetail} />
       <Route path="/industries" component={Industries} />
       <Route path="/pricing" component={Pricing} />
