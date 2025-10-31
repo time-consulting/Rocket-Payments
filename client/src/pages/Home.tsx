@@ -233,44 +233,47 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Industries Section - Alternating Layout */}
+      {/* Industries Section - 3 Column Grid */}
       <section className="py-20 md:py-32 bg-muted/30">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <div className="text-center mb-20 space-y-4">
+          <div className="text-center mb-12 space-y-4">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight" data-testid="text-industries-headline">
               Payments tailored for your industry
             </h2>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-              Explore how our first-class payments platform can help your business thrive.
-            </p>
           </div>
 
-          <div className="space-y-20">
-            {industries.map((industry, index) => (
-              <div key={index} className="grid lg:grid-cols-2 gap-12 items-center" data-testid={`industry-section-${index}`}>
-                <div className={index % 2 === 1 ? "lg:order-2" : "lg:order-1"}>
-                  <div className="aspect-[4/3] overflow-hidden rounded-2xl shadow-lg">
+          <div className="grid md:grid-cols-3 gap-8">
+            {industries.slice(0, 3).map((industry, index) => (
+              <div 
+                key={index} 
+                className="group"
+                data-testid={`industry-card-${index}`}
+                style={{
+                  animation: `fadeInUp 0.6s ease-out ${index * 0.1}s both`
+                }}
+              >
+                <div className="space-y-4">
+                  <div className="aspect-[4/3] overflow-hidden rounded-[2rem] shadow-lg">
                     <img
                       src={industry.image}
                       alt={industry.title}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
                   </div>
-                </div>
-                <div className={index % 2 === 1 ? "lg:order-1" : "lg:order-2"}>
-                  <div className="space-y-4">
-                    <h3 className="text-3xl md:text-4xl font-black leading-tight">{industry.title}</h3>
-                    <p className="text-lg text-muted-foreground leading-relaxed">{industry.description}</p>
-                    <Link href={industry.link}>
-                      <Button variant="default" data-testid={`button-learn-more-${index}`}>
-                        Learn more
-                        <ArrowRight className="ml-2 h-5 w-5" />
-                      </Button>
-                    </Link>
+                  <div className="space-y-2">
+                    <h3 className="text-xl md:text-2xl font-black leading-tight">{industry.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{industry.description}</p>
                   </div>
                 </div>
               </div>
             ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link href="/industries" className="inline-flex items-center gap-2 text-base font-semibold text-primary hover:underline">
+              Learn more
+              <ArrowRight className="h-5 w-5" />
+            </Link>
           </div>
         </div>
       </section>
