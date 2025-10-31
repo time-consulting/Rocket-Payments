@@ -10,8 +10,8 @@ import stockTabsImage from "@assets/pocket 2_1761931985666.png";
 import paymentsVideo from "@assets/payments_1761932474462.mp4";
 import qrPaymentImage from "@assets/pocket Pay by QR_1761932960876.png";
 import plainSailingImage from "@assets/Gemini_Generated_Image_56kibq56kibq56ki_1761932343908.png";
-import qsrImage from "@assets/generated_images/QSR_industry_payment_terminal_ea6adaa9.png";
-import fsrImage from "@assets/generated_images/Full_service_restaurant_payment_d2377dfa.png";
+import qsrImage from "@assets/pocket - verticle restaurant_1761933636531.png";
+import fsrImage from "@assets/pocket - vert pub_1761933756665.png";
 import rocketGoImage from "@assets/Rocket Go_1761925244580.png";
 import rocketWiredImage from "@assets/generated_images/Countertop_terminal_with_touchscreen_aa8d26cb.png";
 
