@@ -29,6 +29,64 @@ import testimonial1 from "@assets/generated_images/Business_owner_testimonial_1_
 import testimonial2 from "@assets/generated_images/Restaurant_manager_testimonial_45d19cf6.png";
 import testimonial3 from "@assets/generated_images/Retail_owner_testimonial_379ad525.png";
 
+function SwitchPriceAnimation() {
+  const [showFree, setShowFree] = useState(false);
+  const [price, setPrice] = useState(3000);
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !isVisible) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => observer.disconnect();
+  }, [isVisible]);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
+    let startTime: number | null = null;
+    const duration = 2000;
+
+    const animate = (currentTime: number) => {
+      if (!startTime) startTime = currentTime;
+      const progress = Math.min((currentTime - startTime) / duration, 1);
+      
+      const easeInQuad = progress * progress;
+      const currentPrice = Math.floor(3000 - (3000 * easeInQuad));
+      setPrice(currentPrice);
+
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      } else {
+        setShowFree(true);
+      }
+    };
+
+    requestAnimationFrame(animate);
+  }, [isVisible]);
+
+  return (
+    <div ref={ref} className="text-6xl md:text-8xl font-black transition-all duration-500">
+      {showFree ? (
+        <span className="animate-fadeInUp">FREE</span>
+      ) : (
+        <span>£{price.toLocaleString()}</span>
+      )}
+    </div>
+  );
+}
+
 function CountUpAnimation({ end, duration = 2000 }: { end: number; duration?: number }) {
   const [count, setCount] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
@@ -250,25 +308,30 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Statistics Banner */}
-      <section className="bg-primary text-primary-foreground py-16 md:py-20">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div className="flex flex-col items-center text-center space-y-3" data-testid="stat-uptime">
-              <Cloud className="h-12 w-12" />
-              <div className="text-4xl md:text-5xl font-black tabular-nums">99.99%</div>
-              <p className="text-base text-primary-foreground/90 font-normal">Take payments whenever with our always-on payments platform.</p>
+      {/* Switch for FREE Banner */}
+      <section className="bg-primary text-primary-foreground py-20 md:py-32 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-foreground/5 via-transparent to-transparent pointer-events-none" />
+        <div className="max-w-5xl mx-auto px-6 md:px-8 text-center relative">
+          <div className="space-y-8">
+            <div className="space-y-4">
+              <h2 className="text-4xl md:text-6xl lg:text-7xl font-black uppercase leading-[1.1]">
+                Switch for
+              </h2>
+              <SwitchPriceAnimation />
+              <p className="text-xl md:text-2xl font-bold text-primary-foreground/90 mt-6">
+                £3,000 cover towards your exit fees
+              </p>
             </div>
-            <div className="flex flex-col items-center text-center space-y-3" data-testid="stat-volume">
-              <TrendingUp className="h-12 w-12" />
-              <div className="text-4xl md:text-5xl font-black tabular-nums">1.8bn</div>
-              <p className="text-base text-primary-foreground/90 font-normal">We process over 1.8 billion transactions every year.</p>
-            </div>
-            <div className="flex flex-col items-center text-center space-y-3" data-testid="stat-speed">
-              <Zap className="h-12 w-12" />
-              <div className="text-4xl md:text-5xl font-black tabular-nums">58%</div>
-              <p className="text-base text-primary-foreground/90 font-normal">Take payments 58% faster than market average.</p>
-            </div>
+            <p className="text-base md:text-lg text-primary-foreground/80 max-w-2xl mx-auto leading-relaxed">
+              Sign up to Rocket Payments and we could cover your exit fees up to £3,000. No fixed contracts, simple setup, and seamless switching.
+            </p>
+            <Link href="/quote">
+              <Button size="lg" variant="secondary" className="text-base px-8 rounded-full">
+                Get started
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
+            <p className="text-sm text-primary-foreground/60">Subject to your annual card turnover.</p>
           </div>
         </div>
       </section>
