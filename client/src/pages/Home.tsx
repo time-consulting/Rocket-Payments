@@ -493,7 +493,7 @@ export default function Home() {
           </div>
 
           <div className="relative">
-            <div className="flex gap-4 md:gap-6 overflow-x-auto pb-8 px-6 md:px-8 snap-x snap-mandatory scrollbar-hide">
+            <div className="flex gap-4 md:gap-6 overflow-x-scroll pb-8 px-6 md:px-8 snap-x snap-mandatory">
               {products.map((product, index) => (
                 <Link key={index} href={product.link}>
                   <div 
