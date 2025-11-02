@@ -10,6 +10,7 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProductsOpen, setIsProductsOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState("in-person");
+  const [expandedMobileCategory, setExpandedMobileCategory] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -206,26 +207,51 @@ export function Header() {
       {isMobileMenuOpen && (
         <div className="md:hidden mt-4 mx-6">
           <div className="bg-card border border-border rounded-2xl shadow-lg p-4">
-            <nav className="flex flex-col gap-2">
-              {/* Mobile Products Section */}
+            <nav className="flex flex-col gap-3">
+              {/* Mobile Products Section - Stacked Categories */}
               <div className="space-y-2">
                 <div className="text-xs font-black uppercase text-muted-foreground tracking-wider px-3 py-2">Products</div>
-                {productCategories.map((category) => (
-                  <div key={category.title} className="space-y-1 pl-3">
-                    <div className="text-xs font-semibold text-muted-foreground">{category.title}</div>
-                    {category.products.map((product) => (
-                      <Link key={product.href} href={product.href}>
-                        <Button
-                          variant="ghost"
-                          className="w-full justify-start font-medium text-sm"
-                          onClick={() => setIsMobileMenuOpen(false)}
-                        >
-                          {product.name}
-                        </Button>
-                      </Link>
-                    ))}
-                  </div>
-                ))}
+                {productCategories.map((category) => {
+                  const Icon = category.icon;
+                  const isExpanded = expandedMobileCategory === category.id;
+                  
+                  return (
+                    <div key={category.id} className="space-y-1">
+                      <button
+                        onClick={() => setExpandedMobileCategory(isExpanded ? null : category.id)}
+                        className={`w-full p-4 rounded-xl transition-all flex items-center justify-between ${
+                          isExpanded 
+                            ? 'bg-primary text-primary-foreground shadow-md' 
+                            : 'bg-muted/30 hover-elevate'
+                        }`}
+                      >
+                        <div className="flex items-center gap-3">
+                          <Icon className={`h-5 w-5 ${isExpanded ? 'text-primary-foreground' : 'text-foreground'}`} />
+                          <span className={`font-black text-sm ${isExpanded ? 'text-primary-foreground' : 'text-foreground'}`}>
+                            {category.title}
+                          </span>
+                        </div>
+                        <ChevronDown className={`h-5 w-5 transition-transform ${isExpanded ? 'rotate-180 text-primary-foreground' : 'text-foreground'}`} />
+                      </button>
+                      
+                      {isExpanded && (
+                        <div className="pl-4 pt-1 space-y-1 animate-in fade-in slide-in-from-top-2 duration-200">
+                          {category.products.map((product) => (
+                            <Link key={product.href} href={product.href}>
+                              <div
+                                className="p-3 rounded-lg hover-elevate active-elevate-2 transition-all"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                              >
+                                <div className="font-bold text-sm">{product.name}</div>
+                                <div className="text-xs text-muted-foreground">{product.description}</div>
+                              </div>
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
               
               <div className="border-t my-2" />
