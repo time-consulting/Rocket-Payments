@@ -39,6 +39,10 @@ import calendarManagementImage from "@assets/2400x1040_1762086982614.webp";
 import experienceGroupImage from "@assets/experience group_1762086982614.png";
 import chefCookingImage from "@assets/Gemini_Generated_Image_h0v6bch0v6bch0v6_1762086982615.png";
 import neonRestaurantImage from "@assets/neon restaurant rocket pay_1762086982615.png";
+import costaLogo from "@assets/Costa-Coffee-Logo_1761930744749.jpg";
+import treatzLogo from "@assets/Treatz.jpg_1761930744750.webp";
+import cuppLogo from "@assets/ac9be535-cd26-4913-893c-607ef9c65ec9_1761930744747.jpeg";
+import silverstoneLogo from "@assets/silverstone-uk-logo-vectorrwopeh_1761930744750.png";
 
 function AnimatedSection({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
   const [isVisible, setIsVisible] = useState(false);
@@ -297,6 +301,55 @@ export default function Products() {
 
       {/* Payment Devices Section */}
       <section className="py-32 md:py-40 bg-gradient-to-b from-muted/20 to-background">
+        {/* Trusted By Logos */}
+        <div className="mb-16 overflow-hidden">
+          <div className="max-w-7xl mx-auto px-6 md:px-8">
+            <p className="text-center text-sm text-muted-foreground mb-6 font-medium">Trusted by leading brands</p>
+          </div>
+          <div className="relative">
+            <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-muted/20 to-transparent z-10" />
+            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10" />
+            <div className="flex gap-16 animate-scroll">
+              {[
+                { name: "Costa Coffee", logo: costaLogo },
+                { name: "Treatz", logo: treatzLogo },
+                { name: "CUPP", logo: cuppLogo },
+                { name: "Silverstone", logo: silverstoneLogo },
+                { name: "Costa Coffee", logo: costaLogo },
+                { name: "Treatz", logo: treatzLogo },
+                { name: "CUPP", logo: cuppLogo },
+                { name: "Silverstone", logo: silverstoneLogo },
+                { name: "Costa Coffee", logo: costaLogo },
+                { name: "Treatz", logo: treatzLogo },
+                { name: "CUPP", logo: cuppLogo },
+                { name: "Silverstone", logo: silverstoneLogo },
+              ].map((partner, i) => (
+                <div key={i} className="flex-shrink-0">
+                  <img 
+                    src={partner.logo} 
+                    alt={partner.name}
+                    className="h-8 md:h-10 w-auto object-contain opacity-40 grayscale hover:opacity-70 hover:grayscale-0 transition-all duration-300"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <style>{`
+          @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+          .animate-scroll {
+            animation: scroll 30s linear infinite;
+            width: fit-content;
+          }
+          .animate-scroll:hover {
+            animation-play-state: paused;
+          }
+        `}</style>
+
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <AnimatedSection>
             <div className="text-center space-y-6 mb-20">
