@@ -397,6 +397,28 @@ export default function Home() {
 
       {/* Value Props - Interactive Cards */}
       <section className="py-32 md:py-40 bg-muted/20">
+        {/* Trusted By - Scrolling Logos Banner */}
+        <div className="mb-16 overflow-hidden">
+          <div className="max-w-7xl mx-auto px-6 md:px-8">
+            <p className="text-center text-sm font-black text-muted-foreground tracking-wider mb-6">TRUSTED BY LEADING BUSINESSES</p>
+          </div>
+          <div className="relative">
+            <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-muted/20 to-transparent z-10" />
+            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-muted/20 to-transparent z-10" />
+            <div className="logo-scroll flex gap-16 items-center">
+              {[...partnerLogos, ...partnerLogos, ...partnerLogos].map((partner, i) => (
+                <div key={i} className="flex-shrink-0 hover:scale-110 transition-transform duration-300">
+                  <img 
+                    src={partner.logo} 
+                    alt={partner.name}
+                    className="h-10 md:h-12 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <AnimatedSection>
             <div className="text-center space-y-6 mb-20">
@@ -428,31 +450,6 @@ export default function Home() {
                 </Card>
               </AnimatedSection>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Trusted By - Scrolling Logos */}
-      <section className="py-16 bg-white dark:bg-muted/30">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <AnimatedSection>
-            <div className="text-center mb-10">
-              <p className="text-sm font-black text-muted-foreground tracking-wider">TRUSTED BY LEADING BUSINESSES</p>
-            </div>
-          </AnimatedSection>
-
-          <div className="relative overflow-hidden">
-            <div className="logo-scroll flex gap-16 items-center">
-              {[...partnerLogos, ...partnerLogos, ...partnerLogos].map((partner, i) => (
-                <div key={i} className="flex-shrink-0 hover:scale-110 transition-transform duration-300">
-                  <img 
-                    src={partner.logo} 
-                    alt={partner.name}
-                    className="h-10 md:h-12 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
-                  />
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </section>
