@@ -14,6 +14,7 @@ import chefCookingImage from "@assets/Gemini_Generated_Image_h0v6bch0v6bch0v6_17
 import pubGroupImage from "@assets/group in pub rocket pay_1761946595999.png";
 import neonRestaurantImage from "@assets/neon restaurant rocket pay_1761946595999.png";
 import googleReserveImage from "@assets/google reserve_1761946710952.png";
+import videoCoverImage from "@assets/neon restaurant rocket pay_1762090991749.png";
 
 function AnimatedSection({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
   const [isVisible, setIsVisible] = useState(false);
@@ -44,6 +45,52 @@ function AnimatedSection({ children, delay = 0 }: { children: React.ReactNode; d
       }`}
     >
       {children}
+    </div>
+  );
+}
+
+function VideoPlayer() {
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const handlePlay = () => {
+    setIsPlaying(true);
+  };
+
+  return (
+    <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-video group">
+      {!isPlaying ? (
+        <>
+          <img
+            src={videoCoverImage}
+            alt="Video thumbnail"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/30 flex items-center justify-center transition-all duration-300 group-hover:bg-black/40">
+            <button
+              onClick={handlePlay}
+              className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-primary/90 hover:bg-primary flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-2xl"
+              aria-label="Play video"
+              data-testid="button-play-video"
+            >
+              <svg
+                className="w-12 h-12 md:w-16 md:h-16 text-primary-foreground ml-2"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </button>
+          </div>
+        </>
+      ) : (
+        <iframe
+          className="w-full h-full"
+          src="https://www.youtube.com/embed/ba11Tc1XbmM?autoplay=1&loop=1&playlist=ba11Tc1XbmM&controls=1&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3"
+          title="Rocket Bookings Demo"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        />
+      )}
     </div>
   );
 }
@@ -179,15 +226,7 @@ export default function Bookings() {
           </AnimatedSection>
 
           <AnimatedSection delay={200}>
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-video">
-              <iframe
-                className="w-full h-full"
-                src="https://www.youtube.com/embed/ba11Tc1XbmM?autoplay=1&mute=1&loop=1&playlist=ba11Tc1XbmM&controls=1&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3"
-                title="Rocket Bookings Demo"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            </div>
+            <VideoPlayer />
           </AnimatedSection>
         </div>
       </section>
