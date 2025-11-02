@@ -642,24 +642,19 @@ export default function Home() {
             </div>
           </AnimatedSection>
 
-          {/* Wavy Stacked Cards - Tree Branch Layout */}
-          <div className="relative min-h-[900px] md:min-h-[1000px]">
-            {/* Row 1 - Top Branch (Left Side) - Quick Service */}
+          {/* Symmetrical Grid - 4x3 Layout */}
+          <div className="relative min-h-[900px] md:min-h-[1100px]">
+            {/* Row 1 - Top Row */}
+            {/* Position 1 - Quick Service */}
             <div 
-              className="industry-card absolute top-0 left-[5%] w-64 md:w-72"
+              className="industry-card absolute top-0 left-[5%] w-56 md:w-64"
               style={{ '--rotation': '-8deg', animationDelay: '0s' } as React.CSSProperties}
             >
-              {/* Hanging Rope */}
               <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-0.5 h-10 bg-gradient-to-b from-primary/40 to-primary/80" />
               <Link href="/industries">
                 <div className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-2xl hover:shadow-primary/20 transition-all duration-500">
                   <div className="aspect-[4/5] overflow-hidden bg-muted">
-                    <img
-                      src={qsrImage}
-                      alt="Quick Service"
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                      data-testid="img-industry-0"
-                    />
+                    <img src={qsrImage} alt="Quick Service" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-testid="img-industry-0" />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6">
                     <h3 className="text-2xl md:text-3xl font-black text-white mb-2">Quick Service</h3>
@@ -669,22 +664,16 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* Row 1 - Top Branch (Center) - Café */}
+            {/* Position 2 - Café */}
             <div 
-              className="industry-card absolute top-0 left-1/2 -translate-x-1/2 w-60 md:w-68"
-              style={{ '--rotation': '0deg', animationDelay: '0.25s' } as React.CSSProperties}
+              className="industry-card absolute top-0 left-[30%] w-56 md:w-64"
+              style={{ '--rotation': '6deg', animationDelay: '0.2s' } as React.CSSProperties}
             >
-              {/* Hanging Rope */}
               <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-0.5 h-10 bg-gradient-to-b from-primary/40 to-primary/80" />
               <Link href="/industries">
                 <div className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-2xl hover:shadow-primary/20 transition-all duration-500">
                   <div className="aspect-[4/5] overflow-hidden bg-muted">
-                    <img
-                      src={cafeImage}
-                      alt="Café & Coffee"
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                      data-testid="img-industry-cafe"
-                    />
+                    <img src={cafeImage} alt="Café & Coffee" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-testid="img-industry-cafe" />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6">
                     <h3 className="text-2xl md:text-3xl font-black text-white mb-2">Café & Coffee</h3>
@@ -694,22 +683,16 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* Row 1 - Top Branch (Right Side) - Retail */}
+            {/* Position 3 - Retail */}
             <div 
-              className="industry-card absolute top-0 right-[5%] w-64 md:w-72"
-              style={{ '--rotation': '8deg', animationDelay: '0.5s' } as React.CSSProperties}
+              className="industry-card absolute top-0 right-[30%] w-56 md:w-64"
+              style={{ '--rotation': '-6deg', animationDelay: '0.4s' } as React.CSSProperties}
             >
-              {/* Hanging Rope */}
               <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-0.5 h-10 bg-gradient-to-b from-primary/40 to-primary/80" />
               <Link href="/industries">
                 <div className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-2xl hover:shadow-primary/20 transition-all duration-500">
                   <div className="aspect-[4/5] overflow-hidden bg-muted">
-                    <img
-                      src={retailImage}
-                      alt="Retail"
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                      data-testid="img-industry-1"
-                    />
+                    <img src={retailImage} alt="Retail" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-testid="img-industry-1" />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6">
                     <h3 className="text-2xl md:text-3xl font-black text-white mb-2">Retail</h3>
@@ -719,22 +702,16 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* Row 2 - Middle Left - Hospitality */}
+            {/* Position 4 - Hospitality */}
             <div 
-              className="industry-card absolute top-[180px] md:top-[220px] left-[15%] w-56 md:w-64"
-              style={{ '--rotation': '-12deg', animationDelay: '1s' } as React.CSSProperties}
+              className="industry-card absolute top-0 right-[5%] w-56 md:w-64"
+              style={{ '--rotation': '8deg', animationDelay: '0.6s' } as React.CSSProperties}
             >
-              {/* Hanging Rope */}
-              <div className="absolute -top-12 left-1/2 -translate-x-1/2 w-0.5 h-12 bg-gradient-to-b from-primary/40 to-primary/80" />
+              <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-0.5 h-10 bg-gradient-to-b from-primary/40 to-primary/80" />
               <Link href="/industries">
                 <div className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-2xl hover:shadow-primary/20 transition-all duration-500">
                   <div className="aspect-[4/5] overflow-hidden bg-muted">
-                    <img
-                      src={fsrImage}
-                      alt="Hospitality"
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                      data-testid="img-industry-2"
-                    />
+                    <img src={fsrImage} alt="Hospitality" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-testid="img-industry-2" />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6">
                     <h3 className="text-2xl md:text-3xl font-black text-white mb-2">Hospitality</h3>
@@ -744,22 +721,17 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* Row 2 - Middle Left-Center - Pet Care */}
+            {/* Row 2 - Middle Row */}
+            {/* Position 5 - Pet Care */}
             <div 
-              className="industry-card absolute top-[180px] md:top-[220px] left-[37%] w-54 md:w-60"
-              style={{ '--rotation': '-5deg', animationDelay: '1.25s' } as React.CSSProperties}
+              className="industry-card absolute top-[280px] md:top-[340px] left-[5%] w-56 md:w-64"
+              style={{ '--rotation': '7deg', animationDelay: '0.8s' } as React.CSSProperties}
             >
-              {/* Hanging Rope */}
               <div className="absolute -top-12 left-1/2 -translate-x-1/2 w-0.5 h-12 bg-gradient-to-b from-primary/40 to-primary/80" />
               <Link href="/industries">
                 <div className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-2xl hover:shadow-primary/20 transition-all duration-500">
                   <div className="aspect-[4/5] overflow-hidden bg-muted">
-                    <img
-                      src={petCareImage}
-                      alt="Pet Care"
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                      data-testid="img-industry-petcare"
-                    />
+                    <img src={petCareImage} alt="Pet Care" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-testid="img-industry-petcare" />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6">
                     <h3 className="text-2xl md:text-3xl font-black text-white mb-2">Pet Care</h3>
@@ -769,22 +741,16 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* Row 2 - Middle Right-Center - Photography */}
+            {/* Position 6 - Photography */}
             <div 
-              className="industry-card absolute top-[180px] md:top-[220px] right-[37%] w-54 md:w-60"
-              style={{ '--rotation': '5deg', animationDelay: '1.75s' } as React.CSSProperties}
+              className="industry-card absolute top-[280px] md:top-[340px] left-[30%] w-56 md:w-64"
+              style={{ '--rotation': '-7deg', animationDelay: '1s' } as React.CSSProperties}
             >
-              {/* Hanging Rope */}
               <div className="absolute -top-12 left-1/2 -translate-x-1/2 w-0.5 h-12 bg-gradient-to-b from-primary/40 to-primary/80" />
               <Link href="/industries">
                 <div className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-2xl hover:shadow-primary/20 transition-all duration-500">
                   <div className="aspect-[4/5] overflow-hidden bg-muted">
-                    <img
-                      src={photographyImage}
-                      alt="Photography"
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                      data-testid="img-industry-photography"
-                    />
+                    <img src={photographyImage} alt="Photography" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-testid="img-industry-photography" />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6">
                     <h3 className="text-2xl md:text-3xl font-black text-white mb-2">Photography</h3>
@@ -794,22 +760,16 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* Row 2 - Middle Right - Beauty */}
+            {/* Position 7 - Beauty */}
             <div 
-              className="industry-card absolute top-[180px] md:top-[220px] right-[15%] w-56 md:w-64"
-              style={{ '--rotation': '12deg', animationDelay: '1.5s' } as React.CSSProperties}
+              className="industry-card absolute top-[280px] md:top-[340px] right-[30%] w-56 md:w-64"
+              style={{ '--rotation': '7deg', animationDelay: '1.2s' } as React.CSSProperties}
             >
-              {/* Hanging Rope */}
               <div className="absolute -top-12 left-1/2 -translate-x-1/2 w-0.5 h-12 bg-gradient-to-b from-primary/40 to-primary/80" />
               <Link href="/industries">
                 <div className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-2xl hover:shadow-primary/20 transition-all duration-500">
                   <div className="aspect-[4/5] overflow-hidden bg-muted">
-                    <img
-                      src={beautyImage}
-                      alt="Beauty"
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                      data-testid="img-industry-3"
-                    />
+                    <img src={beautyImage} alt="Beauty" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-testid="img-industry-3" />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6">
                     <h3 className="text-2xl md:text-3xl font-black text-white mb-2">Beauty</h3>
@@ -819,22 +779,16 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* Row 3 - Lower Middle Left - Mechanics */}
+            {/* Position 8 - Mechanics */}
             <div 
-              className="industry-card absolute top-[380px] md:top-[460px] left-[8%] w-60 md:w-68"
-              style={{ '--rotation': '-6deg', animationDelay: '2s' } as React.CSSProperties}
+              className="industry-card absolute top-[280px] md:top-[340px] right-[5%] w-56 md:w-64"
+              style={{ '--rotation': '-8deg', animationDelay: '1.4s' } as React.CSSProperties}
             >
-              {/* Hanging Rope */}
-              <div className="absolute -top-14 left-1/2 -translate-x-1/2 w-0.5 h-14 bg-gradient-to-b from-primary/40 to-primary/80" />
+              <div className="absolute -top-12 left-1/2 -translate-x-1/2 w-0.5 h-12 bg-gradient-to-b from-primary/40 to-primary/80" />
               <Link href="/industries">
                 <div className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-2xl hover:shadow-primary/20 transition-all duration-500">
                   <div className="aspect-[4/5] overflow-hidden bg-muted">
-                    <img
-                      src={mechanicsImage}
-                      alt="Mechanics"
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                      data-testid="img-industry-4"
-                    />
+                    <img src={mechanicsImage} alt="Mechanics" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-testid="img-industry-4" />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6">
                     <h3 className="text-2xl md:text-3xl font-black text-white mb-2">Mechanics</h3>
@@ -844,22 +798,17 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* Row 3 - Lower Middle Center - Taxis */}
+            {/* Row 3 - Bottom Row */}
+            {/* Position 9 - Taxis */}
             <div 
-              className="industry-card absolute top-[400px] md:top-[480px] left-1/2 -translate-x-1/2 w-64 md:w-72"
-              style={{ '--rotation': '0deg', animationDelay: '2.5s' } as React.CSSProperties}
+              className="industry-card absolute top-[560px] md:top-[680px] left-[5%] w-56 md:w-64"
+              style={{ '--rotation': '-6deg', animationDelay: '1.6s' } as React.CSSProperties}
             >
-              {/* Hanging Rope */}
-              <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-0.5 h-16 bg-gradient-to-b from-primary/40 to-primary/80" />
+              <div className="absolute -top-14 left-1/2 -translate-x-1/2 w-0.5 h-14 bg-gradient-to-b from-primary/40 to-primary/80" />
               <Link href="/industries">
                 <div className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-2xl hover:shadow-primary/20 transition-all duration-500">
                   <div className="aspect-[4/5] overflow-hidden bg-muted">
-                    <img
-                      src={taxiImage}
-                      alt="Taxis"
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                      data-testid="img-industry-5"
-                    />
+                    <img src={taxiImage} alt="Taxis" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-testid="img-industry-5" />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6">
                     <h3 className="text-2xl md:text-3xl font-black text-white mb-2">Taxis</h3>
@@ -869,22 +818,16 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* Row 3 - Lower Middle Right - Football Clubs */}
+            {/* Position 10 - Football Clubs */}
             <div 
-              className="industry-card absolute top-[380px] md:top-[460px] right-[8%] w-60 md:w-68"
-              style={{ '--rotation': '6deg', animationDelay: '3s' } as React.CSSProperties}
+              className="industry-card absolute top-[560px] md:top-[680px] left-[30%] w-56 md:w-64"
+              style={{ '--rotation': '8deg', animationDelay: '1.8s' } as React.CSSProperties}
             >
-              {/* Hanging Rope */}
               <div className="absolute -top-14 left-1/2 -translate-x-1/2 w-0.5 h-14 bg-gradient-to-b from-primary/40 to-primary/80" />
               <Link href="/industries">
                 <div className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-2xl hover:shadow-primary/20 transition-all duration-500">
                   <div className="aspect-[4/5] overflow-hidden bg-muted">
-                    <img
-                      src={footballImage}
-                      alt="Football Clubs"
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                      data-testid="img-industry-6"
-                    />
+                    <img src={footballImage} alt="Football Clubs" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-testid="img-industry-6" />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6">
                     <h3 className="text-2xl md:text-3xl font-black text-white mb-2">Football Clubs</h3>
@@ -894,22 +837,16 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* Row 4 - Bottom Branch Left - Mobile Trader */}
+            {/* Position 11 - Mobile Trader */}
             <div 
-              className="industry-card absolute top-[600px] md:top-[720px] left-[20%] w-56 md:w-64"
-              style={{ '--rotation': '-10deg', animationDelay: '3.5s' } as React.CSSProperties}
+              className="industry-card absolute top-[560px] md:top-[680px] right-[30%] w-56 md:w-64"
+              style={{ '--rotation': '-8deg', animationDelay: '2s' } as React.CSSProperties}
             >
-              {/* Hanging Rope */}
-              <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-0.5 h-16 bg-gradient-to-b from-primary/40 to-primary/80" />
+              <div className="absolute -top-14 left-1/2 -translate-x-1/2 w-0.5 h-14 bg-gradient-to-b from-primary/40 to-primary/80" />
               <Link href="/industries">
                 <div className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-2xl hover:shadow-primary/20 transition-all duration-500">
                   <div className="aspect-[4/5] overflow-hidden bg-muted">
-                    <img
-                      src={mobileTraderImage}
-                      alt="Mobile Trader"
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                      data-testid="img-industry-7"
-                    />
+                    <img src={mobileTraderImage} alt="Mobile Trader" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-testid="img-industry-7" />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6">
                     <h3 className="text-2xl md:text-3xl font-black text-white mb-2">Mobile Trader</h3>
@@ -919,22 +856,16 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* Row 4 - Bottom Branch Right - Grocery Stores */}
+            {/* Position 12 - Grocery Stores */}
             <div 
-              className="industry-card absolute top-[600px] md:top-[720px] right-[20%] w-56 md:w-64"
-              style={{ '--rotation': '10deg', animationDelay: '4s' } as React.CSSProperties}
+              className="industry-card absolute top-[560px] md:top-[680px] right-[5%] w-56 md:w-64"
+              style={{ '--rotation': '6deg', animationDelay: '2.2s' } as React.CSSProperties}
             >
-              {/* Hanging Rope */}
-              <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-0.5 h-16 bg-gradient-to-b from-primary/40 to-primary/80" />
+              <div className="absolute -top-14 left-1/2 -translate-x-1/2 w-0.5 h-14 bg-gradient-to-b from-primary/40 to-primary/80" />
               <Link href="/industries">
                 <div className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-2xl hover:shadow-primary/20 transition-all duration-500">
                   <div className="aspect-[4/5] overflow-hidden bg-muted">
-                    <img
-                      src={groceryImage}
-                      alt="Grocery Stores"
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                      data-testid="img-industry-8"
-                    />
+                    <img src={groceryImage} alt="Grocery Stores" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-testid="img-industry-8" />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6">
                     <h3 className="text-2xl md:text-3xl font-black text-white mb-2">Grocery Stores</h3>
