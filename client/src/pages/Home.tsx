@@ -599,42 +599,250 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Industries - Full-Width Cinematic */}
-      <section className="py-32 md:py-40 bg-background">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
+      {/* Industries - Organic Tree Branch Layout */}
+      <section className="relative py-32 md:py-40 bg-gradient-to-b from-background via-muted/10 to-background overflow-hidden">
+        <style>{`
+          @keyframes wave-float {
+            0%, 100% { transform: translateY(0px) rotate(var(--rotation)); }
+            50% { transform: translateY(-12px) rotate(var(--rotation)); }
+          }
+          .industry-card {
+            animation: wave-float 6s ease-in-out infinite;
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+          }
+          .industry-card:hover {
+            transform: translateY(-20px) rotate(0deg) scale(1.05) !important;
+            z-index: 50;
+          }
+        `}</style>
+
+        {/* Organic Tree Trunk Background Element */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-px h-[60%] bg-gradient-to-b from-transparent via-primary/10 to-transparent opacity-40" />
+
+        <div className="max-w-[1400px] mx-auto px-6 md:px-8">
           <AnimatedSection>
-            <div className="text-center space-y-6 mb-20">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight" data-testid="text-industries-headline">
+            <div className="text-center space-y-6 mb-24">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full border border-primary/20">
+                <Sparkles className="h-4 w-4 text-primary" />
+                <span className="text-sm font-black text-primary">INDUSTRY SOLUTIONS</span>
+              </div>
+              <h2 className="text-5xl md:text-6xl lg:text-7xl font-black leading-tight" data-testid="text-industries-headline">
                 Tailored for your industry
               </h2>
+              <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
+                Specialized payment solutions designed for the unique needs of your sector
+              </p>
             </div>
           </AnimatedSection>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { title: "Quick-Service", image: qsrImage, delay: 0 },
-              { title: "Full-Service", image: fsrImage, delay: 100 },
-              { title: "Dental", image: dentalImage, delay: 200 },
-              { title: "Retail", image: retailImage, delay: 300 },
-            ].map((industry, index) => (
-              <AnimatedSection key={index} delay={industry.delay}>
-                <Link href="/industries">
-                  <div className="group relative rounded-3xl overflow-hidden hover-elevate transition-all duration-700 cursor-pointer shadow-xl">
-                    <div className="aspect-[3/4] overflow-hidden">
-                      <img
-                        src={industry.image}
-                        alt={industry.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                        data-testid={`img-industry-${index}`}
-                      />
-                    </div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-8">
-                      <h3 className="text-3xl font-black text-white">{industry.title}</h3>
-                    </div>
+          {/* Wavy Stacked Cards - Tree Branch Layout */}
+          <div className="relative min-h-[900px] md:min-h-[1000px]">
+            {/* Row 1 - Top Branch (Left Side) */}
+            <div 
+              className="industry-card absolute top-0 left-[5%] w-64 md:w-72"
+              style={{ '--rotation': '-8deg', animationDelay: '0s' } as React.CSSProperties}
+            >
+              <Link href="/industries">
+                <div className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-2xl hover:shadow-primary/20 transition-all duration-500">
+                  <div className="aspect-[4/5] overflow-hidden bg-muted">
+                    <img
+                      src={qsrImage}
+                      alt="Quick Service Restaurants"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      data-testid="img-industry-0"
+                    />
                   </div>
-                </Link>
-              </AnimatedSection>
-            ))}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6">
+                    <h3 className="text-2xl md:text-3xl font-black text-white mb-2">Quick Service</h3>
+                    <p className="text-sm text-white/80">Fast payments for fast food</p>
+                  </div>
+                </div>
+              </Link>
+            </div>
+
+            {/* Row 1 - Top Branch (Right Side) */}
+            <div 
+              className="industry-card absolute top-0 right-[5%] w-64 md:w-72"
+              style={{ '--rotation': '8deg', animationDelay: '0.5s' } as React.CSSProperties}
+            >
+              <Link href="/industries">
+                <div className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-2xl hover:shadow-primary/20 transition-all duration-500">
+                  <div className="aspect-[4/5] overflow-hidden bg-muted">
+                    <img
+                      src={retailImage}
+                      alt="Retail & Commerce"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      data-testid="img-industry-1"
+                    />
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6">
+                    <h3 className="text-2xl md:text-3xl font-black text-white mb-2">Retail</h3>
+                    <p className="text-sm text-white/80">Seamless checkout experiences</p>
+                  </div>
+                </div>
+              </Link>
+            </div>
+
+            {/* Row 2 - Middle Left */}
+            <div 
+              className="industry-card absolute top-[180px] md:top-[220px] left-[15%] w-56 md:w-64"
+              style={{ '--rotation': '-12deg', animationDelay: '1s' } as React.CSSProperties}
+            >
+              <Link href="/industries">
+                <div className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-2xl hover:shadow-primary/20 transition-all duration-500">
+                  <div className="aspect-[4/5] overflow-hidden bg-muted">
+                    <img
+                      src={fsrImage}
+                      alt="Full Service Dining"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      data-testid="img-industry-2"
+                    />
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6">
+                    <h3 className="text-2xl md:text-3xl font-black text-white mb-2">Hospitality</h3>
+                    <p className="text-sm text-white/80">Tableside & bar solutions</p>
+                  </div>
+                </div>
+              </Link>
+            </div>
+
+            {/* Row 2 - Middle Right */}
+            <div 
+              className="industry-card absolute top-[180px] md:top-[220px] right-[15%] w-56 md:w-64"
+              style={{ '--rotation': '12deg', animationDelay: '1.5s' } as React.CSSProperties}
+            >
+              <Link href="/industries">
+                <div className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-2xl hover:shadow-primary/20 transition-all duration-500">
+                  <div className="aspect-[4/5] overflow-hidden bg-muted">
+                    <img
+                      src={dentalImage}
+                      alt="Healthcare & Medical"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      data-testid="img-industry-3"
+                    />
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6">
+                    <h3 className="text-2xl md:text-3xl font-black text-white mb-2">Healthcare</h3>
+                    <p className="text-sm text-white/80">Secure patient payments</p>
+                  </div>
+                </div>
+              </Link>
+            </div>
+
+            {/* Row 3 - Lower Middle Left */}
+            <div 
+              className="industry-card absolute top-[380px] md:top-[460px] left-[8%] w-60 md:w-68"
+              style={{ '--rotation': '-6deg', animationDelay: '2s' } as React.CSSProperties}
+            >
+              <Link href="/industries">
+                <div className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-2xl hover:shadow-primary/20 transition-all duration-500">
+                  <div className="aspect-[4/5] overflow-hidden bg-muted">
+                    <img
+                      src={rocketPocketImage}
+                      alt="Beauty & Wellness"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      data-testid="img-industry-4"
+                    />
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6">
+                    <h3 className="text-2xl md:text-3xl font-black text-white mb-2">Beauty</h3>
+                    <p className="text-sm text-white/80">Salon & spa payments</p>
+                  </div>
+                </div>
+              </Link>
+            </div>
+
+            {/* Row 3 - Lower Middle Center */}
+            <div 
+              className="industry-card absolute top-[400px] md:top-[480px] left-1/2 -translate-x-1/2 w-64 md:w-72"
+              style={{ '--rotation': '0deg', animationDelay: '2.5s' } as React.CSSProperties}
+            >
+              <Link href="/industries">
+                <div className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-2xl hover:shadow-primary/20 transition-all duration-500">
+                  <div className="aspect-[4/5] overflow-hidden bg-muted">
+                    <img
+                      src={eposIntegrationImage}
+                      alt="Professional Services"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      data-testid="img-industry-5"
+                    />
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6">
+                    <h3 className="text-2xl md:text-3xl font-black text-white mb-2">Professional</h3>
+                    <p className="text-sm text-white/80">Services & consulting</p>
+                  </div>
+                </div>
+              </Link>
+            </div>
+
+            {/* Row 3 - Lower Middle Right */}
+            <div 
+              className="industry-card absolute top-[380px] md:top-[460px] right-[8%] w-60 md:w-68"
+              style={{ '--rotation': '6deg', animationDelay: '3s' } as React.CSSProperties}
+            >
+              <Link href="/industries">
+                <div className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-2xl hover:shadow-primary/20 transition-all duration-500">
+                  <div className="aspect-[4/5] overflow-hidden bg-muted">
+                    <img
+                      src={testimonial2}
+                      alt="Events & Entertainment"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      data-testid="img-industry-6"
+                    />
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6">
+                    <h3 className="text-2xl md:text-3xl font-black text-white mb-2">Events</h3>
+                    <p className="text-sm text-white/80">Ticketing & venues</p>
+                  </div>
+                </div>
+              </Link>
+            </div>
+
+            {/* Row 4 - Bottom Branch Left */}
+            <div 
+              className="industry-card absolute top-[600px] md:top-[720px] left-[20%] w-56 md:w-64"
+              style={{ '--rotation': '-10deg', animationDelay: '3.5s' } as React.CSSProperties}
+            >
+              <Link href="/industries">
+                <div className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-2xl hover:shadow-primary/20 transition-all duration-500">
+                  <div className="aspect-[4/5] overflow-hidden bg-muted">
+                    <img
+                      src={rocketGoImage}
+                      alt="Mobile & On-the-Go"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      data-testid="img-industry-7"
+                    />
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6">
+                    <h3 className="text-2xl md:text-3xl font-black text-white mb-2">Mobile Trade</h3>
+                    <p className="text-sm text-white/80">Markets & street vendors</p>
+                  </div>
+                </div>
+              </Link>
+            </div>
+
+            {/* Row 4 - Bottom Branch Right */}
+            <div 
+              className="industry-card absolute top-[600px] md:top-[720px] right-[20%] w-56 md:w-64"
+              style={{ '--rotation': '10deg', animationDelay: '4s' } as React.CSSProperties}
+            >
+              <Link href="/industries">
+                <div className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-2xl hover:shadow-primary/20 transition-all duration-500">
+                  <div className="aspect-[4/5] overflow-hidden bg-muted">
+                    <img
+                      src={testimonial3}
+                      alt="Education & Training"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      data-testid="img-industry-8"
+                    />
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6">
+                    <h3 className="text-2xl md:text-3xl font-black text-white mb-2">Education</h3>
+                    <p className="text-sm text-white/80">Schools & training</p>
+                  </div>
+                </div>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
