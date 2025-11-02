@@ -281,7 +281,7 @@ export default function Products() {
             <div className="pt-8 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
               {[
                 { value: "110k+", label: "Businesses powered" },
-                { value: "99.99%", label: "Uptime SLA" },
+                { value: "P2PE", label: "Encrypted security" },
                 { value: "1.8bn", label: "Transactions annually" },
                 { value: "450+", label: "Integrations" },
               ].map((stat, i) => (
