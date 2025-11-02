@@ -182,7 +182,7 @@ export default function Bookings() {
             <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-video">
               <iframe
                 className="w-full h-full"
-                src="https://www.youtube.com/embed/ba11Tc1XbmM?si=ZG4nUyRXenLeceGE"
+                src="https://www.youtube.com/embed/ba11Tc1XbmM?autoplay=1&mute=1&loop=1&playlist=ba11Tc1XbmM&controls=1&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3"
                 title="Rocket Bookings Demo"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
