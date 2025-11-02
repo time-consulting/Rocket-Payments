@@ -437,3 +437,26 @@
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.2;
+  }
+  25% {
+    transform: translateY(-30px) translateX(10px);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(-50px) translateX(-10px);
+    opacity: 0.8;
+  }
+  75% {
+    transform: translateY(-30px) translateX(15px);
+    opacity: 0.5;
+  }
+}
+
+.animate-float {
+  animation: float ease-in-out infinite;
+}

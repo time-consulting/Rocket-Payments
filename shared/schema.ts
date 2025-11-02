@@ -21,3 +21,22 @@ export const insertQuoteRequestSchema = createInsertSchema(quoteRequests).omit({
 
 export type InsertQuoteRequest = z.infer<typeof insertQuoteRequestSchema>;
 export type QuoteRequest = typeof quoteRequests.$inferSelect;
+
+export const freeTerminalLeads = pgTable("free_terminal_leads", {
+  id: varchar("id").primaryKey(),
+  businessName: text("business_name").notNull(),
+  mobile: text("mobile").notNull(),
+  currentProvider: text("current_provider"),
+  monthlyFees: text("monthly_fees"),
+  email: text("email"),
+  industryType: text("industry_type"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+export const insertFreeTerminalLeadSchema = createInsertSchema(freeTerminalLeads).omit({
+  id: true,
+  createdAt: true,
+});
+
+export type InsertFreeTerminalLead = z.infer<typeof insertFreeTerminalLeadSchema>;
+export type FreeTerminalLead = typeof freeTerminalLeads.$inferSelect;
