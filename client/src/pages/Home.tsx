@@ -37,6 +37,9 @@ import footballImage from "@assets/generated_images/Football_club_stadium_paymen
 import groceryImage from "@assets/generated_images/Grocery_supermarket_interior_20624bf4.png";
 import beautyImage from "@assets/hair salon_1761948535094.png";
 import mobileTraderImage from "@assets/Gemini_Generated_Image_3z8le13z8le13z8l_1762090062033.png";
+import petCareImage from "@assets/generated_images/Pet_care_veterinary_clinic_c4916c50.png";
+import photographyImage from "@assets/generated_images/Photography_studio_workspace_ea798d9e.png";
+import cafeImage from "@assets/generated_images/Cozy_café_coffee_shop_87bbf65d.png";
 
 function ParallaxHero() {
   const [scrollY, setScrollY] = useState(0);
@@ -666,6 +669,31 @@ export default function Home() {
               </Link>
             </div>
 
+            {/* Row 1 - Top Branch (Center) - Café */}
+            <div 
+              className="industry-card absolute top-0 left-1/2 -translate-x-1/2 w-60 md:w-68"
+              style={{ '--rotation': '0deg', animationDelay: '0.25s' } as React.CSSProperties}
+            >
+              {/* Hanging Rope */}
+              <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-0.5 h-10 bg-gradient-to-b from-primary/40 to-primary/80" />
+              <Link href="/industries">
+                <div className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-2xl hover:shadow-primary/20 transition-all duration-500">
+                  <div className="aspect-[4/5] overflow-hidden bg-muted">
+                    <img
+                      src={cafeImage}
+                      alt="Café & Coffee"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      data-testid="img-industry-cafe"
+                    />
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6">
+                    <h3 className="text-2xl md:text-3xl font-black text-white mb-2">Café & Coffee</h3>
+                    <p className="text-sm text-white/80">Coffee shops</p>
+                  </div>
+                </div>
+              </Link>
+            </div>
+
             {/* Row 1 - Top Branch (Right Side) - Retail */}
             <div 
               className="industry-card absolute top-0 right-[5%] w-64 md:w-72"
@@ -711,6 +739,56 @@ export default function Home() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6">
                     <h3 className="text-2xl md:text-3xl font-black text-white mb-2">Hospitality</h3>
                     <p className="text-sm text-white/80">Bars & restaurants</p>
+                  </div>
+                </div>
+              </Link>
+            </div>
+
+            {/* Row 2 - Middle Left-Center - Pet Care */}
+            <div 
+              className="industry-card absolute top-[180px] md:top-[220px] left-[37%] w-54 md:w-60"
+              style={{ '--rotation': '-5deg', animationDelay: '1.25s' } as React.CSSProperties}
+            >
+              {/* Hanging Rope */}
+              <div className="absolute -top-12 left-1/2 -translate-x-1/2 w-0.5 h-12 bg-gradient-to-b from-primary/40 to-primary/80" />
+              <Link href="/industries">
+                <div className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-2xl hover:shadow-primary/20 transition-all duration-500">
+                  <div className="aspect-[4/5] overflow-hidden bg-muted">
+                    <img
+                      src={petCareImage}
+                      alt="Pet Care"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      data-testid="img-industry-petcare"
+                    />
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6">
+                    <h3 className="text-2xl md:text-3xl font-black text-white mb-2">Pet Care</h3>
+                    <p className="text-sm text-white/80">Veterinary & grooming</p>
+                  </div>
+                </div>
+              </Link>
+            </div>
+
+            {/* Row 2 - Middle Right-Center - Photography */}
+            <div 
+              className="industry-card absolute top-[180px] md:top-[220px] right-[37%] w-54 md:w-60"
+              style={{ '--rotation': '5deg', animationDelay: '1.75s' } as React.CSSProperties}
+            >
+              {/* Hanging Rope */}
+              <div className="absolute -top-12 left-1/2 -translate-x-1/2 w-0.5 h-12 bg-gradient-to-b from-primary/40 to-primary/80" />
+              <Link href="/industries">
+                <div className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-2xl hover:shadow-primary/20 transition-all duration-500">
+                  <div className="aspect-[4/5] overflow-hidden bg-muted">
+                    <img
+                      src={photographyImage}
+                      alt="Photography"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      data-testid="img-industry-photography"
+                    />
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6">
+                    <h3 className="text-2xl md:text-3xl font-black text-white mb-2">Photography</h3>
+                    <p className="text-sm text-white/80">Studios & events</p>
                   </div>
                 </div>
               </Link>
