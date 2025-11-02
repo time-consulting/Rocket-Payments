@@ -34,7 +34,7 @@ import bookingsImage from "@assets/neon restaurant rocket pay_1761946595999.png"
 import mechanicsImage from "@assets/generated_images/Mechanics_garage_payment_b1430d76.png";
 import taxiImage from "@assets/generated_images/Classic_London_black_taxi_694b8f2a.png";
 import footballImage from "@assets/generated_images/Football_club_stadium_payment_55ec1db0.png";
-import groceryImage from "@assets/generated_images/Grocery_store_checkout_d1aee79e.png";
+import groceryImage from "@assets/generated_images/Grocery_supermarket_interior_20624bf4.png";
 import beautyImage from "@assets/hair salon_1761948535094.png";
 
 function ParallaxHero() {
