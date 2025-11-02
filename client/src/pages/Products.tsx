@@ -33,6 +33,12 @@ import tapToPayWatchImage from "@assets/tap to pay watch_1762086702786.webp";
 import fundingApprovedImage from "@assets/1080x1074_1762086864419.webp";
 import bistroExpansionImage from "@assets/expansion french bistro funding_1762086864420.png";
 import marketTraderImage from "@assets/Gemini_Generated_Image_3z8le13z8le13z8l_1762086864421.png";
+import bookingAppImage from "@assets/810x720 (1)_1762086982600.webp";
+import tabletBookingImage from "@assets/810x720_1762086982613.webp";
+import calendarManagementImage from "@assets/2400x1040_1762086982614.webp";
+import experienceGroupImage from "@assets/experience group_1762086982614.png";
+import chefCookingImage from "@assets/Gemini_Generated_Image_h0v6bch0v6bch0v6_1762086982615.png";
+import neonRestaurantImage from "@assets/neon restaurant rocket pay_1762086982615.png";
 
 function AnimatedSection({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
   const [isVisible, setIsVisible] = useState(false);
@@ -444,21 +450,16 @@ export default function Products() {
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <AnimatedSection>
-              <div className="relative h-[500px] md:h-[600px] rounded-3xl overflow-hidden shadow-2xl">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-primary/20 to-primary/10" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center space-y-6 p-8">
-                    <Calendar className="h-32 w-32 text-primary mx-auto opacity-20" />
-                    <div className="space-y-4">
-                      {["Reserve with Google", "Online booking portal", "Automated reminders", "Calendar sync"].map((feature, i) => (
-                        <div key={i} className="inline-block mx-2">
-                          <Badge className="text-sm px-4 py-2">{feature}</Badge>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <CarouselImages
+                images={[
+                  { src: bookingAppImage, alt: "Restaurant booking app on phone" },
+                  { src: experienceGroupImage, alt: "Chef serving guests at table" },
+                  { src: calendarManagementImage, alt: "Booking calendar management on tablet" },
+                  { src: tabletBookingImage, alt: "Staff managing bookings on tablet" },
+                  { src: chefCookingImage, alt: "Chef cooking in professional kitchen" },
+                  { src: neonRestaurantImage, alt: "Premium dining experience" },
+                ]}
+              />
             </AnimatedSection>
 
             <AnimatedSection delay={300}>
