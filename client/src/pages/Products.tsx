@@ -602,10 +602,10 @@ export default function Products() {
 
               <div className="grid md:grid-cols-4 gap-6 pt-8">
                 {[
-                  { icon: Users, label: "EPOS Systems", count: "200+" },
-                  { icon: BarChart3, label: "Accounting", count: "50+" },
-                  { icon: Globe, label: "E-commerce", count: "100+" },
-                  { icon: Award, label: "Business Tools", count: "100+" },
+                  { icon: Users, label: "EPOS Systems", count: "450+" },
+                  { icon: Shield, label: "P2PE Security", count: "Secure" },
+                  { icon: Globe, label: "Online Platforms", count: "200+" },
+                  { icon: Wallet, label: "Business Funding", count: "Fast" },
                 ].map((category, i) => (
                   <AnimatedSection key={i} delay={i * 100}>
                     <Card className="p-8 text-center space-y-4 hover-elevate transition-all duration-500 cursor-default border-primary/10 shadow-lg h-full">
