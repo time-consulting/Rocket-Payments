@@ -36,6 +36,7 @@ import taxiImage from "@assets/generated_images/Classic_London_black_taxi_694b8f
 import footballImage from "@assets/generated_images/Football_club_stadium_payment_55ec1db0.png";
 import groceryImage from "@assets/generated_images/Grocery_supermarket_interior_20624bf4.png";
 import beautyImage from "@assets/hair salon_1761948535094.png";
+import mobileTraderImage from "@assets/Gemini_Generated_Image_3z8le13z8le13z8l_1762090062033.png";
 
 function ParallaxHero() {
   const [scrollY, setScrollY] = useState(0);
@@ -845,7 +846,7 @@ export default function Home() {
                 <div className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-2xl hover:shadow-primary/20 transition-all duration-500">
                   <div className="aspect-[4/5] overflow-hidden bg-muted">
                     <img
-                      src={rocketGoImage}
+                      src={mobileTraderImage}
                       alt="Mobile Trader"
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                       data-testid="img-industry-7"
