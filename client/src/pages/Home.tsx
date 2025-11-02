@@ -349,6 +349,26 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Autoplay Video Section */}
+      <section className="py-16 md:py-24 bg-background">
+        <div className="max-w-6xl mx-auto px-6 md:px-8">
+          <AnimatedSection>
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl bg-muted">
+              <div className="aspect-video">
+                <iframe
+                  className="w-full h-full"
+                  src="https://www.youtube.com/embed/ba11Tc1XbmM?autoplay=1&mute=1&loop=1&playlist=ba11Tc1XbmM&controls=1&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3"
+                  title="Rocket Payments Video"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  data-testid="video-hero"
+                />
+              </div>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
       {/* Switch for FREE Banner */}
       <section className="bg-primary text-primary-foreground py-16 md:py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary-foreground/5 via-transparent to-transparent pointer-events-none" />
