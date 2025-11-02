@@ -31,6 +31,7 @@ type FormData = z.infer<typeof formSchema>;
 export default function FreeTerminal() {
   const [step, setStep] = useState(1);
   const [timeLeft, setTimeLeft] = useState(24 * 60 * 60);
+  const [annualSpend, setAnnualSpend] = useState(0);
   const { toast } = useToast();
 
   const form = useForm<FormData>({
@@ -77,6 +78,10 @@ export default function FreeTerminal() {
     const minutes = Math.floor((seconds % 3600) / 60);
     const secs = seconds % 60;
     return `${hours}h ${minutes}m ${secs}s`;
+  };
+
+  const calculateSavings = (annual: number) => {
+    return Math.round(annual * 0.33);
   };
 
   const onSubmit = (data: FormData) => {
@@ -173,22 +178,63 @@ export default function FreeTerminal() {
         </div>
       </section>
 
-      {/* Product Showcase Section */}
-      <section className="py-20 px-4 bg-gradient-to-b from-background via-muted/20 to-background relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(13,148,136,0.1),transparent_50%)]" />
-        
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-16">
+      {/* Calculator Section */}
+      <section className="py-20 px-4 bg-muted/30">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-5xl font-black text-center mb-6">
+            Calculate Your <span className="text-primary">Savings</span>
+          </h2>
+          <p className="text-xl text-center text-muted-foreground mb-12">
+            Our customers typically save 33% on their payment processing costs
+          </p>
+
+          <Card className="p-8 bg-card/80 backdrop-blur shadow-2xl">
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div>
+                <label className="text-lg font-bold mb-3 block">
+                  Your Annual Card Spend
+                </label>
+                <div className="relative">
+                  <span className="absolute left-4 top-1/2 -translate-y-1/2 text-3xl font-black text-muted-foreground">
+                    £
+                  </span>
+                  <Input
+                    type="number"
+                    placeholder="200000"
+                    value={annualSpend || ""}
+                    onChange={(e) => setAnnualSpend(parseFloat(e.target.value) || 0)}
+                    className="text-3xl font-bold h-20 pl-12"
+                    data-testid="input-annual-spend"
+                  />
+                </div>
+                <p className="text-sm text-muted-foreground mt-2">Enter your annual card turnover</p>
+              </div>
+
+              <div className="text-center md:text-left">
+                <div className="text-sm font-bold text-muted-foreground mb-2">You Could Save</div>
+                <div className="text-6xl font-black text-primary mb-4" data-testid="text-savings">
+                  £{calculateSavings(annualSpend).toLocaleString()}
+                </div>
+                <p className="text-muted-foreground">per year by switching to Rocket Payments</p>
+              </div>
+            </div>
+          </Card>
+        </div>
+      </section>
+
+      {/* Product Intro with Hero Image */}
+      <section className="py-20 px-4 bg-gradient-to-b from-background to-muted/20">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
             <h2 className="text-5xl lg:text-7xl font-black mb-6">
               Meet the <span className="text-primary">Rocket Go</span>
             </h2>
-            <p className="text-2xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-2xl text-muted-foreground">
               Premium payment technology that helps businesses grow faster and save more
             </p>
           </div>
 
-          {/* Main Hero Device */}
-          <div className="mb-16 max-w-4xl mx-auto">
+          <div className="max-w-4xl mx-auto">
             <div className="relative group">
               <div className="absolute -inset-4 bg-gradient-to-r from-primary/30 via-primary/10 to-primary/30 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
               <img
@@ -199,9 +245,95 @@ export default function FreeTerminal() {
               />
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Offer Stack Section */}
+      <section className="py-20 px-4 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-primary/5" />
+
+        <div className="max-w-5xl mx-auto relative z-10">
+          <h2 className="text-5xl lg:text-7xl font-black text-center mb-4">
+            The Complete Package
+          </h2>
+          <p className="text-xl text-center text-muted-foreground mb-16">
+            Everything you need to save money and upgrade your payments
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {[
+              {
+                icon: Sparkles,
+                title: "Free Premium Terminal",
+                value: "Save £189",
+                description: "Worth £189, yours for £0 when you switch today",
+              },
+              {
+                icon: DollarSign,
+                title: "Zero Monthly Fees",
+                value: "£0/month",
+                description: "No rental. No contracts. No hidden charges.",
+              },
+              {
+                icon: TrendingDown,
+                title: "Better Transaction Rates",
+                value: "Save More",
+                description: "Lower fees on every transaction you process",
+              },
+              {
+                icon: Shield,
+                title: "12-Month Price Lock",
+                value: "Guaranteed",
+                description: "Your rates won't increase for a full year",
+              },
+              {
+                icon: Zap,
+                title: "Exit Cost Coverage",
+                value: "Up to £3,000",
+                description: "We'll cover your cancellation fees from your old provider",
+              },
+              {
+                icon: Clock,
+                title: "Setup in 48 Hours",
+                value: "Lightning Fast",
+                description: "Get up and running faster than any competitor",
+              },
+            ].map((benefit, index) => (
+              <Card
+                key={index}
+                className="p-6 hover-elevate transition-all duration-300 bg-card/50 backdrop-blur"
+                style={{
+                  animationDelay: `${index * 100}ms`,
+                }}
+              >
+                <div className="flex items-start gap-4">
+                  <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <benefit.icon className="w-7 h-7 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-black mb-1">{benefit.title}</h3>
+                    <div className="text-2xl font-black text-primary mb-2">{benefit.value}</div>
+                    <p className="text-sm text-muted-foreground">{benefit.description}</p>
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Lifestyle Showcase */}
+      <section className="py-20 px-4 bg-gradient-to-b from-background via-muted/20 to-background">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-5xl lg:text-7xl font-black text-center mb-4">
+            Trusted by Businesses <span className="text-primary">Everywhere</span>
+          </h2>
+          <p className="text-xl text-center text-muted-foreground mb-16">
+            From busy restaurants to mobile traders, the Rocket Go works perfectly
+          </p>
 
           {/* Lifestyle Grid */}
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
             <div className="relative group overflow-hidden rounded-2xl">
               <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 flex items-end p-6">
                 <div>
@@ -303,80 +435,6 @@ export default function FreeTerminal() {
             <p className="text-xs text-muted-foreground mt-4">
               Free terminal offer subject to qualification
             </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Offer Stack Section */}
-      <section className="py-20 px-4 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-primary/5" />
-
-        <div className="max-w-5xl mx-auto relative z-10">
-          <h2 className="text-5xl lg:text-7xl font-black text-center mb-4">
-            The Complete Package
-          </h2>
-          <p className="text-xl text-center text-muted-foreground mb-16">
-            Everything you need to save money and upgrade your payments
-          </p>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            {[
-              {
-                icon: Sparkles,
-                title: "Free Premium Terminal",
-                value: "Save £189",
-                description: "Worth £189, yours for £0 when you switch today",
-              },
-              {
-                icon: DollarSign,
-                title: "Zero Monthly Fees",
-                value: "£0/month",
-                description: "No rental. No contracts. No hidden charges.",
-              },
-              {
-                icon: TrendingDown,
-                title: "Better Transaction Rates",
-                value: "Save More",
-                description: "Lower fees on every transaction you process",
-              },
-              {
-                icon: Shield,
-                title: "12-Month Price Lock",
-                value: "Guaranteed",
-                description: "Your rates won't increase for a full year",
-              },
-              {
-                icon: Zap,
-                title: "Exit Cost Coverage",
-                value: "Up to £3,000",
-                description: "We'll cover your cancellation fees from your old provider",
-              },
-              {
-                icon: Clock,
-                title: "Setup in 48 Hours",
-                value: "Lightning Fast",
-                description: "Get up and running faster than any competitor",
-              },
-            ].map((benefit, index) => (
-              <Card
-                key={index}
-                className="p-6 hover-elevate transition-all duration-300 bg-card/50 backdrop-blur"
-                style={{
-                  animationDelay: `${index * 100}ms`,
-                }}
-              >
-                <div className="flex items-start gap-4">
-                  <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <benefit.icon className="w-7 h-7 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-black mb-1">{benefit.title}</h3>
-                    <div className="text-2xl font-black text-primary mb-2">{benefit.value}</div>
-                    <p className="text-sm text-muted-foreground">{benefit.description}</p>
-                  </div>
-                </div>
-              </Card>
-            ))}
           </div>
         </div>
       </section>
