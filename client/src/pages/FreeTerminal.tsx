@@ -31,7 +31,7 @@ type FormData = z.infer<typeof formSchema>;
 export default function FreeTerminal() {
   const [step, setStep] = useState(1);
   const [timeLeft, setTimeLeft] = useState(24 * 60 * 60);
-  const [annualSpend, setAnnualSpend] = useState(0);
+  const [monthlyFees, setMonthlyFees] = useState(0);
   const { toast } = useToast();
 
   const form = useForm<FormData>({
@@ -80,8 +80,10 @@ export default function FreeTerminal() {
     return `${hours}h ${minutes}m ${secs}s`;
   };
 
-  const calculateSavings = (annual: number) => {
-    return Math.round(annual * 0.33);
+  const calculateSavings = (monthlyFees: number) => {
+    const monthlySavings = monthlyFees * 0.33;
+    const annualSavings = monthlySavings * 12;
+    return Math.round(annualSavings);
   };
 
   const onSubmit = (data: FormData) => {
@@ -192,7 +194,7 @@ export default function FreeTerminal() {
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div>
                 <label className="text-lg font-bold mb-3 block">
-                  Your Annual Card Spend
+                  Your Current Monthly Fees
                 </label>
                 <div className="relative">
                   <span className="absolute left-4 top-1/2 -translate-y-1/2 text-3xl font-black text-muted-foreground">
@@ -200,22 +202,22 @@ export default function FreeTerminal() {
                   </span>
                   <Input
                     type="number"
-                    placeholder="200000"
-                    value={annualSpend || ""}
-                    onChange={(e) => setAnnualSpend(parseFloat(e.target.value) || 0)}
+                    placeholder="100"
+                    value={monthlyFees || ""}
+                    onChange={(e) => setMonthlyFees(parseFloat(e.target.value) || 0)}
                     className="text-3xl font-bold h-20 pl-12"
-                    data-testid="input-annual-spend"
+                    data-testid="input-monthly-fees"
                   />
                 </div>
-                <p className="text-sm text-muted-foreground mt-2">Enter your annual card turnover</p>
+                <p className="text-sm text-muted-foreground mt-2">What you currently pay per month</p>
               </div>
 
               <div className="text-center md:text-left">
-                <div className="text-sm font-bold text-muted-foreground mb-2">You Could Save</div>
+                <div className="text-sm font-bold text-muted-foreground mb-2">Your Annual Saving</div>
                 <div className="text-6xl font-black text-primary mb-4" data-testid="text-savings">
-                  £{calculateSavings(annualSpend).toLocaleString()}
+                  £{calculateSavings(monthlyFees).toLocaleString()}
                 </div>
-                <p className="text-muted-foreground">per year by switching to Rocket Payments</p>
+                <p className="text-muted-foreground">saved every year by switching to Rocket Payments</p>
               </div>
             </div>
           </Card>
