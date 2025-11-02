@@ -24,10 +24,12 @@ import {
   Wallet
 } from "lucide-react";
 
-import rocketGoImage from "@assets/generated_images/Rocket_Go_product_shot_ed6f0f19.png";
-import rocketPocketImage from "@assets/generated_images/Rocket_Pocket_mobile_payment_3b62149f.png";
-import rocketWiredImage from "@assets/generated_images/Rocket_Wired_countertop_terminal_57e8157c.png";
-import tapToPayImage from "@assets/generated_images/Tap_to_Pay_iPhone_a1c38f15.png";
+import rocketGoPubImage from "@assets/rocket go pub_1762086661512.png";
+import tapRocketGoImage from "@assets/tap rocket go_1762086661514.png";
+import pocketPubImage from "@assets/pocket - pub_1762086638111.png";
+import rocketPocketImage from "@assets/rocket pocket_1762086638112.png";
+import terminalApprovedImage from "@assets/terminal approved_1762086661514.png";
+import tapToPayWatchImage from "@assets/tap to pay watch_1762086702786.webp";
 import approvedImage from "@assets/1080x1074_1761948535092.webp";
 import balanceImage from "@assets/1080x680_1761948535089.webp";
 import handshakeImage from "@assets/shake_1761948535094.png";
@@ -300,10 +302,12 @@ export default function Products() {
             <AnimatedSection>
               <CarouselImages
                 images={[
-                  { src: rocketGoImage, alt: "Rocket Go payment terminal" },
-                  { src: rocketPocketImage, alt: "Rocket Pocket mobile terminal" },
-                  { src: rocketWiredImage, alt: "Rocket Wired countertop terminal" },
-                  { src: tapToPayImage, alt: "Tap to Pay on iPhone" },
+                  { src: rocketGoPubImage, alt: "Rocket Go terminal in pub setting" },
+                  { src: rocketPocketImage, alt: "Rocket Pocket device product shot" },
+                  { src: tapRocketGoImage, alt: "Rocket Go at food truck" },
+                  { src: pocketPubImage, alt: "Rocket Pocket in use at bar" },
+                  { src: terminalApprovedImage, alt: "Payment approved on terminal" },
+                  { src: tapToPayWatchImage, alt: "Tap to Pay on iPhone with Apple Watch" },
                 ]}
               />
             </AnimatedSection>
