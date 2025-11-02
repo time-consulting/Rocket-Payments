@@ -622,25 +622,6 @@ export default function Home() {
           }
         `}</style>
 
-        {/* Organic Tree Branch Background Elements */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-px h-[60%] bg-gradient-to-b from-transparent via-primary/10 to-transparent opacity-40" />
-        
-        {/* Branch Lines - Left Side */}
-        <svg className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-20" style={{ zIndex: 0 }}>
-          <line x1="50%" y1="10%" x2="10%" y2="15%" stroke="hsl(var(--primary))" strokeWidth="2" strokeDasharray="4,4" />
-          <line x1="50%" y1="20%" x2="20%" y2="32%" stroke="hsl(var(--primary))" strokeWidth="2" strokeDasharray="4,4" />
-          <line x1="50%" y1="35%" x2="13%" y2="50%" stroke="hsl(var(--primary))" strokeWidth="2" strokeDasharray="4,4" />
-          <line x1="50%" y1="50%" x2="25%" y2="75%" stroke="hsl(var(--primary))" strokeWidth="2" strokeDasharray="4,4" />
-        </svg>
-        
-        {/* Branch Lines - Right Side */}
-        <svg className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-20" style={{ zIndex: 0 }}>
-          <line x1="50%" y1="10%" x2="90%" y2="15%" stroke="hsl(var(--primary))" strokeWidth="2" strokeDasharray="4,4" />
-          <line x1="50%" y1="20%" x2="80%" y2="32%" stroke="hsl(var(--primary))" strokeWidth="2" strokeDasharray="4,4" />
-          <line x1="50%" y1="35%" x2="87%" y2="50%" stroke="hsl(var(--primary))" strokeWidth="2" strokeDasharray="4,4" />
-          <line x1="50%" y1="50%" x2="50%" y2="52%" stroke="hsl(var(--primary))" strokeWidth="2" strokeDasharray="4,4" />
-          <line x1="50%" y1="50%" x2="75%" y2="75%" stroke="hsl(var(--primary))" strokeWidth="2" strokeDasharray="4,4" />
-        </svg>
 
         <div className="max-w-[1400px] mx-auto px-6 md:px-8">
           <AnimatedSection>
