@@ -171,7 +171,7 @@ function CarouselImages({ images }: { images: { src: string; alt: string }[] }) 
 function CountUpNumber({ end, duration = 2000, suffix = "", prefix = "" }: { end: number; duration?: number; suffix?: string; prefix?: string }) {
   const [count, setCount] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -180,7 +180,7 @@ function CountUpNumber({ end, duration = 2000, suffix = "", prefix = "" }: { end
           setIsVisible(true);
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.3 }
     );
 
     if (ref.current) {
@@ -200,10 +200,16 @@ function CountUpNumber({ end, duration = 2000, suffix = "", prefix = "" }: { end
       if (!startTime) startTime = currentTime;
       const progress = Math.min((currentTime - startTime) / duration, 1);
       
-      setCount(Math.floor(progress * end));
+      // Ease out cubic for smooth deceleration
+      const easeOutCubic = 1 - Math.pow(1 - progress, 3);
+      const currentCount = Math.floor(easeOutCubic * end);
+      
+      setCount(currentCount);
 
       if (progress < 1) {
         animationFrame = requestAnimationFrame(animate);
+      } else {
+        setCount(end);
       }
     };
 
@@ -212,7 +218,7 @@ function CountUpNumber({ end, duration = 2000, suffix = "", prefix = "" }: { end
     return () => cancelAnimationFrame(animationFrame);
   }, [isVisible, end, duration]);
 
-  return <span ref={ref}>{prefix}{count}{suffix}</span>;
+  return <span ref={ref}>{prefix}{count.toLocaleString()}{suffix}</span>;
 }
 
 export default function Products() {
@@ -546,16 +552,25 @@ export default function Products() {
                     </div>
                     
                     <div className="grid grid-cols-2 gap-4">
-                      {[
-                        { label: "Revenue", value: "£<CountUpNumber end={12} />k", change: "+<CountUpNumber end={23} />%" },
-                        { label: "Transactions", value: "<CountUpNumber end={342} />", change: "+<CountUpNumber end={18} />%" },
-                      ].map((stat, i) => (
-                        <Card key={i} className="p-6 space-y-2 bg-card/80 backdrop-blur-sm">
-                          <p className="text-sm text-muted-foreground">{stat.label}</p>
-                          <div className="text-3xl font-black" dangerouslySetInnerHTML={{ __html: stat.value }} />
-                          <p className="text-sm text-primary font-bold" dangerouslySetInnerHTML={{ __html: stat.change }} />
-                        </Card>
-                      ))}
+                      <Card className="p-6 space-y-2 bg-card/80 backdrop-blur-sm">
+                        <p className="text-sm text-muted-foreground">Revenue</p>
+                        <div className="text-3xl font-black">
+                          £<CountUpNumber end={12} duration={2000} />k
+                        </div>
+                        <p className="text-sm text-primary font-bold">
+                          +<CountUpNumber end={23} duration={1800} />%
+                        </p>
+                      </Card>
+                      
+                      <Card className="p-6 space-y-2 bg-card/80 backdrop-blur-sm">
+                        <p className="text-sm text-muted-foreground">Transactions</p>
+                        <div className="text-3xl font-black">
+                          <CountUpNumber end={342} duration={2000} />
+                        </div>
+                        <p className="text-sm text-primary font-bold">
+                          +<CountUpNumber end={18} duration={1800} />%
+                        </p>
+                      </Card>
                     </div>
 
                     <Card className="p-6 bg-card/80 backdrop-blur-sm">
