@@ -30,9 +30,9 @@ import pocketPubImage from "@assets/pocket - pub_1762086638111.png";
 import rocketPocketImage from "@assets/rocket pocket_1762086638112.png";
 import terminalApprovedImage from "@assets/terminal approved_1762086661514.png";
 import tapToPayWatchImage from "@assets/tap to pay watch_1762086702786.webp";
-import approvedImage from "@assets/1080x1074_1761948535092.webp";
-import balanceImage from "@assets/1080x680_1761948535089.webp";
-import handshakeImage from "@assets/shake_1761948535094.png";
+import fundingApprovedImage from "@assets/1080x1074_1762086864419.webp";
+import bistroExpansionImage from "@assets/expansion french bistro funding_1762086864420.png";
+import marketTraderImage from "@assets/Gemini_Generated_Image_3z8le13z8le13z8l_1762086864421.png";
 
 function AnimatedSection({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
   const [isVisible, setIsVisible] = useState(false);
@@ -429,9 +429,9 @@ export default function Products() {
             <AnimatedSection>
               <CarouselImages
                 images={[
-                  { src: approvedImage, alt: "Funding approved" },
-                  { src: balanceImage, alt: "Balance overview" },
-                  { src: handshakeImage, alt: "Business partnership" },
+                  { src: fundingApprovedImage, alt: "Business owner receiving funding approval notification" },
+                  { src: bistroExpansionImage, alt: "Restaurant owner expanding bistro with funding" },
+                  { src: marketTraderImage, alt: "Market trader thriving at Christmas market" },
                 ]}
               />
             </AnimatedSection>
