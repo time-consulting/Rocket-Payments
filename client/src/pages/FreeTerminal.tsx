@@ -183,7 +183,7 @@ export default function FreeTerminal() {
               Meet the <span className="text-primary">Rocket Go</span>
             </h2>
             <p className="text-2xl text-muted-foreground max-w-3xl mx-auto">
-              Premium payment technology designed for businesses processing <span className="font-bold text-foreground">£180k+ annually</span>
+              Premium payment technology that helps businesses grow faster and save more
             </p>
           </div>
 
@@ -291,9 +291,6 @@ export default function FreeTerminal() {
           </div>
 
           <div className="text-center mt-12">
-            <p className="text-sm text-muted-foreground mb-4">
-              Premium offer for established businesses (£180k+ annual card turnover)
-            </p>
             <Button
               size="lg"
               className="text-xl px-12 py-8 rounded-full font-black shadow-2xl hover:scale-105 transition-transform"
@@ -303,6 +300,9 @@ export default function FreeTerminal() {
               Yes, I Want This Terminal
               <ArrowRight className="ml-2 h-6 w-6" />
             </Button>
+            <p className="text-xs text-muted-foreground mt-4">
+              Free terminal offer subject to qualification
+            </p>
           </div>
         </div>
       </section>
