@@ -9,7 +9,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { ArrowRight, Sparkles, Cloud, TrendingUp, Zap, Star, CheckCircle, Rocket, Shield, Users } from "lucide-react";
+import { ArrowRight, Sparkles, Cloud, TrendingUp, Zap, Star, CheckCircle, Rocket, Shield, Users, Calendar } from "lucide-react";
 
 import heroImage from "@assets/hero image rocket go_1761926380440.png";
 import offerBanner from "@assets/offer banner rocket go device_1761930053366.png";
@@ -29,6 +29,8 @@ import eposIntegrationImage from "@assets/Gemini_Generated_Image_56kibq56kibq56k
 import testimonial1 from "@assets/generated_images/Business_owner_testimonial_1_a41a1226.png";
 import testimonial2 from "@assets/generated_images/Restaurant_manager_testimonial_45d19cf6.png";
 import testimonial3 from "@assets/generated_images/Retail_owner_testimonial_379ad525.png";
+import fundingSuccessImage from "@assets/expansion french bistro funding_1761948535093.png";
+import bookingsImage from "@assets/neon restaurant rocket pay_1761946595999.png";
 
 function ParallaxHero() {
   const [scrollY, setScrollY] = useState(0);
@@ -395,10 +397,35 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Value Props - Interactive Cards */}
-      <section className="py-32 md:py-40 bg-muted/20">
+      {/* Why Rocket Payments - Cinematic Showcase */}
+      <section className="relative py-32 md:py-40 bg-gradient-to-b from-muted/20 via-background to-muted/10 overflow-hidden">
+        {/* Animated Background Particles */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-20 left-10 w-2 h-2 rounded-full bg-primary animate-float" />
+          <div className="absolute top-40 right-20 w-3 h-3 rounded-full bg-primary/60 animate-float-delayed" />
+          <div className="absolute bottom-32 left-1/4 w-2 h-2 rounded-full bg-primary animate-float" />
+          <div className="absolute bottom-20 right-1/3 w-3 h-3 rounded-full bg-primary/40 animate-float-delayed" />
+        </div>
+
+        <style>{`
+          @keyframes float {
+            0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0.3; }
+            50% { transform: translateY(-30px) translateX(10px); opacity: 0.8; }
+          }
+          @keyframes float-delayed {
+            0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0.2; }
+            50% { transform: translateY(-40px) translateX(-10px); opacity: 0.6; }
+          }
+          .animate-float {
+            animation: float 6s ease-in-out infinite;
+          }
+          .animate-float-delayed {
+            animation: float-delayed 8s ease-in-out infinite 2s;
+          }
+        `}</style>
+
         {/* Trusted By - Scrolling Logos Banner */}
-        <div className="mb-16 overflow-hidden">
+        <div className="mb-20 overflow-hidden">
           <div className="max-w-7xl mx-auto px-6 md:px-8">
             <p className="text-center text-sm font-black text-muted-foreground tracking-wider mb-6">TRUSTED BY LEADING BUSINESSES</p>
           </div>
@@ -419,37 +446,155 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
+        <div className="relative max-w-7xl mx-auto px-6 md:px-8">
+          {/* Emotional Header */}
           <AnimatedSection>
-            <div className="text-center space-y-6 mb-20">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight" data-testid="text-value-prop-headline">
-                Why Rocket Payments?
+            <div className="text-center space-y-8 mb-24">
+              <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-sm">
+                <Shield className="h-5 w-5 text-primary animate-pulse" />
+                <span className="text-sm font-black text-primary">BUILT FOR GROWTH</span>
+              </div>
+              <h2 className="text-5xl md:text-6xl lg:text-7xl font-black leading-[0.95]" data-testid="text-value-prop-headline">
+                Trust. Security.<br />Reliability. Growth.
               </h2>
-              <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
-                Everything you need to deliver standout payment experiences
+              <p className="text-2xl md:text-3xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+                Every tool designed to accelerate your business, protect your customers, and unlock your potential.
               </p>
             </div>
           </AnimatedSection>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { icon: CheckCircle, title: "450+ EPOS integrations", color: "text-green-600 dark:text-green-400", bg: "bg-green-500/10", delay: 0 },
-              { icon: Shield, title: "99.99% uptime", color: "text-blue-600 dark:text-blue-400", bg: "bg-blue-500/10", delay: 100 },
-              { icon: Users, title: "Award-winning support", color: "text-purple-600 dark:text-purple-400", bg: "bg-purple-500/10", delay: 200 },
-              { icon: TrendingUp, title: "Powerful insights", color: "text-orange-600 dark:text-orange-400", bg: "bg-orange-500/10", delay: 300 },
-            ].map((feature, index) => (
-              <AnimatedSection key={index} delay={feature.delay}>
-                <Card className="group relative p-8 rounded-3xl hover-elevate transition-all duration-500 cursor-default border-none shadow-xl overflow-hidden h-full">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/10 to-transparent rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                  <div className="relative space-y-5">
-                    <div className={`w-16 h-16 rounded-2xl ${feature.bg} flex items-center justify-center group-hover:scale-110 transition-transform duration-500`}>
-                      <feature.icon className={`h-8 w-8 ${feature.color}`} />
-                    </div>
-                    <h3 className="text-xl font-black">{feature.title}</h3>
+          {/* Product Showcase Grid */}
+          <div className="space-y-32">
+            {/* Rocket Pocket - Portable Freedom */}
+            <AnimatedSection>
+              <div className="grid lg:grid-cols-2 gap-16 items-center">
+                <div className="relative group perspective-1000">
+                  <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-purple-500/20 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+                  <div className="relative overflow-hidden rounded-3xl shadow-2xl">
+                    <img
+                      src={rocketPocketImage}
+                      alt="Rocket Pocket"
+                      className="w-full h-auto transform group-hover:scale-105 transition-transform duration-1000"
+                      style={{ transformStyle: 'preserve-3d' }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                   </div>
-                </Card>
-              </AnimatedSection>
-            ))}
+                </div>
+                
+                <div className="space-y-6 lg:pl-8">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-500/10 rounded-full border border-purple-500/20">
+                    <Sparkles className="h-4 w-4 text-purple-600 dark:text-purple-400" />
+                    <span className="text-sm font-black text-purple-600 dark:text-purple-400">Portable Power</span>
+                  </div>
+                  <h3 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight">
+                    Freedom to<br />trade anywhere
+                  </h3>
+                  <p className="text-xl text-muted-foreground leading-relaxed">
+                    <span className="font-black text-foreground">Rocket Pocket</span> puts enterprise-grade payment processing in your pocket. All-day battery. Built-in printer. Weatherproof design. Take payments from the beach to the market, the stadium to the street.
+                  </p>
+                  <div className="flex flex-wrap gap-3 pt-4">
+                    <Badge className="px-4 py-2">All-day battery</Badge>
+                    <Badge className="px-4 py-2">Weatherproof</Badge>
+                    <Badge className="px-4 py-2">Built-in printer</Badge>
+                  </div>
+                  <Link href="/products/rocket-pocket">
+                    <Button size="lg" className="mt-6 text-lg px-10 py-6 rounded-full hover:scale-105 transition-all duration-300">
+                      Explore Rocket Pocket
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </AnimatedSection>
+
+            {/* Business Funding - Fuel Growth */}
+            <AnimatedSection delay={200}>
+              <div className="grid lg:grid-cols-2 gap-16 items-center">
+                <div className="space-y-6 lg:pr-8 lg:order-2">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-500/10 rounded-full border border-green-500/20">
+                    <TrendingUp className="h-4 w-4 text-green-600 dark:text-green-400" />
+                    <span className="text-sm font-black text-green-600 dark:text-green-400">Growth Accelerator</span>
+                  </div>
+                  <h3 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight">
+                    Fuel your<br />next chapter
+                  </h3>
+                  <p className="text-xl text-muted-foreground leading-relaxed">
+                    <span className="font-black text-foreground">Business Funding</span> that moves at your speed. Get approved in 24 hours, funded in 48. Flexible repayment through your daily sales. No credit score impact. £1bn+ enabled for businesses like yours.
+                  </p>
+                  <div className="grid grid-cols-2 gap-4 pt-4">
+                    <div className="space-y-1">
+                      <div className="text-3xl font-black text-primary">24hrs</div>
+                      <div className="text-sm text-muted-foreground">Approval time</div>
+                    </div>
+                    <div className="space-y-1">
+                      <div className="text-3xl font-black text-primary">£1bn+</div>
+                      <div className="text-sm text-muted-foreground">Funding enabled</div>
+                    </div>
+                  </div>
+                  <Link href="/business-funding">
+                    <Button size="lg" className="mt-6 text-lg px-10 py-6 rounded-full hover:scale-105 transition-all duration-300">
+                      Learn about funding
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </Button>
+                  </Link>
+                </div>
+
+                <div className="relative group perspective-1000 lg:order-1">
+                  <div className="absolute -inset-4 bg-gradient-to-r from-green-500/20 to-primary/20 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+                  <div className="relative overflow-hidden rounded-3xl shadow-2xl">
+                    <img
+                      src={fundingSuccessImage}
+                      alt="Business Funding Success"
+                      className="w-full h-auto transform group-hover:scale-105 transition-transform duration-1000"
+                      style={{ transformStyle: 'preserve-3d' }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                  </div>
+                </div>
+              </div>
+            </AnimatedSection>
+
+            {/* Bookings - Fill Every Seat */}
+            <AnimatedSection delay={400}>
+              <div className="grid lg:grid-cols-2 gap-16 items-center">
+                <div className="relative group perspective-1000">
+                  <div className="absolute -inset-4 bg-gradient-to-r from-orange-500/20 to-primary/20 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+                  <div className="relative overflow-hidden rounded-3xl shadow-2xl">
+                    <img
+                      src={bookingsImage}
+                      alt="Bookings & Reservations"
+                      className="w-full h-auto transform group-hover:scale-105 transition-transform duration-1000"
+                      style={{ transformStyle: 'preserve-3d' }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                  </div>
+                </div>
+
+                <div className="space-y-6 lg:pl-8">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-500/10 rounded-full border border-orange-500/20">
+                    <Calendar className="h-4 w-4 text-orange-600 dark:text-orange-400" />
+                    <span className="text-sm font-black text-orange-600 dark:text-orange-400">Maximize Revenue</span>
+                  </div>
+                  <h3 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight">
+                    Fill every seat,<br />every service
+                  </h3>
+                  <p className="text-xl text-muted-foreground leading-relaxed">
+                    <span className="font-black text-foreground">Rocket Bookings</span> integrates with Reserve with Google. Customers book directly from Search and Maps. Automated reminders reduce no-shows by 40%. 24/7 availability drives revenue while you sleep.
+                  </p>
+                  <div className="flex flex-wrap gap-3 pt-4">
+                    <Badge className="px-4 py-2">Reserve with Google</Badge>
+                    <Badge className="px-4 py-2">-40% no-shows</Badge>
+                    <Badge className="px-4 py-2">24/7 bookings</Badge>
+                  </div>
+                  <Link href="/bookings">
+                    <Button size="lg" className="mt-6 text-lg px-10 py-6 rounded-full hover:scale-105 transition-all duration-300">
+                      Explore bookings
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </AnimatedSection>
           </div>
         </div>
       </section>
