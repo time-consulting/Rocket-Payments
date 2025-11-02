@@ -13,6 +13,13 @@ import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import { Check, ArrowRight, Sparkles, Shield, TrendingDown, Zap, Clock, DollarSign } from "lucide-react";
 import offerBanner from "@assets/1762111291843_1762111323929.jpg";
+import rocketGoPub from "@assets/rocket go pub_1762112531205.png";
+import rocketGoHero from "@assets/hero image rocket go_1762112582495.png";
+import rocketGoAuthorised from "@assets/rocket go authorised_1762112584527.png";
+import terminalApproved from "@assets/terminal approved_1762112584541.png";
+import tapRocketGo from "@assets/tap rocket go_1762112584552.png";
+import rocketGoDevice from "@assets/rocket go device on stand - white bk_1762112603039.png";
+import rocketGoHerop from "@assets/Rocket Go herop_1762112603503.png";
 
 const formSchema = insertFreeTerminalLeadSchema.extend({
   businessName: z.string().min(2, "Business name required"),
@@ -24,7 +31,6 @@ type FormData = z.infer<typeof formSchema>;
 export default function FreeTerminal() {
   const [step, setStep] = useState(1);
   const [timeLeft, setTimeLeft] = useState(24 * 60 * 60);
-  const [currentMonthlyCost, setCurrentMonthlyCost] = useState(0);
   const { toast } = useToast();
 
   const form = useForm<FormData>({
@@ -71,10 +77,6 @@ export default function FreeTerminal() {
     const minutes = Math.floor((seconds % 3600) / 60);
     const secs = seconds % 60;
     return `${hours}h ${minutes}m ${secs}s`;
-  };
-
-  const calculateYearlySavings = (monthly: number) => {
-    return (monthly + 189 / 12) * 12;
   };
 
   const onSubmit = (data: FormData) => {
@@ -171,37 +173,137 @@ export default function FreeTerminal() {
         </div>
       </section>
 
-      {/* Cost Calculator Section */}
-      <section className="py-20 px-4 bg-muted/30">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-5xl font-black text-center mb-12">
-            How Much Are You <span className="text-destructive">Losing</span>?
-          </h2>
+      {/* Product Showcase Section */}
+      <section className="py-20 px-4 bg-gradient-to-b from-background via-muted/20 to-background relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(13,148,136,0.1),transparent_50%)]" />
+        
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-5xl lg:text-7xl font-black mb-6">
+              Meet the <span className="text-primary">Rocket Go</span>
+            </h2>
+            <p className="text-2xl text-muted-foreground max-w-3xl mx-auto">
+              Premium payment technology designed for businesses processing <span className="font-bold text-foreground">£180k+ annually</span>
+            </p>
+          </div>
 
-          <Card className="p-8 bg-card/80 backdrop-blur">
-            <div className="grid md:grid-cols-2 gap-8">
-              <div>
-                <label className="text-sm font-bold text-muted-foreground mb-2 block">
-                  Current Monthly Fees
-                </label>
-                <Input
-                  type="number"
-                  placeholder="£50"
-                  value={currentMonthlyCost || ""}
-                  onChange={(e) => setCurrentMonthlyCost(parseFloat(e.target.value) || 0)}
-                  className="text-2xl font-bold h-16"
-                  data-testid="input-monthly-cost"
-                />
-              </div>
+          {/* Main Hero Device */}
+          <div className="mb-16 max-w-4xl mx-auto">
+            <div className="relative group">
+              <div className="absolute -inset-4 bg-gradient-to-r from-primary/30 via-primary/10 to-primary/30 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <img
+                src={rocketGoHerop}
+                alt="Rocket Go Terminal"
+                className="relative w-full rounded-3xl shadow-2xl hover:scale-[1.02] transition-transform duration-700"
+                data-testid="img-rocket-go-hero"
+              />
+            </div>
+          </div>
 
-              <div className="flex flex-col justify-center">
-                <div className="text-sm font-bold text-muted-foreground mb-2">Your Yearly Savings</div>
-                <div className="text-5xl font-black text-primary" data-testid="text-yearly-savings">
-                  £{calculateYearlySavings(currentMonthlyCost).toLocaleString()}
+          {/* Lifestyle Grid */}
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            <div className="relative group overflow-hidden rounded-2xl">
+              <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 flex items-end p-6">
+                <div>
+                  <h3 className="text-2xl font-black text-white mb-2">Hospitality</h3>
+                  <p className="text-white/80 font-medium">Perfect for busy bars and restaurants</p>
                 </div>
               </div>
+              <img
+                src={rocketGoPub}
+                alt="Rocket Go in pub setting"
+                className="w-full h-80 object-cover hover:scale-110 transition-transform duration-700"
+                data-testid="img-rocket-go-pub"
+              />
             </div>
-          </Card>
+
+            <div className="relative group overflow-hidden rounded-2xl">
+              <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 flex items-end p-6">
+                <div>
+                  <h3 className="text-2xl font-black text-white mb-2">Cafés & Coffee Shops</h3>
+                  <p className="text-white/80 font-medium">Fast service, happy customers</p>
+                </div>
+              </div>
+              <img
+                src={rocketGoHero}
+                alt="Rocket Go in café"
+                className="w-full h-80 object-cover hover:scale-110 transition-transform duration-700"
+                data-testid="img-rocket-go-cafe"
+              />
+            </div>
+
+            <div className="relative group overflow-hidden rounded-2xl">
+              <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 flex items-end p-6">
+                <div>
+                  <h3 className="text-2xl font-black text-white mb-2">Hotels & Boutiques</h3>
+                  <p className="text-white/80 font-medium">Premium experience guaranteed</p>
+                </div>
+              </div>
+              <img
+                src={rocketGoAuthorised}
+                alt="Rocket Go at hotel reception"
+                className="w-full h-80 object-cover hover:scale-110 transition-transform duration-700"
+                data-testid="img-rocket-go-hotel"
+              />
+            </div>
+          </div>
+
+          {/* Features Grid */}
+          <div className="grid md:grid-cols-3 gap-6">
+            <Card className="p-6 bg-card/50 backdrop-blur hover-elevate overflow-hidden">
+              <div className="aspect-square mb-4 rounded-xl overflow-hidden">
+                <img
+                  src={terminalApproved}
+                  alt="Instant approval on screen"
+                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
+                  data-testid="img-terminal-approved"
+                />
+              </div>
+              <h3 className="text-xl font-black mb-2">Lightning Fast</h3>
+              <p className="text-muted-foreground">Instant payment approval. Your customers won't even notice the wait.</p>
+            </Card>
+
+            <Card className="p-6 bg-card/50 backdrop-blur hover-elevate overflow-hidden">
+              <div className="aspect-square mb-4 rounded-xl overflow-hidden">
+                <img
+                  src={tapRocketGo}
+                  alt="Contactless payment with Rocket Go"
+                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
+                  data-testid="img-tap-rocket-go"
+                />
+              </div>
+              <h3 className="text-xl font-black mb-2">Mobile Freedom</h3>
+              <p className="text-muted-foreground">Take payments anywhere. Perfect for markets, events, and mobile traders.</p>
+            </Card>
+
+            <Card className="p-6 bg-card/50 backdrop-blur hover-elevate overflow-hidden">
+              <div className="aspect-square mb-4 rounded-xl overflow-hidden bg-white flex items-center justify-center p-8">
+                <img
+                  src={rocketGoDevice}
+                  alt="Rocket Go device on stand"
+                  className="w-full h-full object-contain hover:scale-110 transition-transform duration-700"
+                  data-testid="img-rocket-go-device"
+                />
+              </div>
+              <h3 className="text-xl font-black mb-2">Professional Design</h3>
+              <p className="text-muted-foreground">Sleek, modern terminal that elevates your brand at every touchpoint.</p>
+            </Card>
+          </div>
+
+          <div className="text-center mt-12">
+            <p className="text-sm text-muted-foreground mb-4">
+              Premium offer for established businesses (£180k+ annual card turnover)
+            </p>
+            <Button
+              size="lg"
+              className="text-xl px-12 py-8 rounded-full font-black shadow-2xl hover:scale-105 transition-transform"
+              onClick={() => document.getElementById("claim-form")?.scrollIntoView({ behavior: "smooth" })}
+              data-testid="button-showcase-claim"
+            >
+              Yes, I Want This Terminal
+              <ArrowRight className="ml-2 h-6 w-6" />
+            </Button>
+          </div>
         </div>
       </section>
 
