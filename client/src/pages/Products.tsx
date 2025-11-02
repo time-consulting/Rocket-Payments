@@ -642,28 +642,132 @@ export default function Products() {
         </div>
       </section>
 
-      {/* Trust Banner */}
-      <section className="py-20 bg-background">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
+      {/* Trust & Security Section */}
+      <section className="relative py-32 md:py-40 bg-background overflow-hidden">
+        {/* Animated Background Graphics */}
+        <div className="absolute inset-0 opacity-[0.03]">
+          <svg className="absolute left-0 top-1/4 w-1/3 h-1/2" viewBox="0 0 400 300">
+            <path
+              d="M 0,250 Q 100,200 200,150 T 400,50"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="3"
+              className="text-primary animate-[dash_3s_ease-in-out_infinite]"
+              strokeDasharray="1000"
+              strokeDashoffset="1000"
+              style={{ animation: 'dash 4s ease-in-out infinite' }}
+            />
+          </svg>
+          <svg className="absolute right-0 top-1/3 w-1/3 h-1/2" viewBox="0 0 400 300">
+            <path
+              d="M 0,200 Q 100,120 200,100 T 400,20"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="3"
+              className="text-primary"
+              strokeDasharray="1000"
+              strokeDashoffset="1000"
+              style={{ animation: 'dash 5s ease-in-out infinite 0.5s' }}
+            />
+          </svg>
+        </div>
+
+        <style>{`
+          @keyframes dash {
+            0% { stroke-dashoffset: 1000; opacity: 0; }
+            10% { opacity: 1; }
+            50% { stroke-dashoffset: 0; opacity: 1; }
+            90% { opacity: 0.5; }
+            100% { stroke-dashoffset: -1000; opacity: 0; }
+          }
+        `}</style>
+
+        <div className="relative max-w-7xl mx-auto px-6 md:px-8">
           <AnimatedSection>
-            <div className="grid md:grid-cols-5 gap-8 items-center">
-              {[
-                { icon: Users, value: "110k+", label: "Businesses" },
-                { icon: Shield, value: "99.99%", label: "Uptime" },
-                { icon: TrendingUp, value: "1.8bn", label: "Transactions" },
-                { icon: Star, value: "4.9/5", label: "Rating" },
-                { icon: Award, value: "PCI L1", label: "Certified" },
-              ].map((stat, i) => (
-                <div key={i} className="text-center space-y-3">
-                  <div className="flex justify-center">
-                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                      <stat.icon className="h-6 w-6 text-primary" />
-                    </div>
-                  </div>
-                  <div className="text-3xl font-black text-primary">{stat.value}</div>
-                  <p className="text-sm text-muted-foreground font-medium">{stat.label}</p>
+            <div className="text-center space-y-16">
+              {/* Header */}
+              <div className="space-y-6 max-w-4xl mx-auto">
+                <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-primary/5 border border-primary/10">
+                  <Shield className="h-5 w-5 text-primary" />
+                  <span className="text-sm font-black text-primary">ENTERPRISE-GRADE SECURITY</span>
                 </div>
-              ))}
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight">
+                  Built for reliability.<br />Engineered for trust.
+                </h2>
+                <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed">
+                  Every transaction secured by military-grade encryption. Every system backed by 24/7 monitoring. Every business protected by PCI Level 1 compliance.
+                </p>
+              </div>
+
+              {/* Security Features Grid */}
+              <div className="grid md:grid-cols-3 gap-8 pt-8">
+                <AnimatedSection delay={100}>
+                  <Card className="p-8 space-y-6 text-left border-primary/10 hover-elevate h-full">
+                    <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center">
+                      <Shield className="h-7 w-7 text-primary" />
+                    </div>
+                    <div className="space-y-3">
+                      <h3 className="text-2xl font-black">Point-to-Point Encryption</h3>
+                      <p className="text-base text-muted-foreground leading-relaxed">
+                        Advanced P2PE security ensures payment data is encrypted from the moment of card tap to final authorization. Zero exposure, maximum protection.
+                      </p>
+                      <div className="pt-2">
+                        <Badge variant="outline" className="text-xs font-bold">PCI DSS Level 1</Badge>
+                      </div>
+                    </div>
+                  </Card>
+                </AnimatedSection>
+
+                <AnimatedSection delay={200}>
+                  <Card className="p-8 space-y-6 text-left border-primary/10 hover-elevate h-full">
+                    <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center">
+                      <TrendingUp className="h-7 w-7 text-primary" />
+                    </div>
+                    <div className="space-y-3">
+                      <h3 className="text-2xl font-black">99.99% Uptime Guarantee</h3>
+                      <p className="text-base text-muted-foreground leading-relaxed">
+                        Redundant systems across multiple data centers. Real-time failover protection. Your business never stops, even when the unexpected happens.
+                      </p>
+                      <div className="pt-2 flex items-center gap-2">
+                        <div className="flex -space-x-1">
+                          <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                          <div className="w-2 h-2 rounded-full bg-primary animate-pulse delay-75" />
+                          <div className="w-2 h-2 rounded-full bg-primary animate-pulse delay-150" />
+                        </div>
+                        <span className="text-xs text-primary font-bold">Live monitoring</span>
+                      </div>
+                    </div>
+                  </Card>
+                </AnimatedSection>
+
+                <AnimatedSection delay={300}>
+                  <Card className="p-8 space-y-6 text-left border-primary/10 hover-elevate h-full">
+                    <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center">
+                      <Award className="h-7 w-7 text-primary" />
+                    </div>
+                    <div className="space-y-3">
+                      <h3 className="text-2xl font-black">Trusted by 110,000+</h3>
+                      <p className="text-base text-muted-foreground leading-relaxed">
+                        From corner shops to restaurant chains, businesses trust us with 1.8 billion transactions annually. Your payments are in expert hands.
+                      </p>
+                      <div className="pt-2 flex gap-4">
+                        <div className="text-center">
+                          <div className="text-2xl font-black text-primary">4.9</div>
+                          <div className="flex gap-0.5 justify-center">
+                            {[1,2,3,4,5].map(i => (
+                              <Star key={i} className="h-3 w-3 fill-primary text-primary" />
+                            ))}
+                          </div>
+                        </div>
+                        <div className="border-l pl-4">
+                          <div className="text-xs text-muted-foreground">Average rating</div>
+                          <div className="text-xs font-bold">from 12k+ reviews</div>
+                        </div>
+                      </div>
+                    </div>
+                  </Card>
+                </AnimatedSection>
+              </div>
             </div>
           </AnimatedSection>
         </div>
