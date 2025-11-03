@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -77,6 +77,13 @@ export default function Champion() {
     },
   });
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setUnveiled(true);
+    }, 300);
+    return () => clearTimeout(timer);
+  }, []);
+
   const onSubmit = (data: FormData) => {
     if (step < 2) {
       setStep(step + 1);
@@ -133,15 +140,55 @@ export default function Champion() {
             </div>
           </div>
 
-          {/* Champion Image */}
+          {/* Champion Image with Unveiling Effect */}
           <div className="relative max-w-5xl mx-auto mb-16">
             <div className="absolute -inset-8 bg-gradient-to-r from-amber-400/20 via-yellow-300/20 to-amber-400/20 blur-3xl animate-pulse" />
-            <img
-              src={championHero}
-              alt="The Champion Terminal"
-              className="relative w-full rounded-3xl shadow-2xl"
-              data-testid="img-champion-hero"
-            />
+            
+            {/* Hero Image */}
+            <div className="relative">
+              <img
+                src={championHero}
+                alt="The Champion Terminal"
+                className={`relative w-full rounded-3xl shadow-2xl transition-all duration-2000 ${
+                  unveiled ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+                }`}
+                data-testid="img-champion-hero"
+              />
+              
+              {/* Smoke/Fabric Overlay - Clears from center outward */}
+              <div 
+                className={`absolute inset-0 rounded-3xl overflow-hidden pointer-events-none transition-opacity duration-1500 ${
+                  unveiled ? 'opacity-0' : 'opacity-100'
+                }`}
+              >
+                {/* Multiple layers of smoke for depth */}
+                <div className={`absolute inset-0 bg-gradient-radial from-stone-900/95 via-stone-800/85 to-transparent transition-all duration-2000 ${
+                  unveiled ? 'scale-[3] opacity-0' : 'scale-100 opacity-100'
+                }`} />
+                <div className={`absolute inset-0 bg-gradient-radial from-amber-900/60 via-yellow-900/40 to-transparent transition-all duration-1800 delay-200 ${
+                  unveiled ? 'scale-[2.5] opacity-0' : 'scale-100 opacity-100'
+                }`} />
+                <div className={`absolute inset-0 bg-gradient-radial from-stone-700/70 via-stone-600/50 to-transparent transition-all duration-1600 delay-400 ${
+                  unveiled ? 'scale-[2] opacity-0' : 'scale-100 opacity-100'
+                }`} />
+                
+                {/* Particle sweep effect */}
+                {[...Array(20)].map((_, i) => (
+                  <div
+                    key={i}
+                    className={`absolute w-1 h-1 bg-amber-400/60 rounded-full transition-all duration-1500 ${
+                      unveiled ? 'opacity-0' : 'opacity-100'
+                    }`}
+                    style={{
+                      left: `${Math.random() * 100}%`,
+                      top: `${Math.random() * 100}%`,
+                      transitionDelay: `${i * 50}ms`,
+                      transform: unveiled ? `translate(${(Math.random() - 0.5) * 200}px, ${(Math.random() - 0.5) * 200}px) scale(0)` : 'translate(0, 0) scale(1)',
+                    }}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
 
           {/* Laurel wreath stats */}

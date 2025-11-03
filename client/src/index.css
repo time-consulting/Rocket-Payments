@@ -460,3 +460,8 @@
 .animate-float {
   animation: float ease-in-out infinite;
 }
+
+/* Radial gradient utility for smoke/fabric unveiling effect */
+.bg-gradient-radial {
+  background-image: radial-gradient(circle at center, var(--tw-gradient-stops));
+}
