@@ -48,12 +48,12 @@ type FormData = z.infer<typeof formSchema>;
 // Animated counter component
 function AnimatedCounter({ target, suffix = "", duration = 2000, isVisible }: { target: number; suffix?: string; duration?: number; isVisible: boolean }) {
   const [count, setCount] = useState(0);
-  const [hasAnimated, setHasAnimated] = useState(false);
+  const hasAnimatedRef = useRef(false);
 
   useEffect(() => {
-    if (!isVisible || hasAnimated) return;
+    if (!isVisible || hasAnimatedRef.current) return;
     
-    setHasAnimated(true);
+    hasAnimatedRef.current = true;
     const startTime = Date.now();
     const endTime = startTime + duration;
     const isDecimal = target < 10;
@@ -74,7 +74,7 @@ function AnimatedCounter({ target, suffix = "", duration = 2000, isVisible }: { 
     }, 16);
 
     return () => clearInterval(timer);
-  }, [isVisible, target, duration, hasAnimated]);
+  }, [isVisible, target, duration]);
 
   return <>{count}{suffix}</>;
 }
@@ -164,32 +164,42 @@ export default function Champion() {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setVisibleSections((prev) => new Set(prev).add(entry.target.id));
+          if (entry.isIntersecting && entry.target.id) {
+            setVisibleSections((prev) => {
+              const newSet = new Set(prev);
+              newSet.add(entry.target.id);
+              return newSet;
+            });
           }
         });
       },
-      { threshold: 0.2 }
+      { threshold: 0.1, rootMargin: '0px' }
     );
 
-    const sections = document.querySelectorAll('[data-animate]');
-    
-    // Check which sections are already visible on mount
-    const initialVisibleSections = new Set<string>();
-    sections.forEach((section) => {
-      const rect = section.getBoundingClientRect();
-      const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-      if (isVisible && section.id) {
-        initialVisibleSections.add(section.id);
+    // Small delay to ensure DOM is ready
+    const timer = setTimeout(() => {
+      const sections = document.querySelectorAll('[data-animate]');
+      
+      // Check which sections are already visible on mount
+      const initialVisibleSections = new Set<string>();
+      sections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight * 1.5 && rect.bottom > 0;
+        if (isVisible && section.id) {
+          initialVisibleSections.add(section.id);
+        }
+        observer.observe(section);
+      });
+      
+      if (initialVisibleSections.size > 0) {
+        setVisibleSections(initialVisibleSections);
       }
-      observer.observe(section);
-    });
-    
-    if (initialVisibleSections.size > 0) {
-      setVisibleSections(initialVisibleSections);
-    }
+    }, 100);
 
-    return () => observer.disconnect();
+    return () => {
+      clearTimeout(timer);
+      observer.disconnect();
+    };
   }, []);
 
   const onSubmit = (data: FormData) => {
