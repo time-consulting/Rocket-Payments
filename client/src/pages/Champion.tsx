@@ -433,6 +433,76 @@ export default function Champion() {
         </div>
       </section>
 
+      {/* The Champion's Arsenal */}
+      <section className="py-20 px-4 bg-gradient-to-b from-amber-50/50 to-stone-50 dark:from-stone-950 dark:to-stone-900">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-5xl lg:text-7xl font-black text-center mb-16 text-stone-900 dark:text-stone-100">
+            The Champion's <span className="text-amber-600 dark:text-amber-400">Arsenal</span>
+          </h2>
+
+          <div 
+            id="arsenal-section"
+            data-animate
+            className="grid md:grid-cols-3 gap-8"
+          >
+            {[
+              {
+                title: "Free Premium Terminal",
+                value: "£189",
+                description: "Worth £189. Yours for £0. Champions reward loyalty.",
+                icon: Trophy,
+              },
+              {
+                title: "Zero Monthly Fees",
+                value: "£0/mo",
+                description: "No rental. No contracts. No surrender to hidden fees.",
+                icon: Crown,
+              },
+              {
+                title: "Exit Cost Coverage",
+                value: "£3,000",
+                description: "We'll cover up to £3,000 of your old provider's exit fees.",
+                icon: Shield,
+              },
+              {
+                title: "12-Month Price Lock",
+                value: "Guaranteed",
+                description: "Your rates won't change. A champion's word is iron.",
+                icon: CheckCircle,
+              },
+              {
+                title: "450+ Integrations",
+                value: "Seamless",
+                description: "Works with any EPOS system. Champions adapt to you.",
+                icon: Sparkles,
+              },
+              {
+                title: "48-Hour Setup",
+                value: "Lightning",
+                description: "Fastest deployment in the industry. Victory waits for no one.",
+                icon: Zap,
+              },
+            ].map((benefit, i) => (
+              <Card 
+                key={i} 
+                className={`p-6 text-center bg-white/80 dark:bg-stone-900/80 backdrop-blur border-2 border-amber-200 dark:border-amber-800 hover-elevate card-3d ${visibleSections.has("arsenal-section") ? 'light-sweep' : ''}`}
+                style={{
+                  animation: visibleSections.has("arsenal-section") ? `staggerFadeIn 0.6s ease-out ${i * 100}ms forwards` : 'none',
+                  opacity: visibleSections.has("arsenal-section") ? 1 : 0,
+                }}
+              >
+                <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-amber-500 to-yellow-600 flex items-center justify-center transition-transform duration-300 hover:scale-110 hover:rotate-12">
+                  <benefit.icon className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-black mb-2 text-stone-900 dark:text-stone-100">{benefit.title}</h3>
+                <div className="text-3xl font-black text-amber-600 dark:text-amber-400 mb-3">{benefit.value}</div>
+                <p className="text-sm text-stone-600 dark:text-stone-400">{benefit.description}</p>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Why The Champion Reigns Supreme */}
       <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
@@ -507,76 +577,6 @@ export default function Champion() {
               className="relative w-full rounded-3xl shadow-2xl"
               data-testid="img-champion-alt"
             />
-          </div>
-        </div>
-      </section>
-
-      {/* The Champion's Arsenal */}
-      <section className="py-20 px-4 bg-gradient-to-b from-amber-50/50 to-stone-50 dark:from-stone-950 dark:to-stone-900">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-5xl lg:text-7xl font-black text-center mb-16 text-stone-900 dark:text-stone-100">
-            The Champion's <span className="text-amber-600 dark:text-amber-400">Arsenal</span>
-          </h2>
-
-          <div 
-            id="arsenal-section"
-            data-animate
-            className="grid md:grid-cols-3 gap-8"
-          >
-            {[
-              {
-                title: "Free Premium Terminal",
-                value: "£189",
-                description: "Worth £189. Yours for £0. Champions reward loyalty.",
-                icon: Trophy,
-              },
-              {
-                title: "Zero Monthly Fees",
-                value: "£0/mo",
-                description: "No rental. No contracts. No surrender to hidden fees.",
-                icon: Crown,
-              },
-              {
-                title: "Exit Cost Coverage",
-                value: "£3,000",
-                description: "We'll cover up to £3,000 of your old provider's exit fees.",
-                icon: Shield,
-              },
-              {
-                title: "12-Month Price Lock",
-                value: "Guaranteed",
-                description: "Your rates won't change. A champion's word is iron.",
-                icon: CheckCircle,
-              },
-              {
-                title: "450+ Integrations",
-                value: "Seamless",
-                description: "Works with any EPOS system. Champions adapt to you.",
-                icon: Sparkles,
-              },
-              {
-                title: "48-Hour Setup",
-                value: "Lightning",
-                description: "Fastest deployment in the industry. Victory waits for no one.",
-                icon: Zap,
-              },
-            ].map((benefit, i) => (
-              <Card 
-                key={i} 
-                className={`p-6 text-center bg-white/80 dark:bg-stone-900/80 backdrop-blur border-2 border-amber-200 dark:border-amber-800 hover-elevate card-3d ${visibleSections.has("arsenal-section") ? 'light-sweep' : ''}`}
-                style={{
-                  animation: visibleSections.has("arsenal-section") ? `staggerFadeIn 0.6s ease-out ${i * 100}ms forwards` : 'none',
-                  opacity: visibleSections.has("arsenal-section") ? 1 : 0,
-                }}
-              >
-                <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-amber-500 to-yellow-600 flex items-center justify-center transition-transform duration-300 hover:scale-110 hover:rotate-12">
-                  <benefit.icon className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-black mb-2 text-stone-900 dark:text-stone-100">{benefit.title}</h3>
-                <div className="text-3xl font-black text-amber-600 dark:text-amber-400 mb-3">{benefit.value}</div>
-                <p className="text-sm text-stone-600 dark:text-stone-400">{benefit.description}</p>
-              </Card>
-            ))}
           </div>
         </div>
       </section>
