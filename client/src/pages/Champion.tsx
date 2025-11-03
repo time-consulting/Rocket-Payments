@@ -32,7 +32,7 @@ import {
   Globe
 } from "lucide-react";
 
-import championHero from "@assets/1762144138662_1762144174270.jpg";
+import championHero from "@assets/champion - GO_1762164001426.png";
 import championAlt from "@assets/1762144008416_1762144252414.jpg";
 import rocketGoDevice from "@assets/rocket go device on stand - white bk_1761931715066.png";
 
