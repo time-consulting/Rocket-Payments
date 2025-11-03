@@ -47,6 +47,7 @@ type FormData = z.infer<typeof formSchema>;
 
 export default function Champion() {
   const [step, setStep] = useState(1);
+  const [unveiled, setUnveiled] = useState(false);
   const { toast } = useToast();
 
   const form = useForm<FormData>({
