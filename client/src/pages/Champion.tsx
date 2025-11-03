@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -48,6 +48,8 @@ type FormData = z.infer<typeof formSchema>;
 export default function Champion() {
   const [step, setStep] = useState(1);
   const [unveiled, setUnveiled] = useState(false);
+  const [showConfetti, setShowConfetti] = useState(false);
+  const bannerRef = useRef<HTMLElement>(null);
   const { toast } = useToast();
 
   const form = useForm<FormData>({
@@ -83,6 +85,24 @@ export default function Champion() {
     }, 300);
     return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !showConfetti) {
+          setShowConfetti(true);
+          setTimeout(() => setShowConfetti(false), 3000);
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (bannerRef.current) {
+      observer.observe(bannerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [showConfetti]);
 
   const onSubmit = (data: FormData) => {
     if (step < 2) {
@@ -210,14 +230,47 @@ export default function Champion() {
       </section>
 
       {/* Victory Banner */}
-      <section className="py-16 px-4 bg-gradient-to-r from-amber-600 via-yellow-600 to-amber-600 relative overflow-hidden">
+      <section ref={bannerRef} className="py-12 px-4 bg-gradient-to-r from-amber-600 via-yellow-600 to-amber-600 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjEpIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-20" />
+        
+        {/* Confetti Cannon Effect */}
+        {showConfetti && (
+          <div className="absolute inset-0 pointer-events-none">
+            {[...Array(60)].map((_, i) => {
+              const startX = Math.random() * 100;
+              const horizontalMove = (Math.random() - 0.5) * 300;
+              const duration = 1000 + Math.random() * 1000;
+              const delay = i * 15;
+              const colors = ['bg-amber-400', 'bg-yellow-300', 'bg-amber-200', 'bg-yellow-500', 'bg-white', 'bg-amber-600'];
+              const color = colors[Math.floor(Math.random() * colors.length)];
+              const size = 8 + Math.floor(Math.random() * 8);
+              
+              return (
+                <div
+                  key={i}
+                  className={`absolute ${color} rounded-full shadow-lg`}
+                  style={{
+                    left: `${startX}%`,
+                    bottom: '0%',
+                    width: `${size}px`,
+                    height: `${size}px`,
+                    animation: `confettiFall ${duration}ms ease-out ${delay}ms forwards`,
+                    transform: `rotate(${Math.random() * 360}deg)`,
+                    opacity: 0,
+                    // @ts-ignore
+                    '--confetti-x': `${horizontalMove}px`,
+                  }}
+                />
+              );
+            })}
+          </div>
+        )}
         
         <div className="max-w-6xl mx-auto relative z-10 text-center">
           <div className="flex justify-center mb-6">
-            <Award className="w-16 h-16 text-white" />
+            <Award className={`w-16 h-16 text-white transition-transform duration-500 ${showConfetti ? 'scale-125 rotate-12' : ''}`} />
           </div>
-          <h2 className="text-5xl lg:text-7xl font-black text-white mb-4">
+          <h2 className={`text-5xl lg:text-7xl font-black text-white mb-4 transition-all duration-500 ${showConfetti ? 'scale-110' : ''}`}>
             VICTOR OMNIUM
           </h2>
           <p className="text-2xl font-bold text-amber-100">Victory For All Who Choose Excellence</p>
