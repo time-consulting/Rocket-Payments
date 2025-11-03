@@ -33,7 +33,7 @@ import {
 } from "lucide-react";
 
 import championHero from "@assets/champion - GO_1762164001426.png";
-import championAlt from "@assets/1762144008416_1762144252414.jpg";
+import championAlt from "@assets/The Innovator Pocket_1762164754335.png";
 import rocketGoDevice from "@assets/rocket go device on stand - white bk_1761931715066.png";
 
 const formSchema = z.object({
@@ -474,7 +474,7 @@ export default function Champion() {
             <div className="absolute -inset-4 bg-gradient-to-r from-amber-400/10 via-yellow-300/10 to-amber-400/10 blur-2xl" />
             <img
               src={championAlt}
-              alt="Champion pedestal"
+              alt="The Innovator - Rocket Go terminal on champion pedestal with Roman columns and VICTOR OMNIUM banners"
               className="relative w-full rounded-3xl shadow-2xl"
               data-testid="img-champion-alt"
             />
