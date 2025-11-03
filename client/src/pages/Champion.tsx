@@ -56,12 +56,16 @@ function AnimatedCounter({ target, suffix = "", duration = 2000, isVisible }: { 
     setHasAnimated(true);
     const startTime = Date.now();
     const endTime = startTime + duration;
+    const isDecimal = target < 10;
 
     const timer = setInterval(() => {
       const now = Date.now();
       const progress = Math.min((now - startTime) / duration, 1);
       const easeOut = 1 - Math.pow(1 - progress, 3);
-      setCount(Math.floor(target * easeOut));
+      const currentValue = target * easeOut;
+      
+      // For decimal numbers, keep one decimal place, otherwise use whole numbers
+      setCount(isDecimal ? Math.round(currentValue * 10) / 10 : Math.floor(currentValue));
 
       if (now >= endTime) {
         setCount(target);
@@ -165,11 +169,25 @@ export default function Champion() {
           }
         });
       },
-      { threshold: 0.3 }
+      { threshold: 0.2 }
     );
 
     const sections = document.querySelectorAll('[data-animate]');
-    sections.forEach((section) => observer.observe(section));
+    
+    // Check which sections are already visible on mount
+    const initialVisibleSections = new Set<string>();
+    sections.forEach((section) => {
+      const rect = section.getBoundingClientRect();
+      const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+      if (isVisible && section.id) {
+        initialVisibleSections.add(section.id);
+      }
+      observer.observe(section);
+    });
+    
+    if (initialVisibleSections.size > 0) {
+      setVisibleSections(initialVisibleSections);
+    }
 
     return () => observer.disconnect();
   }, []);
