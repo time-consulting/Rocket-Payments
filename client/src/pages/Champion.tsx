@@ -327,9 +327,9 @@ export default function Champion() {
           >
             {[
               { value: 1.8, suffix: "bn", label: "Transactions Processed", icon: TrendingUp },
-              { value: 50, suffix: "k+", label: "Businesses Trust Us", icon: Users },
+              { value: 120, suffix: "k", label: "Businesses Trust Us", icon: Users },
               { value: 450, suffix: "+", label: "EPOS Integrations", icon: Globe },
-              { value: 3, suffix: "k", label: "Exit Cost Coverage", icon: Shield, prefix: "£" },
+              { value: 3000, suffix: "", label: "Exit Cost Coverage", icon: Shield, prefix: "£" },
             ].map((stat, i) => (
               <Card 
                 key={i} 
