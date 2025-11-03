@@ -26,6 +26,7 @@ import Pricing from "@/pages/Pricing";
 import Resources from "@/pages/Resources";
 import SimplePage from "@/pages/SimplePage";
 import FreeTerminal from "@/pages/FreeTerminal";
+import Champion from "@/pages/Champion";
 import NotFound from "@/pages/not-found";
 
 function ScrollToTop() {
@@ -60,6 +61,7 @@ function Router() {
       <Route path="/resources" component={Resources} />
       <Route path="/quote" component={Quote} />
       <Route path="/free-terminal" component={FreeTerminal} />
+      <Route path="/champion" component={Champion} />
       <Route path="/about">
         <SimplePage
           title="About Rocket Payments"
