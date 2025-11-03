@@ -29,7 +29,8 @@ import {
   Award,
   TrendingUp,
   Users,
-  Globe
+  Globe,
+  Wifi
 } from "lucide-react";
 
 import championHero from "@assets/champion - GO_1762164001426.png";
@@ -273,7 +274,7 @@ export default function Champion() {
             <div className="flex flex-wrap justify-center gap-4 mb-12">
               {[
                 { icon: Trophy, text: "#1 Rated Terminal" },
-                { icon: Star, text: "99.99% Uptime" },
+                { icon: Wifi, text: "Sim Connectivity" },
                 { icon: Zap, text: "58% Faster" },
               ].map((item, i) => (
                 <div key={i} className="flex items-center gap-2 bg-amber-100/80 dark:bg-amber-950/50 px-4 py-2 rounded-full border border-amber-300 dark:border-amber-700">
