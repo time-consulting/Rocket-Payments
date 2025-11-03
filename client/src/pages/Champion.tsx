@@ -45,11 +45,46 @@ const formSchema = z.object({
 
 type FormData = z.infer<typeof formSchema>;
 
+// Animated counter component
+function AnimatedCounter({ target, suffix = "", duration = 2000, isVisible }: { target: number; suffix?: string; duration?: number; isVisible: boolean }) {
+  const [count, setCount] = useState(0);
+  const [hasAnimated, setHasAnimated] = useState(false);
+
+  useEffect(() => {
+    if (!isVisible || hasAnimated) return;
+    
+    setHasAnimated(true);
+    const startTime = Date.now();
+    const endTime = startTime + duration;
+
+    const timer = setInterval(() => {
+      const now = Date.now();
+      const progress = Math.min((now - startTime) / duration, 1);
+      const easeOut = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.floor(target * easeOut));
+
+      if (now >= endTime) {
+        setCount(target);
+        clearInterval(timer);
+      }
+    }, 16);
+
+    return () => clearInterval(timer);
+  }, [isVisible, target, duration, hasAnimated]);
+
+  return <>{count}{suffix}</>;
+}
+
 export default function Champion() {
   const [step, setStep] = useState(1);
   const [unveiled, setUnveiled] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [scrollY, setScrollY] = useState(0);
+  const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
   const bannerRef = useRef<HTMLElement>(null);
+  const statsRef = useRef<HTMLDivElement>(null);
+  const heroRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
 
   const form = useForm<FormData>({
@@ -86,6 +121,22 @@ export default function Champion() {
     return () => clearTimeout(timer);
   }, []);
 
+  // Scroll progress bar
+  useEffect(() => {
+    const handleScroll = () => {
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight - windowHeight;
+      const scrolled = window.scrollY;
+      const progress = (scrolled / documentHeight) * 100;
+      setScrollProgress(progress);
+      setScrollY(scrolled);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Confetti cannon on banner scroll
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -104,6 +155,25 @@ export default function Champion() {
     return () => observer.disconnect();
   }, [showConfetti]);
 
+  // Track visible sections for animations
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisibleSections((prev) => new Set(prev).add(entry.target.id));
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    const sections = document.querySelectorAll('[data-animate]');
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, []);
+
   const onSubmit = (data: FormData) => {
     if (step < 2) {
       setStep(step + 1);
@@ -114,6 +184,32 @@ export default function Champion() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-amber-50/30 via-stone-50 to-amber-50/30 dark:from-stone-950 dark:via-stone-900 dark:to-stone-950">
+      {/* Scroll Progress Bar */}
+      <div className="fixed top-0 left-0 right-0 h-1 bg-stone-200/30 dark:bg-stone-800/30 z-50">
+        <div 
+          className="h-full bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 transition-all duration-150 shadow-lg shadow-amber-500/50"
+          style={{ width: `${scrollProgress}%` }}
+        />
+      </div>
+
+      {/* Scroll-following particle trail */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        {[...Array(15)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-2 h-2 bg-amber-400/60 rounded-full"
+            style={{
+              left: `${20 + (i * 5)}%`,
+              top: `${Math.min(scrollY / 20 + i * 30, window.innerHeight - 50)}px`,
+              transform: `translateY(${Math.sin(scrollY / 100 + i) * 20}px)`,
+              opacity: Math.max(0, 1 - (scrollY / 2000)),
+              transition: 'all 0.3s ease-out',
+              filter: 'blur(1px)',
+            }}
+          />
+        ))}
+      </div>
+
       {/* Floating particles effect */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-2 h-2 bg-amber-400/40 rounded-full animate-pulse" style={{ animationDelay: '0s' }} />
@@ -160,12 +256,23 @@ export default function Champion() {
             </div>
           </div>
 
-          {/* Champion Image with Unveiling Effect */}
-          <div className="relative max-w-5xl mx-auto mb-16">
+          {/* Champion Image with Unveiling Effect + Parallax */}
+          <div 
+            className="relative max-w-5xl mx-auto mb-16"
+            style={{
+              transform: `translateY(${scrollY * 0.15}px)`,
+              transition: 'transform 0.1s ease-out',
+            }}
+          >
             <div className="absolute -inset-8 bg-gradient-to-r from-amber-400/20 via-yellow-300/20 to-amber-400/20 blur-3xl animate-pulse" />
             
             {/* Hero Image */}
-            <div className="relative">
+            <div 
+              className="relative"
+              style={{
+                transform: `translateY(${-scrollY * 0.05}px)`,
+              }}
+            >
               <img
                 src={championHero}
                 alt="The Champion Terminal"
@@ -211,17 +318,36 @@ export default function Champion() {
             </div>
           </div>
 
-          {/* Laurel wreath stats */}
-          <div className="grid md:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          {/* Laurel wreath stats with animated counters */}
+          <div 
+            ref={statsRef}
+            id="stats-section"
+            data-animate
+            className="grid md:grid-cols-4 gap-6 max-w-6xl mx-auto"
+          >
             {[
-              { number: "1.8bn", label: "Transactions Processed", icon: TrendingUp },
-              { number: "50k+", label: "Businesses Trust Us", icon: Users },
-              { number: "450+", label: "EPOS Integrations", icon: Globe },
-              { number: "£3k", label: "Exit Cost Coverage", icon: Shield },
+              { value: 1.8, suffix: "bn", label: "Transactions Processed", icon: TrendingUp },
+              { value: 50, suffix: "k+", label: "Businesses Trust Us", icon: Users },
+              { value: 450, suffix: "+", label: "EPOS Integrations", icon: Globe },
+              { value: 3, suffix: "k", label: "Exit Cost Coverage", icon: Shield, prefix: "£" },
             ].map((stat, i) => (
-              <Card key={i} className="p-6 text-center bg-gradient-to-br from-amber-50/50 to-yellow-50/50 dark:from-stone-900/50 dark:to-amber-950/50 border-amber-200 dark:border-amber-800 hover-elevate">
-                <stat.icon className="w-8 h-8 mx-auto mb-3 text-amber-600 dark:text-amber-400" />
-                <div className="text-4xl font-black text-amber-900 dark:text-amber-100 mb-1">{stat.number}</div>
+              <Card 
+                key={i} 
+                className="p-6 text-center bg-gradient-to-br from-amber-50/50 to-yellow-50/50 dark:from-stone-900/50 dark:to-amber-950/50 border-amber-200 dark:border-amber-800 hover-elevate transform transition-all duration-500 hover:scale-105 group"
+                style={{
+                  animationDelay: `${i * 100}ms`,
+                }}
+              >
+                <stat.icon className="w-8 h-8 mx-auto mb-3 text-amber-600 dark:text-amber-400 transition-all duration-500 group-hover:scale-125 group-hover:rotate-12" />
+                <div className="text-4xl font-black text-amber-900 dark:text-amber-100 mb-1">
+                  {stat.prefix || ""}
+                  <AnimatedCounter 
+                    target={stat.value} 
+                    suffix={stat.suffix}
+                    duration={2000}
+                    isVisible={visibleSections.has("stats-section")}
+                  />
+                </div>
                 <div className="text-sm font-semibold text-stone-600 dark:text-stone-400">{stat.label}</div>
               </Card>
             ))}
@@ -270,8 +396,9 @@ export default function Champion() {
           <div className="flex justify-center mb-6">
             <Award className={`w-16 h-16 text-white transition-transform duration-500 ${showConfetti ? 'scale-125 rotate-12' : ''}`} />
           </div>
-          <h2 className={`text-5xl lg:text-7xl font-black text-white mb-4 transition-all duration-500 ${showConfetti ? 'scale-110' : ''}`}>
-            VICTOR OMNIUM
+          <h2 className={`text-5xl lg:text-7xl font-black mb-4 transition-all duration-500 relative ${showConfetti ? 'scale-110' : ''}`}>
+            <span className="text-white">VICTOR OMNIUM</span>
+            <span className="absolute inset-0 shimmer-text">VICTOR OMNIUM</span>
           </h2>
           <p className="text-2xl font-bold text-amber-100">Victory For All Who Choose Excellence</p>
         </div>
@@ -287,7 +414,11 @@ export default function Champion() {
             Not all terminals are created equal. Here's why the Rocket Go stands alone at the top.
           </p>
 
-          <div className="grid md:grid-cols-2 gap-8 mb-16">
+          <div 
+            id="features-section"
+            data-animate
+            className="grid md:grid-cols-2 gap-8 mb-16"
+          >
             {[
               {
                 icon: Zap,
@@ -314,7 +445,14 @@ export default function Champion() {
                 stat: "Save 33%",
               },
             ].map((feature, i) => (
-              <Card key={i} className="p-8 bg-gradient-to-br from-white to-amber-50/30 dark:from-stone-900 dark:to-amber-950/30 border-2 border-amber-200 dark:border-amber-800 hover-elevate">
+              <Card 
+                key={i} 
+                className={`p-8 bg-gradient-to-br from-white to-amber-50/30 dark:from-stone-900 dark:to-amber-950/30 border-2 border-amber-200 dark:border-amber-800 hover-elevate card-3d ${visibleSections.has("features-section") ? 'light-sweep' : ''}`}
+                style={{
+                  animation: visibleSections.has("features-section") ? `staggerFadeIn 0.6s ease-out ${i * 150}ms forwards` : 'none',
+                  opacity: visibleSections.has("features-section") ? 1 : 0,
+                }}
+              >
                 <div className="flex items-start gap-4">
                   <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-500 to-yellow-600 flex items-center justify-center flex-shrink-0">
                     <feature.icon className="w-8 h-8 text-white" />
@@ -351,7 +489,11 @@ export default function Champion() {
             The Champion's <span className="text-amber-600 dark:text-amber-400">Arsenal</span>
           </h2>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div 
+            id="arsenal-section"
+            data-animate
+            className="grid md:grid-cols-3 gap-8"
+          >
             {[
               {
                 title: "Free Premium Terminal",
@@ -390,8 +532,15 @@ export default function Champion() {
                 icon: Zap,
               },
             ].map((benefit, i) => (
-              <Card key={i} className="p-6 text-center bg-white/80 dark:bg-stone-900/80 backdrop-blur border-2 border-amber-200 dark:border-amber-800 hover-elevate">
-                <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-amber-500 to-yellow-600 flex items-center justify-center">
+              <Card 
+                key={i} 
+                className={`p-6 text-center bg-white/80 dark:bg-stone-900/80 backdrop-blur border-2 border-amber-200 dark:border-amber-800 hover-elevate card-3d ${visibleSections.has("arsenal-section") ? 'light-sweep' : ''}`}
+                style={{
+                  animation: visibleSections.has("arsenal-section") ? `staggerFadeIn 0.6s ease-out ${i * 100}ms forwards` : 'none',
+                  opacity: visibleSections.has("arsenal-section") ? 1 : 0,
+                }}
+              >
+                <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-amber-500 to-yellow-600 flex items-center justify-center transition-transform duration-300 hover:scale-110 hover:rotate-12">
                   <benefit.icon className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-xl font-black mb-2 text-stone-900 dark:text-stone-100">{benefit.title}</h3>
