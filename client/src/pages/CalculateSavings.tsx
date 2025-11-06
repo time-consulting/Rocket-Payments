@@ -300,15 +300,15 @@ export default function CalculateSavings() {
                     <p className="text-muted-foreground mb-8">
                       If you have multiple providers, select the company that processes the majority of your payments.
                     </p>
-                    <div className="grid grid-cols-3 gap-4">
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
                       {providers.map((provider) => (
                         <Card
                           key={provider.value}
                           onClick={() => handleSelection("currentProvider", provider.value)}
-                          className="p-6 cursor-pointer hover-elevate active-elevate-2 transition-all text-center"
+                          className="p-4 md:p-6 cursor-pointer hover-elevate active-elevate-2 transition-all text-center"
                           data-testid={`option-provider-${provider.value}`}
                         >
-                          <div className="font-semibold text-sm">{provider.label}</div>
+                          <div className="font-semibold text-xs md:text-sm">{provider.label}</div>
                         </Card>
                       ))}
                     </div>
