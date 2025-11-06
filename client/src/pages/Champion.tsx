@@ -194,6 +194,14 @@ export default function Champion() {
       if (result.success) {
         console.log("✅ Calculator submission successful!", result);
         setCurrentStep(9); // Success step
+        
+        // Scroll to the form section to show success message
+        setTimeout(() => {
+          const formSection = document.getElementById('claim-form');
+          if (formSection) {
+            formSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        }, 100);
       } else {
         console.error("❌ Submission failed:", result.error);
       }

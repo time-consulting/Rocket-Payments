@@ -136,7 +136,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         companyName,
         postcode,
         businessType,
-        businessNeeds: businessNeeds?.join(", ") || "",
+        businessNeeds: Array.isArray(businessNeeds) ? businessNeeds.join(", ") : (businessNeeds || ""),
         monthlyTurnover,
         currentProvider,
         estimatedSavings,
