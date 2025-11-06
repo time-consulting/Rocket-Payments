@@ -5,7 +5,6 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Check, Sparkles, Star, Clock, Wallet, TrendingUp, Shield, Zap, Heart } from "lucide-react";
 
-import approvedImage from "@assets/1080x1074_1761948535092.webp";
 import balanceImage from "@assets/1080x680_1761948535089.webp";
 import hairSalonCustomerImage from "@assets/1080x900_1761948535091.webp";
 import expansionBistroImage from "@assets/expansion french bistro funding_1761948535093.png";
@@ -14,6 +13,7 @@ import constructionOwnerImage from "@assets/Gemini_Generated_Image_wsdztcwsdztcw
 import bakerTeamImage from "@assets/group photo staff_1761948535094.png";
 import hairStylistImage from "@assets/hair salon_1761948535094.png";
 import handshakeImage from "@assets/shake_1761948535094.png";
+import cafeLadyImage from "@assets/Gemini_Generated_Image_fyzifdfyzifdfyzi_1762450466875.png";
 
 function AnimatedSection({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
   const [isVisible, setIsVisible] = useState(false);
@@ -343,7 +343,6 @@ export default function BusinessFunding() {
               <CarouselImages
                 images={[
                   { src: christmasMarketImage, alt: "Market trader" },
-                  { src: approvedImage, alt: "Approved funding" },
                   { src: balanceImage, alt: "Outstanding balance" },
                 ]}
               />
@@ -361,7 +360,7 @@ export default function BusinessFunding() {
                 images={[
                   { src: hairSalonCustomerImage, alt: "Salon customer" },
                   { src: hairStylistImage, alt: "Hair stylist at work" },
-                  { src: approvedImage, alt: "Funding approved" },
+                  { src: cafeLadyImage, alt: "Cafe business owner" },
                 ]}
               />
             </AnimatedSection>
@@ -449,7 +448,6 @@ export default function BusinessFunding() {
                 images={[
                   { src: bakerTeamImage, alt: "Bakery team" },
                   { src: expansionBistroImage, alt: "New bakery location" },
-                  { src: approvedImage, alt: "Approved notification" },
                 ]}
               />
             </AnimatedSection>
