@@ -73,23 +73,38 @@ export default function CalculateSavings() {
     setFormData({ ...formData, [field]: value });
     
     setTimeout(() => {
-      if (currentStep === 4) {
-        setIsLoading(true);
-        setTimeout(() => {
-          setShowTick(true);
-          setTimeout(() => {
-            setCurrentStep(5);
-            setIsLoading(false);
-            setShowTick(false);
-          }, 1500);
-        }, 3000);
-      } else {
-        setCurrentStep(currentStep + 1);
-      }
+      setCurrentStep(currentStep + 1);
     }, 300);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleBusinessInfoSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setTimeout(() => {
+      setCurrentStep(6);
+    }, 300);
+  };
+
+  const handleNameSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setTimeout(() => {
+      setShowTick(true);
+      setTimeout(() => {
+        setCurrentStep(7);
+        setIsLoading(false);
+        setShowTick(false);
+      }, 1500);
+    }, 3000);
+  };
+
+  const handleEmailSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setTimeout(() => {
+      setCurrentStep(8);
+    }, 300);
+  };
+
+  const handlePhoneSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
   };
@@ -300,7 +315,7 @@ export default function CalculateSavings() {
                   </motion.div>
                 )}
 
-                {/* Question 5 - Contact Info */}
+                {/* Question 5 - Business Name & Postcode */}
                 {currentStep === 5 && (
                   <motion.div
                     key="step5"
@@ -310,53 +325,20 @@ export default function CalculateSavings() {
                     exit="exit"
                     transition={transition}
                   >
-                    <h2 className="text-3xl lg:text-4xl font-black mb-4">
-                      YOU CAN SAVE £<span className="blur-sm select-none">{Math.floor(Math.random() * 5000 + 2000)}</span> A YEAR
+                    <h2 className="text-4xl lg:text-5xl font-black mb-4">
+                      TELL US ABOUT YOUR BUSINESS
                     </h2>
-                    <p className="text-muted-foreground mb-8">
-                      Enter your details to find out how much you could save
+                    <p className="text-sm text-muted-foreground mb-8">
+                      We'll use this to check local average pricing for the most accurate savings calculation
                     </p>
-                    <form onSubmit={handleSubmit} className="space-y-4">
-                      <div>
-                        <Input
-                          type="text"
-                          placeholder="Enter your name"
-                          value={formData.name}
-                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                          className="w-full"
-                          required
-                          data-testid="input-name"
-                        />
-                      </div>
-                      <div>
-                        <Input
-                          type="email"
-                          placeholder="Enter your email"
-                          value={formData.email}
-                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          className="w-full"
-                          required
-                          data-testid="input-email"
-                        />
-                      </div>
-                      <div>
-                        <Input
-                          type="tel"
-                          placeholder="Enter your phone number"
-                          value={formData.phone}
-                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                          className="w-full"
-                          required
-                          data-testid="input-phone"
-                        />
-                      </div>
+                    <form onSubmit={handleBusinessInfoSubmit} className="space-y-4">
                       <div>
                         <Input
                           type="text"
                           placeholder="Enter your company name"
                           value={formData.companyName}
                           onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
-                          className="w-full"
+                          className="w-full text-lg py-6"
                           required
                           data-testid="input-company"
                         />
@@ -367,7 +349,7 @@ export default function CalculateSavings() {
                           placeholder="Enter your company postcode"
                           value={formData.postcode}
                           onChange={(e) => setFormData({ ...formData, postcode: e.target.value })}
-                          className="w-full"
+                          className="w-full text-lg py-6"
                           required
                           data-testid="input-postcode"
                         />
@@ -375,12 +357,129 @@ export default function CalculateSavings() {
                       <Button
                         type="submit"
                         className="w-full text-lg py-6 rounded-full"
+                        data-testid="button-continue-business"
+                      >
+                        Continue
+                      </Button>
+                    </form>
+                  </motion.div>
+                )}
+
+                {/* Question 6 - Personal Name */}
+                {currentStep === 6 && (
+                  <motion.div
+                    key="step6"
+                    variants={pageVariants}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                    transition={transition}
+                  >
+                    <h2 className="text-4xl lg:text-5xl font-black mb-4">
+                      WHAT'S YOUR NAME?
+                    </h2>
+                    <p className="text-sm text-muted-foreground mb-8">
+                      We'll personalize your savings report
+                    </p>
+                    <form onSubmit={handleNameSubmit} className="space-y-4">
+                      <div>
+                        <Input
+                          type="text"
+                          placeholder="Enter your name"
+                          value={formData.name}
+                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                          className="w-full text-lg py-6"
+                          required
+                          data-testid="input-name"
+                        />
+                      </div>
+                      <Button
+                        type="submit"
+                        className="w-full text-lg py-6 rounded-full"
+                        data-testid="button-calculate"
+                      >
+                        Calculate My Savings
+                      </Button>
+                    </form>
+                  </motion.div>
+                )}
+
+                {/* Question 7 - Email */}
+                {currentStep === 7 && (
+                  <motion.div
+                    key="step7"
+                    variants={pageVariants}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                    transition={transition}
+                  >
+                    <h2 className="text-3xl lg:text-4xl font-black mb-4">
+                      YOU CAN SAVE £<span className="blur-sm select-none">{Math.floor(Math.random() * 5000 + 2000)}</span> A YEAR
+                    </h2>
+                    <p className="text-muted-foreground mb-8">
+                      Enter your email to receive your full savings breakdown
+                    </p>
+                    <form onSubmit={handleEmailSubmit} className="space-y-4">
+                      <div>
+                        <Input
+                          type="email"
+                          placeholder="Enter your email"
+                          value={formData.email}
+                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                          className="w-full text-lg py-6"
+                          required
+                          data-testid="input-email"
+                        />
+                      </div>
+                      <Button
+                        type="submit"
+                        className="w-full text-lg py-6 rounded-full"
+                        data-testid="button-continue-email"
+                      >
+                        Continue
+                      </Button>
+                    </form>
+                  </motion.div>
+                )}
+
+                {/* Question 8 - Phone Number */}
+                {currentStep === 8 && (
+                  <motion.div
+                    key="step8"
+                    variants={pageVariants}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                    transition={transition}
+                  >
+                    <h2 className="text-3xl lg:text-4xl font-black mb-4">
+                      LAST STEP - GET YOUR PERSONAL QUOTE
+                    </h2>
+                    <p className="text-muted-foreground mb-8">
+                      Our payment specialists will call you to discuss your personalized savings plan
+                    </p>
+                    <form onSubmit={handlePhoneSubmit} className="space-y-4">
+                      <div>
+                        <Input
+                          type="tel"
+                          placeholder="Enter your phone number"
+                          value={formData.phone}
+                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                          className="w-full text-lg py-6"
+                          required
+                          data-testid="input-phone"
+                        />
+                      </div>
+                      <Button
+                        type="submit"
+                        className="w-full text-lg py-6 rounded-full"
                         data-testid="button-submit"
                       >
-                        Submit
+                        Get My Quote
                       </Button>
                       <p className="text-xs text-muted-foreground text-center">
-                        Yes please—show me the result and have a Rocket Payments adviser give me a no-pressure callback. You can decline the call at any time.
+                        By submitting, you agree to receive a no-pressure callback from Rocket Payments. You can decline the call at any time.
                       </p>
                     </form>
                   </motion.div>
@@ -390,9 +489,9 @@ export default function CalculateSavings() {
           </AnimatePresence>
 
           {/* Progress indicator */}
-          {!isLoading && currentStep < 5 && (
+          {!isLoading && currentStep <= 6 && (
             <div className="mt-12 flex items-center justify-center gap-2">
-              {[1, 2, 3, 4].map((step) => (
+              {[1, 2, 3, 4, 5, 6].map((step) => (
                 <div
                   key={step}
                   className={`h-2 rounded-full transition-all ${
