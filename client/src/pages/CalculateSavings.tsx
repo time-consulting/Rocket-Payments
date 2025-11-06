@@ -49,10 +49,11 @@ export default function CalculateSavings() {
   ];
 
   const turnoverOptions = [
-    { label: "Under £40,000", value: "under-40k" },
-    { label: "Between £40,000 and £200,000", value: "40k-200k" },
-    { label: "Between £200,000 and £500,000", value: "200k-500k" },
-    { label: "Over £500,000", value: "over-500k" },
+    { label: "Up to £10k", value: "up-to-10k" },
+    { label: "Between £10k - £20k", value: "10k-20k" },
+    { label: "Between £20k - £50k", value: "20k-50k" },
+    { label: "Between £50k - £100k", value: "50k-100k" },
+    { label: "Over £100k", value: "over-100k" },
   ];
 
   const providers = [
@@ -299,7 +300,7 @@ export default function CalculateSavings() {
                     transition={transition}
                   >
                     <h2 className="text-4xl lg:text-5xl font-black mb-8">
-                      WHAT'S YOUR BUSINESS'S APPROXIMATE ANNUAL CARD TURNOVER? (GBP)
+                      WHAT'S YOUR BUSINESS'S APPROXIMATE MONTHLY CARD TURNOVER? (GBP)
                     </h2>
                     <div className="space-y-4">
                       {turnoverOptions.map((option) => (
