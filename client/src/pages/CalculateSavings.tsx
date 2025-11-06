@@ -104,9 +104,41 @@ export default function CalculateSavings() {
     }, 300);
   };
 
-  const handlePhoneSubmit = (e: React.FormEvent) => {
+  const handlePhoneSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+    
+    try {
+      // Send the calculator data to backend which will push to GHL
+      const response = await fetch("/api/calculator-submission", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          businessType: formData.businessType,
+          businessNeeds: formData.businessNeeds,
+          monthlyTurnover: formData.turnover,
+          currentProvider: formData.currentProvider,
+          companyName: formData.companyName,
+          postcode: formData.postcode,
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+        }),
+      });
+
+      const result = await response.json();
+      
+      if (result.success) {
+        console.log("✅ Calculator submission successful!", result);
+        console.log("📤 Webhook sent to GHL:", result.webhookSent);
+        // TODO: Show success message or redirect to thank you page
+      } else {
+        console.error("❌ Submission failed:", result.error);
+      }
+    } catch (error) {
+      console.error("❌ Error submitting calculator:", error);
+    }
   };
 
   const pageVariants = {
