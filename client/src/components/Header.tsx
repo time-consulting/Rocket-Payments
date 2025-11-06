@@ -175,7 +175,7 @@ export function Header() {
 
           <div className="flex items-center gap-3">
             <ThemeToggle />
-            <Link href="/quote">
+            <Link href="/calculate-savings">
               <Button variant="default" className="rounded-full font-medium" data-testid="button-get-started">
                 Get started
               </Button>
@@ -271,7 +271,7 @@ export function Header() {
               
               <div className="border-t my-2" />
               
-              <Link href="/quote">
+              <Link href="/calculate-savings">
                 <Button
                   variant="default"
                   className="w-full mt-2 rounded-full font-medium"
