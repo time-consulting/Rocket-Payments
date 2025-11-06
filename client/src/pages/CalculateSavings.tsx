@@ -65,6 +65,7 @@ export default function CalculateSavings() {
     { label: "Barclaycard", logo: "barclaycard", value: "barclaycard" },
     { label: "Worldpay", logo: "worldpay", value: "worldpay" },
     { label: "Tide", logo: "tide", value: "tide" },
+    { label: "New to Payments", logo: "new", value: "new-to-payments" },
     { label: "Other", logo: "other", value: "other" },
   ];
 
