@@ -34,12 +34,31 @@ async function sendToGHL(data: any) {
 }
 
 export async function registerRoutes(app: Express): Promise<Server> {
-  // Quote request endpoint
+  // Quote request endpoint (for Bookings and Business Funding pages)
   app.post("/api/quote", async (req, res) => {
     try {
       const validatedData = insertQuoteRequestSchema.parse(req.body);
       const quoteRequest = await storage.createQuoteRequest(validatedData);
-      res.json(quoteRequest);
+      
+      // Also send to GHL webhook
+      const ghlData = {
+        firstName: validatedData.contactName?.split(" ")[0] || "",
+        lastName: validatedData.contactName?.split(" ").slice(1).join(" ") || "",
+        email: validatedData.email,
+        phone: validatedData.phone,
+        companyName: validatedData.businessName,
+        businessType: validatedData.businessType,
+        monthlyVolume: validatedData.monthlyVolume,
+        message: validatedData.message,
+        source: "Quote Form (Bookings/Business Funding)"
+      };
+      
+      const webhookResult = await sendToGHL(ghlData);
+      
+      res.json({
+        ...quoteRequest,
+        webhookSent: webhookResult.success
+      });
     } catch (error: any) {
       res.status(400).json({ error: error.message || "Invalid request data" });
     }
@@ -105,7 +124,44 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Calculator submission endpoint - sends lead data to GHL
+  // Calculator partial submission endpoint - early lead capture after step 2
+  app.post("/api/calculator-partial-submission", async (req, res) => {
+    try {
+      const {
+        businessType,
+        businessNeeds,
+        monthlyTurnover,
+        currentProvider,
+        companyName,
+        postcode
+      } = req.body;
+
+      const partialLeadData = {
+        companyName,
+        postcode,
+        businessType,
+        businessNeeds: Array.isArray(businessNeeds) ? businessNeeds.join(", ") : (businessNeeds || ""),
+        monthlyTurnover: monthlyTurnover || "Not provided yet",
+        currentProvider: currentProvider || "Not provided yet",
+        source: "Savings Calculator - Partial (Early Lead Capture)",
+        leadStatus: "Partial - In Progress"
+      };
+
+      // Send to GHL webhook
+      const webhookResult = await sendToGHL(partialLeadData);
+
+      res.json({ 
+        success: true, 
+        message: "Partial submission captured",
+        webhookSent: webhookResult.success
+      });
+    } catch (error: any) {
+      console.error("Partial calculator submission error:", error);
+      res.status(500).json({ error: error.message || "Failed to process partial submission" });
+    }
+  });
+
+  // Calculator full submission endpoint - sends complete lead data to GHL
   app.post("/api/calculator-submission", async (req, res) => {
     try {
       const {
@@ -140,7 +196,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
         monthlyTurnover,
         currentProvider,
         estimatedSavings,
-        source: "Savings Calculator"
+        source: "Savings Calculator - Complete",
+        leadStatus: "Complete"
       };
 
       // Send to GHL webhook

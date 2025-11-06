@@ -78,8 +78,32 @@ export default function CalculateSavings() {
     }, 300);
   };
 
-  const handleBusinessInfoSubmit = (e: React.FormEvent) => {
+  const handleBusinessInfoSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Send partial form data to GHL webhook (early lead capture)
+    try {
+      await fetch("/api/calculator-partial-submission", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          businessType: formData.businessType,
+          companyName: formData.companyName,
+          postcode: formData.postcode,
+          businessNeeds: formData.businessNeeds,
+          monthlyTurnover: formData.turnover,
+          currentProvider: formData.currentProvider,
+          partial: true
+        }),
+      });
+      console.log("📤 Partial form data sent to GHL (early lead capture)");
+    } catch (error) {
+      console.error("⚠️ Failed to send partial submission:", error);
+      // Continue anyway - we don't want to block the user's progress
+    }
+    
     setTimeout(() => {
       setCurrentStep(6);
     }, 300);
