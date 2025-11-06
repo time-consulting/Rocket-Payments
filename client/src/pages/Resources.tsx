@@ -131,7 +131,7 @@ export default function Resources() {
             Our team is here to help. Get in touch and we'll answer any questions you have about Rocket Payments.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Link href="/quote">
+            <Link href="/calculate-savings">
               <Button size="lg" variant="secondary">
                 Contact Support
                 <ArrowRight className="ml-2 h-5 w-5" />

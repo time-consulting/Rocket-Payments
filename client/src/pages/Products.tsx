@@ -274,7 +274,7 @@ export default function Products() {
             </p>
 
             <div className="pt-8 flex flex-col sm:flex-row gap-6 justify-center items-center animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-500">
-              <Link href="/quote">
+              <Link href="/calculate-savings">
                 <Button size="lg" className="text-xl px-12 py-7 rounded-full hover:scale-105 transition-all duration-300 shadow-2xl">
                   Get started
                   <ArrowRight className="ml-2 h-6 w-6" />
@@ -845,7 +845,7 @@ export default function Products() {
               </p>
               
               <div className="pt-8">
-                <Link href="/quote">
+                <Link href="/calculate-savings">
                   <Button 
                     size="lg" 
                     variant="secondary"

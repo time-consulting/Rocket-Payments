@@ -345,7 +345,7 @@ export default function TapToPay() {
             </p>
           </AnimatedSection>
           <AnimatedSection delay={400}>
-            <Link href="/quote">
+            <Link href="/calculate-savings">
               <Button 
                 size="lg" 
                 className="text-lg px-10 py-6 rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl" 

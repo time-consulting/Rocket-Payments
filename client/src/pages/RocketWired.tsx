@@ -57,7 +57,7 @@ export default function RocketWired() {
                 </p>
               </div>
               <div className="animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200">
-                <Link href="/quote">
+                <Link href="/calculate-savings">
                   <Button size="lg" className="text-lg px-10 py-6 rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
                     Get started
                     <ArrowRight className="ml-2 h-5 w-5" />
@@ -278,7 +278,7 @@ export default function RocketWired() {
             <p className="text-sm text-primary-foreground/70 mt-4">*Subject to your annual card turnover.</p>
           </AnimatedSection>
           <AnimatedSection delay={400}>
-            <Link href="/quote">
+            <Link href="/calculate-savings">
               <Button 
                 size="lg" 
                 variant="secondary" 

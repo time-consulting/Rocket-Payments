@@ -145,7 +145,7 @@ export default function ProductDetail() {
               </ul>
             </div>
 
-            <Link href="/quote">
+            <Link href="/calculate-savings">
               <Button size="lg" className="mt-4" data-testid="button-get-started">
                 Get Started
                 <ArrowRight className="ml-2 h-5 w-5" />

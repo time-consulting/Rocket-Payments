@@ -138,7 +138,7 @@ export default function Industries() {
             </p>
             
             <div className="pt-4 flex flex-wrap gap-4 justify-center">
-              <Link href="/quote">
+              <Link href="/calculate-savings">
                 <Button size="lg" className="text-xl px-12 py-7 rounded-full hover:scale-105 transition-all duration-300 shadow-2xl">
                   Get started
                   <ArrowRight className="ml-2 h-6 w-6" />
@@ -357,7 +357,7 @@ export default function Industries() {
               </p>
               
               <div className="pt-8">
-                <Link href="/quote">
+                <Link href="/calculate-savings">
                   <Button 
                     size="lg" 
                     variant="secondary"

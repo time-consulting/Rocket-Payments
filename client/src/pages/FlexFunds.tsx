@@ -71,7 +71,7 @@ export default function FlexFunds() {
               </p>
             </div>
             <div className="animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200">
-              <Link href="/quote">
+              <Link href="/calculate-savings">
                 <Button size="lg" className="text-xl px-12 py-7 rounded-full hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-primary/50">
                   Get started
                   <ArrowRight className="ml-2 h-6 w-6" />
@@ -397,7 +397,7 @@ export default function FlexFunds() {
             </p>
           </AnimatedSection>
           <AnimatedSection delay={400}>
-            <Link href="/quote">
+            <Link href="/calculate-savings">
               <Button 
                 size="lg" 
                 variant="secondary" 

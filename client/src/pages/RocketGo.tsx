@@ -74,7 +74,7 @@ export default function RocketGo() {
             </p>
             
             <div className="pt-4 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200">
-              <Link href="/quote">
+              <Link href="/calculate-savings">
                 <Button 
                   size="lg" 
                   className="text-xl px-12 py-7 rounded-full hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-primary/50"
@@ -458,7 +458,7 @@ export default function RocketGo() {
               </p>
               
               <div className="pt-8 flex flex-col sm:flex-row gap-6 justify-center items-center">
-                <Link href="/quote">
+                <Link href="/calculate-savings">
                   <Button 
                     size="lg" 
                     variant="secondary"

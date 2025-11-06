@@ -57,7 +57,7 @@ export default function OnlinePayments() {
               </p>
             </div>
             <div className="flex flex-wrap gap-4 justify-center animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200">
-              <Link href="/quote">
+              <Link href="/calculate-savings">
                 <Button size="lg" className="text-lg px-10 py-6 rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
                   Get started
                   <ArrowRight className="ml-2 h-5 w-5" />
@@ -100,8 +100,8 @@ export default function OnlinePayments() {
       <section className="py-32 md:py-40 bg-muted/20 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <AnimatedSection delay={300} className="lg:order-2">
-              <div className="space-y-6">
+            <AnimatedSection delay={300}>
+              <div className="space-y-6 lg:order-2">
                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1]">
                   Enjoy easy integration
                 </h2>
@@ -110,8 +110,8 @@ export default function OnlinePayments() {
                 </p>
               </div>
             </AnimatedSection>
-            <AnimatedSection className="lg:order-1">
-              <div className="relative group">
+            <AnimatedSection>
+              <div className="relative group lg:order-1">
                 <div className="absolute -inset-6 bg-gradient-to-r from-primary/20 to-primary/10 rounded-3xl blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                 <img
                   src={integrationsImage}
@@ -278,7 +278,7 @@ export default function OnlinePayments() {
             <p className="text-sm text-primary-foreground/70 mt-4">*Subject to your annual card turnover.</p>
           </AnimatedSection>
           <AnimatedSection delay={400}>
-            <Link href="/quote">
+            <Link href="/calculate-savings">
               <Button 
                 size="lg" 
                 variant="secondary" 

@@ -273,7 +273,7 @@ export default function Pricing() {
                       ))}
                     </div>
 
-                    <Link href="/quote">
+                    <Link href="/calculate-savings">
                       <Button 
                         size="lg" 
                         className="w-full text-lg py-6 rounded-full hover:scale-105 transition-all duration-300"
@@ -403,7 +403,7 @@ export default function Pricing() {
               </p>
               
               <div className="pt-8 flex flex-col sm:flex-row gap-6 justify-center items-center">
-                <Link href="/quote">
+                <Link href="/calculate-savings">
                   <Button 
                     size="lg" 
                     variant="secondary"

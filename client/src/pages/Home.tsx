@@ -992,7 +992,7 @@ export default function Home() {
               </p>
               
               <div className="pt-8">
-                <Link href="/quote">
+                <Link href="/calculate-savings">
                   <Button 
                     size="lg" 
                     variant="secondary"

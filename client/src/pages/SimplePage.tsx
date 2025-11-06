@@ -28,7 +28,7 @@ export default function SimplePage({ title, description, content }: SimplePagePr
         )}
 
         <div className="mt-12 text-center">
-          <Link href="/quote">
+          <Link href="/calculate-savings">
             <Button size="lg">
               Get in Touch
               <ArrowRight className="ml-2 h-5 w-5" />
