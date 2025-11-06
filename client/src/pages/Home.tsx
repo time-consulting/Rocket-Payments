@@ -315,9 +315,9 @@ export default function Home() {
               </div>
               
               <div className="flex flex-wrap gap-4 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200">
-                <Link href="/quote">
+                <Link href="/calculate-savings">
                   <Button size="lg" className="text-xl px-12 py-7 rounded-full hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-primary/50" data-testid="button-hero-get-started">
-                    Get Started
+                    Calculate Savings
                     <ArrowRight className="ml-2 h-6 w-6" />
                   </Button>
                 </Link>
