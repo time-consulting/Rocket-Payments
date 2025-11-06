@@ -3,20 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-import { useMutation } from "@tanstack/react-query";
-import { apiRequest, queryClient } from "@/lib/queryClient";
-import { useToast } from "@/hooks/use-toast";
+import { motion, AnimatePresence } from "framer-motion";
 import { 
   Trophy, 
   Crown, 
@@ -30,21 +17,26 @@ import {
   TrendingUp,
   Users,
   Globe,
-  Wifi
+  Wifi,
+  Check,
+  Loader2
 } from "lucide-react";
 
 import championHero from "@assets/champion - GO_1762164001426.png";
 import championAlt from "@assets/The Innovator Pocket_1762164754335.png";
 import rocketGoDevice from "@assets/rocket go device on stand - white bk_1761931715066.png";
 
-const formSchema = z.object({
-  businessName: z.string().min(2, "Business name required"),
-  contactName: z.string().min(2, "Your name required"),
-  mobile: z.string().min(10, "Valid mobile number required"),
-  email: z.string().email("Valid email required"),
-});
-
-type FormData = z.infer<typeof formSchema>;
+interface FormData {
+  businessType: string;
+  businessNeeds: string;
+  turnover: string;
+  currentProvider: string;
+  name: string;
+  email: string;
+  phone: string;
+  companyName: string;
+  postcode: string;
+}
 
 // Animated counter component
 function AnimatedCounter({ target, suffix = "", duration = 2000, isVisible }: { target: number; suffix?: string; duration?: number; isVisible: boolean }) {
@@ -81,7 +73,9 @@ function AnimatedCounter({ target, suffix = "", duration = 2000, isVisible }: { 
 }
 
 export default function Champion() {
-  const [step, setStep] = useState(1);
+  const [currentStep, setCurrentStep] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
+  const [showTick, setShowTick] = useState(false);
   const [unveiled, setUnveiled] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -90,34 +84,135 @@ export default function Champion() {
   const bannerRef = useRef<HTMLElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
-  const { toast } = useToast();
-
-  const form = useForm<FormData>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      businessName: "",
-      contactName: "",
-      mobile: "",
-      email: "",
-    },
+  const [formData, setFormData] = useState<FormData>({
+    businessType: "",
+    businessNeeds: "",
+    turnover: "",
+    currentProvider: "",
+    name: "",
+    email: "",
+    phone: "",
+    companyName: "",
+    postcode: "",
   });
 
-  const mutation = useMutation({
-    mutationFn: async (data: FormData) => {
-      return await apiRequest("/api/free-terminal-lead", "POST", data);
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["/api/free-terminal-leads"] });
-      setStep(3);
-    },
-    onError: () => {
-      toast({
-        title: "Error",
-        description: "Something went wrong. Please try again.",
-        variant: "destructive",
+  const businessTypes = [
+    { icon: "🍽️", label: "Food & Drink", value: "food-drink" },
+    { icon: "🏪", label: "Retail", value: "retail" },
+    { icon: "🏥", label: "Clinic", value: "clinic" },
+    { icon: "💇", label: "Salon", value: "salon" },
+    { icon: "❓", label: "Other", value: "other" },
+  ];
+
+  const businessNeeds = [
+    { icon: "🖥️", label: "One or more terminals", value: "terminals" },
+    { icon: "🏪", label: "A complete POS system", value: "pos-system" },
+    { icon: "🔄", label: "A combination", value: "combination" },
+  ];
+
+  const turnoverOptions = [
+    { label: "Up to £10k", value: "up-to-10k" },
+    { label: "Between £10k - £20k", value: "10k-20k" },
+    { label: "Between £20k - £50k", value: "20k-50k" },
+    { label: "Between £50k - £100k", value: "50k-100k" },
+    { label: "Over £100k", value: "over-100k" },
+  ];
+
+  const providers = [
+    { label: "Dojo", logo: "dojo", value: "dojo" },
+    { label: "Sumup", logo: "sumup", value: "sumup" },
+    { label: "Teya", logo: "teya", value: "teya" },
+    { label: "Clover", logo: "clover", value: "clover" },
+    { label: "Takepayments", logo: "takepayments", value: "takepayments" },
+    { label: "MyPOS", logo: "mypos", value: "mypos" },
+    { label: "Barclaycard", logo: "barclaycard", value: "barclaycard" },
+    { label: "Worldpay", logo: "worldpay", value: "worldpay" },
+    { label: "Tide", logo: "tide", value: "tide" },
+    { label: "New to Payments", logo: "new", value: "new-to-payments" },
+    { label: "Other", logo: "other", value: "other" },
+  ];
+
+  const handleSelection = (field: keyof FormData, value: string) => {
+    setFormData({ ...formData, [field]: value });
+    
+    setTimeout(() => {
+      setCurrentStep(currentStep + 1);
+    }, 300);
+  };
+
+  const handleBusinessInfoSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setTimeout(() => {
+      setCurrentStep(6);
+    }, 300);
+  };
+
+  const handleNameSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setTimeout(() => {
+      setShowTick(true);
+      setTimeout(() => {
+        setCurrentStep(7);
+        setIsLoading(false);
+        setShowTick(false);
+      }, 1500);
+    }, 3000);
+  };
+
+  const handleEmailSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setTimeout(() => {
+      setCurrentStep(8);
+    }, 300);
+  };
+
+  const handlePhoneSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    try {
+      const response = await fetch("/api/calculator-submission", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          businessType: formData.businessType,
+          businessNeeds: formData.businessNeeds,
+          monthlyTurnover: formData.turnover,
+          currentProvider: formData.currentProvider,
+          companyName: formData.companyName,
+          postcode: formData.postcode,
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+        }),
       });
-    },
-  });
+
+      const result = await response.json();
+      
+      if (result.success) {
+        console.log("✅ Calculator submission successful!", result);
+        setCurrentStep(9); // Success step
+      } else {
+        console.error("❌ Submission failed:", result.error);
+      }
+    } catch (error) {
+      console.error("❌ Error submitting calculator:", error);
+    }
+  };
+
+  const pageVariants = {
+    initial: { opacity: 0, x: 50 },
+    animate: { opacity: 1, x: 0 },
+    exit: { opacity: 0, x: -50 },
+  };
+
+  const transition = {
+    type: "spring",
+    stiffness: 260,
+    damping: 20,
+  };
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -203,13 +298,6 @@ export default function Champion() {
     };
   }, []);
 
-  const onSubmit = (data: FormData) => {
-    if (step < 2) {
-      setStep(step + 1);
-    } else {
-      mutation.mutate(data);
-    }
-  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-amber-50/30 via-stone-50 to-amber-50/30 dark:from-stone-950 dark:via-stone-900 dark:to-stone-950">
@@ -605,154 +693,384 @@ export default function Champion() {
             </p>
           </div>
 
-          {step < 3 ? (
-            <Card className="p-8 bg-white/90 dark:bg-stone-900/90 backdrop-blur shadow-2xl border-2 border-amber-200 dark:border-amber-800">
-              <div className="flex justify-between mb-8">
-                {[1, 2].map((s) => (
-                  <div
-                    key={s}
-                    className={`flex-1 h-3 rounded-full mx-1 transition-all ${
-                      s <= step ? "bg-gradient-to-r from-amber-500 to-yellow-600" : "bg-stone-200 dark:bg-stone-700"
-                    }`}
-                  />
-                ))}
-              </div>
-
-              <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                  {step === 1 && (
-                    <div className="space-y-6 animate-in fade-in slide-in-from-right duration-300">
-                      <h3 className="text-2xl font-black text-stone-900 dark:text-stone-100">Step 1: Your Details</h3>
-                      
-                      <FormField
-                        control={form.control}
-                        name="businessName"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="text-lg font-bold">Business Name *</FormLabel>
-                            <FormControl>
-                              <Input
-                                {...field}
-                                placeholder="Your Business Ltd"
-                                className="text-lg h-14 border-2 border-amber-200 dark:border-amber-800 focus:border-amber-500"
-                                data-testid="input-business-name"
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-
-                      <FormField
-                        control={form.control}
-                        name="contactName"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="text-lg font-bold">Your Name *</FormLabel>
-                            <FormControl>
-                              <Input
-                                {...field}
-                                placeholder="John Smith"
-                                className="text-lg h-14 border-2 border-amber-200 dark:border-amber-800 focus:border-amber-500"
-                                data-testid="input-contact-name"
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
-                  )}
-
-                  {step === 2 && (
-                    <div className="space-y-6 animate-in fade-in slide-in-from-right duration-300">
-                      <h3 className="text-2xl font-black text-stone-900 dark:text-stone-100">Step 2: Contact Info</h3>
-                      
-                      <FormField
-                        control={form.control}
-                        name="mobile"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="text-lg font-bold">Mobile Number *</FormLabel>
-                            <FormControl>
-                              <Input
-                                {...field}
-                                placeholder="07XXX XXXXXX"
-                                type="tel"
-                                className="text-lg h-14 border-2 border-amber-200 dark:border-amber-800 focus:border-amber-500"
-                                data-testid="input-mobile"
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-
-                      <FormField
-                        control={form.control}
-                        name="email"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="text-lg font-bold">Email Address *</FormLabel>
-                            <FormControl>
-                              <Input
-                                {...field}
-                                placeholder="you@business.com"
-                                type="email"
-                                className="text-lg h-14 border-2 border-amber-200 dark:border-amber-800 focus:border-amber-500"
-                                data-testid="input-email"
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
-                  )}
-
-                  <Button
-                    type="submit"
-                    size="lg"
-                    className="w-full text-xl py-8 rounded-full font-black shadow-2xl bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-700 hover:to-yellow-700 text-white border-2 border-amber-400"
-                    disabled={mutation.isPending}
-                    data-testid="button-submit"
+          <Card className="p-8 bg-white/90 dark:bg-stone-900/90 backdrop-blur shadow-2xl border-2 border-amber-200 dark:border-amber-800">
+            <AnimatePresence mode="wait">
+              {isLoading ? (
+                <motion.div
+                  key="loading"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="flex flex-col items-center justify-center py-32"
+                >
+                  <div className="relative">
+                    <AnimatePresence mode="wait">
+                      {!showTick ? (
+                        <motion.div
+                          key="loader"
+                          initial={{ scale: 0.8, opacity: 0 }}
+                          animate={{ scale: 1, opacity: 1 }}
+                          exit={{ scale: 0.8, opacity: 0 }}
+                        >
+                          <Loader2 className="w-16 h-16 text-amber-600 animate-spin" />
+                        </motion.div>
+                      ) : (
+                        <motion.div
+                          key="tick"
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          transition={{ type: "spring", stiffness: 200, damping: 15 }}
+                          className="w-16 h-16 rounded-full bg-green-500 flex items-center justify-center"
+                        >
+                          <Check className="w-10 h-10 text-white" strokeWidth={3} />
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                  <motion.p
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5 }}
+                    className="mt-6 text-xl font-semibold text-muted-foreground"
                   >
-                    {mutation.isPending ? "Processing..." : step === 1 ? "Continue" : "Claim Your Champion"}
-                    <ArrowRight className="ml-2 h-6 w-6" />
-                  </Button>
-
-                  {step > 1 && (
-                    <Button
-                      type="button"
-                      variant="ghost"
-                      onClick={() => setStep(step - 1)}
-                      className="w-full"
-                      data-testid="button-back"
+                    Calculating your savings...
+                  </motion.p>
+                </motion.div>
+              ) : currentStep === 9 ? (
+                <motion.div
+                  key="success"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="text-center py-12"
+                >
+                  <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-to-br from-amber-500 to-yellow-600 flex items-center justify-center">
+                    <CheckCircle className="w-12 h-12 text-white" />
+                  </div>
+                  <h3 className="text-4xl font-black mb-4 text-stone-900 dark:text-stone-100">Welcome, Champion!</h3>
+                  <p className="text-xl text-stone-600 dark:text-stone-400 mb-6">
+                    Your journey to payment excellence begins now.
+                  </p>
+                  <p className="text-lg font-semibold text-amber-700 dark:text-amber-400">
+                    We'll call you within 24 hours to discuss your personalized savings plan.
+                  </p>
+                </motion.div>
+              ) : (
+                <>
+                  {currentStep === 1 && (
+                    <motion.div
+                      key="step1"
+                      variants={pageVariants}
+                      initial="initial"
+                      animate="animate"
+                      exit="exit"
+                      transition={transition}
                     >
-                      Back
-                    </Button>
+                      <h2 className="text-3xl lg:text-4xl font-black mb-3">
+                        WHAT KIND OF BUSINESS ARE YOU IN?
+                      </h2>
+                      <p className="text-muted-foreground mb-8">
+                        Get your champion terminal and see your savings in just 2 minutes.
+                      </p>
+                      <div className="grid grid-cols-3 gap-4 mb-4">
+                        {businessTypes.slice(0, 3).map((type) => (
+                          <Card
+                            key={type.value}
+                            onClick={() => handleSelection("businessType", type.value)}
+                            className="p-6 cursor-pointer hover-elevate active-elevate-2 transition-all text-center"
+                            data-testid={`option-business-${type.value}`}
+                          >
+                            <div className="text-4xl mb-2">{type.icon}</div>
+                            <div className="font-semibold text-sm">{type.label}</div>
+                          </Card>
+                        ))}
+                      </div>
+                      <div className="grid grid-cols-2 gap-4">
+                        {businessTypes.slice(3).map((type) => (
+                          <Card
+                            key={type.value}
+                            onClick={() => handleSelection("businessType", type.value)}
+                            className="p-6 cursor-pointer hover-elevate active-elevate-2 transition-all text-center"
+                            data-testid={`option-business-${type.value}`}
+                          >
+                            <div className="text-4xl mb-2">{type.icon}</div>
+                            <div className="font-semibold text-sm">{type.label}</div>
+                          </Card>
+                        ))}
+                      </div>
+                    </motion.div>
                   )}
-                </form>
-              </Form>
 
-              <p className="text-xs text-center text-stone-500 dark:text-stone-400 mt-6">
-                Free terminal offer subject to qualification
-              </p>
-            </Card>
-          ) : (
-            <Card className="p-12 text-center bg-gradient-to-br from-amber-50 to-yellow-50 dark:from-amber-950 dark:to-yellow-950 border-2 border-amber-300 dark:border-amber-700">
-              <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-to-br from-amber-500 to-yellow-600 flex items-center justify-center">
-                <CheckCircle className="w-12 h-12 text-white" />
-              </div>
-              <h3 className="text-4xl font-black mb-4 text-stone-900 dark:text-stone-100">Welcome, Champion!</h3>
-              <p className="text-xl text-stone-600 dark:text-stone-400 mb-6">
-                Your journey to payment excellence begins now.
-              </p>
-              <p className="text-lg font-semibold text-amber-700 dark:text-amber-400">
-                We'll call you within 24 hours to set up your champion terminal.
-              </p>
-            </Card>
-          )}
+                  {currentStep === 2 && (
+                    <motion.div
+                      key="step2"
+                      variants={pageVariants}
+                      initial="initial"
+                      animate="animate"
+                      exit="exit"
+                      transition={transition}
+                    >
+                      <h2 className="text-3xl lg:text-4xl font-black mb-8">
+                        WHAT DOES YOUR BUSINESS NEED TO THRIVE?
+                      </h2>
+                      <div className="space-y-4">
+                        {businessNeeds.map((need) => (
+                          <Card
+                            key={need.value}
+                            onClick={() => handleSelection("businessNeeds", need.value)}
+                            className="p-6 cursor-pointer hover-elevate active-elevate-2 transition-all flex items-center gap-4"
+                            data-testid={`option-need-${need.value}`}
+                          >
+                            <div className="text-4xl">{need.icon}</div>
+                            <div className="font-semibold">{need.label}</div>
+                          </Card>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+
+                  {currentStep === 3 && (
+                    <motion.div
+                      key="step3"
+                      variants={pageVariants}
+                      initial="initial"
+                      animate="animate"
+                      exit="exit"
+                      transition={transition}
+                    >
+                      <h2 className="text-3xl lg:text-4xl font-black mb-8">
+                        WHAT'S YOUR APPROXIMATE MONTHLY CARD TURNOVER? (GBP)
+                      </h2>
+                      <div className="space-y-4">
+                        {turnoverOptions.map((option) => (
+                          <Card
+                            key={option.value}
+                            onClick={() => handleSelection("turnover", option.value)}
+                            className="p-6 cursor-pointer hover-elevate active-elevate-2 transition-all"
+                            data-testid={`option-turnover-${option.value}`}
+                          >
+                            <div className="font-semibold text-center">{option.label}</div>
+                          </Card>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+
+                  {currentStep === 4 && (
+                    <motion.div
+                      key="step4"
+                      variants={pageVariants}
+                      initial="initial"
+                      animate="animate"
+                      exit="exit"
+                      transition={transition}
+                    >
+                      <h2 className="text-3xl lg:text-4xl font-black mb-4">
+                        WHICH PROVIDER ARE YOU CURRENTLY USING?
+                      </h2>
+                      <p className="text-muted-foreground mb-8">
+                        If you have multiple providers, select the company that processes the majority of your payments.
+                      </p>
+                      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+                        {providers.map((provider) => (
+                          <Card
+                            key={provider.value}
+                            onClick={() => handleSelection("currentProvider", provider.value)}
+                            className="p-4 md:p-6 cursor-pointer hover-elevate active-elevate-2 transition-all text-center"
+                            data-testid={`option-provider-${provider.value}`}
+                          >
+                            <div className="font-semibold text-xs md:text-sm">{provider.label}</div>
+                          </Card>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+
+                  {currentStep === 5 && (
+                    <motion.div
+                      key="step5"
+                      variants={pageVariants}
+                      initial="initial"
+                      animate="animate"
+                      exit="exit"
+                      transition={transition}
+                    >
+                      <h2 className="text-3xl lg:text-4xl font-black mb-4">
+                        TELL US ABOUT YOUR BUSINESS
+                      </h2>
+                      <p className="text-sm text-muted-foreground mb-8">
+                        We'll use this to check local average pricing for the most accurate savings calculation
+                      </p>
+                      <form onSubmit={handleBusinessInfoSubmit} className="space-y-4">
+                        <div>
+                          <Input
+                            type="text"
+                            placeholder="Enter your company name"
+                            value={formData.companyName}
+                            onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
+                            className="w-full text-lg py-6"
+                            required
+                            data-testid="input-company"
+                          />
+                        </div>
+                        <div>
+                          <Input
+                            type="text"
+                            placeholder="Enter your company postcode"
+                            value={formData.postcode}
+                            onChange={(e) => setFormData({ ...formData, postcode: e.target.value })}
+                            className="w-full text-lg py-6"
+                            required
+                            data-testid="input-postcode"
+                          />
+                        </div>
+                        <Button
+                          type="submit"
+                          className="w-full text-lg py-6 rounded-full bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-700 hover:to-yellow-700 text-white"
+                          data-testid="button-continue-business"
+                        >
+                          Continue
+                        </Button>
+                      </form>
+                    </motion.div>
+                  )}
+
+                  {currentStep === 6 && (
+                    <motion.div
+                      key="step6"
+                      variants={pageVariants}
+                      initial="initial"
+                      animate="animate"
+                      exit="exit"
+                      transition={transition}
+                    >
+                      <h2 className="text-3xl lg:text-4xl font-black mb-4">
+                        WHAT'S YOUR NAME?
+                      </h2>
+                      <p className="text-sm text-muted-foreground mb-8">
+                        We'll personalize your savings report
+                      </p>
+                      <form onSubmit={handleNameSubmit} className="space-y-4">
+                        <div>
+                          <Input
+                            type="text"
+                            placeholder="Enter your name"
+                            value={formData.name}
+                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                            className="w-full text-lg py-6"
+                            required
+                            data-testid="input-name"
+                          />
+                        </div>
+                        <Button
+                          type="submit"
+                          className="w-full text-lg py-6 rounded-full bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-700 hover:to-yellow-700 text-white"
+                          data-testid="button-calculate"
+                        >
+                          Calculate My Savings
+                        </Button>
+                      </form>
+                    </motion.div>
+                  )}
+
+                  {currentStep === 7 && (
+                    <motion.div
+                      key="step7"
+                      variants={pageVariants}
+                      initial="initial"
+                      animate="animate"
+                      exit="exit"
+                      transition={transition}
+                    >
+                      <h2 className="text-2xl lg:text-3xl font-black mb-4">
+                        YOU CAN SAVE £<span className="blur-xl select-none">{Math.floor(Math.random() * 5000 + 2000)}</span> A YEAR
+                      </h2>
+                      <p className="text-muted-foreground mb-8">
+                        Enter your email to receive your full savings breakdown
+                      </p>
+                      <form onSubmit={handleEmailSubmit} className="space-y-4">
+                        <div>
+                          <Input
+                            type="email"
+                            placeholder="Enter your email"
+                            value={formData.email}
+                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                            className="w-full text-lg py-6"
+                            required
+                            data-testid="input-email"
+                          />
+                        </div>
+                        <Button
+                          type="submit"
+                          className="w-full text-lg py-6 rounded-full bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-700 hover:to-yellow-700 text-white"
+                          data-testid="button-continue-email"
+                        >
+                          Continue
+                        </Button>
+                      </form>
+                    </motion.div>
+                  )}
+
+                  {currentStep === 8 && (
+                    <motion.div
+                      key="step8"
+                      variants={pageVariants}
+                      initial="initial"
+                      animate="animate"
+                      exit="exit"
+                      transition={transition}
+                    >
+                      <h2 className="text-2xl lg:text-3xl font-black mb-4">
+                        LAST STEP - GET YOUR CHAMPION TERMINAL
+                      </h2>
+                      <p className="text-muted-foreground mb-8">
+                        Our payment specialists will call you to discuss your personalized savings plan
+                      </p>
+                      <form onSubmit={handlePhoneSubmit} className="space-y-4">
+                        <div>
+                          <Input
+                            type="tel"
+                            placeholder="Enter your phone number"
+                            value={formData.phone}
+                            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                            className="w-full text-lg py-6"
+                            required
+                            data-testid="input-phone"
+                          />
+                        </div>
+                        <Button
+                          type="submit"
+                          className="w-full text-lg py-6 rounded-full bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-700 hover:to-yellow-700 text-white"
+                          data-testid="button-submit"
+                        >
+                          Claim Your Champion
+                        </Button>
+                        <p className="text-xs text-muted-foreground text-center">
+                          By submitting, you agree to receive a no-pressure callback from Rocket Payments. You can decline the call at any time.
+                        </p>
+                      </form>
+                    </motion.div>
+                  )}
+
+                  {!isLoading && currentStep <= 6 && (
+                    <div className="mt-12 flex items-center justify-center gap-2">
+                      {[1, 2, 3, 4, 5, 6].map((step) => (
+                        <div
+                          key={step}
+                          className={`h-2 rounded-full transition-all ${
+                            step === currentStep
+                              ? "w-8 bg-amber-600"
+                              : step < currentStep
+                              ? "w-2 bg-amber-600/60"
+                              : "w-2 bg-muted"
+                          }`}
+                        />
+                      ))}
+                    </div>
+                  )}
+                </>
+              )}
+            </AnimatePresence>
+          </Card>
         </div>
       </section>
 
