@@ -353,8 +353,6 @@ export default function Home() {
             <div className="relative bg-gradient-to-br from-white to-gray-50 dark:from-stone-900 dark:to-stone-800 rounded-[2rem] p-8 md:p-10 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)] border border-gray-100 dark:border-stone-700">
               <p className="text-center text-xs font-black text-muted-foreground tracking-wider mb-6">TRUSTED BY LEADING BUSINESSES</p>
               <div className="relative overflow-hidden">
-                <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-white dark:from-stone-900 to-transparent z-10" />
-                <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white dark:from-stone-900 to-transparent z-10" />
                 <div className="logo-scroll flex gap-12 items-center py-2">
                   {[...partnerLogos, ...partnerLogos, ...partnerLogos].map((partner, i) => (
                     <div key={i} className="flex-shrink-0 hover:scale-110 transition-transform duration-300">
