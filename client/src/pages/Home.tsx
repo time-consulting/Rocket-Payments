@@ -349,48 +349,58 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Trusted By - Scrolling Logos Banner */}
-      <section className="py-12 bg-background overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <p className="text-center text-sm font-black text-muted-foreground tracking-wider mb-6">TRUSTED BY LEADING BUSINESSES</p>
-        </div>
-        <div className="relative">
-          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10" />
-          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10" />
-          <div className="logo-scroll flex gap-16 items-center">
-            {[...partnerLogos, ...partnerLogos, ...partnerLogos].map((partner, i) => (
-              <div key={i} className="flex-shrink-0 hover:scale-110 transition-transform duration-300">
-                <img 
-                  src={partner.logo} 
-                  alt={partner.name}
-                  className="h-10 md:h-12 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
-                />
+      {/* Trusted By & Switch CTA - 3D Bubble Design */}
+      <section className="py-16 md:py-24 bg-background">
+        <div className="max-w-6xl mx-auto px-6 md:px-8 space-y-8">
+          {/* Trusted By - 3D Card */}
+          <div className="relative group">
+            <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 rounded-[2rem] blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-500" />
+            <div className="relative bg-gradient-to-br from-white to-gray-50 dark:from-stone-900 dark:to-stone-800 rounded-[2rem] p-8 md:p-10 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)] border border-gray-100 dark:border-stone-700">
+              <p className="text-center text-xs font-black text-muted-foreground tracking-wider mb-6">TRUSTED BY LEADING BUSINESSES</p>
+              <div className="relative overflow-hidden">
+                <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-white dark:from-stone-900 to-transparent z-10" />
+                <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white dark:from-stone-900 to-transparent z-10" />
+                <div className="logo-scroll flex gap-12 items-center py-2">
+                  {[...partnerLogos, ...partnerLogos, ...partnerLogos].map((partner, i) => (
+                    <div key={i} className="flex-shrink-0 hover:scale-110 transition-transform duration-300">
+                      <img 
+                        src={partner.logo} 
+                        alt={partner.name}
+                        className="h-8 md:h-10 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity duration-300"
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Switch for FREE Banner */}
-      <section className="bg-primary text-primary-foreground py-16 md:py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-foreground/5 via-transparent to-transparent pointer-events-none" />
-        <div className="max-w-5xl mx-auto px-6 md:px-8 text-center relative">
-          <div className="space-y-6">
-            <div className="space-y-3">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase leading-[1.1]">
-                Switch for
-              </h2>
-              <SwitchPriceAnimation />
-              <p className="text-lg md:text-xl font-bold text-primary-foreground/90">
-                £3,000 cover towards your exit fees
-              </p>
             </div>
-            <Link href="/quote">
-              <Button size="lg" variant="secondary" className="text-base px-8 rounded-full">
-                Get started
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </Link>
+          </div>
+
+          {/* Switch for FREE - 3D Bubble */}
+          <div className="relative group">
+            <div className="absolute -inset-2 bg-gradient-to-r from-primary via-primary/80 to-primary rounded-[2.5rem] blur-2xl opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
+            <div className="relative bg-gradient-to-br from-primary to-primary/90 rounded-[2.5rem] p-10 md:p-16 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.4)] border-2 border-primary-foreground/10 backdrop-blur-sm overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute top-0 right-0 w-64 h-64 bg-primary-foreground/5 rounded-full blur-3xl" />
+              <div className="absolute bottom-0 left-0 w-48 h-48 bg-primary-foreground/5 rounded-full blur-3xl" />
+              
+              <div className="relative text-center space-y-6">
+                <div className="space-y-3">
+                  <h2 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase leading-[1.1] text-primary-foreground">
+                    Switch for
+                  </h2>
+                  <SwitchPriceAnimation />
+                  <p className="text-lg md:text-xl font-bold text-primary-foreground/95">
+                    £3,000 cover towards your exit fees
+                  </p>
+                </div>
+                <Link href="/calculate-savings">
+                  <Button size="lg" variant="secondary" className="text-base px-10 py-6 rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
+                    Calculate Your Savings
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
