@@ -340,17 +340,42 @@ export default function Home() {
             </div>
           </div>
         </div>
+      </section>
 
-        {/* Scroll indicator */}
-        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce">
-          <div className="w-6 h-10 border-2 border-primary rounded-full flex items-start justify-center p-2">
-            <div className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" />
+      {/* 3D Bubble Section Divider */}
+      <section className="relative -mt-20 md:-mt-32 pb-16 md:pb-24 bg-background z-20">
+        <div className="max-w-4xl mx-auto px-6 md:px-8">
+          <div className="relative group">
+            <div className="absolute -inset-4 bg-gradient-to-r from-primary via-primary/80 to-primary rounded-[3rem] blur-3xl opacity-60 group-hover:opacity-80 transition-opacity duration-500 animate-pulse" />
+            <div className="relative bg-gradient-to-br from-primary to-primary/90 rounded-[3rem] p-12 md:p-20 shadow-[0_40px_100px_-30px_rgba(0,0,0,0.5)] border-2 border-primary-foreground/10 backdrop-blur-sm overflow-hidden transform hover:scale-[1.02] transition-all duration-500">
+              <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute top-0 right-0 w-96 h-96 bg-primary-foreground/5 rounded-full blur-3xl" />
+              <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary-foreground/5 rounded-full blur-3xl" />
+              
+              <div className="relative text-center space-y-8">
+                <div className="space-y-4">
+                  <h2 className="text-5xl md:text-6xl lg:text-7xl font-black uppercase leading-[1.1] text-primary-foreground">
+                    Switch for
+                  </h2>
+                  <SwitchPriceAnimation />
+                  <p className="text-xl md:text-2xl font-bold text-primary-foreground/95">
+                    £3,000 cover towards your exit fees
+                  </p>
+                </div>
+                <Link href="/calculate-savings">
+                  <Button size="lg" variant="secondary" className="text-lg px-12 py-7 rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
+                    Calculate Your Savings
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Trusted By & Switch CTA - 3D Bubble Design */}
-      <section className="py-16 md:py-24 bg-background">
+      {/* Trusted By - 3D Card */}
+      <section className="py-8 md:py-12 bg-background">
         <div className="max-w-6xl mx-auto px-6 md:px-8 space-y-8">
           {/* Trusted By - 3D Card */}
           <div className="relative group">
@@ -371,34 +396,6 @@ export default function Home() {
                     </div>
                   ))}
                 </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Switch for FREE - 3D Bubble */}
-          <div className="relative group">
-            <div className="absolute -inset-2 bg-gradient-to-r from-primary via-primary/80 to-primary rounded-[2.5rem] blur-2xl opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
-            <div className="relative bg-gradient-to-br from-primary to-primary/90 rounded-[2.5rem] p-10 md:p-16 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.4)] border-2 border-primary-foreground/10 backdrop-blur-sm overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent pointer-events-none" />
-              <div className="absolute top-0 right-0 w-64 h-64 bg-primary-foreground/5 rounded-full blur-3xl" />
-              <div className="absolute bottom-0 left-0 w-48 h-48 bg-primary-foreground/5 rounded-full blur-3xl" />
-              
-              <div className="relative text-center space-y-6">
-                <div className="space-y-3">
-                  <h2 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase leading-[1.1] text-primary-foreground">
-                    Switch for
-                  </h2>
-                  <SwitchPriceAnimation />
-                  <p className="text-lg md:text-xl font-bold text-primary-foreground/95">
-                    £3,000 cover towards your exit fees
-                  </p>
-                </div>
-                <Link href="/calculate-savings">
-                  <Button size="lg" variant="secondary" className="text-base px-10 py-6 rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
-                    Calculate Your Savings
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Button>
-                </Link>
               </div>
             </div>
           </div>
