@@ -3,6 +3,36 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertQuoteRequestSchema, insertFreeTerminalLeadSchema } from "@shared/schema";
 
+// Helper function to send data to Go High Level webhook
+async function sendToGHL(data: any) {
+  const webhookUrl = process.env.GHL_WEBHOOK_URL;
+  
+  if (!webhookUrl) {
+    console.error("GHL_WEBHOOK_URL not configured");
+    return { success: false, error: "Webhook URL not configured" };
+  }
+
+  try {
+    const response = await fetch(webhookUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+      throw new Error(`GHL webhook failed: ${response.status} ${response.statusText}`);
+    }
+
+    console.log("✅ Successfully sent lead to GHL:", data.email || data.companyName);
+    return { success: true, status: response.status };
+  } catch (error: any) {
+    console.error("❌ Failed to send to GHL:", error.message);
+    return { success: false, error: error.message };
+  }
+}
+
 export async function registerRoutes(app: Express): Promise<Server> {
   // Quote request endpoint
   app.post("/api/quote", async (req, res) => {
@@ -43,6 +73,88 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(leads);
     } catch (error: any) {
       res.status(500).json({ error: error.message || "Internal server error" });
+    }
+  });
+
+  // Test webhook endpoint - sends sample data to GHL
+  app.post("/api/test-webhook", async (_req, res) => {
+    try {
+      const testData = {
+        firstName: "Test",
+        lastName: "User",
+        email: "test@example.com",
+        phone: "+447123456789",
+        companyName: "Test Coffee Shop",
+        postcode: "SW1A 1AA",
+        businessType: "Café & Coffee",
+        monthlyTurnover: "£50,000 - £100,000",
+        currentProvider: "Worldpay",
+        estimatedSavings: "£3,847",
+        source: "Savings Calculator - Test"
+      };
+
+      const result = await sendToGHL(testData);
+      
+      if (result.success) {
+        res.json({ success: true, message: "Test webhook sent successfully", data: testData });
+      } else {
+        res.status(500).json({ success: false, error: result.error });
+      }
+    } catch (error: any) {
+      res.status(500).json({ error: error.message || "Failed to send test webhook" });
+    }
+  });
+
+  // Calculator submission endpoint - sends lead data to GHL
+  app.post("/api/calculator-submission", async (req, res) => {
+    try {
+      const {
+        businessType,
+        businessNeeds,
+        monthlyTurnover,
+        currentProvider,
+        companyName,
+        postcode,
+        name,
+        email,
+        phone
+      } = req.body;
+
+      // Split name into first and last name
+      const nameParts = (name || "").trim().split(" ");
+      const firstName = nameParts[0] || "";
+      const lastName = nameParts.slice(1).join(" ") || "";
+
+      // Calculate estimated savings (you can customize this logic)
+      const estimatedSavings = `£${Math.floor(Math.random() * 3000 + 2000)}`;
+
+      const leadData = {
+        firstName,
+        lastName,
+        email,
+        phone,
+        companyName,
+        postcode,
+        businessType,
+        businessNeeds: businessNeeds?.join(", ") || "",
+        monthlyTurnover,
+        currentProvider,
+        estimatedSavings,
+        source: "Savings Calculator"
+      };
+
+      // Send to GHL webhook
+      const webhookResult = await sendToGHL(leadData);
+
+      res.json({ 
+        success: true, 
+        message: "Calculator submission received",
+        webhookSent: webhookResult.success,
+        estimatedSavings
+      });
+    } catch (error: any) {
+      console.error("Calculator submission error:", error);
+      res.status(500).json({ error: error.message || "Failed to process submission" });
     }
   });
 
