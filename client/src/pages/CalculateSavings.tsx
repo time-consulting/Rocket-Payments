@@ -4,7 +4,7 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, Loader2 } from "lucide-react";
-import flowerShopImage from "@assets/Gemini_Generated_Image_4uqtg64uqtg64uqt_1762432953078.png";
+import flowerShopImage from "@assets/Gemini_Generated_Image_od39gwod39gwod39_1762433958101.png";
 
 interface FormData {
   businessType: string;
