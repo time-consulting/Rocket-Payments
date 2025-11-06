@@ -448,7 +448,7 @@ export default function CalculateSavings() {
                     transition={transition}
                   >
                     <h2 className="text-3xl lg:text-4xl font-black mb-4">
-                      YOU CAN SAVE £<span className="blur-sm select-none">{Math.floor(Math.random() * 5000 + 2000)}</span> A YEAR
+                      YOU CAN SAVE £<span className="blur-xl select-none">{Math.floor(Math.random() * 5000 + 2000)}</span> A YEAR
                     </h2>
                     <p className="text-muted-foreground mb-8">
                       Enter your email to receive your full savings breakdown
