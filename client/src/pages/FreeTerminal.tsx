@@ -137,7 +137,7 @@ export default function FreeTerminal() {
 
               <h1 className="text-6xl lg:text-8xl font-black leading-none tracking-tight">
                 Get a
-                <span className="block text-primary">commitment-free</span>
+                <span className="block text-primary">£189</span>
                 <span className="block">trial</span>
               </h1>
 
