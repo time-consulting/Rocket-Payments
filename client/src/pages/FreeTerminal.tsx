@@ -19,7 +19,7 @@ import rocketGoAuthorised from "@assets/rocket go authorised_1762112584527.png";
 import terminalApproved from "@assets/terminal approved_1762112584541.png";
 import tapRocketGo from "@assets/tap rocket go_1762112584552.png";
 import rocketGoDevice from "@assets/rocket go device on stand - white bk_1762112603039.png";
-import rocketGoHerop from "@assets/Rocket Go herop_1762112603503.png";
+import rocketGoHerop from "@assets/rocket_Go_device_1764776227168.png";
 
 const formSchema = insertFreeTerminalLeadSchema.extend({
   businessName: z.string().min(2, "Business name required"),

@@ -79,7 +79,25 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const validatedData = insertFreeTerminalLeadSchema.parse(req.body);
       const lead = await storage.createFreeTerminalLead(validatedData);
-      res.json(lead);
+      
+      // Send to GHL webhook
+      const ghlData = {
+        companyName: validatedData.businessName,
+        phone: validatedData.mobile,
+        email: validatedData.email || "",
+        currentProvider: validatedData.currentProvider || "Not provided",
+        monthlyFees: validatedData.monthlyFees || "Not provided",
+        industryType: validatedData.industryType || "Not provided",
+        source: "Free Terminal Offer Page",
+        leadStatus: "Hot Lead - Free Terminal Claim"
+      };
+      
+      const webhookResult = await sendToGHL(ghlData);
+      
+      res.json({
+        ...lead,
+        webhookSent: webhookResult.success
+      });
     } catch (error: any) {
       res.status(400).json({ error: error.message || "Invalid request data" });
     }
