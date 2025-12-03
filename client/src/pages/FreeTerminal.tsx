@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useLocation } from "wouter";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { insertFreeTerminalLeadSchema } from "@shared/schema";
@@ -34,6 +35,7 @@ const formSchema = insertFreeTerminalLeadSchema.extend({
 type FormData = z.infer<typeof formSchema>;
 
 export default function FreeTerminal() {
+  const [, navigate] = useLocation();
   const [step, setStep] = useState(1);
   const [timeLeft, setTimeLeft] = useState(24 * 60 * 60);
   const [monthlyFees, setMonthlyFees] = useState(0);
@@ -63,11 +65,7 @@ export default function FreeTerminal() {
       return await apiRequest("/api/free-terminal-lead", "POST", data);
     },
     onSuccess: () => {
-      setStep(4);
-      toast({
-        title: "You're in! 🎉",
-        description: "We'll contact you within the next hour to confirm your free terminal.",
-      });
+      navigate("/thank-you");
     },
     onError: () => {
       toast({

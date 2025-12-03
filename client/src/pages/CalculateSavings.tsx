@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -19,6 +20,7 @@ interface FormData {
 }
 
 export default function CalculateSavings() {
+  const [, navigate] = useLocation();
   const [currentStep, setCurrentStep] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [showTick, setShowTick] = useState(false);
@@ -157,7 +159,7 @@ export default function CalculateSavings() {
       if (result.success) {
         console.log("✅ Calculator submission successful!", result);
         console.log("📤 Webhook sent to GHL:", result.webhookSent);
-        // TODO: Show success message or redirect to thank you page
+        navigate("/thank-you");
       } else {
         console.error("❌ Submission failed:", result.error);
       }
