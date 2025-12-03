@@ -126,22 +126,45 @@ export function Header() {
           </div>
 
           {/* Mobile: Landing page header - thicker */}
-          <div className="flex md:hidden items-center justify-between bg-card border border-border rounded-full px-5 py-3 shadow-lg">
-            <Link href="/" className="flex items-center gap-2" data-testid="link-home">
-              <Rocket className="h-7 w-7 text-primary" />
-              <span className="text-xl font-black text-foreground">ROCKET</span>
-            </Link>
+          <div className="flex md:hidden flex-col gap-3 bg-card border border-border rounded-3xl px-4 py-3 shadow-lg">
+            {/* Top row: Logo, Theme, Button */}
+            <div className="flex items-center justify-between">
+              <Link href="/" className="flex items-center gap-2" data-testid="link-home">
+                <Rocket className="h-7 w-7 text-primary" />
+                <span className="text-lg font-black text-foreground">ROCKET</span>
+              </Link>
 
-            <div className="flex items-center gap-3">
-              <ThemeToggle />
-              <Button 
-                variant="default" 
-                className="rounded-full font-black px-6" 
-                onClick={scrollToClaimForm}
-                data-testid="button-mobile-claim-offer"
-              >
-                Claim offer
-              </Button>
+              <div className="flex items-center gap-3">
+                <ThemeToggle />
+                <Button 
+                  variant="default" 
+                  className="rounded-full font-black px-6" 
+                  onClick={scrollToClaimForm}
+                  data-testid="button-mobile-claim-offer"
+                >
+                  Claim offer
+                </Button>
+              </div>
+            </div>
+
+            {/* Bottom row: Scrolling logos */}
+            <div className="overflow-hidden">
+              <div className="flex items-center gap-2">
+                <span className="text-[9px] font-black text-muted-foreground tracking-wider whitespace-nowrap">TRUSTED BY</span>
+                <div className="flex-1 overflow-hidden">
+                  <div className="logo-scroll flex gap-8 items-center">
+                    {[...partnerLogos, ...partnerLogos, ...partnerLogos].map((partner, i) => (
+                      <div key={i} className="flex-shrink-0">
+                        <img 
+                          src={partner.logo} 
+                          alt={partner.name}
+                          className="h-5 w-auto object-contain opacity-60"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
