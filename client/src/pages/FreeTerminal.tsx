@@ -136,14 +136,13 @@ export default function FreeTerminal() {
               </div>
 
               <h1 className="text-6xl lg:text-8xl font-black leading-none tracking-tight">
-                Get a
-                <span className="block text-primary">commitment-free</span>
-                <span className="block">trial</span>
+                <span className="block">commitment-free</span>
+                <span className="block text-primary">30 day trial</span>
               </h1>
 
-              <p className="text-2xl font-medium">
-                at <span className="line-through">£189</span>{" "}
-                <span className="text-primary font-black">£0</span>
+              <p className="text-2xl text-muted-foreground font-medium">
+                Get a premium card machine worth <span className="line-through">£189</span> absolutely{" "}
+                <span className="text-primary font-black">FREE</span> when you try today.
               </p>
 
               <div className="flex flex-col gap-4 text-lg">
