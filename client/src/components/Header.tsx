@@ -84,25 +84,25 @@ export function Header() {
     return (
       <header className="sticky top-0 z-50 w-full py-4 md:py-6">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
-          {/* Desktop: Landing page header with logos */}
-          <div className="hidden md:flex items-center justify-between bg-card border border-border rounded-full px-6 py-3 shadow-md gap-4">
-            <Link href="/" className="flex items-center gap-2 hover-elevate active-elevate-2 rounded-lg px-2 py-1 -ml-2 transition-transform flex-shrink-0" data-testid="link-home">
-              <Rocket className="h-7 w-7 text-primary" />
-              <span className="text-xl font-black text-foreground">ROCKET</span>
+          {/* Desktop: Landing page header with logos - thicker padding */}
+          <div className="hidden md:flex items-center justify-between bg-card border border-border rounded-full px-8 py-5 shadow-lg gap-6">
+            <Link href="/" className="flex items-center gap-3 hover-elevate active-elevate-2 rounded-lg px-2 py-1 -ml-2 transition-transform flex-shrink-0" data-testid="link-home">
+              <Rocket className="h-9 w-9 text-primary" />
+              <span className="text-2xl font-black text-foreground">ROCKET</span>
             </Link>
 
             {/* Scrolling Trusted Logos */}
-            <div className="flex-1 overflow-hidden mx-4">
-              <div className="flex items-center gap-2">
-                <span className="text-[10px] font-black text-muted-foreground tracking-wider whitespace-nowrap">TRUSTED BY</span>
+            <div className="flex-1 overflow-hidden mx-6">
+              <div className="flex items-center gap-3">
+                <span className="text-xs font-black text-muted-foreground tracking-wider whitespace-nowrap">TRUSTED BY</span>
                 <div className="flex-1 overflow-hidden">
-                  <div className="logo-scroll flex gap-8 items-center">
+                  <div className="logo-scroll flex gap-10 items-center">
                     {[...partnerLogos, ...partnerLogos, ...partnerLogos].map((partner, i) => (
                       <div key={i} className="flex-shrink-0">
                         <img 
                           src={partner.logo} 
                           alt={partner.name}
-                          className="h-6 w-auto object-contain opacity-60"
+                          className="h-8 w-auto object-contain opacity-60"
                         />
                       </div>
                     ))}
@@ -111,11 +111,12 @@ export function Header() {
               </div>
             </div>
 
-            <div className="flex items-center gap-3 flex-shrink-0">
+            <div className="flex items-center gap-4 flex-shrink-0">
               <ThemeToggle />
               <Button 
                 variant="default" 
-                className="rounded-full font-black" 
+                size="lg"
+                className="rounded-full font-black text-base px-8" 
                 onClick={scrollToClaimForm}
                 data-testid="button-claim-offer"
               >
@@ -124,19 +125,18 @@ export function Header() {
             </div>
           </div>
 
-          {/* Mobile: Landing page header */}
-          <div className="flex md:hidden items-center justify-between bg-card border border-border rounded-full px-4 py-2 shadow-md">
+          {/* Mobile: Landing page header - thicker */}
+          <div className="flex md:hidden items-center justify-between bg-card border border-border rounded-full px-5 py-3 shadow-lg">
             <Link href="/" className="flex items-center gap-2" data-testid="link-home">
-              <Rocket className="h-6 w-6 text-primary" />
-              <span className="text-lg font-black text-foreground">ROCKET</span>
+              <Rocket className="h-7 w-7 text-primary" />
+              <span className="text-xl font-black text-foreground">ROCKET</span>
             </Link>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
               <ThemeToggle />
               <Button 
                 variant="default" 
-                size="sm"
-                className="rounded-full font-black" 
+                className="rounded-full font-black px-6" 
                 onClick={scrollToClaimForm}
                 data-testid="button-mobile-claim-offer"
               >
