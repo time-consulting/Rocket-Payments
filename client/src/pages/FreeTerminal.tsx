@@ -123,7 +123,6 @@ export default function FreeTerminal() {
           />
         ))}
       </div>
-
       {/* Hero Section */}
       <section className="relative py-20 px-4 overflow-hidden">
         <div className="max-w-7xl mx-auto">
@@ -138,7 +137,7 @@ export default function FreeTerminal() {
 
               <h1 className="text-6xl lg:text-8xl font-black leading-none tracking-tight">
                 Get a commitment
-                <span className="block text-primary">-free trial</span>
+                <span className="block text-primary">free trial</span>
               </h1>
 
               <p className="text-2xl text-muted-foreground font-medium">
@@ -193,7 +192,6 @@ export default function FreeTerminal() {
           </div>
         </div>
       </section>
-
       {/* Calculator Section */}
       <section className="py-20 px-4 bg-muted/30">
         <div className="max-w-4xl mx-auto">
@@ -237,7 +235,6 @@ export default function FreeTerminal() {
           </Card>
         </div>
       </section>
-
       {/* On-the-move payments Section */}
       <section className="py-24 px-4" style={{ backgroundColor: '#efeee9' }}>
         <div className="max-w-7xl mx-auto">
@@ -274,7 +271,6 @@ export default function FreeTerminal() {
           </div>
         </div>
       </section>
-
       {/* Offer Stack Section */}
       <section className="py-20 px-4 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-primary/5" />
@@ -348,7 +344,6 @@ export default function FreeTerminal() {
           </div>
         </div>
       </section>
-
       {/* Terminal Features Section */}
       <section className="py-20 px-4 bg-gradient-to-b from-background via-muted/20 to-background">
         <div className="max-w-7xl mx-auto">
@@ -439,7 +434,6 @@ export default function FreeTerminal() {
           </div>
         </div>
       </section>
-
       {/* Claim Form Section */}
       <section id="claim-form" className="py-20 px-4 bg-gradient-to-b from-primary/5 to-background">
         <div className="max-w-2xl mx-auto">
@@ -666,7 +660,6 @@ export default function FreeTerminal() {
           )}
         </div>
       </section>
-
       {/* Sticky CTA Bar (Mobile) */}
       {step < 4 && (
         <div className="fixed bottom-0 left-0 right-0 bg-background/95 backdrop-blur border-t p-4 md:hidden z-50 shadow-2xl">
