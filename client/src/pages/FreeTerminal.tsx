@@ -20,6 +20,11 @@ import terminalApproved from "@assets/terminal approved_1762112584541.png";
 import tapRocketGo from "@assets/tap rocket go_1762112584552.png";
 import rocketGoDevice from "@assets/rocket go device on stand - white bk_1762112603039.png";
 import rocketGoHerop from "@assets/rocket_Go_device_1764776227168.png";
+import costaLogo from "@assets/Costa-Coffee-Logo_1761930744749.jpg";
+import treatzLogo from "@assets/Treatz.jpg_1761930744750.webp";
+import cuppLogo from "@assets/ac9be535-cd26-4913-893c-607ef9c65ec9_1761930744747.jpeg";
+import silverstoneLogo from "@assets/silverstone-uk-logo-vectorrwopeh_1761930744750.png";
+import { Signal, MonitorSmartphone, BatteryFull } from "lucide-react";
 
 const formSchema = insertFreeTerminalLeadSchema.extend({
   businessName: z.string().min(2, "Business name required"),
@@ -33,6 +38,13 @@ export default function FreeTerminal() {
   const [timeLeft, setTimeLeft] = useState(24 * 60 * 60);
   const [monthlyFees, setMonthlyFees] = useState(0);
   const { toast } = useToast();
+
+  const partnerLogos = [
+    { name: "Costa Coffee", logo: costaLogo },
+    { name: "Treatz", logo: treatzLogo },
+    { name: "CUPP", logo: cuppLogo },
+    { name: "Silverstone", logo: silverstoneLogo },
+  ];
 
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
@@ -224,8 +236,33 @@ export default function FreeTerminal() {
         </div>
       </section>
 
+      {/* Trusted By Logos - Scrolling */}
+      <section className="py-12 bg-gradient-to-b from-background to-muted/10">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="relative group">
+            <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 rounded-[2rem] blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-500" />
+            <div className="relative bg-gradient-to-br from-white to-gray-50 dark:from-stone-900 dark:to-stone-800 rounded-[2rem] p-8 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)] border border-gray-100 dark:border-stone-700">
+              <p className="text-center text-xs font-black text-muted-foreground tracking-wider mb-6">TRUSTED BY LEADING BUSINESSES</p>
+              <div className="relative overflow-hidden">
+                <div className="logo-scroll flex gap-12 items-center py-2">
+                  {[...partnerLogos, ...partnerLogos, ...partnerLogos].map((partner, i) => (
+                    <div key={i} className="flex-shrink-0 hover:scale-110 transition-transform duration-300">
+                      <img 
+                        src={partner.logo} 
+                        alt={partner.name}
+                        className="h-8 md:h-10 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity duration-300"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Product Intro with Hero Image */}
-      <section className="py-20 px-4 bg-gradient-to-b from-background to-muted/20">
+      <section className="py-20 px-4 bg-gradient-to-b from-muted/10 to-muted/20">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-5xl lg:text-7xl font-black mb-6">
@@ -324,107 +361,81 @@ export default function FreeTerminal() {
         </div>
       </section>
 
-      {/* Lifestyle Showcase */}
+      {/* Terminal Features Section */}
       <section className="py-20 px-4 bg-gradient-to-b from-background via-muted/20 to-background">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-5xl lg:text-7xl font-black text-center mb-4">
-            Trusted by Businesses <span className="text-primary">Everywhere</span>
+            Built for <span className="text-primary">Performance</span>
           </h2>
           <p className="text-xl text-center text-muted-foreground mb-16">
-            From busy restaurants to mobile traders, the Rocket Go works perfectly
+            The Rocket Go delivers everything your business needs
           </p>
 
-          {/* Lifestyle Grid */}
+          {/* Terminal Features Grid - 4G, EPOS, Battery */}
           <div className="grid md:grid-cols-3 gap-8 mb-16">
-            <div className="relative group overflow-hidden rounded-2xl">
-              <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 flex items-end p-6">
-                <div>
-                  <h3 className="text-2xl font-black text-white mb-2">Hospitality</h3>
-                  <p className="text-white/80 font-medium">Perfect for busy bars and restaurants</p>
-                </div>
-              </div>
-              <img
-                src={rocketGoPub}
-                alt="Rocket Go in pub setting"
-                className="w-full h-80 object-cover hover:scale-110 transition-transform duration-700"
-                data-testid="img-rocket-go-pub"
-              />
-            </div>
-
-            <div className="relative group overflow-hidden rounded-2xl">
-              <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 flex items-end p-6">
-                <div>
-                  <h3 className="text-2xl font-black text-white mb-2">Cafés & Coffee Shops</h3>
-                  <p className="text-white/80 font-medium">Fast service, happy customers</p>
-                </div>
-              </div>
-              <img
-                src={rocketGoHero}
-                alt="Rocket Go in café"
-                className="w-full h-80 object-cover hover:scale-110 transition-transform duration-700"
-                data-testid="img-rocket-go-cafe"
-              />
-            </div>
-
-            <div className="relative group overflow-hidden rounded-2xl">
-              <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 flex items-end p-6">
-                <div>
-                  <h3 className="text-2xl font-black text-white mb-2">Hotels & Boutiques</h3>
-                  <p className="text-white/80 font-medium">Premium experience guaranteed</p>
-                </div>
-              </div>
-              <img
-                src={rocketGoAuthorised}
-                alt="Rocket Go at hotel reception"
-                className="w-full h-80 object-cover hover:scale-110 transition-transform duration-700"
-                data-testid="img-rocket-go-hotel"
-              />
-            </div>
-          </div>
-
-          {/* Features Grid */}
-          <div className="grid md:grid-cols-3 gap-6">
-            <Card className="p-6 bg-card/50 backdrop-blur hover-elevate overflow-hidden">
-              <div className="aspect-square mb-4 rounded-xl overflow-hidden">
-                <img
-                  src={terminalApproved}
-                  alt="Instant approval on screen"
-                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
-                  data-testid="img-terminal-approved"
-                />
-              </div>
-              <h3 className="text-xl font-black mb-2">Lightning Fast</h3>
-              <p className="text-muted-foreground">Instant payment approval. Your customers won't even notice the wait.</p>
-            </Card>
-
-            <Card className="p-6 bg-card/50 backdrop-blur hover-elevate overflow-hidden">
-              <div className="aspect-square mb-4 rounded-xl overflow-hidden">
-                <img
-                  src={tapRocketGo}
-                  alt="Contactless payment with Rocket Go"
-                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
-                  data-testid="img-tap-rocket-go"
-                />
-              </div>
-              <h3 className="text-xl font-black mb-2">Mobile Freedom</h3>
-              <p className="text-muted-foreground">Take payments anywhere. Perfect for markets, events, and mobile traders.</p>
-            </Card>
-
-            <Card className="p-6 bg-card/50 backdrop-blur hover-elevate overflow-hidden">
-              <div className="aspect-square mb-4 rounded-xl overflow-hidden bg-white flex items-center justify-center p-8">
+            <div className="group">
+              <div className="relative overflow-hidden rounded-2xl mb-6">
                 <img
                   src={rocketGoDevice}
-                  alt="Rocket Go device on stand"
-                  className="w-full h-full object-contain hover:scale-110 transition-transform duration-700"
-                  data-testid="img-rocket-go-device"
+                  alt="Rocket Go with 4G connectivity"
+                  className="w-full h-80 object-contain bg-gradient-to-br from-muted/30 to-muted/10 p-8 hover:scale-105 transition-transform duration-700"
+                  data-testid="img-feature-4g"
                 />
               </div>
-              <h3 className="text-xl font-black mb-2">Professional Design</h3>
-              <p className="text-muted-foreground">Sleek, modern terminal that elevates your brand at every touchpoint.</p>
-            </Card>
+              <h3 className="text-3xl font-black mb-3">Built-in 4G</h3>
+              <p className="text-muted-foreground text-lg">
+                Always accept payments with 4G connectivity. Even if your Wi-Fi goes down, you can still make payments using a mobile signal.
+              </p>
+            </div>
+
+            <div className="group">
+              <div className="relative overflow-hidden rounded-2xl mb-6">
+                <img
+                  src={tapRocketGo}
+                  alt="EPOS integration with Rocket Payments"
+                  className="w-full h-80 object-cover hover:scale-105 transition-transform duration-700"
+                  data-testid="img-feature-epos"
+                />
+              </div>
+              <h3 className="text-3xl font-black mb-3">EPOS Integration</h3>
+              <p className="text-muted-foreground text-lg">
+                Fewer errors. Faster transactions. With simple, seamless integration, you'll be switched over and ready to serve in no time.
+              </p>
+            </div>
+
+            <div className="group">
+              <div className="relative overflow-hidden rounded-2xl mb-6">
+                <img
+                  src={rocketGoPub}
+                  alt="10-hour battery life terminal"
+                  className="w-full h-80 object-cover hover:scale-105 transition-transform duration-700"
+                  data-testid="img-feature-battery"
+                />
+              </div>
+              <h3 className="text-3xl font-black mb-3">10-Hour Battery Life</h3>
+              <p className="text-muted-foreground text-lg">
+                Serve more customers with 10-hour battery life. Finally say goodbye to endless recharging with your powerful, portable device.
+              </p>
+            </div>
           </div>
 
-          <div className="text-center mt-12">
+          {/* Quick Feature Pills */}
+          <div className="flex flex-wrap justify-center gap-4 mb-12">
+            <div className="flex items-center gap-2 px-6 py-3 bg-primary/10 rounded-full">
+              <Signal className="w-5 h-5 text-primary" />
+              <span className="font-bold">4G Built-in</span>
+            </div>
+            <div className="flex items-center gap-2 px-6 py-3 bg-primary/10 rounded-full">
+              <MonitorSmartphone className="w-5 h-5 text-primary" />
+              <span className="font-bold">EPOS Integration</span>
+            </div>
+            <div className="flex items-center gap-2 px-6 py-3 bg-primary/10 rounded-full">
+              <BatteryFull className="w-5 h-5 text-primary" />
+              <span className="font-bold">10hr Battery Life</span>
+            </div>
+          </div>
+
+          <div className="text-center">
             <Button
               size="lg"
               className="text-xl px-12 py-8 rounded-full font-black shadow-2xl hover:scale-105 transition-transform"
