@@ -136,8 +136,9 @@ export default function FreeTerminal() {
               </div>
 
               <h1 className="text-6xl lg:text-8xl font-black leading-none tracking-tight">
-                Get a commitment
-                <span className="block text-primary">free trial</span>
+                Get a
+                <span className="block text-primary">commitment-free</span>
+                <span className="block">trial</span>
               </h1>
 
               <p className="text-2xl text-muted-foreground font-medium">
