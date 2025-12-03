@@ -262,7 +262,7 @@ export default function FreeTerminal() {
       </section>
 
       {/* On-the-move payments Section */}
-      <section className="py-24 px-4 bg-gradient-to-br from-muted/30 via-muted/20 to-muted/10">
+      <section className="py-24 px-4" style={{ backgroundColor: '#efeee9' }}>
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left: Copy */}
