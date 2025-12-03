@@ -261,27 +261,38 @@ export default function FreeTerminal() {
         </div>
       </section>
 
-      {/* Product Intro with Hero Image */}
-      <section className="py-20 px-4 bg-gradient-to-b from-muted/10 to-muted/20">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-5xl lg:text-7xl font-black mb-6">
-              Meet the <span className="text-primary">Rocket Go</span>
-            </h2>
-            <p className="text-2xl text-muted-foreground">
-              Premium payment technology that helps businesses grow faster and save more
-            </p>
-          </div>
+      {/* On-the-move payments Section */}
+      <section className="py-24 px-4 bg-gradient-to-br from-muted/30 via-muted/20 to-muted/10">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left: Copy */}
+            <div className="space-y-8">
+              <h2 className="text-5xl lg:text-6xl font-black leading-tight">
+                On-the-move payments
+              </h2>
+              <p className="text-xl text-muted-foreground leading-relaxed">
+                Thanks to our transaction speeds, the average business serves up to 48 more customers a day, based on a survey with 700. That's a lot of orders.
+              </p>
+              <Button
+                size="lg"
+                className="text-lg px-10 py-7 rounded-full font-black shadow-xl hover:scale-105 transition-transform"
+                onClick={() => document.getElementById("claim-form")?.scrollIntoView({ behavior: "smooth" })}
+                data-testid="button-claim-offer"
+              >
+                Claim offer
+              </Button>
+            </div>
 
-          <div className="max-w-4xl mx-auto">
-            <div className="relative group">
-              <div className="absolute -inset-4 bg-gradient-to-r from-primary/30 via-primary/10 to-primary/30 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-              <img
-                src={rocketGoHerop}
-                alt="Rocket Go Terminal"
-                className="relative w-full rounded-3xl shadow-2xl hover:scale-[1.02] transition-transform duration-700"
-                data-testid="img-rocket-go-hero"
-              />
+            {/* Right: Terminal Image */}
+            <div className="relative flex justify-center lg:justify-end">
+              <div className="relative group">
+                <img
+                  src={rocketGoHerop}
+                  alt="Rocket Go Terminal"
+                  className="relative w-full max-w-md hover:scale-[1.02] transition-transform duration-700"
+                  data-testid="img-rocket-go-hero"
+                />
+              </div>
             </div>
           </div>
         </div>
