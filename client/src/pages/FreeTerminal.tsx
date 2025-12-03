@@ -12,7 +12,7 @@ import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import { Check, ArrowRight, Sparkles, Shield, TrendingDown, Zap, Clock, DollarSign } from "lucide-react";
-import offerBanner from "@assets/1762111291843_1762111323929.jpg";
+import offerBanner from "@assets/Gemini_Generated_Image_nqf0yxnqf0yxnqf0_1764797819073.png";
 import rocketGoPub from "@assets/rocket go pub_1762112531205.png";
 import rocketGoHero from "@assets/hero image rocket go_1762112582495.png";
 import rocketGoAuthorised from "@assets/rocket go authorised_1762112584527.png";
