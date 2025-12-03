@@ -102,7 +102,16 @@ export default function FreeTerminal() {
     if (step < 3) {
       setStep(step + 1);
     } else {
-      mutation.mutate(data);
+      // Remove empty strings from optional fields
+      const cleanedData = {
+        businessName: data.businessName,
+        mobile: data.mobile,
+        currentProvider: data.currentProvider || undefined,
+        monthlyFees: data.monthlyFees || undefined,
+        email: data.email || undefined,
+        industryType: data.industryType || undefined,
+      };
+      mutation.mutate(cleanedData as FormData);
     }
   };
 
