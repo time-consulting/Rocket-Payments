@@ -3,6 +3,10 @@ import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Rocket, ChevronDown, CreditCard, Cloud, TrendingUp, ArrowUpRight } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import costaLogo from "@assets/Costa-Coffee-Logo_1761930744749.jpg";
+import treatzLogo from "@assets/Treatz.jpg_1761930744750.webp";
+import cuppLogo from "@assets/ac9be535-cd26-4913-893c-607ef9c65ec9_1761930744747.jpeg";
+import silverstoneLogo from "@assets/silverstone-uk-logo-vectorrwopeh_1761930744750.png";
 
 export function Header() {
   const [location] = useLocation();
@@ -11,6 +15,15 @@ export function Header() {
   const [isProductsOpen, setIsProductsOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState("in-person");
   const [expandedMobileCategory, setExpandedMobileCategory] = useState<string | null>(null);
+  
+  const isLandingPage = location === "/free-terminal";
+  
+  const partnerLogos = [
+    { name: "Costa Coffee", logo: costaLogo },
+    { name: "Treatz", logo: treatzLogo },
+    { name: "CUPP", logo: cuppLogo },
+    { name: "Silverstone", logo: silverstoneLogo },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,6 +74,80 @@ export function Header() {
   ];
 
   const activeProducts = productCategories.find(cat => cat.id === activeCategory)?.products || [];
+
+  const scrollToClaimForm = () => {
+    document.getElementById("claim-form")?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  // Landing page focused header (for /free-terminal)
+  if (isLandingPage) {
+    return (
+      <header className="sticky top-0 z-50 w-full py-4 md:py-6">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
+          {/* Desktop: Landing page header with logos */}
+          <div className="hidden md:flex items-center justify-between bg-card border border-border rounded-full px-6 py-3 shadow-md gap-4">
+            <Link href="/" className="flex items-center gap-2 hover-elevate active-elevate-2 rounded-lg px-2 py-1 -ml-2 transition-transform flex-shrink-0" data-testid="link-home">
+              <Rocket className="h-7 w-7 text-primary" />
+              <span className="text-xl font-black text-foreground">ROCKET</span>
+            </Link>
+
+            {/* Scrolling Trusted Logos */}
+            <div className="flex-1 overflow-hidden mx-4">
+              <div className="flex items-center gap-2">
+                <span className="text-[10px] font-black text-muted-foreground tracking-wider whitespace-nowrap">TRUSTED BY</span>
+                <div className="flex-1 overflow-hidden">
+                  <div className="logo-scroll flex gap-8 items-center">
+                    {[...partnerLogos, ...partnerLogos, ...partnerLogos].map((partner, i) => (
+                      <div key={i} className="flex-shrink-0">
+                        <img 
+                          src={partner.logo} 
+                          alt={partner.name}
+                          className="h-6 w-auto object-contain opacity-60"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3 flex-shrink-0">
+              <ThemeToggle />
+              <Button 
+                variant="default" 
+                className="rounded-full font-black" 
+                onClick={scrollToClaimForm}
+                data-testid="button-claim-offer"
+              >
+                Claim offer
+              </Button>
+            </div>
+          </div>
+
+          {/* Mobile: Landing page header */}
+          <div className="flex md:hidden items-center justify-between bg-card border border-border rounded-full px-4 py-2 shadow-md">
+            <Link href="/" className="flex items-center gap-2" data-testid="link-home">
+              <Rocket className="h-6 w-6 text-primary" />
+              <span className="text-lg font-black text-foreground">ROCKET</span>
+            </Link>
+
+            <div className="flex items-center gap-2">
+              <ThemeToggle />
+              <Button 
+                variant="default" 
+                size="sm"
+                className="rounded-full font-black" 
+                onClick={scrollToClaimForm}
+                data-testid="button-mobile-claim-offer"
+              >
+                Claim offer
+              </Button>
+            </div>
+          </div>
+        </div>
+      </header>
+    );
+  }
 
   return (
     <header className="sticky top-0 z-50 w-full py-4 md:py-6">

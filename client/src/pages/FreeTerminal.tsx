@@ -236,31 +236,6 @@ export default function FreeTerminal() {
         </div>
       </section>
 
-      {/* Trusted By Logos - Scrolling */}
-      <section className="py-12 bg-gradient-to-b from-background to-muted/10">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="relative group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 rounded-[2rem] blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-500" />
-            <div className="relative bg-gradient-to-br from-white to-gray-50 dark:from-stone-900 dark:to-stone-800 rounded-[2rem] p-8 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)] border border-gray-100 dark:border-stone-700">
-              <p className="text-center text-xs font-black text-muted-foreground tracking-wider mb-6">TRUSTED BY LEADING BUSINESSES</p>
-              <div className="relative overflow-hidden">
-                <div className="logo-scroll flex gap-12 items-center py-2">
-                  {[...partnerLogos, ...partnerLogos, ...partnerLogos].map((partner, i) => (
-                    <div key={i} className="flex-shrink-0 hover:scale-110 transition-transform duration-300">
-                      <img 
-                        src={partner.logo} 
-                        alt={partner.name}
-                        className="h-8 md:h-10 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity duration-300"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* On-the-move payments Section */}
       <section className="py-24 px-4" style={{ backgroundColor: '#efeee9' }}>
         <div className="max-w-7xl mx-auto">
