@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { SEO } from "@/components/SEO";
 import { Check, ArrowRight, Phone, Mail, Rocket } from "lucide-react";
 
 export default function FreeTerminalThankYou() {
@@ -56,7 +57,14 @@ export default function FreeTerminalThankYou() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background via-primary/5 to-background flex items-center justify-center px-4 py-20">
+    <>
+      <SEO
+        title="Thank You - Your Free Terminal is Reserved"
+        description="Your free card machine worth £189 has been reserved. Our team will call you within the hour to complete your application."
+        canonical="https://rocketpayments.co.uk/free-terminal-thank-you"
+        noIndex={true}
+      />
+      <div className="min-h-screen bg-gradient-to-b from-background via-primary/5 to-background flex items-center justify-center px-4 py-20">
       {confettiVisible && (
         <div className="fixed inset-0 pointer-events-none overflow-hidden z-50">
           {[...Array(50)].map((_, i) => (
@@ -164,6 +172,7 @@ export default function FreeTerminalThankYou() {
           </div>
         </Card>
       </div>
-    </div>
+      </div>
+    </>
   );
 }

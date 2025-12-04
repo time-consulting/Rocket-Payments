@@ -12,6 +12,7 @@ import { Card } from "@/components/ui/card";
 import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
+import { SEO } from "@/components/SEO";
 import { Check, ArrowRight, Sparkles, Shield, TrendingDown, Zap, Clock, DollarSign } from "lucide-react";
 import offerBanner from "@assets/Untitled_-_2025-12-04T163007.261_1764865824511.png";
 import rocketGoPub from "@assets/rocket go pub_1762112531205.png";
@@ -124,8 +125,14 @@ export default function FreeTerminal() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background via-background to-primary/5">
-      {/* Floating particles background */}
+    <>
+      <SEO
+        title="Free Card Machine Worth £189 - Claim Your Free Terminal"
+        description="Get a FREE premium card machine worth £189 when you switch to Rocket Payments. No monthly fees, better rates, next-day delivery. Limited time offer ends 14th December."
+        canonical="https://rocketpayments.co.uk/free-terminal"
+      />
+      <div className="min-h-screen bg-gradient-to-b from-background via-background to-primary/5">
+        {/* Floating particles background */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         {[...Array(30)].map((_, i) => (
           <div
@@ -760,6 +767,7 @@ export default function FreeTerminal() {
           </Button>
         </div>
       )}
-    </div>
+      </div>
+    </>
   );
 }
