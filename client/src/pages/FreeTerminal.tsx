@@ -148,7 +148,7 @@ export default function FreeTerminal() {
             <div className="space-y-4 lg:space-y-8 relative z-10">
               <div className="inline-block">
                 <span className="bg-primary/10 text-primary border border-primary/30 px-4 py-2 rounded-full text-xs lg:text-sm font-black uppercase tracking-wider animate-pulse">
-                  Limited Time Offer • Ends in {formatTime(timeLeft)}
+                  Limited Time Offer • Ends 14th December
                 </span>
               </div>
 
@@ -683,7 +683,7 @@ export default function FreeTerminal() {
             onClick={() => document.getElementById("claim-form")?.scrollIntoView({ behavior: "smooth" })}
             data-testid="button-sticky-claim"
           >
-            Claim Free Terminal • Ends in {formatTime(timeLeft)}
+            Claim Free Terminal • Ends 14th December
           </Button>
         </div>
       )}
