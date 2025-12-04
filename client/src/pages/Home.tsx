@@ -156,43 +156,62 @@ function SwitchPriceAnimation() {
 
 function AutoScrollProducts({ products }: { products: any[] }) {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const animationRef = useRef<number | null>(null);
+  const scrollPositionRef = useRef(0);
+  const isRunningRef = useRef(true);
 
   useEffect(() => {
     const scrollContainer = scrollRef.current;
     if (!scrollContainer) return;
 
-    let scrollPosition = 0;
-    const scrollSpeed = 0.5;
+    const scrollSpeed = 0.3;
     const cardWidth = 340;
     const gap = 16;
     const itemWidth = cardWidth + gap;
+    const totalWidth = itemWidth * products.length;
     
     const scroll = () => {
-      scrollPosition += scrollSpeed;
+      if (!isRunningRef.current) return;
       
-      if (scrollPosition >= itemWidth * products.length) {
-        scrollPosition = 0;
+      scrollPositionRef.current += scrollSpeed;
+      
+      if (scrollPositionRef.current >= totalWidth) {
+        scrollPositionRef.current = 0;
       }
       
-      scrollContainer.scrollLeft = scrollPosition;
-      requestAnimationFrame(scroll);
+      if (scrollContainer) {
+        scrollContainer.scrollLeft = scrollPositionRef.current;
+      }
+      
+      animationRef.current = requestAnimationFrame(scroll);
     };
 
-    const animationId = requestAnimationFrame(scroll);
-
-    const handleMouseEnter = () => {
-      cancelAnimationFrame(animationId);
+    const startAnimation = () => {
+      if (!isRunningRef.current) {
+        isRunningRef.current = true;
+        animationRef.current = requestAnimationFrame(scroll);
+      }
     };
 
-    const handleMouseLeave = () => {
-      requestAnimationFrame(scroll);
+    const stopAnimation = () => {
+      isRunningRef.current = false;
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+        animationRef.current = null;
+      }
     };
+
+    const handleMouseEnter = () => stopAnimation();
+    const handleMouseLeave = () => startAnimation();
+
+    isRunningRef.current = true;
+    animationRef.current = requestAnimationFrame(scroll);
 
     scrollContainer.addEventListener('mouseenter', handleMouseEnter);
     scrollContainer.addEventListener('mouseleave', handleMouseLeave);
 
     return () => {
-      cancelAnimationFrame(animationId);
+      stopAnimation();
       scrollContainer.removeEventListener('mouseenter', handleMouseEnter);
       scrollContainer.removeEventListener('mouseleave', handleMouseLeave);
     };
