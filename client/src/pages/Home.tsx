@@ -222,17 +222,16 @@ function AutoScrollProducts({ products }: { products: any[] }) {
       {[...products, ...products].map((product, index) => (
         <Link key={index} href={product.link}>
           <div 
-            className="flex-shrink-0 w-[300px] md:w-[380px] h-[480px] md:h-[560px] rounded-[1.5rem] overflow-hidden group cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl" 
+            className="flex-shrink-0 w-[300px] md:w-[380px] h-[520px] md:h-[600px] rounded-[1.5rem] group cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl" 
+            style={{
+              backgroundColor: product.cardBg,
+              border: `3px solid ${product.borderColor}`
+            }}
             data-testid={`card-product-${index % products.length}`}
           >
-            <div 
-              className="h-full relative"
-              style={{
-                background: `linear-gradient(to bottom, ${product.bgFrom} 0%, ${product.bgFrom} 35%, ${product.bgTo} 100%)`
-              }}
-            >
+            <div className="h-full relative flex flex-col">
               {/* Top bar with product name and arrow */}
-              <div className="absolute top-0 left-0 right-0 flex items-center justify-between p-5 z-10">
+              <div className="flex items-center justify-between p-5">
                 <span 
                   className="text-sm font-bold"
                   style={{ color: product.textMuted }}
@@ -248,7 +247,7 @@ function AutoScrollProducts({ products }: { products: any[] }) {
               </div>
               
               {/* Main content - headline and description */}
-              <div className="absolute top-16 left-0 right-0 px-5 z-10 space-y-3">
+              <div className="px-5 space-y-3">
                 <h3 
                   className="text-3xl md:text-4xl font-black leading-tight"
                   style={{ color: product.textColor }}
@@ -264,12 +263,14 @@ function AutoScrollProducts({ products }: { products: any[] }) {
               </div>
               
               {/* Product image at bottom - seamlessly integrated */}
-              <div className="absolute bottom-0 left-0 right-0 h-[58%] flex items-end justify-center pb-4">
+              <div 
+                className="flex-1 flex items-end justify-center mt-4 rounded-b-[1.3rem] overflow-hidden"
+                style={{ backgroundColor: product.imageBg }}
+              >
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="max-h-full w-auto object-contain transition-transform duration-500 group-hover:scale-105"
-                  style={{ filter: 'drop-shadow(0 8px 24px rgba(0,0,0,0.15))' }}
+                  className="h-[240px] md:h-[300px] w-auto object-contain transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
             </div>
@@ -295,10 +296,11 @@ export default function Home() {
       description: "Serve more customers, faster. Take payments in seconds.",
       image: rocketGoImage,
       link: "/products/rocket-go",
-      bgFrom: "#f5f5f5",
-      bgTo: "#ffffff",
-      textColor: "#1a1a1a",
-      textMuted: "#666666",
+      cardBg: "#2dd4bf",
+      borderColor: "#5eead4",
+      imageBg: "#f5f5f0",
+      textColor: "#042f2e",
+      textMuted: "#134e4a",
     },
     {
       name: "Rocket Pocket",
@@ -306,8 +308,9 @@ export default function Home() {
       description: "Boost revenue and streamline service with our portable device.",
       image: rocketPocketImage,
       link: "/products/rocket-pocket",
-      bgFrom: "#2dd4bf",
-      bgTo: "#5eead4",
+      cardBg: "#2dd4bf",
+      borderColor: "#5eead4",
+      imageBg: "#e8e4dc",
       textColor: "#042f2e",
       textMuted: "#134e4a",
     },
@@ -317,8 +320,9 @@ export default function Home() {
       description: "Countertop and kiosk payments. No charging, no fuss.",
       image: rocketWiredImage,
       link: "/products/rocket-wired",
-      bgFrom: "#5eead4",
-      bgTo: "#99f6e4",
+      cardBg: "#2dd4bf",
+      borderColor: "#5eead4",
+      imageBg: "#f5f5f0",
       textColor: "#042f2e",
       textMuted: "#134e4a",
     },
@@ -328,8 +332,9 @@ export default function Home() {
       description: "Take contactless payments with an iPhone and our app.",
       image: tapToPayImage,
       link: "/products/tap-to-pay",
-      bgFrom: "#1a1a1a",
-      bgTo: "#2d2d2d",
+      cardBg: "#1a1a1a",
+      borderColor: "#333333",
+      imageBg: "#d4c4b0",
       textColor: "#ffffff",
       textMuted: "#a3a3a3",
     },
