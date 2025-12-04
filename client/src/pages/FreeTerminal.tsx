@@ -734,6 +734,18 @@ export default function FreeTerminal() {
               </div>
             ))}
           </div>
+
+          <div className="text-center mt-12">
+            <Button
+              size="lg"
+              className="text-xl px-12 py-8 rounded-full font-black shadow-2xl hover:scale-105 transition-transform"
+              onClick={() => document.getElementById("claim-form")?.scrollIntoView({ behavior: "smooth" })}
+              data-testid="button-start-switching"
+            >
+              Start Switching Now
+              <ArrowRight className="ml-2 h-6 w-6" />
+            </Button>
+          </div>
         </div>
       </section>
       {/* Sticky CTA Bar (Mobile) */}
