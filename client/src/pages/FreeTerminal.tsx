@@ -413,7 +413,8 @@ export default function FreeTerminal() {
                   data-testid="img-feature-4g"
                 />
               </div>
-              <h3 className="text-3xl font-black mb-3">Never lose sales again</h3>
+              <h3 className="text-3xl font-black mb-1">4G</h3>
+              <p className="text-xl font-bold text-primary mb-3">Never lose sales again</p>
               <p className="text-muted-foreground text-lg">
                 Always accept payments with 4G connectivity. Even if your Wi-Fi goes down, you can still make payments using a mobile signal.
               </p>
@@ -428,7 +429,8 @@ export default function FreeTerminal() {
                   data-testid="img-feature-epos"
                 />
               </div>
-              <h3 className="text-3xl font-black mb-3">Serve more customers every hour</h3>
+              <h3 className="text-3xl font-black mb-1">EPOS Integration</h3>
+              <p className="text-xl font-bold text-primary mb-3">Serve more customers every hour</p>
               <p className="text-muted-foreground text-lg">
                 Fewer errors. Faster transactions. With simple, seamless integration, you'll be switched over and ready to serve in no time.
               </p>
@@ -443,7 +445,8 @@ export default function FreeTerminal() {
                   data-testid="img-feature-battery"
                 />
               </div>
-              <h3 className="text-3xl font-black mb-3">Work the whole day without charging</h3>
+              <h3 className="text-3xl font-black mb-1">10-Hour Battery</h3>
+              <p className="text-xl font-bold text-primary mb-3">Work the whole day without charging</p>
               <p className="text-muted-foreground text-lg">
                 Serve more customers with 10-hour battery life. Finally say goodbye to endless recharging with your powerful, portable device.
               </p>
