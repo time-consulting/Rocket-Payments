@@ -131,42 +131,42 @@ export default function FreeTerminal() {
         ))}
       </div>
       {/* Hero Section */}
-      <section className="relative py-20 px-4 overflow-hidden">
+      <section className="relative py-10 lg:py-20 px-4 overflow-hidden">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* Left: Copy */}
-            <div className="space-y-8 relative z-10">
+            <div className="space-y-4 lg:space-y-8 relative z-10">
               <div className="inline-block">
-                <span className="bg-primary/10 text-primary border border-primary/30 px-4 py-2 rounded-full text-sm font-black uppercase tracking-wider animate-pulse">
+                <span className="bg-primary/10 text-primary border border-primary/30 px-4 py-2 rounded-full text-xs lg:text-sm font-black uppercase tracking-wider animate-pulse">
                   Limited Time Offer • Ends in {formatTime(timeLeft)}
                 </span>
               </div>
 
-              <h1 className="text-6xl lg:text-8xl font-black leading-none tracking-tight">
-                <span className="block">commitment-free</span>
+              <h1 className="text-4xl lg:text-8xl font-black leading-none tracking-tight">
+                <span className="block">Commitment free</span>
                 <span className="block text-primary">30 day trial</span>
               </h1>
 
-              <p className="text-2xl text-muted-foreground font-medium">
+              <p className="text-lg lg:text-2xl text-muted-foreground font-medium">
                 Get a premium card machine worth <span className="line-through">£189</span> absolutely{" "}
                 <span className="text-primary font-black">FREE</span> when you try today.
               </p>
 
-              <div className="flex flex-col gap-4 text-lg">
+              <div className="flex flex-col gap-3 lg:gap-4 text-sm lg:text-lg">
                 <div className="flex items-center gap-3">
-                  <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center">
+                  <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
                     <Check className="w-4 h-4 text-primary" />
                   </div>
                   <span className="font-medium">£0 monthly fees. Forever.</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center">
+                  <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
                     <Check className="w-4 h-4 text-primary" />
                   </div>
                   <span className="font-medium">Better rates than your current provider</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center">
+                  <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
                     <Check className="w-4 h-4 text-primary" />
                   </div>
                   <span className="font-medium">£3,000 towards your exit costs</span>
@@ -175,12 +175,12 @@ export default function FreeTerminal() {
 
               <Button
                 size="lg"
-                className="text-xl px-12 py-8 rounded-full font-black shadow-2xl hover:scale-105 transition-transform"
+                className="text-lg lg:text-xl px-8 lg:px-12 py-6 lg:py-8 rounded-full font-black shadow-2xl hover:scale-105 transition-transform"
                 onClick={() => document.getElementById("claim-form")?.scrollIntoView({ behavior: "smooth" })}
                 data-testid="button-hero-claim"
               >
                 Claim Your Free Terminal
-                <ArrowRight className="ml-2 h-6 w-6" />
+                <ArrowRight className="ml-2 h-5 lg:h-6 w-5 lg:w-6" />
               </Button>
             </div>
 
