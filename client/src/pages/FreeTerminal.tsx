@@ -153,8 +153,8 @@ export default function FreeTerminal() {
               </div>
 
               <h1 className="text-4xl lg:text-8xl font-black leading-none tracking-tight">
-                <span className="block text-[76px]">Save</span>
-                <span className="block text-primary text-[76px]">Approved today. Delivered tomorrow.</span>
+                <span className="block">FREE card machine</span>
+                <span className="block text-primary">Worth £189</span>
               </h1>
 
               <p className="text-lg lg:text-2xl text-muted-foreground font-medium">
