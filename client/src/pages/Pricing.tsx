@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { SEO } from "@/components/SEO";
 import { Badge } from "@/components/ui/badge";
 import { Check, ArrowRight, Sparkles, Zap, Shield, Star, Crown, Diamond } from "lucide-react";
 
@@ -159,8 +160,14 @@ export default function Pricing() {
   ];
 
   return (
-    <div className="min-h-screen bg-background overflow-hidden">
-      {/* Luxurious Hero */}
+    <>
+      <SEO
+        title="Pricing Plans - Transparent Payment Processing Fees | Rocket Payments"
+        description="Simple, transparent pricing with no hidden fees. Choose from Fix, Flex, or Pro plans. Start from £39.99/month or custom rates for high-volume businesses."
+        canonical="https://rocketpayments.co.uk/pricing"
+      />
+      <div className="min-h-screen bg-background overflow-hidden">
+        {/* Luxurious Hero */}
       <section className="relative pt-20 pb-32 md:pt-32 md:pb-40 overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-primary/15" />
@@ -427,6 +434,7 @@ export default function Pricing() {
           </AnimatedSection>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 }

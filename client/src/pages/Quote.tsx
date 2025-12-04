@@ -6,6 +6,7 @@ import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { SEO } from "@/components/SEO";
 import {
   Form,
   FormControl,
@@ -180,8 +181,14 @@ export default function Quote() {
   }
 
   return (
-    <div className="min-h-screen relative overflow-hidden">
-      {/* Epic Animated Background */}
+    <>
+      <SEO
+        title="Get a Quote - Custom Payment Solution | Rocket Payments"
+        description="Request your free, no-obligation quote within 24 hours. Get custom pricing tailored to your business needs. No hidden fees, no commitment required."
+        canonical="https://rocketpayments.co.uk/quote"
+      />
+      <div className="min-h-screen relative overflow-hidden">
+        {/* Epic Animated Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-primary/10">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(var(--primary-rgb,59,130,246),0.15),transparent_50%)] animate-pulse" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_70%,rgba(var(--primary-rgb,59,130,246),0.1),transparent_50%)] animate-pulse" style={{ animationDelay: '1.5s' }} />
@@ -556,6 +563,7 @@ export default function Quote() {
           </AnimatedSection>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }

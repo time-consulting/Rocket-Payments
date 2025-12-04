@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
+import { SEO } from "@/components/SEO";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -365,8 +366,14 @@ export default function Home() {
   ];
 
   return (
-    <div className="flex flex-col overflow-hidden">
-      {/* Epic Full-Screen Hero */}
+    <>
+      <SEO
+        title="Rocket Payments - UK's #1 Payment Solutions for Businesses"
+        description="Fast, reliable payment processing with 99.99% uptime. Join 110,000+ UK businesses using Rocket Payments. Free setup, no contracts, next-day deposits."
+        canonical="https://rocketpayments.co.uk"
+      />
+      <div className="flex flex-col overflow-hidden">
+        {/* Epic Full-Screen Hero */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <ParallaxHero />
         
@@ -1082,6 +1089,7 @@ export default function Home() {
           </AnimatedSection>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 }

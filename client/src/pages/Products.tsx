@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { SEO } from "@/components/SEO";
 import { Badge } from "@/components/ui/badge";
 import { 
   ArrowRight, 
@@ -239,8 +240,14 @@ export default function Products() {
   const heroParallax = scrollY * 0.5;
 
   return (
-    <div className="min-h-screen bg-background overflow-hidden">
-      {/* Epic Hero Section */}
+    <>
+      <SEO
+        title="Payment Terminals & Devices - Card Machines | Rocket Payments"
+        description="Explore our range of payment terminals: Rocket Go, Rocket Pocket, Rocket Wired, and Tap to Pay. Fast, reliable card machines for every UK business."
+        canonical="https://rocketpayments.co.uk/products"
+      />
+      <div className="min-h-screen bg-background overflow-hidden">
+        {/* Epic Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-primary/10">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(var(--primary-rgb,59,130,246),0.4),transparent_50%)]" />
@@ -864,6 +871,7 @@ export default function Products() {
           </AnimatedSection>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 }

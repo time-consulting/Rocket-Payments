@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { SEO } from "@/components/SEO";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Sparkles, Check, Zap, Coffee, ShoppingBag, Wrench } from "lucide-react";
 
@@ -112,8 +113,14 @@ export default function Industries() {
   ];
 
   return (
-    <div className="min-h-screen bg-background overflow-hidden">
-      {/* Epic Cinematic Hero */}
+    <>
+      <SEO
+        title="Industry Payment Solutions - Hospitality, Retail & Services | Rocket Payments"
+        description="Purpose-built payment solutions for every industry. From restaurants to retail, healthcare to hospitality. 450+ EPOS integrations. 99.99% uptime guaranteed."
+        canonical="https://rocketpayments.co.uk/industries"
+      />
+      <div className="min-h-screen bg-background overflow-hidden">
+        {/* Epic Cinematic Hero */}
       <section className="relative pt-20 pb-32 md:pt-32 md:pb-40 overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-primary/15" />
@@ -372,6 +379,7 @@ export default function Industries() {
           </AnimatedSection>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 }
