@@ -248,6 +248,18 @@ export default function FreeTerminal() {
               </div>
             </div>
           </Card>
+
+          <div className="text-center mt-8">
+            <Button
+              size="lg"
+              className="text-lg px-10 py-7 rounded-full font-black shadow-xl hover:scale-105 transition-transform"
+              onClick={() => document.getElementById("claim-form")?.scrollIntoView({ behavior: "smooth" })}
+              data-testid="button-request-callback"
+            >
+              Request Callback
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </div>
         </div>
       </section>
       {/* On-the-move payments Section */}
