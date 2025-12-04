@@ -153,7 +153,7 @@ export default function FreeTerminal() {
               </div>
 
               <h1 className="text-4xl lg:text-8xl font-black leading-none tracking-tight">
-                <span className="block">Commitment free</span>
+                <span className="block">Save</span>
                 <span className="block text-primary">30 day trial</span>
               </h1>
 
