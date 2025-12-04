@@ -206,27 +206,51 @@ function AutoScrollProducts({ products }: { products: any[] }) {
             className="flex-shrink-0 w-[300px] md:w-[380px] h-[480px] md:h-[560px] rounded-[1.5rem] overflow-hidden group cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl" 
             data-testid={`card-product-${index % products.length}`}
           >
-            <div className="h-full relative bg-primary">
+            <div 
+              className="h-full relative"
+              style={{
+                background: `linear-gradient(to bottom, ${product.bgFrom} 0%, ${product.bgFrom} 35%, ${product.bgTo} 100%)`
+              }}
+            >
               {/* Top bar with product name and arrow */}
               <div className="absolute top-0 left-0 right-0 flex items-center justify-between p-5 z-10">
-                <span className="text-sm font-bold text-primary-foreground/90">{product.name}</span>
-                <div className="w-8 h-8 rounded-full bg-primary-foreground/20 flex items-center justify-center group-hover:bg-primary-foreground/30 transition-colors">
-                  <ArrowRight className="w-4 h-4 text-primary-foreground -rotate-45" />
+                <span 
+                  className="text-sm font-bold"
+                  style={{ color: product.textMuted }}
+                >
+                  {product.name}
+                </span>
+                <div 
+                  className="w-8 h-8 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform"
+                  style={{ backgroundColor: `${product.textColor}15` }}
+                >
+                  <ArrowRight className="w-4 h-4 -rotate-45" style={{ color: product.textColor }} />
                 </div>
               </div>
               
               {/* Main content - headline and description */}
               <div className="absolute top-16 left-0 right-0 px-5 z-10 space-y-3">
-                <h3 className="text-3xl md:text-4xl font-black text-primary-foreground leading-tight">{product.tagline}</h3>
-                <p className="text-sm md:text-base text-primary-foreground/80 leading-relaxed">{product.description}</p>
+                <h3 
+                  className="text-3xl md:text-4xl font-black leading-tight"
+                  style={{ color: product.textColor }}
+                >
+                  {product.tagline}
+                </h3>
+                <p 
+                  className="text-sm md:text-base leading-relaxed"
+                  style={{ color: product.textMuted }}
+                >
+                  {product.description}
+                </p>
               </div>
               
-              {/* Product image at bottom */}
-              <div className="absolute bottom-0 left-0 right-0 h-[55%] flex items-end justify-center">
+              {/* Product image at bottom - seamlessly integrated */}
+              <div className="absolute bottom-0 left-0 right-0 h-[58%] flex items-end justify-center pb-4">
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="max-h-full w-auto object-contain transition-transform duration-500 group-hover:scale-105 drop-shadow-2xl"
+                  className="max-h-full w-auto object-contain transition-transform duration-500 group-hover:scale-105"
+                  style={{ filter: 'drop-shadow(0 8px 24px rgba(0,0,0,0.15))' }}
                 />
               </div>
             </div>
@@ -252,6 +276,10 @@ export default function Home() {
       description: "Serve more customers, faster. Take payments in seconds.",
       image: rocketGoImage,
       link: "/products/rocket-go",
+      bgFrom: "#f5f5f5",
+      bgTo: "#ffffff",
+      textColor: "#1a1a1a",
+      textMuted: "#666666",
     },
     {
       name: "Rocket Pocket",
@@ -259,6 +287,10 @@ export default function Home() {
       description: "Boost revenue and streamline service with our portable device.",
       image: rocketPocketImage,
       link: "/products/rocket-pocket",
+      bgFrom: "#2dd4bf",
+      bgTo: "#5eead4",
+      textColor: "#042f2e",
+      textMuted: "#134e4a",
     },
     {
       name: "Rocket Wired",
@@ -266,6 +298,10 @@ export default function Home() {
       description: "Countertop and kiosk payments. No charging, no fuss.",
       image: rocketWiredImage,
       link: "/products/rocket-wired",
+      bgFrom: "#5eead4",
+      bgTo: "#99f6e4",
+      textColor: "#042f2e",
+      textMuted: "#134e4a",
     },
     {
       name: "Tap to Pay",
@@ -273,6 +309,10 @@ export default function Home() {
       description: "Take contactless payments with an iPhone and our app.",
       image: tapToPayImage,
       link: "/products/tap-to-pay",
+      bgFrom: "#1a1a1a",
+      bgTo: "#2d2d2d",
+      textColor: "#ffffff",
+      textMuted: "#a3a3a3",
     },
   ];
 
