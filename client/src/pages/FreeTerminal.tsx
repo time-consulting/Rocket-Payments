@@ -206,7 +206,7 @@ export default function FreeTerminal() {
               <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent blur-3xl" />
               <img
                 src={offerBanner}
-                alt="Free card machine offer"
+                alt="Free Rocket Go card machine worth £189 - limited time offer for UK businesses"
                 className="relative rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-700"
                 data-testid="img-offer-banner"
               />
@@ -317,7 +317,7 @@ export default function FreeTerminal() {
               <div className="relative group">
                 <img
                   src={rocketGoHerop}
-                  alt="Rocket Go Terminal"
+                  alt="Rocket Go portable payment terminal with touchscreen display"
                   className="relative w-full max-w-md hover:scale-[1.02] transition-transform duration-700"
                   data-testid="img-rocket-go-hero"
                 />
@@ -415,7 +415,7 @@ export default function FreeTerminal() {
               <div className="relative overflow-hidden rounded-2xl mb-6">
                 <img
                   src={rocketGoDevice}
-                  alt="Rocket Go with 4G connectivity"
+                  alt="Rocket Go card machine with built-in 4G connectivity for reliable payments anywhere"
                   className="w-full h-80 object-contain bg-gradient-to-br from-muted/30 to-muted/10 p-8 hover:scale-105 transition-transform duration-700"
                   data-testid="img-feature-4g"
                 />
@@ -431,7 +431,7 @@ export default function FreeTerminal() {
               <div className="relative overflow-hidden rounded-2xl mb-6">
                 <img
                   src={tapRocketGo}
-                  alt="EPOS integration with Rocket Payments"
+                  alt="Contactless tap payment on Rocket Go terminal with EPOS integration"
                   className="w-full h-80 object-cover hover:scale-105 transition-transform duration-700"
                   data-testid="img-feature-epos"
                 />
@@ -447,7 +447,7 @@ export default function FreeTerminal() {
               <div className="relative overflow-hidden rounded-2xl mb-6">
                 <img
                   src={rocketGoPub}
-                  alt="10-hour battery life terminal"
+                  alt="Pub staff using Rocket Go payment terminal with 10-hour battery life"
                   className="w-full h-80 object-cover hover:scale-105 transition-transform duration-700"
                   data-testid="img-feature-battery"
                 />

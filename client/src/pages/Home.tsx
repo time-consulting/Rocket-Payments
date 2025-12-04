@@ -414,7 +414,7 @@ export default function Home() {
               <div className="absolute -inset-12 bg-gradient-to-r from-primary/30 via-primary/20 to-primary/30 rounded-3xl blur-3xl opacity-70 animate-pulse" />
               <img
                 src={heroImage}
-                alt="Payment terminal in action"
+                alt="Rocket Go payment terminal processing a contactless card payment in a UK business"
                 className="relative w-full h-auto rounded-3xl shadow-2xl hover:scale-[1.02] transition-transform duration-700"
                 data-testid="img-hero"
               />
@@ -505,7 +505,7 @@ export default function Home() {
               <Link href="/products/rocket-go">
                 <img 
                   src={offerBanner} 
-                  alt="Limited time offer - £79 card machine"
+                  alt="Limited time offer - Rocket Go card machine for £79 with free delivery"
                   className="relative w-full h-auto hover:scale-[1.02] transition-transform duration-700 shadow-2xl cursor-pointer"
                 />
               </Link>
@@ -994,7 +994,7 @@ export default function Home() {
                 <div className="absolute -inset-8 bg-gradient-to-r from-purple-500/20 to-purple-500/10 rounded-3xl blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                 <img
                   src={eposIntegrationImage}
-                  alt="EPOS integrations"
+                  alt="Rocket Payments EPOS integration with 450+ point of sale systems"
                   className="relative w-full h-auto rounded-3xl shadow-2xl hover:scale-[1.02] transition-transform duration-700"
                 />
               </div>
