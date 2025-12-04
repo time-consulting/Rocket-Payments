@@ -37,7 +37,7 @@ type FormData = z.infer<typeof formSchema>;
 export default function FreeTerminal() {
   const [, navigate] = useLocation();
   const [step, setStep] = useState(1);
-  const [timeLeft, setTimeLeft] = useState(24 * 60 * 60);
+  const [timeLeft, setTimeLeft] = useState(Math.floor(5.2 * 60 * 60));
   const [monthlyFees, setMonthlyFees] = useState(0);
   const { toast } = useToast();
 
