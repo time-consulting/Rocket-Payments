@@ -62,15 +62,25 @@ export default function FreeTerminal() {
 
   const mutation = useMutation({
     mutationFn: async (data: FormData) => {
-      return await apiRequest("/api/free-terminal-lead", "POST", data);
+      const response = await fetch("/api/free-terminal-lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || "Submission failed");
+      }
+      return response.json();
     },
     onSuccess: () => {
-      navigate("/thank-you");
+      navigate("/free-terminal-thank-you");
     },
-    onError: () => {
+    onError: (error: Error) => {
+      console.error("Free terminal submission error:", error);
       toast({
         title: "Something went wrong",
-        description: "Please try again or call us directly.",
+        description: error.message || "Please try again or call us directly.",
         variant: "destructive",
       });
     },
