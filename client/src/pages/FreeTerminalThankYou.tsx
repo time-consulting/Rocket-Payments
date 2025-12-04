@@ -12,6 +12,49 @@ export default function FreeTerminalThankYou() {
     return () => clearTimeout(timer);
   }, []);
 
+  // LinkedIn Insight Tag for conversion tracking
+  useEffect(() => {
+    // Set partner ID
+    const partnerId = "8332114";
+    (window as any)._linkedin_partner_id = partnerId;
+    (window as any)._linkedin_data_partner_ids = (window as any)._linkedin_data_partner_ids || [];
+    (window as any)._linkedin_data_partner_ids.push(partnerId);
+
+    // Load LinkedIn tracking script
+    if (!(window as any).lintrk) {
+      (window as any).lintrk = function(a: any, b: any) {
+        (window as any).lintrk.q.push([a, b]);
+      };
+      (window as any).lintrk.q = [];
+    }
+
+    const script = document.createElement("script");
+    script.type = "text/javascript";
+    script.async = true;
+    script.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+    
+    const firstScript = document.getElementsByTagName("script")[0];
+    if (firstScript && firstScript.parentNode) {
+      firstScript.parentNode.insertBefore(script, firstScript);
+    }
+
+    // Create noscript fallback image
+    const noscriptImg = document.createElement("img");
+    noscriptImg.height = 1;
+    noscriptImg.width = 1;
+    noscriptImg.style.display = "none";
+    noscriptImg.alt = "";
+    noscriptImg.src = "https://px.ads.linkedin.com/collect/?pid=8332114&fmt=gif";
+    document.body.appendChild(noscriptImg);
+
+    return () => {
+      // Cleanup on unmount
+      if (noscriptImg.parentNode) {
+        noscriptImg.parentNode.removeChild(noscriptImg);
+      }
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-background via-primary/5 to-background flex items-center justify-center px-4 py-20">
       {confettiVisible && (
