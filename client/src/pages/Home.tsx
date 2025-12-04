@@ -203,20 +203,30 @@ function AutoScrollProducts({ products }: { products: any[] }) {
       {[...products, ...products].map((product, index) => (
         <Link key={index} href={product.link}>
           <div 
-            className="flex-shrink-0 w-[340px] md:w-[420px] h-[500px] md:h-[580px] rounded-[2rem] overflow-hidden group cursor-pointer transition-transform duration-300 hover:scale-[1.02]" 
+            className="flex-shrink-0 w-[300px] md:w-[380px] h-[480px] md:h-[560px] rounded-[1.5rem] overflow-hidden group cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl" 
             data-testid={`card-product-${index % products.length}`}
           >
-            <div className={`h-full relative ${(index % products.length) % 2 === 0 ? 'bg-foreground text-background' : 'bg-muted/50 text-foreground'}`}>
-              <div className="absolute top-8 left-8 right-8 z-10 space-y-2">
-                <h3 className="text-3xl md:text-4xl font-black">{product.name}</h3>
-                <p className="text-lg md:text-xl font-semibold opacity-90">{product.tagline}</p>
-                <p className={`text-sm ${(index % products.length) % 2 === 0 ? 'text-background/70' : 'text-muted-foreground'}`}>{product.description}</p>
+            <div className="h-full relative bg-primary">
+              {/* Top bar with product name and arrow */}
+              <div className="absolute top-0 left-0 right-0 flex items-center justify-between p-5 z-10">
+                <span className="text-sm font-bold text-primary-foreground/90">{product.name}</span>
+                <div className="w-8 h-8 rounded-full bg-primary-foreground/20 flex items-center justify-center group-hover:bg-primary-foreground/30 transition-colors">
+                  <ArrowRight className="w-4 h-4 text-primary-foreground -rotate-45" />
+                </div>
               </div>
-              <div className="absolute bottom-0 left-0 right-0 h-[65%] flex items-end justify-center pb-8">
+              
+              {/* Main content - headline and description */}
+              <div className="absolute top-16 left-0 right-0 px-5 z-10 space-y-3">
+                <h3 className="text-3xl md:text-4xl font-black text-primary-foreground leading-tight">{product.tagline}</h3>
+                <p className="text-sm md:text-base text-primary-foreground/80 leading-relaxed">{product.description}</p>
+              </div>
+              
+              {/* Product image at bottom */}
+              <div className="absolute bottom-0 left-0 right-0 h-[55%] flex items-end justify-center">
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="max-h-full w-auto object-contain transition-transform duration-500 group-hover:scale-105"
+                  className="max-h-full w-auto object-contain transition-transform duration-500 group-hover:scale-105 drop-shadow-2xl"
                 />
               </div>
             </div>
