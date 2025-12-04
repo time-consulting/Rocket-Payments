@@ -249,6 +249,27 @@ export default function FreeTerminal() {
             </div>
           </Card>
 
+          {/* Subtle social proof */}
+          <div className="flex flex-wrap justify-center gap-6 mt-8 opacity-70">
+            {[
+              { name: "James T.", text: "Saved £2k/year" },
+              { name: "Sarah M.", text: "Setup in 24hrs" },
+              { name: "Mike R.", text: "Best rates ever" },
+            ].map((review, i) => (
+              <div key={i} className="flex items-center gap-2 text-sm text-muted-foreground">
+                <div className="flex text-primary">
+                  {[...Array(5)].map((_, j) => (
+                    <svg key={j} className="w-3 h-3 fill-current" viewBox="0 0 20 20">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                    </svg>
+                  ))}
+                </div>
+                <span className="font-medium">{review.name}</span>
+                <span>"{review.text}"</span>
+              </div>
+            ))}
+          </div>
+
           <div className="text-center mt-8">
             <Button
               size="lg"
