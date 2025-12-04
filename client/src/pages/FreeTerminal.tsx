@@ -322,7 +322,7 @@ export default function FreeTerminal() {
               },
               {
                 icon: Clock,
-                title: "Setup in 48 Hours",
+                title: "Setup in 24 Hours",
                 value: "Lightning Fast",
                 description: "Get up and running faster than any competitor",
               },
