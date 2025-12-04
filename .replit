@@ -35,6 +35,10 @@ localPort = 40047
 externalPort = 5000
 
 [[ports]]
+localPort = 40305
+externalPort = 9000
+
+[[ports]]
 localPort = 40309
 externalPort = 8008
 
@@ -96,3 +100,8 @@ waitForPort = 5000
 
 [agent]
 integrations = ["javascript_mem_db:1.0.0"]
+
+[userenv]
+
+[userenv.production]
+GHL_WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/JHjFPjCIxrsmrNAm7R3L/webhook-trigger/87ddf19a-ec00-4007-939a-8f0207b27499"
