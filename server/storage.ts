@@ -1,5 +1,7 @@
-import { type QuoteRequest, type InsertQuoteRequest, type FreeTerminalLead, type InsertFreeTerminalLead } from "@shared/schema";
+import { type QuoteRequest, type InsertQuoteRequest, type FreeTerminalLead, type InsertFreeTerminalLead, quoteRequests, freeTerminalLeads } from "@shared/schema";
 import { randomUUID } from "crypto";
+import { db } from "./db";
+import { desc, eq } from "drizzle-orm";
 
 export interface IStorage {
   createQuoteRequest(quoteRequest: InsertQuoteRequest): Promise<QuoteRequest>;
@@ -10,54 +12,37 @@ export interface IStorage {
   getAllFreeTerminalLeads(): Promise<FreeTerminalLead[]>;
 }
 
-export class MemStorage implements IStorage {
-  private quoteRequests: Map<string, QuoteRequest>;
-  private freeTerminalLeads: Map<string, FreeTerminalLead>;
-
-  constructor() {
-    this.quoteRequests = new Map();
-    this.freeTerminalLeads = new Map();
-  }
-
+export class DbStorage implements IStorage {
   async createQuoteRequest(insertQuoteRequest: InsertQuoteRequest): Promise<QuoteRequest> {
     const id = randomUUID();
-    const quoteRequest: QuoteRequest = {
+    const [quoteRequest] = await db.insert(quoteRequests).values({
       ...insertQuoteRequest,
-      message: insertQuoteRequest.message ?? null,
-      monthlyVolume: insertQuoteRequest.monthlyVolume ?? null,
       id,
-      createdAt: new Date(),
-    };
-    this.quoteRequests.set(id, quoteRequest);
+    }).returning();
     return quoteRequest;
   }
 
   async getQuoteRequest(id: string): Promise<QuoteRequest | undefined> {
-    return this.quoteRequests.get(id);
+    const results = await db.select().from(quoteRequests).where(eq(quoteRequests.id, id)).limit(1);
+    return results[0];
   }
 
   async getAllQuoteRequests(): Promise<QuoteRequest[]> {
-    return Array.from(this.quoteRequests.values());
+    return await db.select().from(quoteRequests).orderBy(desc(quoteRequests.createdAt));
   }
 
   async createFreeTerminalLead(insertLead: InsertFreeTerminalLead): Promise<FreeTerminalLead> {
     const id = randomUUID();
-    const lead: FreeTerminalLead = {
+    const [lead] = await db.insert(freeTerminalLeads).values({
       ...insertLead,
-      currentProvider: insertLead.currentProvider ?? null,
-      monthlyFees: insertLead.monthlyFees ?? null,
-      email: insertLead.email ?? null,
-      industryType: insertLead.industryType ?? null,
       id,
-      createdAt: new Date(),
-    };
-    this.freeTerminalLeads.set(id, lead);
+    }).returning();
     return lead;
   }
 
   async getAllFreeTerminalLeads(): Promise<FreeTerminalLead[]> {
-    return Array.from(this.freeTerminalLeads.values());
+    return await db.select().from(freeTerminalLeads).orderBy(desc(freeTerminalLeads.createdAt));
   }
 }
 
-export const storage = new MemStorage();
+export const storage = new DbStorage();
