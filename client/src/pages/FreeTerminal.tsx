@@ -711,6 +711,31 @@ export default function FreeTerminal() {
           )}
         </div>
       </section>
+      {/* What Happens Next Section */}
+      <section className="py-20 px-4 bg-muted/30">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-4xl lg:text-5xl font-black text-center mb-12">
+            Here's how <span className="text-primary">switching</span> works
+          </h2>
+
+          <div className="space-y-6">
+            {[
+              { step: 1, text: "Send your details" },
+              { step: 2, text: "We beat your rate" },
+              { step: 3, text: "Delivered tomorrow" },
+              { step: 4, text: "We cover buy-out if needed" },
+              { step: 5, text: "You keep more from every sale" },
+            ].map((item) => (
+              <div key={item.step} className="flex items-center gap-6">
+                <div className="w-14 h-14 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
+                  <span className="text-2xl font-black text-primary-foreground">{item.step}</span>
+                </div>
+                <p className="text-xl lg:text-2xl font-bold">{item.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
       {/* Sticky CTA Bar (Mobile) */}
       {step < 4 && (
         <div className="fixed bottom-0 left-0 right-0 bg-background/95 backdrop-blur border-t p-4 md:hidden z-50 shadow-2xl">
