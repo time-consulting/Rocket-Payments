@@ -44,7 +44,7 @@ export type FreeTerminalLead = typeof freeTerminalLeads.$inferSelect;
 export const interestRegistrations = pgTable("interest_registrations", {
   id: varchar("id").primaryKey(),
   email: text("email").notNull(),
-  businessName: text("business_name"),
+  name: text("name"),
   mobile: text("mobile"),
   completionStep: text("completion_step").notNull().default("email"),
   createdAt: timestamp("created_at").defaultNow().notNull(),

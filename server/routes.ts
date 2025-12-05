@@ -235,9 +235,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Interest registration endpoint - supports partial completion
+  // Only sends webhook when ALL data is complete (phone included)
   app.post("/api/register-interest", async (req, res) => {
     try {
-      const { email, businessName, mobile, completionStep } = req.body;
+      const { email, name, mobile, completionStep } = req.body;
 
       if (!email) {
         return res.status(400).json({ error: "Email is required" });
@@ -249,54 +250,68 @@ export async function registerRoutes(app: Express): Promise<Server> {
       if (existingRegistration) {
         // Update existing registration with new fields
         const updated = await storage.updateInterestRegistration(existingRegistration.id, {
-          businessName: businessName || existingRegistration.businessName,
+          name: name || existingRegistration.name,
           mobile: mobile || existingRegistration.mobile,
           completionStep: completionStep || existingRegistration.completionStep,
         });
 
-        // Send to GHL if we have at least email
-        const ghlData = {
-          email: updated?.email || email,
-          companyName: updated?.businessName || businessName || "",
-          phone: updated?.mobile || mobile || "",
-          source: "Quick Interest Registration",
-          leadStatus: `Partial - ${updated?.completionStep || completionStep}`,
-          completionStep: updated?.completionStep || completionStep
-        };
-        
-        await sendToGHL(ghlData);
+        // Only send to GHL when complete (has all data including phone)
+        if (completionStep === "complete" && updated) {
+          const nameParts = (updated.name || "").trim().split(" ");
+          const firstName = nameParts[0] || "";
+          const lastName = nameParts.slice(1).join(" ") || "";
+          
+          const ghlData = {
+            firstName,
+            lastName,
+            email: updated.email,
+            phone: updated.mobile || "",
+            source: "Quick Interest Registration",
+            leadStatus: "Complete - Interest Registered"
+          };
+          
+          await sendToGHL(ghlData);
+        }
 
         return res.json({ 
           success: true, 
           registration: updated,
-          isUpdate: true 
+          isUpdate: true,
+          webhookSent: completionStep === "complete"
         });
       }
 
       // Create new registration
       const registration = await storage.createInterestRegistration({
         email,
-        businessName: businessName || null,
+        name: name || null,
         mobile: mobile || null,
         completionStep: completionStep || "email",
       });
 
-      // Send to GHL
-      const ghlData = {
-        email,
-        companyName: businessName || "",
-        phone: mobile || "",
-        source: "Quick Interest Registration",
-        leadStatus: `Partial - ${completionStep || "email"}`,
-        completionStep: completionStep || "email"
-      };
-      
-      await sendToGHL(ghlData);
+      // Only send to GHL when complete (has all data including phone)
+      if (completionStep === "complete") {
+        const nameParts = (name || "").trim().split(" ");
+        const firstName = nameParts[0] || "";
+        const lastName = nameParts.slice(1).join(" ") || "";
+        
+        const ghlData = {
+          firstName,
+          lastName,
+          email,
+          phone: mobile || "",
+          source: "Quick Interest Registration",
+          leadStatus: "Complete - Interest Registered"
+        };
+        
+        await sendToGHL(ghlData);
+      }
 
       res.json({ 
         success: true, 
         registration,
-        isUpdate: false 
+        isUpdate: false,
+        webhookSent: completionStep === "complete"
       });
     } catch (error: any) {
       console.error("Interest registration error:", error);
