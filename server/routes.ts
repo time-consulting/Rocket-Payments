@@ -238,7 +238,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Only sends webhook when ALL data is complete (phone included)
   app.post("/api/register-interest", async (req, res) => {
     try {
-      const { email, name, mobile, completionStep } = req.body;
+      const { email, name, businessName, mobile, completionStep } = req.body;
 
       if (!email) {
         return res.status(400).json({ error: "Email is required" });
@@ -251,6 +251,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         // Update existing registration with new fields
         const updated = await storage.updateInterestRegistration(existingRegistration.id, {
           name: name || existingRegistration.name,
+          businessName: businessName || existingRegistration.businessName,
           mobile: mobile || existingRegistration.mobile,
           completionStep: completionStep || existingRegistration.completionStep,
         });
@@ -266,6 +267,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
             lastName,
             email: updated.email,
             phone: updated.mobile || "",
+            companyName: updated.businessName || "",
             source: "Quick Interest Registration",
             leadStatus: "Complete - Interest Registered"
           };
@@ -285,6 +287,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const registration = await storage.createInterestRegistration({
         email,
         name: name || null,
+        businessName: businessName || null,
         mobile: mobile || null,
         completionStep: completionStep || "email",
       });
@@ -300,6 +303,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           lastName,
           email,
           phone: mobile || "",
+          companyName: businessName || "",
           source: "Quick Interest Registration",
           leadStatus: "Complete - Interest Registered"
         };

@@ -6,18 +6,19 @@ import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 
-type Step = "closed" | "email" | "name" | "mobile" | "complete";
+type Step = "closed" | "email" | "name" | "businessName" | "mobile" | "complete";
 
 export function QuickCapture() {
   const [step, setStep] = useState<Step>("closed");
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
+  const [businessName, setBusinessName] = useState("");
   const [mobile, setMobile] = useState("");
   const [isVisible, setIsVisible] = useState(true);
   const { toast } = useToast();
 
   const registerMutation = useMutation({
-    mutationFn: async (data: { email: string; name?: string; mobile?: string; completionStep: string }) => {
+    mutationFn: async (data: { email: string; name?: string; businessName?: string; mobile?: string; completionStep: string }) => {
       const response = await apiRequest("POST", "/api/register-interest", data);
       return response.json();
     },
@@ -60,6 +61,26 @@ export function QuickCapture() {
       completionStep: "name",
     });
     
+    setStep("businessName");
+  };
+
+  const handleBusinessNameSubmit = async () => {
+    if (!businessName.trim()) {
+      toast({
+        title: "Please enter your business name",
+        variant: "destructive",
+      });
+      return;
+    }
+    
+    // Save partial lead to database
+    await registerMutation.mutateAsync({
+      email,
+      name,
+      businessName,
+      completionStep: "businessName",
+    });
+    
     setStep("mobile");
   };
 
@@ -76,6 +97,7 @@ export function QuickCapture() {
     await registerMutation.mutateAsync({
       email,
       name,
+      businessName,
       mobile,
       completionStep: "complete",
     });
@@ -198,13 +220,53 @@ export function QuickCapture() {
             </div>
           )}
 
-          {step === "mobile" && (
+          {step === "businessName" && (
             <div className="flex items-center gap-3 flex-wrap justify-center animate-in fade-in duration-200">
               <div className="flex items-center gap-2">
                 <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center">
                   <Check className="h-3 w-3 text-primary" />
                 </div>
                 <span className="text-xs text-muted-foreground">{name}</span>
+              </div>
+              <span className="text-sm font-bold text-foreground">Business name?</span>
+              <div className="flex items-center gap-2">
+                <Input
+                  type="text"
+                  placeholder="Your Business Ltd"
+                  value={businessName}
+                  onChange={(e) => setBusinessName(e.target.value)}
+                  onKeyPress={(e) => handleKeyPress(e, handleBusinessNameSubmit)}
+                  className="h-9 w-52 text-sm"
+                  autoFocus
+                  data-testid="input-quick-business"
+                />
+                <Button
+                  size="sm"
+                  onClick={handleBusinessNameSubmit}
+                  disabled={registerMutation.isPending}
+                  className="h-9 px-4"
+                  data-testid="button-quick-business-submit"
+                >
+                  {registerMutation.isPending ? (
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                  ) : (
+                    <>
+                      Next
+                      <ArrowRight className="ml-1 h-4 w-4" />
+                    </>
+                  )}
+                </Button>
+              </div>
+            </div>
+          )}
+
+          {step === "mobile" && (
+            <div className="flex items-center gap-3 flex-wrap justify-center animate-in fade-in duration-200">
+              <div className="flex items-center gap-2">
+                <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center">
+                  <Check className="h-3 w-3 text-primary" />
+                </div>
+                <span className="text-xs text-muted-foreground">{businessName}</span>
               </div>
               <span className="text-sm font-bold text-foreground">Mobile number?</span>
               <div className="flex items-center gap-2">

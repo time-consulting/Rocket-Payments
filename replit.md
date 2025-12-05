@@ -9,11 +9,11 @@ Rocket Payments is a complete payment processing platform marketing website buil
 **Quick Register Interest Form Added**
 - Created QuickCapture component (`client/src/components/QuickCapture.tsx`) for quick lead capture
 - Thin bar format appearing below header on all main pages
-- One question at a time flow: Email → Name → Mobile
+- One question at a time flow: Email → Name → Business Name → Mobile
 - Partial completion support - each step saves to database immediately
-- Data stored in PostgreSQL `interest_registrations` table with name field
+- Data stored in PostgreSQL `interest_registrations` table with name and businessName fields
 - Webhook only sends to Go High Level when ALL data is complete (including phone)
-- Complete data includes firstName, lastName (split from name), email, and phone
+- Complete data includes firstName, lastName (split from name), email, phone, and companyName
 - Excluded from thank-you and calculate-savings pages only
 
 ## Recent Changes (December 4, 2025)

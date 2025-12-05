@@ -45,6 +45,7 @@ export const interestRegistrations = pgTable("interest_registrations", {
   id: varchar("id").primaryKey(),
   email: text("email").notNull(),
   name: text("name"),
+  businessName: text("business_name"),
   mobile: text("mobile"),
   completionStep: text("completion_step").notNull().default("email"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
