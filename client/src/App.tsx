@@ -7,6 +7,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { QuickCapture } from "@/components/QuickCapture";
 import Home from "@/pages/Home";
 import Products from "@/pages/Products";
 import ProductDetail from "@/pages/ProductDetail";
@@ -140,6 +141,17 @@ function Router() {
   );
 }
 
+function QuickCaptureWrapper() {
+  const [location] = useLocation();
+  const excludedPages = ["/free-terminal", "/free-terminal-thank-you", "/thank-you", "/calculate-savings"];
+  
+  if (excludedPages.includes(location)) {
+    return null;
+  }
+  
+  return <QuickCapture />;
+}
+
 function App() {
   return (
     <HelmetProvider>
@@ -148,6 +160,7 @@ function App() {
           <ScrollToTop />
           <div className="flex flex-col min-h-screen">
             <Header />
+            <QuickCaptureWrapper />
             <main className="flex-1">
               <Router />
             </main>
