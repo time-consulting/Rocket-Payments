@@ -1,7 +1,8 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { insertQuoteRequestSchema, insertFreeTerminalLeadSchema } from "@shared/schema";
+import { insertQuoteRequestSchema, insertFreeTerminalLeadSchema, insertInterestRegistrationSchema } from "@shared/schema";
+import { z } from "zod";
 
 // Helper function to send data to Go High Level webhook
 async function sendToGHL(data: any) {
@@ -230,6 +231,86 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error: any) {
       console.error("Calculator submission error:", error);
       res.status(500).json({ error: error.message || "Failed to process submission" });
+    }
+  });
+
+  // Interest registration endpoint - supports partial completion
+  app.post("/api/register-interest", async (req, res) => {
+    try {
+      const { email, businessName, mobile, completionStep } = req.body;
+
+      if (!email) {
+        return res.status(400).json({ error: "Email is required" });
+      }
+
+      // Check if email already exists
+      const existingRegistration = await storage.getInterestRegistrationByEmail(email);
+
+      if (existingRegistration) {
+        // Update existing registration with new fields
+        const updated = await storage.updateInterestRegistration(existingRegistration.id, {
+          businessName: businessName || existingRegistration.businessName,
+          mobile: mobile || existingRegistration.mobile,
+          completionStep: completionStep || existingRegistration.completionStep,
+        });
+
+        // Send to GHL if we have at least email
+        const ghlData = {
+          email: updated?.email || email,
+          companyName: updated?.businessName || businessName || "",
+          phone: updated?.mobile || mobile || "",
+          source: "Quick Interest Registration",
+          leadStatus: `Partial - ${updated?.completionStep || completionStep}`,
+          completionStep: updated?.completionStep || completionStep
+        };
+        
+        await sendToGHL(ghlData);
+
+        return res.json({ 
+          success: true, 
+          registration: updated,
+          isUpdate: true 
+        });
+      }
+
+      // Create new registration
+      const registration = await storage.createInterestRegistration({
+        email,
+        businessName: businessName || null,
+        mobile: mobile || null,
+        completionStep: completionStep || "email",
+      });
+
+      // Send to GHL
+      const ghlData = {
+        email,
+        companyName: businessName || "",
+        phone: mobile || "",
+        source: "Quick Interest Registration",
+        leadStatus: `Partial - ${completionStep || "email"}`,
+        completionStep: completionStep || "email"
+      };
+      
+      await sendToGHL(ghlData);
+
+      res.json({ 
+        success: true, 
+        registration,
+        isUpdate: false 
+      });
+    } catch (error: any) {
+      console.error("Interest registration error:", error);
+      res.status(500).json({ error: error.message || "Failed to register interest" });
+    }
+  });
+
+  // Get all interest registrations (for admin purposes)
+  app.get("/api/interest-registrations", async (_req, res) => {
+    try {
+      const registrations = await storage.getAllInterestRegistrations();
+      res.json(registrations);
+    } catch (error: any) {
+      res.status(500).json({ error: error.message || "Internal server error" });
     }
   });
 

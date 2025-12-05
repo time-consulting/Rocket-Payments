@@ -1,4 +1,4 @@
-import { type QuoteRequest, type InsertQuoteRequest, type FreeTerminalLead, type InsertFreeTerminalLead, quoteRequests, freeTerminalLeads } from "@shared/schema";
+import { type QuoteRequest, type InsertQuoteRequest, type FreeTerminalLead, type InsertFreeTerminalLead, type InterestRegistration, type InsertInterestRegistration, quoteRequests, freeTerminalLeads, interestRegistrations } from "@shared/schema";
 import { randomUUID } from "crypto";
 import { db } from "./db";
 import { desc, eq } from "drizzle-orm";
@@ -10,6 +10,11 @@ export interface IStorage {
   
   createFreeTerminalLead(lead: InsertFreeTerminalLead): Promise<FreeTerminalLead>;
   getAllFreeTerminalLeads(): Promise<FreeTerminalLead[]>;
+  
+  createInterestRegistration(registration: InsertInterestRegistration): Promise<InterestRegistration>;
+  updateInterestRegistration(id: string, data: Partial<InsertInterestRegistration>): Promise<InterestRegistration | undefined>;
+  getInterestRegistrationByEmail(email: string): Promise<InterestRegistration | undefined>;
+  getAllInterestRegistrations(): Promise<InterestRegistration[]>;
 }
 
 export class DbStorage implements IStorage {
@@ -42,6 +47,32 @@ export class DbStorage implements IStorage {
 
   async getAllFreeTerminalLeads(): Promise<FreeTerminalLead[]> {
     return await db.select().from(freeTerminalLeads).orderBy(desc(freeTerminalLeads.createdAt));
+  }
+
+  async createInterestRegistration(insertRegistration: InsertInterestRegistration): Promise<InterestRegistration> {
+    const id = randomUUID();
+    const [registration] = await db.insert(interestRegistrations).values({
+      ...insertRegistration,
+      id,
+    }).returning();
+    return registration;
+  }
+
+  async updateInterestRegistration(id: string, data: Partial<InsertInterestRegistration>): Promise<InterestRegistration | undefined> {
+    const [registration] = await db.update(interestRegistrations)
+      .set({ ...data, updatedAt: new Date() })
+      .where(eq(interestRegistrations.id, id))
+      .returning();
+    return registration;
+  }
+
+  async getInterestRegistrationByEmail(email: string): Promise<InterestRegistration | undefined> {
+    const results = await db.select().from(interestRegistrations).where(eq(interestRegistrations.email, email)).limit(1);
+    return results[0];
+  }
+
+  async getAllInterestRegistrations(): Promise<InterestRegistration[]> {
+    return await db.select().from(interestRegistrations).orderBy(desc(interestRegistrations.createdAt));
   }
 }
 

@@ -40,3 +40,22 @@ export const insertFreeTerminalLeadSchema = createInsertSchema(freeTerminalLeads
 
 export type InsertFreeTerminalLead = z.infer<typeof insertFreeTerminalLeadSchema>;
 export type FreeTerminalLead = typeof freeTerminalLeads.$inferSelect;
+
+export const interestRegistrations = pgTable("interest_registrations", {
+  id: varchar("id").primaryKey(),
+  email: text("email").notNull(),
+  businessName: text("business_name"),
+  mobile: text("mobile"),
+  completionStep: text("completion_step").notNull().default("email"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+});
+
+export const insertInterestRegistrationSchema = createInsertSchema(interestRegistrations).omit({
+  id: true,
+  createdAt: true,
+  updatedAt: true,
+});
+
+export type InsertInterestRegistration = z.infer<typeof insertInterestRegistrationSchema>;
+export type InterestRegistration = typeof interestRegistrations.$inferSelect;
