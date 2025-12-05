@@ -143,7 +143,7 @@ function Router() {
 
 function QuickCaptureWrapper() {
   const [location] = useLocation();
-  const excludedPages = ["/free-terminal", "/free-terminal-thank-you", "/thank-you", "/calculate-savings"];
+  const excludedPages = ["/free-terminal-thank-you", "/thank-you", "/calculate-savings"];
   
   if (excludedPages.includes(location)) {
     return null;

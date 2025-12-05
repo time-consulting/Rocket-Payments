@@ -13,7 +13,7 @@ Rocket Payments is a complete payment processing platform marketing website buil
 - Partial completion support - even email-only submissions are saved
 - Data stored in PostgreSQL `interest_registrations` table
 - Auto-sends to Go High Level CRM via webhook
-- Excluded from landing pages (free-terminal, thank-you, calculate-savings)
+- Excluded from thank-you and calculate-savings pages only
 
 ## Recent Changes (December 4, 2025)
 
