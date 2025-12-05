@@ -4,6 +4,17 @@
 
 Rocket Payments is a complete payment processing platform marketing website built with React and Express. The application showcases payment terminal products, industry solutions, pricing plans, and allows potential customers to request quotes. The site is designed with a clean, trust-focused aesthetic inspired by modern fintech platforms like Dojo.tech, emphasizing speed, reliability, and simplicity.
 
+## Recent Changes (December 5, 2025)
+
+**Quick Register Interest Form Added**
+- Created QuickCapture component (`client/src/components/QuickCapture.tsx`) for quick lead capture
+- Thin bar format appearing below header on all main pages
+- One question at a time flow: Email → Business Name → Mobile
+- Partial completion support - even email-only submissions are saved
+- Data stored in PostgreSQL `interest_registrations` table
+- Auto-sends to Go High Level CRM via webhook
+- Excluded from landing pages (free-terminal, thank-you, calculate-savings)
+
 ## Recent Changes (December 4, 2025)
 
 **SEO Infrastructure Implemented**
