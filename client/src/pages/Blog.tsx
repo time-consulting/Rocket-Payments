@@ -3,8 +3,10 @@ import { SEO } from "@/components/SEO";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Smartphone, CreditCard, Building2, Truck, Scissors, Car, Coffee, ShoppingBag, Sparkles, Wrench, Beer, Pizza } from "lucide-react";
+import { ArrowRight, Smartphone, CreditCard, Building2, Truck, Scissors, Car, Coffee, ShoppingBag, Sparkles, Wrench, Beer, Pizza, Globe, Calendar, MonitorSmartphone, ArrowLeftRight } from "lucide-react";
 import { blogPosts, getTapToPayPosts } from "@/data/blogPosts";
+import { competitorPosts, eposPosts } from "@/data/competitorPosts";
+import { bookingsPosts } from "@/data/bookingsPosts";
 
 const industryIcons: Record<string, any> = {
   "Barbers & Barbershops": Scissors,
@@ -19,6 +21,18 @@ const industryIcons: Record<string, any> = {
   "Tradespeople & Builders": Wrench,
   "Pubs & Bars": Beer,
   "Takeaways & Delivery": Pizza,
+  "Worldpay Alternative": ArrowLeftRight,
+  "Teya Alternative": ArrowLeftRight,
+  "Barclaycard Alternative": ArrowLeftRight,
+  "Take Payments Alternative": ArrowLeftRight,
+  "Square Alternative": Globe,
+  "SumUp Alternative": Globe,
+  "PayPal Zettle Alternative": Globe,
+  "Premium Card Machines": CreditCard,
+  "EPOS Integration": MonitorSmartphone,
+  "EPOS Systems": MonitorSmartphone,
+  "Restaurant Bookings": Calendar,
+  "Restaurant Technology": Calendar,
 };
 
 export default function Blog() {
@@ -29,9 +43,9 @@ export default function Blog() {
     <>
       <SEO
         title="Card Machine Guides by Industry UK | FREE Tap to Pay | Rocket Payments Blog"
-        description="Expert guides on card machines for every UK industry. FREE Tap to Pay for barbers, salons, taxi drivers. Lower fees than Dojo. Serving Kent, East Sussex & nationwide."
+        description="Expert guides on card machines for every UK industry. Compare Worldpay, Square, SumUp, Dojo alternatives. FREE Tap to Pay for barbers, salons, taxi drivers. EPOS integration and restaurant bookings."
         canonical="https://rocketpayments.co.uk/blog"
-        keywords="card machine UK, card payment by industry, Tap to Pay free, card machine barbers, card machine salon, card machine taxi, Dojo alternative, payment terminal Kent, card reader East Sussex"
+        keywords="card machine UK, Worldpay alternative, Square alternative, SumUp alternative, Dojo alternative, EPOS integration, restaurant booking system, OpenTable alternative, card payment by industry, Tap to Pay free, card machine Kent, East Sussex"
       />
       <div className="min-h-screen bg-background">
         <section className="relative pt-20 pb-16 md:pt-28 md:pb-20 overflow-hidden">
@@ -45,21 +59,70 @@ export default function Blog() {
             <div className="text-center max-w-4xl mx-auto">
               <Badge variant="secondary" className="mb-6 px-4 py-2 text-sm" data-testid="badge-hero">
                 <Smartphone className="w-4 h-4 mr-2" />
-                Industry Guides
+                Expert Guides
               </Badge>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 tracking-tight" data-testid="text-hero-title">
-                Card Machines for
+                Payment Solutions for
                 <span className="text-primary block">Every UK Business</span>
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto" data-testid="text-hero-description">
-                Expert guides on choosing the right card payment solution for your industry. 
-                FREE Tap to Pay for mobile businesses. Lower fees than Dojo.
+                Industry guides, competitor comparisons, EPOS integration, and restaurant bookings. 
+                Everything you need to choose the right payment solution.
               </p>
             </div>
           </div>
         </section>
 
         <section className="py-16 bg-primary/5">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <Badge variant="outline" className="mb-4 border-primary/30 bg-primary/10">
+                <ArrowLeftRight className="w-4 h-4 mr-2" />
+                Switch & Save
+              </Badge>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4" data-testid="text-section-competitors">
+                Compare Payment Providers
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Switching from another provider? Compare Rocket Payments with Worldpay, Square, SumUp, 
+                Teya, Barclaycard, and more. See how much you could save.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {competitorPosts.map((post) => {
+                const Icon = industryIcons[post.industry] || CreditCard;
+                return (
+                  <Link key={post.slug} href={`/blog/${post.slug}`}>
+                    <Card className="h-full hover-elevate cursor-pointer border-primary/20" data-testid={`card-blog-${post.slug}`}>
+                      <CardContent className="p-6">
+                        <div className="flex items-start gap-3 mb-3">
+                          <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                            <Icon className="w-5 h-5 text-primary" />
+                          </div>
+                          <div>
+                            <Badge variant="secondary" className="mb-1 text-xs">
+                              Compare
+                            </Badge>
+                            <h3 className="font-bold text-sm leading-tight">{post.industry}</h3>
+                          </div>
+                        </div>
+                        <p className="text-xs text-muted-foreground mb-3 line-clamp-2">
+                          {post.excerpt}
+                        </p>
+                        <div className="flex items-center text-primary text-xs font-medium">
+                          Read More <ArrowRight className="w-3 h-3 ml-1" />
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <Badge variant="outline" className="mb-4 border-primary/30 bg-primary/10">
@@ -108,7 +171,7 @@ export default function Blog() {
           </div>
         </section>
 
-        <section className="py-16">
+        <section className="py-16 bg-muted/30">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <Badge variant="outline" className="mb-4">
@@ -157,6 +220,104 @@ export default function Blog() {
           </div>
         </section>
 
+        <section className="py-16">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <Badge variant="outline" className="mb-4 border-primary/30 bg-primary/10">
+                <Calendar className="w-4 h-4 mr-2" />
+                Rocket Bookings
+              </Badge>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4" data-testid="text-section-bookings">
+                Restaurant Reservation Systems
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Compare restaurant booking platforms. Lower fees than OpenTable, 
+                TheFork, and ResDiary. Seamless payment integration.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {bookingsPosts.map((post) => {
+                const Icon = industryIcons[post.industry] || Calendar;
+                return (
+                  <Link key={post.slug} href={`/blog/${post.slug}`}>
+                    <Card className="h-full hover-elevate cursor-pointer border-primary/20" data-testid={`card-blog-${post.slug}`}>
+                      <CardContent className="p-6">
+                        <div className="flex items-start gap-4 mb-4">
+                          <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                            <Icon className="w-6 h-6 text-primary" />
+                          </div>
+                          <div>
+                            <Badge variant="secondary" className="mb-2 text-xs">
+                              Rocket Bookings
+                            </Badge>
+                            <h3 className="font-bold text-lg leading-tight">{post.industry}</h3>
+                          </div>
+                        </div>
+                        <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
+                          {post.excerpt}
+                        </p>
+                        <div className="flex items-center text-primary text-sm font-medium">
+                          Read Guide <ArrowRight className="w-4 h-4 ml-2" />
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16 bg-muted/30">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <Badge variant="outline" className="mb-4">
+                <MonitorSmartphone className="w-4 h-4 mr-2" />
+                EPOS Integration
+              </Badge>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4" data-testid="text-section-epos">
+                EPOS System Guides
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Connect your card machine to your EPOS. Seamless integration with 600+ systems
+                including Lightspeed, Epos Now, and Square POS.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+              {eposPosts.map((post) => {
+                const Icon = industryIcons[post.industry] || MonitorSmartphone;
+                return (
+                  <Link key={post.slug} href={`/blog/${post.slug}`}>
+                    <Card className="h-full hover-elevate cursor-pointer" data-testid={`card-blog-${post.slug}`}>
+                      <CardContent className="p-6">
+                        <div className="flex items-start gap-4 mb-4">
+                          <div className="w-12 h-12 rounded-lg bg-muted flex items-center justify-center flex-shrink-0">
+                            <Icon className="w-6 h-6 text-foreground/70" />
+                          </div>
+                          <div>
+                            <Badge variant="outline" className="mb-2 text-xs">
+                              600+ Systems
+                            </Badge>
+                            <h3 className="font-bold text-lg leading-tight">{post.industry}</h3>
+                          </div>
+                        </div>
+                        <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
+                          {post.excerpt}
+                        </p>
+                        <div className="flex items-center text-primary text-sm font-medium">
+                          Read Guide <ArrowRight className="w-4 h-4 ml-2" />
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
         <section className="py-16 bg-primary/5">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
@@ -165,7 +326,7 @@ export default function Blog() {
               </h2>
               <p className="text-lg text-muted-foreground mb-8">
                 Join thousands of UK businesses saving money on card processing. 
-                Lower fees than Dojo, FREE Tap to Pay for mobile businesses, and next-day deposits.
+                Lower fees than Dojo, Worldpay, Square, and SumUp. FREE Tap to Pay for mobile businesses.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/free-terminal">

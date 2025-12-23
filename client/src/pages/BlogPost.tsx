@@ -5,6 +5,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ArrowLeft, Check, Smartphone, MapPin, HelpCircle } from "lucide-react";
 import { getPostBySlug, blogPosts } from "@/data/blogPosts";
+import { getCompetitorPostBySlug, getAllCompetitorPosts } from "@/data/competitorPosts";
+import { getBookingsPostBySlug, getAllBookingsPosts } from "@/data/bookingsPosts";
 import NotFound from "./not-found";
 
 export default function BlogPost() {
@@ -15,11 +17,13 @@ export default function BlogPost() {
     return <NotFound />;
   }
 
-  const post = getPostBySlug(slug);
+  const post = getPostBySlug(slug) || getCompetitorPostBySlug(slug) || getBookingsPostBySlug(slug);
   
   if (!post) {
     return <NotFound />;
   }
+
+  const allPosts = [...blogPosts, ...getAllCompetitorPosts(), ...getAllBookingsPosts()];
 
   const faqStructuredData = {
     "@context": "https://schema.org",
@@ -54,9 +58,9 @@ export default function BlogPost() {
     }
   };
 
-  const relatedPosts = blogPosts
+  const relatedPosts = allPosts
     .filter(p => p.slug !== post.slug)
-    .filter(p => p.tapToPayFree === post.tapToPayFree)
+    .filter(p => p.tapToPayFree === post.tapToPayFree || p.industry === post.industry)
     .slice(0, 3);
 
   return (

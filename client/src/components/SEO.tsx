@@ -270,7 +270,7 @@ export const faqSchemas = {
         "name": "How long do card payment funds take to reach my account?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "With Rocket Payments, funds from card transactions are typically deposited into your business bank 6am 7 days a week with next day payments enabled. We offer next-day settlement as optional service upgrade."
+          "text": "With Rocket Payments, funds from card transactions are typically deposited into your business bank 6am 7 days a week with next day payments enabled. We offer next-day settlement as optional service upgrade.
         }
       }
     ]
