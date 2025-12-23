@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { SEO, faqSchemas, serviceSchemas } from "@/components/SEO";
+
+const localKeywords = "card machine Kent, card machine East Sussex, payment terminal Maidstone, card payments Canterbury, card machine Tunbridge Wells, payment processing Brighton, merchant services Eastbourne, card reader Hastings, business funding Kent, business loans East Sussex, Dojo alternative UK";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -368,11 +370,11 @@ export default function Home() {
   return (
     <>
       <SEO
-        title="Card Payment Processing UK | Merchant Services & Payment Terminals | Rocket Payments"
-        description="UK's leading card payment processing company. Low-cost merchant services from 0.5%, free payment terminals, contactless payments, EPOS integration. 99.99% uptime, next-day deposits. Trusted by 110,000+ UK businesses."
+        title="Card Payment Processing UK | Merchant Services & Business Funding | Rocket Payments"
+        description="UK's leading card payment processing company. Low-cost merchant services from 0.5%, free payment terminals, business funding & loans. Serving Kent, East Sussex & nationwide. Dojo alternative with better rates. 99.99% uptime, next-day deposits."
         canonical="https://rocketpayments.co.uk"
-        keywords="card payment processing UK, merchant services UK, payment terminal, contactless payments UK, card machine UK, payment gateway UK, credit card processing, debit card payments, EPOS integration, low cost merchant account, small business payment processing, best payment terminal UK, cheap card machine, accept card payments UK"
-        structuredData={[faqSchemas.home, serviceSchemas.cardTerminal, serviceSchemas.merchantServices]}
+        keywords={`card payment processing UK, merchant services UK, payment terminal, card machine UK, business funding UK, business loans UK, merchant cash advance, contactless payments UK, Dojo alternative, ${localKeywords}`}
+        structuredData={[faqSchemas.home, faqSchemas.businessFunding, serviceSchemas.cardTerminal, serviceSchemas.merchantServices, serviceSchemas.businessFunding]}
       />
       <div className="flex flex-col overflow-hidden">
         {/* Epic Full-Screen Hero */}

@@ -162,11 +162,11 @@ export default function Pricing() {
   return (
     <>
       <SEO
-        title="Card Payment Processing Fees UK | Low Cost Merchant Account Pricing | Rocket Payments"
-        description="Cheapest card machine fees in the UK from 0.5%. No monthly fees, no hidden charges. Compare our transparent pricing: debit cards 0.5%, credit cards 0.9%. Free terminal with merchant account. Best rates for small business."
+        title="Card Payment Fees UK | Cheaper Than Dojo Rates | Merchant Account Pricing | Rocket Payments"
+        description="Cheapest card machine fees in the UK from 0.5% - lower than Dojo. No monthly fees, no hidden charges. Compare our transparent pricing vs Dojo: debit cards 0.5%, credit cards 0.9%. Free terminal with merchant account."
         canonical="https://rocketpayments.co.uk/pricing"
-        keywords="card payment fees UK, card machine fees, merchant account fees UK, cheapest card payment provider UK, payment processing costs, low cost merchant services, card transaction fees, credit card processing fees UK, debit card fees UK, compare card machine rates"
-        structuredData={faqSchemas.pricing}
+        keywords="card payment fees UK, card machine fees, merchant account fees UK, cheapest card payment provider UK, Dojo alternative, Dojo vs Rocket Payments, payment processing costs Kent, merchant services East Sussex, card transaction fees, compare Dojo rates, best card machine deal UK"
+        structuredData={[faqSchemas.pricing, faqSchemas.businessFunding]}
       />
       <div className="min-h-screen bg-background overflow-hidden">
         {/* Luxurious Hero */}

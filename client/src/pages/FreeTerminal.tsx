@@ -127,10 +127,10 @@ export default function FreeTerminal() {
   return (
     <>
       <SEO
-        title="Free Card Machine UK | Get Free Payment Terminal Worth £189 | Rocket Payments"
-        description="Claim your FREE card machine worth £189 when you switch to Rocket Payments. No monthly fees, lowest card processing rates from 0.5%, next-day delivery across the UK. Limited time offer for UK businesses."
+        title="Free Card Machine UK | Switch from Dojo | Free Payment Terminal Worth £189 | Rocket Payments"
+        description="Claim your FREE card machine worth £189 when you switch from Dojo or any provider. No monthly fees, lower rates than Dojo from 0.5%. Free delivery to Kent, East Sussex & all UK. Plus business funding available."
         canonical="https://rocketpayments.co.uk/free-terminal"
-        keywords="free card machine UK, free payment terminal, free card reader small business, free PDQ machine, no monthly fee card machine, switch payment provider UK, best card machine deal UK, free contactless card reader"
+        keywords="free card machine UK, free card machine Kent, free payment terminal East Sussex, switch from Dojo, Dojo alternative free terminal, free PDQ machine, free card reader Brighton, free card machine Maidstone, switch payment provider UK, best card machine deal UK"
       />
       <div className="min-h-screen bg-gradient-to-b from-background via-background to-primary/5">
         {/* Floating particles background */}

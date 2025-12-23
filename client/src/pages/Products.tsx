@@ -242,11 +242,11 @@ export default function Products() {
   return (
     <>
       <SEO
-        title="Card Machines & Payment Terminals UK | Contactless Card Readers | Rocket Payments"
-        description="Best card machines for UK businesses. Portable & countertop payment terminals, contactless card readers, Tap to Pay on iPhone. Free terminal offer, low transaction fees from 0.5%. Accept Visa, Mastercard, Apple Pay, Google Pay."
+        title="Card Machines UK | Dojo Alternative | Payment Terminals Kent & East Sussex | Rocket Payments"
+        description="Best card machines for UK businesses - Dojo quality at lower rates. Portable & countertop payment terminals, contactless card readers. Free terminal offer. Serving Kent, East Sussex & all UK. Rates from 0.5%."
         canonical="https://rocketpayments.co.uk/products"
-        keywords="card machine UK, payment terminal UK, contactless card reader, portable card machine, countertop terminal, tap to pay UK, card reader for small business, best card machine UK, cheap card machine, wireless card terminal, mobile card reader UK, accept Apple Pay, accept Google Pay, PDQ machine UK"
-        structuredData={serviceSchemas.cardTerminal}
+        keywords="card machine UK, Dojo alternative, Dojo card machine alternative, payment terminal Kent, card machine East Sussex, contactless card reader, portable card machine, best card machine UK, card machine Maidstone, card machine Canterbury, card machine Brighton, card machine Tunbridge Wells"
+        structuredData={[serviceSchemas.cardTerminal, serviceSchemas.paymentGateway]}
       />
       <div className="min-h-screen bg-background overflow-hidden">
         {/* Epic Hero Section */}

@@ -115,10 +115,10 @@ export default function Industries() {
   return (
     <>
       <SEO
-        title="Payment Solutions by Industry UK | Restaurant, Retail & Service Payments | Rocket Payments"
-        description="Specialist payment processing for UK businesses. Restaurant card machines, retail EPOS integration, mobile payments for tradespeople. 450+ integrations. Fast setup, low fees from 0.5%. Trusted by cafes, salons, garages & more."
+        title="Payment Solutions by Industry UK | Restaurant, Retail & Service Payments Kent & East Sussex | Rocket Payments"
+        description="Specialist payment processing for UK businesses in Kent, East Sussex & nationwide. Restaurant card machines, retail EPOS, business funding. Dojo alternative with better rates. Serving Maidstone, Canterbury, Brighton, Hastings & more."
         canonical="https://rocketpayments.co.uk/industries"
-        keywords="restaurant payment system UK, retail card machine, cafe card payment, pub card terminal, salon payment machine, takeaway card reader, small business card payments UK, EPOS integration, hospitality payment solutions, trade payment terminal"
+        keywords="restaurant payment Kent, retail card machine East Sussex, cafe card payment Brighton, pub card terminal Maidstone, salon payment Canterbury, takeaway card reader Hastings, small business payments Tunbridge Wells, EPOS integration Kent, Dojo alternative restaurant, business funding hospitality UK"
       />
       <div className="min-h-screen bg-background overflow-hidden">
         {/* Epic Cinematic Hero */}

@@ -183,10 +183,10 @@ export default function Quote() {
   return (
     <>
       <SEO
-        title="Get Card Machine Quote UK | Compare Payment Processing Rates | Rocket Payments"
-        description="Get your free, no-obligation merchant services quote in 24 hours. Compare card machine rates from 0.5%. Custom pricing for restaurants, retail, services. Switch provider with no setup fees. UK businesses only."
+        title="Get Card Machine Quote UK | Compare vs Dojo Rates | Free Quote Kent & East Sussex | Rocket Payments"
+        description="Get your free card machine quote in 24 hours. Compare rates vs Dojo - we're cheaper! Custom pricing for Kent, East Sussex & all UK businesses. Switch from Dojo with no fees. Business funding also available."
         canonical="https://rocketpayments.co.uk/quote"
-        keywords="card machine quote UK, payment processing quote, merchant account quote, compare card machine rates UK, switch payment provider, card payment rates comparison, business card machine quote, free merchant services quote"
+        keywords="card machine quote UK, compare Dojo rates, payment processing quote Kent, merchant account quote East Sussex, switch from Dojo, card payment rates Maidstone, business card machine quote Canterbury, merchant services quote Brighton, business funding quote UK"
       />
       <div className="min-h-screen relative overflow-hidden">
         {/* Epic Animated Background */}
