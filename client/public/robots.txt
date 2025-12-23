@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://rocketpayments.co.uk/sitemap.xml
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1
+
+# Disallow admin and thank you pages
+Disallow: /thank-you
+Disallow: /free-terminal-thank-you
+
+# Allow all blog content
+Allow: /blog/
+Allow: /blog/*
