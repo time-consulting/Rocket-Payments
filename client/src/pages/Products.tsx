@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { SEO } from "@/components/SEO";
+import { SEO, serviceSchemas } from "@/components/SEO";
 import { Badge } from "@/components/ui/badge";
 import { 
   ArrowRight, 
@@ -242,9 +242,11 @@ export default function Products() {
   return (
     <>
       <SEO
-        title="Payment Terminals & Devices - Card Machines | Rocket Payments"
-        description="Explore our range of payment terminals: Rocket Go, Rocket Pocket, Rocket Wired, and Tap to Pay. Fast, reliable card machines for every UK business."
+        title="Card Machines & Payment Terminals UK | Contactless Card Readers | Rocket Payments"
+        description="Best card machines for UK businesses. Portable & countertop payment terminals, contactless card readers, Tap to Pay on iPhone. Free terminal offer, low transaction fees from 0.5%. Accept Visa, Mastercard, Apple Pay, Google Pay."
         canonical="https://rocketpayments.co.uk/products"
+        keywords="card machine UK, payment terminal UK, contactless card reader, portable card machine, countertop terminal, tap to pay UK, card reader for small business, best card machine UK, cheap card machine, wireless card terminal, mobile card reader UK, accept Apple Pay, accept Google Pay, PDQ machine UK"
+        structuredData={serviceSchemas.cardTerminal}
       />
       <div className="min-h-screen bg-background overflow-hidden">
         {/* Epic Hero Section */}

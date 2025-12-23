@@ -115,9 +115,10 @@ export default function Industries() {
   return (
     <>
       <SEO
-        title="Industry Payment Solutions - Hospitality, Retail & Services | Rocket Payments"
-        description="Purpose-built payment solutions for every industry. From restaurants to retail, healthcare to hospitality. 450+ EPOS integrations. 99.99% uptime guaranteed."
+        title="Payment Solutions by Industry UK | Restaurant, Retail & Service Payments | Rocket Payments"
+        description="Specialist payment processing for UK businesses. Restaurant card machines, retail EPOS integration, mobile payments for tradespeople. 450+ integrations. Fast setup, low fees from 0.5%. Trusted by cafes, salons, garages & more."
         canonical="https://rocketpayments.co.uk/industries"
+        keywords="restaurant payment system UK, retail card machine, cafe card payment, pub card terminal, salon payment machine, takeaway card reader, small business card payments UK, EPOS integration, hospitality payment solutions, trade payment terminal"
       />
       <div className="min-h-screen bg-background overflow-hidden">
         {/* Epic Cinematic Hero */}

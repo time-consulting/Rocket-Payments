@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { SEO } from "@/components/SEO";
+import { SEO, faqSchemas, serviceSchemas } from "@/components/SEO";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -368,9 +368,11 @@ export default function Home() {
   return (
     <>
       <SEO
-        title="Rocket Payments - UK's #1 Payment Solutions for Businesses"
-        description="Fast, reliable payment processing with 99.99% uptime. Join 110,000+ UK businesses using Rocket Payments. Free setup, no contracts, next-day deposits."
+        title="Card Payment Processing UK | Merchant Services & Payment Terminals | Rocket Payments"
+        description="UK's leading card payment processing company. Low-cost merchant services from 0.5%, free payment terminals, contactless payments, EPOS integration. 99.99% uptime, next-day deposits. Trusted by 110,000+ UK businesses."
         canonical="https://rocketpayments.co.uk"
+        keywords="card payment processing UK, merchant services UK, payment terminal, contactless payments UK, card machine UK, payment gateway UK, credit card processing, debit card payments, EPOS integration, low cost merchant account, small business payment processing, best payment terminal UK, cheap card machine, accept card payments UK"
+        structuredData={[faqSchemas.home, serviceSchemas.cardTerminal, serviceSchemas.merchantServices]}
       />
       <div className="flex flex-col overflow-hidden">
         {/* Epic Full-Screen Hero */}

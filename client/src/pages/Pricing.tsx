@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { SEO } from "@/components/SEO";
+import { SEO, faqSchemas } from "@/components/SEO";
 import { Badge } from "@/components/ui/badge";
 import { Check, ArrowRight, Sparkles, Zap, Shield, Star, Crown, Diamond } from "lucide-react";
 
@@ -162,9 +162,11 @@ export default function Pricing() {
   return (
     <>
       <SEO
-        title="Pricing Plans - Transparent Payment Processing Fees | Rocket Payments"
-        description="Simple, transparent pricing with no hidden fees. Choose from Fix, Flex, or Pro plans. Start from £39.99/month or custom rates for high-volume businesses."
+        title="Card Payment Processing Fees UK | Low Cost Merchant Account Pricing | Rocket Payments"
+        description="Cheapest card machine fees in the UK from 0.5%. No monthly fees, no hidden charges. Compare our transparent pricing: debit cards 0.5%, credit cards 0.9%. Free terminal with merchant account. Best rates for small business."
         canonical="https://rocketpayments.co.uk/pricing"
+        keywords="card payment fees UK, card machine fees, merchant account fees UK, cheapest card payment provider UK, payment processing costs, low cost merchant services, card transaction fees, credit card processing fees UK, debit card fees UK, compare card machine rates"
+        structuredData={faqSchemas.pricing}
       />
       <div className="min-h-screen bg-background overflow-hidden">
         {/* Luxurious Hero */}
