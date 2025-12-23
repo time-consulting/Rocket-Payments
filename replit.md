@@ -6,6 +6,37 @@ Rocket Payments is a complete payment processing platform marketing website buil
 
 ## Recent Changes (December 23, 2025)
 
+**Expanded SEO Content: Competitor Comparisons, Rocket Bookings, EPOS Integration**
+- Created 27 total blog posts: 12 industry-specific, 8 competitor comparisons, 5 restaurant booking alternatives, 2 EPOS integration guides
+- New competitor comparison pages targeting:
+  - Worldpay Alternative UK
+  - Teya Alternative UK
+  - Barclaycard Alternative UK
+  - Take Payments Alternative UK
+  - Square Alternative UK
+  - SumUp Alternative UK
+  - PayPal/Zettle Alternative UK
+  - Dojo Card Machine UK (optimized for "join Dojo" searches - unique positioning since they sell Dojo as Rocket Payments)
+- Rocket Bookings content targeting restaurant reservation competitors:
+  - OpenTable Alternative UK
+  - ResDiary Alternative UK
+  - TheFork Alternative UK
+  - Resos Alternative UK
+  - Best Restaurant Reservation System UK 2025
+- EPOS Integration guides:
+  - EPOS Card Machine Integration UK (600+ systems)
+  - Best EPOS System for Small Business UK 2025
+- Updated sitemap.xml with all new pages
+- Blog page now shows competitor comparisons, bookings, and EPOS sections
+- All posts include FAQ schemas for AEO (Answer Engine Optimization)
+
+**Files Added/Modified:**
+- `client/src/data/competitorPosts.ts` - Competitor comparison content
+- `client/src/data/bookingsPosts.ts` - Restaurant booking content
+- `client/src/pages/Blog.tsx` - Updated with new sections
+- `client/src/pages/BlogPost.tsx` - Updated to fetch from all data sources
+- `client/public/sitemap.xml` - Updated with all new URLs
+
 **Comprehensive SEO, AEO & Local Search Optimization**
 - Enhanced SEO component (`client/src/components/SEO.tsx`) with structured data schemas:
   - Organization schema with Rocket Payments branding
