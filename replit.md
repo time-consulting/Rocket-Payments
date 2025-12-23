@@ -4,6 +4,27 @@
 
 Rocket Payments is a complete payment processing platform marketing website built with React and Express. The application showcases payment terminal products, industry solutions, pricing plans, and allows potential customers to request quotes. The site is designed with a clean, trust-focused aesthetic inspired by modern fintech platforms like Dojo.tech, emphasizing speed, reliability, and simplicity.
 
+## Recent Changes (December 23, 2025)
+
+**Comprehensive SEO & AEO Optimization for UK Card Payment Rankings**
+- Enhanced SEO component (`client/src/components/SEO.tsx`) with structured data schemas:
+  - Organization schema with Rocket Payments branding
+  - LocalBusiness schema with UK contact details and operating hours
+  - Service schemas for Card Terminal, Payment Gateway, and Merchant Services
+  - FAQ schemas for Home page (general card payments) and Pricing page (costs and fees)
+- Added keyword meta tags targeting top UK card payment search terms:
+  - Primary: "card payment processing UK", "merchant services UK", "payment terminal", "card machine UK"
+  - Secondary: "contactless payments UK", "low cost merchant account", "accept card payments UK"
+  - Long-tail: "best card machine for small business UK", "cheapest card machine fees UK"
+- Optimized page titles and descriptions with keyword-rich content for all main pages:
+  - Home: Card Payment Processing UK focus
+  - Products: Card Machines & Payment Terminals UK
+  - Pricing: Card Payment Processing Fees UK
+  - Industries: Payment Solutions by Industry UK
+  - FreeTerminal: Free Card Machine UK
+  - Quote: Get Card Machine Quote UK
+- Answer Engine Optimization (AEO) for voice search and AI assistants via FAQ structured data
+
 ## Recent Changes (December 5, 2025)
 
 **Quick Register Interest Form Added**
