@@ -222,7 +222,7 @@ export const faqSchemas = {
         "name": "How much does card payment processing cost in the UK?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Card payment processing fees in the UK typically range from 0.5% to 2.5% per transaction, depending on the provider and transaction type. Rocket Payments offers competitive rates starting from 0.5% for debit cards and 0.9% for credit cards, with no hidden fees."
+          "text": "Card payment processing fees in the UK typically range from 0.5% to 2.5% per transaction, depending on the provider and transaction type. Rocket Payments offers competitive rates starting from 0.29% for debit cards and 0.9% for credit cards, with no hidden fees."
         }
       },
       {
@@ -246,7 +246,7 @@ export const faqSchemas = {
         "name": "What is contactless payment and how does it work?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Contactless payment uses NFC (Near Field Communication) technology to process card payments without inserting or swiping. Customers simply tap their card, smartphone, or wearable on the terminal. In the UK, contactless payments up to £100 don't require a PIN, making transactions faster and more convenient."
+          "text": "Contactless payment uses NFC (Near Field Communication) technology to process card payments without inserting or swiping. Customers simply tap their card, smartphone, or wearable on the terminal. In the UK, contactless payments up to £100 or above £2000 with fingerprint phone emabled and don't require a PIN, making transactions faster and more convenient."
         }
       },
       {
@@ -254,7 +254,7 @@ export const faqSchemas = {
         "name": "Are payment processing fees tax deductible for UK businesses?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, payment processing fees are a legitimate business expense and are tax deductible for UK businesses. You can claim these fees as an operating cost when calculating your taxable profits."
+          "text": "Yes, payment processing fees are a legitimate business expense and are part tax deductible for UK businesses. You can claim these fees as an operating cost when calculating your taxable profits."
         }
       },
       {
@@ -262,7 +262,7 @@ export const faqSchemas = {
         "name": "What is PCI DSS compliance and why is it important?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "PCI DSS (Payment Card Industry Data Security Standard) is a set of security standards designed to protect card data. All UK businesses accepting card payments must comply. Rocket Payments terminals and payment gateway are fully PCI DSS Level 1 certified, the highest security standard."
+          "text": "PCI DSS (Payment Card Industry Data Security Standard) is a set of security standards designed to protect card data. All UK businesses accepting card payments must comply. Rocket Payments terminals and payment gateway are upgraded to p2pe (point to point encryption) fully PCI DSS Level 1 certified, the highest security standard."
         }
       },
       {
@@ -270,7 +270,7 @@ export const faqSchemas = {
         "name": "How long do card payment funds take to reach my account?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "With Rocket Payments, funds from card transactions are typically deposited into your business bank account within 1-2 working days. We offer next-day settlement for most UK businesses at no extra cost."
+          "text": "With Rocket Payments, funds from card transactions are typically deposited into your business bank 6am 7 days a week with next day payments enabled. We offer next-day settlement as optional service upgrade."
         }
       }
     ]
@@ -284,7 +284,7 @@ export const faqSchemas = {
         "name": "How much are card machine fees in the UK?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Card machine fees in the UK vary by provider. Rocket Payments offers some of the lowest rates: 0.5% for UK debit cards, 0.9% for credit cards, and 1.5% for international cards. There are no monthly fees or hidden charges."
+          "text": "Card machine fees in the UK vary by provider. Rocket Payments offers some of the lowest rates: 0.29% for UK debit cards, 0.67% for credit cards, and 0.9% for international cards. There are options for no monthly fixed fees or hidden charges."
         }
       },
       {
@@ -292,7 +292,7 @@ export const faqSchemas = {
         "name": "What is the cheapest card payment provider UK?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Rocket Payments is one of the cheapest card payment providers in the UK, with rates starting from just 0.5% per transaction. Unlike competitors like Dojo, we don't charge monthly fees, setup fees, or cancellation fees."
+          "text": "Rocket Payments is one of the cheapest card payment providers in the UK, with rates starting from just 0.29% per transaction. Unlike competitors like Dojo, we don't charge monthly fees, setup fees, or cancellation fees."
         }
       },
       {
@@ -308,7 +308,7 @@ export const faqSchemas = {
         "name": "How does Rocket Payments compare to Dojo?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Rocket Payments offers similar premium card machines to Dojo but with lower transaction fees starting from 0.5% vs Dojo's higher rates. We also provide business funding options and have no monthly fees or contracts."
+          "text": "Rocket Payments offers similar premium card machines to Dojo but with lower transaction fees starting from 0.29% vs Dojo's higher rates. We also provide business funding options and have no monthly fees or contracts."
         }
       }
     ]
