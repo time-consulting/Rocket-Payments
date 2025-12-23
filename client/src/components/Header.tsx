@@ -71,6 +71,7 @@ export function Header() {
     { label: "Business Funding", href: "/business-funding" },
     { label: "Industries", href: "/industries" },
     { label: "Pricing", href: "/pricing" },
+    { label: "Guides", href: "/blog" },
   ];
 
   const activeProducts = productCategories.find(cat => cat.id === activeCategory)?.products || [];
