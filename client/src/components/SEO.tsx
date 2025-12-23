@@ -50,23 +50,25 @@ const localBusinessSchema = {
   "@type": "FinancialService",
   "name": "Rocket Payments",
   "image": "https://rocketpayments.co.uk/logo.png",
-  "description": "Professional card payment processing and merchant services for UK businesses. Low fees, fast setup, 99.99% uptime.",
+  "description": "Professional card payment processing, merchant services, and business funding for UK businesses. Low fees, fast setup, 99.99% uptime. Serving Kent, East Sussex, and all of South East England.",
   "address": {
     "@type": "PostalAddress",
     "addressCountry": "GB",
-    "addressLocality": "London"
+    "addressRegion": "Kent",
+    "addressLocality": "Maidstone"
   },
   "geo": {
     "@type": "GeoCoordinates",
-    "latitude": 51.5074,
-    "longitude": -0.1278
+    "latitude": 51.2724,
+    "longitude": 0.5290
   },
   "url": "https://rocketpayments.co.uk",
   "priceRange": "££",
+  "telephone": "+44-800-XXX-XXXX",
   "openingHoursSpecification": {
     "@type": "OpeningHoursSpecification",
     "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-    "opens": "09:00",
+    "opens": "08:00",
     "closes": "18:00"
   },
   "aggregateRating": {
@@ -74,6 +76,55 @@ const localBusinessSchema = {
     "ratingValue": "4.9",
     "reviewCount": "2847",
     "bestRating": "5"
+  },
+  "areaServed": [
+    { "@type": "City", "name": "Maidstone" },
+    { "@type": "City", "name": "Canterbury" },
+    { "@type": "City", "name": "Tunbridge Wells" },
+    { "@type": "City", "name": "Ashford" },
+    { "@type": "City", "name": "Dover" },
+    { "@type": "City", "name": "Folkestone" },
+    { "@type": "City", "name": "Margate" },
+    { "@type": "City", "name": "Ramsgate" },
+    { "@type": "City", "name": "Gravesend" },
+    { "@type": "City", "name": "Dartford" },
+    { "@type": "City", "name": "Sevenoaks" },
+    { "@type": "City", "name": "Tonbridge" },
+    { "@type": "City", "name": "Brighton" },
+    { "@type": "City", "name": "Eastbourne" },
+    { "@type": "City", "name": "Hastings" },
+    { "@type": "City", "name": "Lewes" },
+    { "@type": "City", "name": "Bexhill" },
+    { "@type": "City", "name": "Crowborough" },
+    { "@type": "AdministrativeArea", "name": "Kent" },
+    { "@type": "AdministrativeArea", "name": "East Sussex" }
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Payment Solutions & Business Funding",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Card Payment Processing"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Business Funding & Merchant Cash Advance"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Business Loans"
+        }
+      }
+    ]
   }
 };
 
@@ -82,14 +133,16 @@ export const serviceSchemas = {
     "@context": "https://schema.org",
     "@type": "Product",
     "name": "Card Payment Terminal",
-    "description": "Professional card payment terminals for UK businesses. Accept contactless, chip & PIN, Apple Pay, and Google Pay. Low transaction fees from 0.5%.",
+    "description": "Professional card payment terminals for UK businesses. Accept contactless, chip & PIN, Apple Pay, and Google Pay. Low transaction fees from 0.5%. Similar quality to Dojo card machines at lower rates.",
     "brand": { "@type": "Brand", "name": "Rocket Payments" },
     "category": "Payment Processing Equipment",
     "offers": {
       "@type": "Offer",
       "priceCurrency": "GBP",
       "price": "0",
-      "description": "Free terminal with merchant account"
+      "description": "Free terminal with merchant account",
+      "availability": "https://schema.org/InStock",
+      "areaServed": ["Kent", "East Sussex", "United Kingdom"]
     },
     "aggregateRating": {
       "@type": "AggregateRating",
@@ -101,7 +154,7 @@ export const serviceSchemas = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "Rocket Payment Gateway",
-    "description": "Secure online payment gateway for UK ecommerce businesses. PCI DSS compliant, 3D Secure, real-time fraud protection.",
+    "description": "Secure online payment gateway for UK ecommerce businesses. PCI DSS compliant, 3D Secure, real-time fraud protection. Alternative to Dojo online payments.",
     "applicationCategory": "FinanceApplication",
     "operatingSystem": "Web",
     "offers": {
@@ -116,9 +169,38 @@ export const serviceSchemas = {
     "@type": "Service",
     "serviceType": "Merchant Services",
     "name": "UK Merchant Services",
-    "description": "Complete merchant account services for UK businesses. Accept all major credit and debit cards with competitive rates.",
+    "description": "Complete merchant account services for UK businesses in Kent, East Sussex and nationwide. Accept all major credit and debit cards with competitive rates.",
     "provider": { "@type": "Organization", "name": "Rocket Payments" },
-    "areaServed": { "@type": "Country", "name": "United Kingdom" }
+    "areaServed": [
+      { "@type": "Country", "name": "United Kingdom" },
+      { "@type": "AdministrativeArea", "name": "Kent" },
+      { "@type": "AdministrativeArea", "name": "East Sussex" }
+    ]
+  },
+  businessFunding: {
+    "@context": "https://schema.org",
+    "@type": "FinancialProduct",
+    "name": "Business Funding & Merchant Cash Advance",
+    "description": "Fast business funding and merchant cash advance for UK businesses. Get funding from £5,000 to £500,000 based on your card turnover. Quick approval, flexible repayments.",
+    "provider": { "@type": "Organization", "name": "Rocket Payments" },
+    "feesAndCommissionsSpecification": "Flexible repayment based on card turnover",
+    "areaServed": [
+      { "@type": "Country", "name": "United Kingdom" },
+      { "@type": "AdministrativeArea", "name": "Kent" },
+      { "@type": "AdministrativeArea", "name": "East Sussex" }
+    ]
+  },
+  businessLoans: {
+    "@context": "https://schema.org",
+    "@type": "FinancialProduct",
+    "name": "Business Loans UK",
+    "description": "Unsecured business loans for UK small businesses. Quick approval, competitive rates. Funding from £5,000 to £500,000. Perfect for expansion, stock, or equipment.",
+    "provider": { "@type": "Organization", "name": "Rocket Payments" },
+    "areaServed": [
+      { "@type": "Country", "name": "United Kingdom" },
+      { "@type": "AdministrativeArea", "name": "Kent" },
+      { "@type": "AdministrativeArea", "name": "East Sussex" }
+    ]
   }
 };
 
@@ -210,7 +292,7 @@ export const faqSchemas = {
         "name": "What is the cheapest card payment provider UK?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Rocket Payments is one of the cheapest card payment providers in the UK, with rates starting from just 0.5% per transaction. Unlike competitors, we don't charge monthly fees, setup fees, or cancellation fees."
+          "text": "Rocket Payments is one of the cheapest card payment providers in the UK, with rates starting from just 0.5% per transaction. Unlike competitors like Dojo, we don't charge monthly fees, setup fees, or cancellation fees."
         }
       },
       {
@@ -219,6 +301,60 @@ export const faqSchemas = {
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "With Rocket Payments, there are no hidden fees. Our transparent pricing includes all transaction fees upfront. We don't charge for setup, monthly service, PCI compliance, or customer support."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does Rocket Payments compare to Dojo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Rocket Payments offers similar premium card machines to Dojo but with lower transaction fees starting from 0.5% vs Dojo's higher rates. We also provide business funding options and have no monthly fees or contracts."
+        }
+      }
+    ]
+  },
+  businessFunding: {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a merchant cash advance?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A merchant cash advance (MCA) is a type of business funding where you receive a lump sum upfront and repay it through a percentage of your daily card sales. Rocket Payments offers MCAs from £5,000 to £500,000 with flexible repayment based on your turnover."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I get a business loan with bad credit UK?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, Rocket Payments offers merchant cash advances based on your card turnover rather than credit score. If you process regular card payments, you may qualify for business funding even with less-than-perfect credit."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How quickly can I get business funding in the UK?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "With Rocket Payments, you can receive business funding within 24-48 hours of approval. We assess applications based on your card transaction history, making decisions fast."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the best business loan for small business UK?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For UK small businesses that process card payments, a merchant cash advance from Rocket Payments is often the best option. Unlike traditional loans, repayments flex with your sales, and approval is based on turnover not credit history."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you offer business funding in Kent and East Sussex?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, Rocket Payments serves businesses across Kent, East Sussex, and the entire UK. We provide card payment processing and business funding to businesses in Maidstone, Canterbury, Brighton, Eastbourne, Hastings, Tunbridge Wells, and all surrounding areas."
         }
       }
     ]
@@ -239,7 +375,7 @@ export function SEO({
     ? title
     : `${title} | Rocket Payments`;
 
-  const defaultKeywords = "card payment processing UK, merchant services UK, payment terminal, contactless payments, card machine UK, payment gateway, credit card processing, debit card payments, EPOS integration, low cost merchant account";
+  const defaultKeywords = "card payment processing UK, merchant services UK, payment terminal, card machine UK, contactless payments, business funding UK, business loans UK, merchant cash advance, Dojo alternative, card machine Kent, card machine East Sussex, payment terminal Maidstone, card payments Canterbury, business funding Brighton, Tunbridge Wells card machine, Ashford payment processing, Dover merchant services, Hastings card payments, Eastbourne business funding";
 
   const allStructuredData = structuredData 
     ? Array.isArray(structuredData) 
