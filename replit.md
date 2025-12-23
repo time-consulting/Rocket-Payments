@@ -33,6 +33,29 @@ Rocket Payments is a complete payment processing platform marketing website buil
 - Competitor: "Dojo alternative", "switch from Dojo", "compare Dojo rates"
 - Long-tail: "best card machine for small business UK", "free card machine Kent"
 
+**SEO Technical Setup**
+- XML sitemap at `/sitemap.xml` with all pages and blog posts
+- robots.txt configured to allow indexing, disallow thank-you pages
+- Google Search Console verification placeholder in index.html
+- Bing Webmaster Tools placeholder ready
+
+**Google Search Console Setup (Manual Steps)**
+1. Go to https://search.google.com/search-console
+2. Add property: https://rocketpayments.co.uk
+3. Choose "HTML tag" verification method
+4. Copy the verification code (just the content value)
+5. Edit `client/index.html` - uncomment the google-site-verification meta tag
+6. Replace YOUR_VERIFICATION_CODE with your actual code
+7. Deploy and verify in Search Console
+8. Submit sitemap: https://rocketpayments.co.uk/sitemap.xml
+
+**Backlink Building Strategy (Manual Activities)**
+- Submit to UK business directories: Yell, Thomson Local, FreeIndex
+- Submit to payment industry directories
+- Reach out to small business blogs for guest posts
+- Create shareable infographics about payment processing
+- The industry blog posts are designed to attract organic backlinks
+
 **Industry-Specific Blog System (SEO Landing Pages)**
 - Created 12 industry-specific blog posts targeting small business niches:
   - Barbers & Barbershops (FREE Tap to Pay)
