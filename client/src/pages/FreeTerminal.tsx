@@ -127,9 +127,10 @@ export default function FreeTerminal() {
   return (
     <>
       <SEO
-        title="Free Card Machine Worth £189 - Claim Your Free Terminal"
-        description="Get a FREE premium card machine worth £189 when you switch to Rocket Payments. No monthly fees, better rates, next-day delivery. Limited time offer ends 14th December."
+        title="Free Card Machine UK | Get Free Payment Terminal Worth £189 | Rocket Payments"
+        description="Claim your FREE card machine worth £189 when you switch to Rocket Payments. No monthly fees, lowest card processing rates from 0.5%, next-day delivery across the UK. Limited time offer for UK businesses."
         canonical="https://rocketpayments.co.uk/free-terminal"
+        keywords="free card machine UK, free payment terminal, free card reader small business, free PDQ machine, no monthly fee card machine, switch payment provider UK, best card machine deal UK, free contactless card reader"
       />
       <div className="min-h-screen bg-gradient-to-b from-background via-background to-primary/5">
         {/* Floating particles background */}

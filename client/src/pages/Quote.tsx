@@ -183,9 +183,10 @@ export default function Quote() {
   return (
     <>
       <SEO
-        title="Get a Quote - Custom Payment Solution | Rocket Payments"
-        description="Request your free, no-obligation quote within 24 hours. Get custom pricing tailored to your business needs. No hidden fees, no commitment required."
+        title="Get Card Machine Quote UK | Compare Payment Processing Rates | Rocket Payments"
+        description="Get your free, no-obligation merchant services quote in 24 hours. Compare card machine rates from 0.5%. Custom pricing for restaurants, retail, services. Switch provider with no setup fees. UK businesses only."
         canonical="https://rocketpayments.co.uk/quote"
+        keywords="card machine quote UK, payment processing quote, merchant account quote, compare card machine rates UK, switch payment provider, card payment rates comparison, business card machine quote, free merchant services quote"
       />
       <div className="min-h-screen relative overflow-hidden">
         {/* Epic Animated Background */}
