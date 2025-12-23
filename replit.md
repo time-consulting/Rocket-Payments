@@ -33,6 +33,26 @@ Rocket Payments is a complete payment processing platform marketing website buil
 - Competitor: "Dojo alternative", "switch from Dojo", "compare Dojo rates"
 - Long-tail: "best card machine for small business UK", "free card machine Kent"
 
+**Industry-Specific Blog System (SEO Landing Pages)**
+- Created 12 industry-specific blog posts targeting small business niches:
+  - Barbers & Barbershops (FREE Tap to Pay)
+  - Hair Salons & Stylists (FREE Tap to Pay)
+  - Taxi & Private Hire (FREE Tap to Pay)
+  - Food Trucks & Street Food (FREE Tap to Pay)
+  - Market Traders & Craft Fairs (FREE Tap to Pay)
+  - Personal Trainers & Fitness (FREE Tap to Pay)
+  - Mobile Beauty & Therapists (FREE Tap to Pay)
+  - Tradespeople & Builders (FREE Tap to Pay)
+  - Restaurants & Cafes
+  - Retail & Gift Shops
+  - Pubs & Bars
+  - Takeaways & Delivery
+- Each post includes: industry-specific content, benefits list, FAQ schema for AEO, local area targeting (Kent & East Sussex towns), Dojo comparison
+- FREE Tap to Pay highlighted for mobile industries: barbers, salons, taxi drivers, food trucks, market traders, PTs, beauticians, tradespeople
+- Blog listing page at `/blog` with industry cards
+- Individual blog posts at `/blog/{slug}` with SEO meta tags and structured data
+- Navigation updated with "Guides" link
+
 ## Recent Changes (December 5, 2025)
 
 **Quick Register Interest Form Added**
