@@ -6,24 +6,32 @@ Rocket Payments is a complete payment processing platform marketing website buil
 
 ## Recent Changes (December 23, 2025)
 
-**Comprehensive SEO & AEO Optimization for UK Card Payment Rankings**
+**Comprehensive SEO, AEO & Local Search Optimization**
 - Enhanced SEO component (`client/src/components/SEO.tsx`) with structured data schemas:
   - Organization schema with Rocket Payments branding
-  - LocalBusiness schema with UK contact details and operating hours
-  - Service schemas for Card Terminal, Payment Gateway, and Merchant Services
-  - FAQ schemas for Home page (general card payments) and Pricing page (costs and fees)
-- Added keyword meta tags targeting top UK card payment search terms:
-  - Primary: "card payment processing UK", "merchant services UK", "payment terminal", "card machine UK"
-  - Secondary: "contactless payments UK", "low cost merchant account", "accept card payments UK"
-  - Long-tail: "best card machine for small business UK", "cheapest card machine fees UK"
-- Optimized page titles and descriptions with keyword-rich content for all main pages:
-  - Home: Card Payment Processing UK focus
-  - Products: Card Machines & Payment Terminals UK
-  - Pricing: Card Payment Processing Fees UK
-  - Industries: Payment Solutions by Industry UK
-  - FreeTerminal: Free Card Machine UK
-  - Quote: Get Card Machine Quote UK
-- Answer Engine Optimization (AEO) for voice search and AI assistants via FAQ structured data
+  - LocalBusiness schema with Kent/East Sussex focus and 18 local towns/cities
+  - Service schemas for Card Terminal, Payment Gateway, Merchant Services, Business Funding, Business Loans
+  - FAQ schemas for Home, Pricing, and Business Funding (AEO optimization)
+  
+**Local SEO Targeting (Kent & East Sussex)**
+- Area served includes: Maidstone, Canterbury, Tunbridge Wells, Ashford, Dover, Folkestone, Margate, Ramsgate, Gravesend, Dartford, Sevenoaks, Tonbridge, Brighton, Eastbourne, Hastings, Lewes, Bexhill, Crowborough
+- Location-specific keywords on all pages (e.g., "card machine Kent", "payment terminal Brighton")
+
+**Competitor Comparison (Dojo.tech)**
+- Added Dojo alternative positioning across all main pages
+- FAQ schema comparing Rocket Payments vs Dojo rates
+- Keywords targeting users searching for Dojo alternatives
+
+**Business Funding & Loans Keywords**
+- New service schemas for Business Funding and Business Loans
+- FAQ schema covering merchant cash advance, business loans UK
+- Keywords: "business funding UK", "business loans UK", "merchant cash advance"
+
+**Keyword Strategy**
+- Primary: "card payment processing UK", "merchant services UK", "card machine UK", "business funding UK"
+- Local: "card machine Kent", "payment terminal East Sussex", "business funding Brighton"
+- Competitor: "Dojo alternative", "switch from Dojo", "compare Dojo rates"
+- Long-tail: "best card machine for small business UK", "free card machine Kent"
 
 ## Recent Changes (December 5, 2025)
 
