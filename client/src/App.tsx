@@ -35,6 +35,11 @@ import FreeTerminalThankYou from "@/pages/FreeTerminalThankYou";
 import NotFound from "@/pages/not-found";
 import Blog from "@/pages/Blog";
 import BlogPost from "@/pages/BlogPost";
+import LocationPage from "@/pages/LocationPage";
+import GuidePage from "@/pages/GuidePage";
+import GuidesIndex from "@/pages/GuidesIndex";
+import QAPage from "@/pages/QAPage";
+import QuestionsIndex from "@/pages/QuestionsIndex";
 
 function ScrollToTop() {
   const [location] = useLocation();
@@ -74,6 +79,17 @@ function Router() {
       <Route path="/free-terminal-thank-you" component={FreeTerminalThankYou} />
       <Route path="/blog" component={Blog} />
       <Route path="/blog/:slug" component={BlogPost} />
+      <Route path="/guides" component={GuidesIndex} />
+      <Route path="/guides/:slug" component={GuidePage} />
+      <Route path="/questions" component={QuestionsIndex} />
+      <Route path="/questions/:slug" component={QAPage} />
+      <Route path="/:slug">{(params) => {
+        const locationSlugs = ["card-machines-maidstone", "card-machines-canterbury", "card-machines-tunbridge-wells", "card-machines-ashford", "card-machines-dover", "card-machines-folkestone", "card-machines-margate", "card-machines-ramsgate", "card-machines-gravesend", "card-machines-dartford", "card-machines-sevenoaks", "card-machines-tonbridge", "card-machines-brighton", "card-machines-eastbourne", "card-machines-hastings", "card-machines-lewes", "card-machines-bexhill", "card-machines-crowborough"];
+        if (locationSlugs.includes(params.slug || "")) {
+          return <LocationPage />;
+        }
+        return <NotFound />;
+      }}</Route>
       <Route path="/about">
         <SimplePage
           title="About Rocket Payments"
