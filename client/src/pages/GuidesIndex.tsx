@@ -1,9 +1,10 @@
 import { Link } from "wouter";
 import { Helmet } from "react-helmet-async";
 import { pillarPages } from "@/data/pillarContent";
+import { industryGuides } from "@/data/industryGuides";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowRight, BookOpen, Clock } from "lucide-react";
+import { ArrowRight, BookOpen, Clock, TrendingUp, Zap, BarChart3, PiggyBank } from "lucide-react";
 import { Footer } from "@/components/Footer";
 
 export default function GuidesIndex() {
@@ -82,8 +83,56 @@ export default function GuidesIndex() {
           </div>
         </section>
 
-        {/* Quick Links */}
+        {/* Industry & Trend Guides */}
         <section className="py-16 bg-muted/30">
+          <div className="container mx-auto px-4">
+            <div className="max-w-5xl mx-auto">
+              <h2 className="text-3xl font-bold text-center mb-4">Industry Insights & Trends</h2>
+              <p className="text-center text-muted-foreground mb-12">
+                Expert guides on EPOS integration, reservations, data analytics, and hospitality trends
+              </p>
+              <div className="grid md:grid-cols-2 gap-6">
+                {industryGuides.map((guide, index) => {
+                  const categoryIcons = {
+                    epos: Zap,
+                    reservations: BookOpen,
+                    intelligence: BarChart3,
+                    funding: PiggyBank,
+                    trends: TrendingUp
+                  };
+                  const CategoryIcon = categoryIcons[guide.category] || TrendingUp;
+                  const categoryLabels = {
+                    epos: "EPOS & Integrations",
+                    reservations: "Reservations",
+                    intelligence: "Data & Analytics",
+                    funding: "Business Funding",
+                    trends: "Industry Trends"
+                  };
+                  
+                  return (
+                    <Link key={index} href={`/guides/${guide.slug}`}>
+                      <Card className="hover-elevate cursor-pointer h-full">
+                        <CardContent className="p-6">
+                          <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
+                            <CategoryIcon className="h-4 w-4 text-primary" />
+                            <span>{categoryLabels[guide.category]}</span>
+                          </div>
+                          <h3 className="font-bold text-lg mb-2">{guide.title}</h3>
+                          <p className="text-sm text-muted-foreground line-clamp-2">
+                            {guide.heroText}
+                          </p>
+                        </CardContent>
+                      </Card>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Quick Links */}
+        <section className="py-16">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
               <h2 className="text-2xl font-bold mb-8">Looking for Something Specific?</h2>

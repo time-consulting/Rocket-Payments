@@ -40,6 +40,8 @@ import GuidePage from "@/pages/GuidePage";
 import GuidesIndex from "@/pages/GuidesIndex";
 import QAPage from "@/pages/QAPage";
 import QuestionsIndex from "@/pages/QuestionsIndex";
+import IndustryGuidePage from "@/pages/IndustryGuidePage";
+import EposPartnersPage from "@/pages/EposPartnersPage";
 
 function ScrollToTop() {
   const [location] = useLocation();
@@ -65,6 +67,7 @@ function Router() {
       <Route path="/products/flex-funds" component={FlexFunds} />
       <Route path="/products/sidekick" component={Sidekick} />
       <Route path="/integrations" component={Integrations} />
+      <Route path="/epos-partners" component={EposPartnersPage} />
       <Route path="/products/:slug" component={ProductDetail} />
       <Route path="/bookings" component={Bookings} />
       <Route path="/business-funding" component={BusinessFunding} />
