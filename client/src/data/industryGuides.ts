@@ -416,6 +416,215 @@ export const industryGuides: IndustryGuide[] = [
     ],
     ctaText: "Get Integrated Payments",
     ctaLink: "/integrations"
+  },
+  // ICR Touch Integration Guide
+  {
+    slug: "icr-touch-integration-rocket-payments",
+    title: "ICR Touch & Rocket Payments Integration Guide",
+    metaTitle: "ICR Touch Integration | Connect Card Payments UK | Rocket Payments",
+    metaDescription: "Complete guide to integrating ICR Touch EPOS with Rocket Payments. Set up integrated payments for your pub, restaurant, or hospitality venue.",
+    keywords: "ICR Touch integration, ICR Touch card machine, TouchPoint payments, ICR Touch Rocket Payments, hospitality EPOS integration",
+    category: "epos",
+    heroText: "ICR Touch is the UK's leading hospitality EPOS with 150,000+ installations. Connect your TouchPoint system to Rocket Payments for seamless integrated payments.",
+    sections: [
+      {
+        id: "about-icr-touch",
+        title: "About ICR Touch",
+        content: [
+          "ICR Touch (ICRTouch) is the UK's market-leading EPOS provider for hospitality, with over 150,000 installations across pubs, restaurants, hotels, stadiums, and leisure venues.",
+          "Their flagship TouchPoint software has sold over 100,000 licenses, making it one of the most widely deployed hospitality EPOS systems in Britain.",
+          "The ICR Touch suite includes TouchPoint (main EPOS), PocketTouch (mobile ordering), TouchKitchen (kitchen displays), TouchReservation (bookings), and TouchOffice Web (cloud reporting)."
+        ],
+        callout: {
+          stat: "150,000+",
+          text: "ICR Touch installations across the UK hospitality sector"
+        }
+      },
+      {
+        id: "integration-benefits",
+        title: "Benefits of ICR Touch + Rocket Payments Integration",
+        content: [
+          "When you connect ICR Touch to Rocket Payments, transaction amounts automatically transfer from your TouchPoint till to your card terminal. No manual keying means faster service and zero amount errors.",
+          "End-of-day reconciliation becomes effortless. Your ICR Touch sales totals will exactly match your Rocket Payments card totals, eliminating the tedious task of finding discrepancies.",
+          "The integration works via secure cloud connection. Your TouchPoint system communicates with Rocket terminals over WiFi, with full encryption to protect payment data.",
+          "You can still accept payments if your EPOS goes offline. Simply switch your Rocket terminal to standalone mode, process payments manually, and reconcile later when systems reconnect."
+        ]
+      },
+      {
+        id: "setup-process",
+        title: "Setting Up ICR Touch Integration",
+        content: [
+          "Step 1: Sign up with Rocket Payments and receive your integration credentials. These are unique identifiers that connect your terminals to the ICR Touch platform.",
+          "Step 2: Contact your ICR Touch dealer or support team. They'll configure the integration within your TouchPoint software using your Rocket credentials.",
+          "Step 3: Your dealer will test the connection by processing a small test transaction to confirm amounts transfer correctly.",
+          "Step 4: You're ready to trade. From now on, every sale completed on TouchPoint will automatically push the amount to your Rocket terminal.",
+          "Most integrations are completed within a day. Your ICR Touch dealer can configure remotely in most cases, though some setups may require an on-site visit."
+        ]
+      },
+      {
+        id: "compatible-products",
+        title: "Compatible ICR Touch Products",
+        content: [
+          "TouchPoint EPOS: Full integration with all versions of TouchPoint till software. Supports split bills, tab management, and multi-terminal setups.",
+          "PocketTouch: Mobile ordering via PocketTouch handhelds can trigger payments on nearby Rocket terminals for pay-at-table service.",
+          "TouchKitchen: While kitchen displays don't process payments directly, they work seamlessly alongside integrated payment flows.",
+          "Multi-site: If you operate multiple venues with ICR Touch, each location can have its own Rocket terminals with centralised reporting via TouchOffice Web.",
+          "Rocket Payments supports all current terminal models with ICR Touch, including Rocket Go (portable), Rocket Pocket (compact), and countertop options."
+        ]
+      }
+    ],
+    faqSchema: [
+      {
+        question: "Does ICR Touch work with Rocket Payments?",
+        answer: "Yes, ICR Touch fully integrates with Rocket Payments. Transaction amounts transfer automatically from your TouchPoint EPOS to Rocket card terminals, eliminating manual entry and speeding up service."
+      },
+      {
+        question: "How do I connect ICR Touch to my card machine?",
+        answer: "Contact your ICR Touch dealer or sign up with Rocket Payments. Your dealer will configure the integration using your Rocket credentials. Setup typically takes less than a day and can often be done remotely."
+      },
+      {
+        question: "Which ICR Touch products work with Rocket Payments?",
+        answer: "All ICR Touch products integrate with Rocket Payments, including TouchPoint EPOS, PocketTouch mobile ordering, and multi-site setups. The integration works with all Rocket terminal models."
+      }
+    ],
+    ctaText: "Get ICR Touch Integration",
+    ctaLink: "/quote"
+  },
+  // Goodtill Integration Guide
+  {
+    slug: "goodtill-integration-rocket-payments",
+    title: "Goodtill & Rocket Payments Integration Guide",
+    metaTitle: "Goodtill Integration | iPad EPOS Card Payments UK | Rocket Payments",
+    metaDescription: "Connect Goodtill iPad EPOS to Rocket Payments for integrated card payments. Setup guide for cafes, bars, and hospitality venues.",
+    keywords: "Goodtill integration, Goodtill card machine, iPad EPOS payments, Goodtill Rocket Payments, SumUp POS integration",
+    category: "epos",
+    heroText: "Goodtill is a popular iPad-based EPOS for cafes, bars, and hospitality venues. Connect to Rocket Payments for seamless integrated payment processing.",
+    sections: [
+      {
+        id: "about-goodtill",
+        title: "About Goodtill",
+        content: [
+          "Goodtill (now part of SumUp) is an iPad-based EPOS system popular with cafes, coffee shops, bars, and small hospitality venues across the UK and Ireland.",
+          "With over 1,400 hospitality customers and £500m+ processed annually, Goodtill powers venues from independent coffee shops to major theatres and event spaces.",
+          "The system runs exclusively on Apple iPads, offering intuitive touch-screen operation, table management, stock control, and comprehensive reporting."
+        ],
+        callout: {
+          stat: "£500m+",
+          text: "Processed annually through Goodtill systems"
+        }
+      },
+      {
+        id: "why-integrate",
+        title: "Why Integrate Goodtill with Rocket Payments?",
+        content: [
+          "While Goodtill is now owned by SumUp, many venues prefer the competitive rates and service quality offered by independent payment providers like Rocket Payments.",
+          "Integration means you get the best of both worlds: Goodtill's excellent iPad EPOS with Rocket's industry-leading payment processing and support.",
+          "You'll benefit from Rocket's rates from 0.29%, next-day settlements, and UK-based 7-day support - while keeping your familiar Goodtill interface.",
+          "For venues processing significant card volumes, the difference in processing rates between providers can save thousands annually. Integration lets you choose the best deal."
+        ]
+      },
+      {
+        id: "setup-integration",
+        title: "Setting Up Goodtill + Rocket Integration",
+        content: [
+          "The integration process connects your Goodtill iPad system to Rocket Payments terminals via secure cloud connection.",
+          "Step 1: Contact Rocket Payments to discuss your integration requirements and receive your merchant credentials.",
+          "Step 2: Goodtill's support team configures the payment integration within your EPOS settings using your Rocket terminal details.",
+          "Step 3: Test the connection with a small transaction to confirm amounts transfer correctly from Goodtill to your Rocket terminal.",
+          "Step 4: Start trading with integrated payments. All sales flow automatically from your iPad till to the card terminal.",
+          "Setup is typically completed within 1-2 business days. Both Goodtill and Rocket Payments support teams can assist with any technical requirements."
+        ]
+      }
+    ],
+    faqSchema: [
+      {
+        question: "Can I use Goodtill with Rocket Payments?",
+        answer: "Yes, Goodtill integrates with Rocket Payments. Although Goodtill is now part of SumUp, you can connect Rocket Payments terminals for integrated payment processing with competitive rates and excellent support."
+      },
+      {
+        question: "How much can I save switching from SumUp to Rocket?",
+        answer: "Savings depend on your transaction volume and average spend. Rocket Payments offers rates from 0.29% compared to typical flat rates around 1.69%. For a café doing £100k annually in cards, this could mean savings of £1,000+ per year."
+      }
+    ],
+    ctaText: "Switch to Rocket Payments",
+    ctaLink: "/quote"
+  },
+  // Reservation Software Guide
+  {
+    slug: "restaurant-reservation-software-uk-guide",
+    title: "Complete Guide to Restaurant Reservation Software UK 2025",
+    metaTitle: "Restaurant Reservation Software UK 2025 | Best Booking Systems | Rocket Payments",
+    metaDescription: "Compare the best restaurant reservation systems in the UK. OpenTable, ResDiary, Rocket Bookings alternatives. Complete guide to choosing booking software.",
+    keywords: "restaurant reservation software UK, booking system restaurant, OpenTable alternative, ResDiary alternative, restaurant booking system",
+    category: "reservations",
+    heroText: "The right reservation software fills more seats, reduces no-shows, and saves staff time. This guide compares leading UK restaurant booking systems to help you choose.",
+    sections: [
+      {
+        id: "why-reservations-matter",
+        title: "Why Reservation Software Matters",
+        content: [
+          "Modern restaurant reservation software does far more than accept bookings. It manages capacity, reduces no-shows, captures customer data, and integrates with your marketing and EPOS systems.",
+          "The right system can increase covers by 15-30% through better table management, Google Reserve integration, and automated confirmation/reminder communications.",
+          "No-show rates in UK restaurants average 12-15%. Good reservation software with deposit collection and SMS reminders can cut this to under 3%, protecting your revenue.",
+          "Customer data captured through reservations enables personalised marketing, special occasion recognition, and loyalty programme integration - turning one-time visitors into regulars."
+        ],
+        callout: {
+          stat: "15-30%",
+          text: "Potential increase in covers with optimised reservation management"
+        }
+      },
+      {
+        id: "key-features",
+        title: "Key Features to Look For",
+        content: [
+          "Google Reserve Integration: Essential for capturing customers searching on Google and Maps. Systems with Reserve can see 40% booking increases.",
+          "Automated Communications: Confirmation emails, SMS reminders, and post-visit feedback requests. These reduce no-shows and build relationships.",
+          "Deposit & Pre-Payment: For high-demand slots or large parties, collecting deposits dramatically reduces no-shows.",
+          "Table Management: Visual floor plans, automatic table assignment, and real-time availability updates for efficient capacity management.",
+          "Walk-in Management: The ability to log walk-ins alongside reservations for accurate capacity planning and customer tracking.",
+          "EPOS Integration: Connecting reservations to your till system enables spend tracking, preference recording, and unified customer profiles."
+        ]
+      },
+      {
+        id: "comparing-systems",
+        title: "Comparing UK Reservation Systems",
+        content: [
+          "OpenTable: The biggest name globally, but expensive for UK independents. Charges per cover plus monthly fees. Best for high-end dining seeking international visibility.",
+          "ResDiary: Popular UK choice with strong features and reasonable pricing. Good Google Reserve integration and solid support.",
+          "TheFork (TripAdvisor): Strong consumer brand recognition. Works well for tourist-heavy locations but charges per cover.",
+          "Rocket Bookings: Cost-effective option that integrates seamlessly with Rocket Payments. Ideal for venues already using Rocket terminals.",
+          "Resos: Newer entrant focusing on simplicity and value. Growing market share among independent restaurants.",
+          "Consider total cost (monthly + per-cover fees), integration with your existing systems, and the importance of consumer-facing marketplace presence when choosing."
+        ]
+      },
+      {
+        id: "making-the-switch",
+        title: "Switching Reservation Systems",
+        content: [
+          "Before switching, export your customer data from your current system. Most platforms allow CSV export of booking history and customer contacts.",
+          "Plan your switch for a quiet period. Update your Google Business Profile, website booking widgets, and any third-party listings simultaneously.",
+          "Consider running parallel systems briefly during transition to avoid losing bookings during the changeover.",
+          "Train staff thoroughly on the new system before going live. The best software is useless if staff revert to paper or make booking errors.",
+          "Communicate the change to regular customers if their stored preferences or loyalty points might be affected by the transition."
+        ]
+      }
+    ],
+    faqSchema: [
+      {
+        question: "What is the best restaurant reservation software UK?",
+        answer: "The best system depends on your needs. ResDiary and Rocket Bookings offer good value for independents. OpenTable suits high-end venues wanting global visibility. TheFork works well for tourist-heavy locations. Consider costs, integrations, and features when choosing."
+      },
+      {
+        question: "How much does restaurant booking software cost?",
+        answer: "Costs vary widely. Some charge monthly subscriptions only (£30-200/month), others add per-cover fees (£0.50-3 per booking). Calculate total cost based on your booking volume. Watch for setup fees and contract lengths."
+      },
+      {
+        question: "Do I need Google Reserve for my restaurant?",
+        answer: "Google Reserve is highly recommended. Restaurants with Reserve enabled see booking increases of 25-40% by capturing customers directly from Google Search and Maps. Most modern reservation systems support Google Reserve integration."
+      }
+    ],
+    ctaText: "Try Rocket Bookings",
+    ctaLink: "/bookings"
   }
 ];
 

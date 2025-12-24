@@ -110,6 +110,19 @@
   <url><loc>https://rocketpayments.co.uk/blog/epos-card-machine-integration-uk</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://rocketpayments.co.uk/blog/best-epos-system-small-business-uk</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   
+  <!-- EPOS Partners Page -->
+  <url><loc>https://rocketpayments.co.uk/epos-partners</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  
+  <!-- Industry & Trend Guides -->
+  <url><loc>https://rocketpayments.co.uk/guides/google-reserve-restaurant-bookings-uk</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://rocketpayments.co.uk/guides/experience-dining-restaurant-trends-uk</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://rocketpayments.co.uk/guides/rocket-intelligence-restaurant-data-insights</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://rocketpayments.co.uk/guides/business-funding-hospitality-growth-trends</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://rocketpayments.co.uk/guides/epos-integration-payment-terminals-guide</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://rocketpayments.co.uk/guides/icr-touch-integration-rocket-payments</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://rocketpayments.co.uk/guides/goodtill-integration-rocket-payments</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://rocketpayments.co.uk/guides/restaurant-reservation-software-uk-guide</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  
   <!-- Info Pages -->
   <url><loc>https://rocketpayments.co.uk/about</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://rocketpayments.co.uk/support</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
