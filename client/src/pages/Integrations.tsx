@@ -114,7 +114,7 @@ export default function Integrations() {
           <AnimatedSection delay={400}>
             <div className="text-center mt-16 max-w-4xl mx-auto">
               <p className="text-xl text-muted-foreground leading-relaxed">
-                With an integrated payments experience, you can <span className="font-black text-foreground">increase staff efficiency</span> and <span className="font-black text-foreground">reduce mistakes</span> – and enjoy smoother end-of-day reconciliations. Plus, you can keep your current setup and work with your preferred supplier – with over <span className="font-black text-foreground">600 partners</span>, you can choose the right solution for your business.
+                With an integrated payments experience, you can <span className="font-black text-foreground">increase staff efficiency</span> and <span className="font-black text-foreground">reduce mistakes</span> – and enjoy smoother end-of-day reconciliations. Plus, you can keep your current setup and work with your preferred supplier – with over <Link href="/epos-partners" className="font-black text-primary hover:underline">600 partners</Link>, you can choose the right solution for your business.
               </p>
             </div>
           </AnimatedSection>
@@ -296,7 +296,7 @@ export default function Integrations() {
               {
                 icon: Settings,
                 title: "No additional hardware",
-                description: "We're partnered with over 600 leading EPOS providers, so there's no need for any expensive additional hardware.",
+                description: "We're partnered with over 600 leading EPOS providers. View our EPOS partners for a complete list.",
                 gradient: "from-pink-500/10 to-pink-500/5",
                 iconBg: "bg-pink-500/10",
                 iconColor: "text-pink-600 dark:text-pink-400",

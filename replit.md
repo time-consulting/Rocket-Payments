@@ -1,277 +1,74 @@
 # Rocket Payments
 
 ## Overview
-
-Rocket Payments is a complete payment processing platform marketing website built with React and Express. The application showcases payment terminal products, industry solutions, pricing plans, and allows potential customers to request quotes. The site is designed with a clean, trust-focused aesthetic inspired by modern fintech platforms like Dojo.tech, emphasizing speed, reliability, and simplicity.
-
-## Recent Changes (December 23, 2025)
-
-**Expanded SEO Content: Competitor Comparisons, Rocket Bookings, EPOS Integration**
-- Created 27 total blog posts: 12 industry-specific, 8 competitor comparisons, 5 restaurant booking alternatives, 2 EPOS integration guides
-- New competitor comparison pages targeting:
-  - Worldpay Alternative UK
-  - Teya Alternative UK
-  - Barclaycard Alternative UK
-  - Take Payments Alternative UK
-  - Square Alternative UK
-  - SumUp Alternative UK
-  - PayPal/Zettle Alternative UK
-  - Dojo Card Machine UK (optimized for "join Dojo" searches - unique positioning since they sell Dojo as Rocket Payments)
-- Rocket Bookings content targeting restaurant reservation competitors:
-  - OpenTable Alternative UK
-  - ResDiary Alternative UK
-  - TheFork Alternative UK
-  - Resos Alternative UK
-  - Best Restaurant Reservation System UK 2025
-- EPOS Integration guides:
-  - EPOS Card Machine Integration UK (600+ systems)
-  - Best EPOS System for Small Business UK 2025
-- Updated sitemap.xml with all new pages
-- Blog page now shows competitor comparisons, bookings, and EPOS sections
-- All posts include FAQ schemas for AEO (Answer Engine Optimization)
-
-**Files Added/Modified:**
-- `client/src/data/competitorPosts.ts` - Competitor comparison content
-- `client/src/data/bookingsPosts.ts` - Restaurant booking content
-- `client/src/pages/Blog.tsx` - Updated with new sections
-- `client/src/pages/BlogPost.tsx` - Updated to fetch from all data sources
-- `client/public/sitemap.xml` - Updated with all new URLs
-
-**Comprehensive SEO, AEO & Local Search Optimization**
-- Enhanced SEO component (`client/src/components/SEO.tsx`) with structured data schemas:
-  - Organization schema with Rocket Payments branding
-  - LocalBusiness schema with Kent/East Sussex focus and 18 local towns/cities
-  - Service schemas for Card Terminal, Payment Gateway, Merchant Services, Business Funding, Business Loans
-  - FAQ schemas for Home, Pricing, and Business Funding (AEO optimization)
-  
-**Local SEO Targeting (Kent & East Sussex)**
-- Area served includes: Maidstone, Canterbury, Tunbridge Wells, Ashford, Dover, Folkestone, Margate, Ramsgate, Gravesend, Dartford, Sevenoaks, Tonbridge, Brighton, Eastbourne, Hastings, Lewes, Bexhill, Crowborough
-- Location-specific keywords on all pages (e.g., "card machine Kent", "payment terminal Brighton")
-
-**Competitor Comparison (Dojo.tech)**
-- Added Dojo alternative positioning across all main pages
-- FAQ schema comparing Rocket Payments vs Dojo rates
-- Keywords targeting users searching for Dojo alternatives
-
-**Business Funding & Loans Keywords**
-- New service schemas for Business Funding and Business Loans
-- FAQ schema covering merchant cash advance, business loans UK
-- Keywords: "business funding UK", "business loans UK", "merchant cash advance"
-
-**Keyword Strategy**
-- Primary: "card payment processing UK", "merchant services UK", "card machine UK", "business funding UK"
-- Local: "card machine Kent", "payment terminal East Sussex", "business funding Brighton"
-- Competitor: "Dojo alternative", "switch from Dojo", "compare Dojo rates"
-- Long-tail: "best card machine for small business UK", "free card machine Kent"
-
-**SEO Technical Setup**
-- XML sitemap at `/sitemap.xml` with all pages and blog posts
-- robots.txt configured to allow indexing, disallow thank-you pages
-- Google Search Console verification placeholder in index.html
-- Bing Webmaster Tools placeholder ready
-
-**Google Search Console Setup (Manual Steps)**
-1. Go to https://search.google.com/search-console
-2. Add property: https://rocketpayments.co.uk
-3. Choose "HTML tag" verification method
-4. Copy the verification code (just the content value)
-5. Edit `client/index.html` - uncomment the google-site-verification meta tag
-6. Replace YOUR_VERIFICATION_CODE with your actual code
-7. Deploy and verify in Search Console
-8. Submit sitemap: https://rocketpayments.co.uk/sitemap.xml
-
-**Backlink Building Strategy (Manual Activities)**
-- Submit to UK business directories: Yell, Thomson Local, FreeIndex
-- Submit to payment industry directories
-- Reach out to small business blogs for guest posts
-- Create shareable infographics about payment processing
-- The industry blog posts are designed to attract organic backlinks
-
-**Industry-Specific Blog System (SEO Landing Pages)**
-- Created 12 industry-specific blog posts targeting small business niches:
-  - Barbers & Barbershops (FREE Tap to Pay)
-  - Hair Salons & Stylists (FREE Tap to Pay)
-  - Taxi & Private Hire (FREE Tap to Pay)
-  - Food Trucks & Street Food (FREE Tap to Pay)
-  - Market Traders & Craft Fairs (FREE Tap to Pay)
-  - Personal Trainers & Fitness (FREE Tap to Pay)
-  - Mobile Beauty & Therapists (FREE Tap to Pay)
-  - Tradespeople & Builders (FREE Tap to Pay)
-  - Restaurants & Cafes
-  - Retail & Gift Shops
-  - Pubs & Bars
-  - Takeaways & Delivery
-- Each post includes: industry-specific content, benefits list, FAQ schema for AEO, local area targeting (Kent & East Sussex towns), Dojo comparison
-- FREE Tap to Pay highlighted for mobile industries: barbers, salons, taxi drivers, food trucks, market traders, PTs, beauticians, tradespeople
-- Blog listing page at `/blog` with industry cards
-- Individual blog posts at `/blog/{slug}` with SEO meta tags and structured data
-- Navigation updated with "Guides" link
-
-## Recent Changes (December 5, 2025)
-
-**Quick Register Interest Form Added**
-- Created QuickCapture component (`client/src/components/QuickCapture.tsx`) for quick lead capture
-- Thin bar format appearing below header on all main pages
-- One question at a time flow: Email → Name → Business Name → Mobile
-- Partial completion support - each step saves to database immediately
-- Data stored in PostgreSQL `interest_registrations` table with name and businessName fields
-- Webhook only sends to Go High Level when ALL data is complete (including phone)
-- Complete data includes firstName, lastName (split from name), email, phone, and companyName
-- Excluded from thank-you and calculate-savings pages only
-
-## Recent Changes (December 4, 2025)
-
-**SEO Infrastructure Implemented**
-- Added comprehensive Open Graph meta tags for social sharing (og:title, og:description, og:image, og:url)
-- Added Twitter Card meta tags for Twitter sharing previews
-- Installed react-helmet-async for page-specific meta tag management
-- Created reusable SEO component (`client/src/components/SEO.tsx`) for page-level SEO
-- Added unique titles and descriptions to all key pages (Home, Products, Quote, Industries, Pricing, FreeTerminal, FreeTerminalThankYou)
-- Added JSON-LD structured data for LocalBusiness schema
-- Enhanced image alt text across FreeTerminal and Home pages for accessibility and SEO
-- Added noIndex meta tag for thank-you pages to prevent indexing
-
-## Recent Changes (October 31, 2025)
-
-**Complete Website MVP Delivered**
-- Implemented comprehensive multi-page website structure with Home, Products, Quote, Industries, Pricing, Resources, and product detail pages
-- Generated 12+ AI placeholder images for hero sections, products (Rocket Go, Pocket, Wired, Tap to Pay), industries (restaurants, dental, retail), and testimonials
-- Built responsive Header with navigation and Footer with comprehensive sitemap
-- Fixed all navigation routing - every link now resolves to proper pages (no 404s)
-
-**Home Page Sections Completed**
-- Hero section with CTAs and partner logos
-- Statistics banner (99.99% uptime, 1.8bn transactions, 58% faster speed)
-- Value proposition with 4 key benefits
-- Industries showcase with alternating left-right image/text layout (4 industries: QSR, FSR, Dental, Retail)
-- Enterprise integration highlight (450+ EPOS integrations)
-- Products grid showcasing all 4 products
-- Testimonials section with 3 customer reviews and star ratings
-- Success stories cards with metrics and achievements
-- Switching CTA section
-- FAQ accordion with 6 common questions
-
-**Backend & Functionality**
-- Quote form API with Zod validation and in-memory storage
-- Theme toggle for light/dark mode support
-- Responsive design across all breakpoints
-- End-to-end testing passed - all navigation routes, form submission, and theme toggle verified
+Rocket Payments is a comprehensive payment processing platform marketing website built with React and Express. Its primary purpose is to showcase payment terminal products, industry-specific solutions, and transparent pricing plans. The platform enables potential customers to request quotes, aiming to be a trusted, modern fintech solution emphasizing speed, reliability, and simplicity. The project includes extensive SEO content targeting competitor comparisons, industry-specific guides, and local search optimization for the UK market, particularly Kent and East Sussex.
 
 ## User Preferences
-
 Preferred communication style: Simple, everyday language.
 
 ## System Architecture
 
 ### Frontend Architecture
-
-**Framework & Routing**
-- React with TypeScript using Vite as the build tool
-- Client-side routing implemented with Wouter (lightweight alternative to React Router)
-- Component-based architecture with shadcn/ui components for consistent UI patterns
-
-**Design System**
-- Tailwind CSS for utility-first styling with custom configuration
-- Custom design tokens defined in CSS variables for theming (light/dark mode support)
-- Typography based on Inter font family with systematic scale
-- Responsive-first approach with mobile, tablet, and desktop breakpoints
-- Component library following shadcn/ui "new-york" style variant
-
-**State Management**
-- TanStack React Query (v5) for server state management and data fetching
-- React Hook Form with Zod validation for form handling
-- Local storage for theme persistence
-- No global state management library (Redux/Zustand) - relies on React Query cache
-
-**UI Component Strategy**
-- Radix UI primitives for accessible, unstyled components
-- Custom styled components in `client/src/components/ui/` directory
-- Reusable page components for marketing content
-- Path aliases configured for clean imports (@/, @shared/, @assets/)
+The frontend is built with React and TypeScript, using Vite for fast builds and HMR. Wouter handles client-side routing, favoring a lightweight approach. The design system leverages Tailwind CSS for utility-first styling, with custom configurations for theming (light/dark mode) and a responsive-first approach. UI components are built using Radix UI primitives and styled with shadcn/ui patterns. State management primarily uses TanStack React Query for server state and data fetching, alongside React Hook Form with Zod for form handling.
 
 ### Backend Architecture
-
-**Server Framework**
-- Express.js with TypeScript for API server
-- ESM module system throughout the application
-- Development mode uses tsx for TypeScript execution
-- Production builds with esbuild for fast compilation
-
-**API Structure**
-- RESTful endpoints under `/api` prefix
-- Quote request system with POST `/api/quote` and GET `/api/quotes`
-- JSON request/response format
-- Custom request logging middleware for API endpoints
-
-**Data Layer Abstraction**
-- Storage interface pattern (`IStorage`) for data persistence
-- Currently implemented with in-memory storage (`MemStorage`)
-- Designed for easy migration to database persistence
-- Drizzle ORM configured for PostgreSQL (schema defined but not actively used)
-
-**Development Setup**
-- Vite dev server integrated with Express in development
-- HMR (Hot Module Replacement) enabled
-- Server-side rendering preparation via Vite middleware mode
-- Custom error overlays and dev tooling from Replit plugins
+The backend is an Express.js server developed with TypeScript, utilizing an ESM module system. It provides RESTful APIs, notably for a quote request system. A data layer abstraction with an `IStorage` interface is implemented, currently using in-memory storage but designed for easy migration to PostgreSQL with Drizzle ORM. Development uses `tsx` for TypeScript execution and `esbuild` for production builds.
 
 ### Data Storage Solutions
+Currently, quote requests are stored in-memory. The future architecture is designed around PostgreSQL, with Drizzle ORM configured. The schema (`quote_requests` table) is defined with fields like `businessName`, `contactName`, `email`, and `monthlyVolume`, ensuring type safety through Zod schemas generated from the Drizzle schema.
 
-**Current Implementation**
-- In-memory storage using JavaScript Map for quote requests
-- UUID generation for unique identifiers
-- No persistence between server restarts
+### UI/UX Decisions
+The platform features a clean, trust-focused aesthetic inspired by modern fintech platforms. It supports light/dark mode theming and adheres to a responsive-first design across mobile, tablet, and desktop breakpoints. The UI components follow shadcn/ui's "new-york" style, ensuring consistency and accessibility. The website incorporates a "Quick Register Interest Form" for lead capture across main pages.
 
-**Future Database Architecture**
-- Drizzle ORM configured for PostgreSQL via Neon serverless driver
-- Schema defined in `shared/schema.ts` with quote_requests table
-- Migration system setup with drizzle-kit
-- Connection ready via DATABASE_URL environment variable
+### Technical Implementations
+- **SEO Component:** A comprehensive SEO component (`SEO.tsx`) manages Open Graph, Twitter Cards, and JSON-LD structured data (Organization, LocalBusiness, Service, FAQ schemas) for optimal search engine and answer engine optimization.
+- **Content Management:** Dedicated data files (`eposPartners.ts`, `industryGuides.ts`, `competitorPosts.ts`, `bookingsPosts.ts`) manage various content types, feeding into dynamic page generation for industry guides, blog posts, and competitor comparisons.
+- **Form Validation:** React Hook Form with Zod for robust client-side and server-side form validation.
+- **Module System:** Consistent use of ESM throughout the application.
 
-**Schema Design**
-- Quote requests table with fields: id, businessName, contactName, email, phone, businessType, monthlyVolume, message, createdAt
-- Type safety with Zod schemas generated from Drizzle schema
-- Shared types between client and server via `shared/` directory
+### Feature Specifications
+- **Payment Processing Showcase:** Displays payment terminals (Rocket Go, Pocket, Wired, Tap to Pay), industry solutions, and pricing.
+- **Quote Request System:** Allows potential customers to request quotes via a multi-step form with partial completion support.
+- **EPOS Partners Integration:** Lists over 30 verified UK EPOS integration partners, categorized by sector.
+- **Industry Guides & Blog:** Features a wide range of industry insights, competitor comparisons, and specific guides (e.g., EPOS integration, restaurant reservation systems).
+- **SEO & AEO Optimization:** Extensive use of structured data, targeted keywords (primary, local, competitor, long-tail), and an XML sitemap for enhanced search visibility.
+- **Local SEO:** Focuses on Kent and East Sussex with location-specific keywords and LocalBusiness schemas.
+- **Responsive Design:** Ensures optimal viewing and interaction across all devices.
+- **Dark Mode:** User-toggleable theme for enhanced accessibility and preference.
 
-### External Dependencies
+## External Dependencies
 
-**UI Component Libraries**
-- Radix UI complete suite (30+ primitive components)
-- shadcn/ui configuration and styling patterns
-- Lucide React for iconography
-- embla-carousel-react for carousel functionality
-- cmdk for command palette patterns
+### UI Component Libraries
+- **Radix UI:** Primitives for accessible, unstyled components.
+- **shadcn/ui:** Configuration and styling patterns.
+- **Lucide React:** Iconography.
+- **embla-carousel-react:** Carousel functionality.
+- **cmdk:** Command palette patterns.
 
-**Form Handling & Validation**
-- react-hook-form for form state management
-- @hookform/resolvers for validation integration
-- Zod for runtime type validation and schema definition
-- drizzle-zod for auto-generating Zod schemas from database schema
+### Form Handling & Validation
+- **react-hook-form:** Form state management.
+- **@hookform/resolvers:** Validation integration.
+- **Zod:** Runtime type validation and schema definition.
+- **drizzle-zod:** Auto-generating Zod schemas from database schema.
 
-**Data Fetching & State**
-- TanStack React Query for async state management
-- Custom query client configuration with optimized defaults
-- Credential-based fetching for session support
+### Data Fetching & State
+- **TanStack React Query (v5):** Asynchronous state management and data fetching.
 
-**Build & Development Tools**
-- Vite with React plugin for fast builds and HMR
-- esbuild for production server bundling
-- TypeScript with strict mode enabled
-- PostCSS with Tailwind CSS and autoprefixer
-- Replit-specific plugins for development experience (cartographer, dev-banner, runtime-error-modal)
+### Build & Development Tools
+- **Vite:** Frontend build tool with React plugin for fast builds and HMR.
+- **esbuild:** Production server bundling.
+- **TypeScript:** Language with strict mode.
+- **PostCSS, Tailwind CSS, autoprefixer:** Styling toolchain.
 
-**Database & ORM**
-- Drizzle ORM with PostgreSQL dialect
-- @neondatabase/serverless for serverless Postgres connections
-- connect-pg-simple for session storage (configured but not actively used)
+### Database & ORM
+- **Drizzle ORM:** Object-Relational Mapper for PostgreSQL.
+- **@neondatabase/serverless:** Serverless PostgreSQL connections.
 
-**Utilities**
-- date-fns for date manipulation
-- clsx and tailwind-merge (via cn utility) for className management
-- class-variance-authority for variant-based component APIs
-- nanoid for unique ID generation
+### Utilities
+- **date-fns:** Date manipulation.
+- **clsx, tailwind-merge (via cn utility):** CSS class management.
+- **class-variance-authority:** Variant-based component APIs.
+- **nanoid:** Unique ID generation.
 
-**Asset Management**
-- Static images stored in `attached_assets/generated_images/` directory
-- Vite alias configuration for `@assets` path
-- Pre-generated product and marketing images
+### Integrations
+- **Go High Level:** CRM system for lead management (via webhook for complete form submissions).
