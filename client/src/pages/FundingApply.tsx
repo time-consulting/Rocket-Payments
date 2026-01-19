@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useMutation } from "@tanstack/react-query";
-import { Rocket, Shield, Clock, CheckCircle, ChevronRight, PoundSterling, TrendingUp, Building2, User, Users, Plus, Trash2, ArrowRight, Lock, Banknote, ShoppingCart, Wrench, Target, HelpCircle } from "lucide-react";
+import { Rocket, Shield, Clock, CheckCircle, ChevronRight, PoundSterling, TrendingUp, Building2, User, Users, Plus, Trash2, ArrowRight, Lock, Banknote, ShoppingCart, Wrench, Target, HelpCircle, Mail, Phone, MapPin, Calendar, Briefcase, Store } from "lucide-react";
 import { motion } from "framer-motion";
 import businessOwnerImage from "@assets/Gemini_Generated_Image_rxtiylrxtiylrxti_(1)_1768834328814.png";
 import { Button } from "@/components/ui/button";
@@ -73,6 +73,24 @@ const fundingPurposes = [
   "Other",
 ];
 
+const days = Array.from({ length: 31 }, (_, i) => (i + 1).toString().padStart(2, '0'));
+const months = [
+  { value: "01", label: "January" },
+  { value: "02", label: "February" },
+  { value: "03", label: "March" },
+  { value: "04", label: "April" },
+  { value: "05", label: "May" },
+  { value: "06", label: "June" },
+  { value: "07", label: "July" },
+  { value: "08", label: "August" },
+  { value: "09", label: "September" },
+  { value: "10", label: "October" },
+  { value: "11", label: "November" },
+  { value: "12", label: "December" },
+];
+const currentYear = new Date().getFullYear();
+const years = Array.from({ length: 80 }, (_, i) => (currentYear - 18 - i).toString());
+
 export default function FundingApply() {
   const [step, setStep] = useState(0);
   const [selectedAmount, setSelectedAmount] = useState<string>("");
@@ -80,7 +98,16 @@ export default function FundingApply() {
   const [customAmount, setCustomAmount] = useState<string>("");
   const [shareholders, setShareholders] = useState<Shareholder[]>([]);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [dobDay, setDobDay] = useState<string>("");
+  const [dobMonth, setDobMonth] = useState<string>("");
+  const [dobYear, setDobYear] = useState<string>("");
   const { toast } = useToast();
+
+  const updateDob = (day: string, month: string, year: string) => {
+    if (day && month && year) {
+      form.setValue("directorDob", `${year}-${month}-${day}`);
+    }
+  };
 
   const form = useForm<FundingFormData>({
     resolver: zodResolver(fundingFormSchema),
@@ -527,15 +554,24 @@ export default function FundingApply() {
                 <ChevronRight className="h-4 w-4 rotate-180" /> Back
               </button>
               <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-medium mb-3">
-                Step 2 of 4 - Director Details
+                Step 2 of 4
               </div>
-              <h2 className="text-3xl font-black mb-2">Tell us about yourself</h2>
-              <p className="text-muted-foreground">As a company director, we need some basic details.</p>
+              <h2 className="text-3xl font-black mb-2">Let's get to know you</h2>
+              <p className="text-muted-foreground">Quick details about you as the business director.</p>
             </div>
 
-            <div className="bg-white dark:bg-slate-800 rounded-xl border p-6 mb-8">
-              <Form {...form}>
-                <form className="space-y-5">
+            <Form {...form}>
+              <form className="space-y-6">
+                <div className="bg-white dark:bg-slate-800 rounded-2xl border p-6 space-y-5">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
+                      <User className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                    </div>
+                    <div>
+                      <h3 className="font-bold">Your Name</h3>
+                      <p className="text-xs text-muted-foreground">As it appears on official documents</p>
+                    </div>
+                  </div>
                   <div className="grid md:grid-cols-2 gap-4">
                     <FormField
                       control={form.control}
@@ -544,7 +580,7 @@ export default function FundingApply() {
                         <FormItem>
                           <FormLabel>First Name</FormLabel>
                           <FormControl>
-                            <Input placeholder="John" className="py-5" {...field} data-testid="input-director-first-name" />
+                            <Input placeholder="John" className="h-12 text-base" {...field} data-testid="input-director-first-name" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -557,23 +593,34 @@ export default function FundingApply() {
                         <FormItem>
                           <FormLabel>Last Name</FormLabel>
                           <FormControl>
-                            <Input placeholder="Smith" className="py-5" {...field} data-testid="input-director-last-name" />
+                            <Input placeholder="Smith" className="h-12 text-base" {...field} data-testid="input-director-last-name" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
                       )}
                     />
                   </div>
+                </div>
 
+                <div className="bg-white dark:bg-slate-800 rounded-2xl border p-6 space-y-5">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="w-10 h-10 rounded-xl bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
+                      <Mail className="h-5 w-5 text-green-600 dark:text-green-400" />
+                    </div>
+                    <div>
+                      <h3 className="font-bold">Contact Details</h3>
+                      <p className="text-xs text-muted-foreground">How we'll reach you with updates</p>
+                    </div>
+                  </div>
                   <div className="grid md:grid-cols-2 gap-4">
                     <FormField
                       control={form.control}
                       name="directorEmail"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Email</FormLabel>
+                          <FormLabel>Email Address</FormLabel>
                           <FormControl>
-                            <Input type="email" placeholder="john@business.com" className="py-5" {...field} data-testid="input-director-email" />
+                            <Input type="email" placeholder="john@business.com" className="h-12 text-base" {...field} data-testid="input-director-email" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -586,57 +633,143 @@ export default function FundingApply() {
                         <FormItem>
                           <FormLabel>Mobile Number</FormLabel>
                           <FormControl>
-                            <Input type="tel" placeholder="07700 900000" className="py-5" {...field} data-testid="input-director-phone" />
+                            <Input type="tel" placeholder="07700 900000" className="h-12 text-base" {...field} data-testid="input-director-phone" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
                       )}
                     />
                   </div>
+                </div>
 
+                <div className="bg-white dark:bg-slate-800 rounded-2xl border p-6 space-y-5">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="w-10 h-10 rounded-xl bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center">
+                      <Calendar className="h-5 w-5 text-purple-600 dark:text-purple-400" />
+                    </div>
+                    <div>
+                      <h3 className="font-bold">Date of Birth</h3>
+                      <p className="text-xs text-muted-foreground">Required for identity verification</p>
+                    </div>
+                  </div>
                   <FormField
                     control={form.control}
                     name="directorDob"
-                    render={({ field }) => (
+                    render={() => (
                       <FormItem>
-                        <FormLabel>Date of Birth</FormLabel>
-                        <FormControl>
-                          <Input type="date" className="py-5" {...field} data-testid="input-director-dob" />
-                        </FormControl>
+                        <div className="grid grid-cols-3 gap-3">
+                          <div>
+                            <FormLabel className="text-xs text-muted-foreground">Day</FormLabel>
+                            <Select 
+                              value={dobDay} 
+                              onValueChange={(val) => {
+                                setDobDay(val);
+                                updateDob(val, dobMonth, dobYear);
+                              }}
+                            >
+                              <SelectTrigger className="h-12" data-testid="select-dob-day">
+                                <SelectValue placeholder="Day" />
+                              </SelectTrigger>
+                              <SelectContent>
+                                {days.map((day) => (
+                                  <SelectItem key={day} value={day}>{day}</SelectItem>
+                                ))}
+                              </SelectContent>
+                            </Select>
+                          </div>
+                          <div>
+                            <FormLabel className="text-xs text-muted-foreground">Month</FormLabel>
+                            <Select 
+                              value={dobMonth} 
+                              onValueChange={(val) => {
+                                setDobMonth(val);
+                                updateDob(dobDay, val, dobYear);
+                              }}
+                            >
+                              <SelectTrigger className="h-12" data-testid="select-dob-month">
+                                <SelectValue placeholder="Month" />
+                              </SelectTrigger>
+                              <SelectContent>
+                                {months.map((month) => (
+                                  <SelectItem key={month.value} value={month.value}>{month.label}</SelectItem>
+                                ))}
+                              </SelectContent>
+                            </Select>
+                          </div>
+                          <div>
+                            <FormLabel className="text-xs text-muted-foreground">Year</FormLabel>
+                            <Select 
+                              value={dobYear} 
+                              onValueChange={(val) => {
+                                setDobYear(val);
+                                updateDob(dobDay, dobMonth, val);
+                              }}
+                            >
+                              <SelectTrigger className="h-12" data-testid="select-dob-year">
+                                <SelectValue placeholder="Year" />
+                              </SelectTrigger>
+                              <SelectContent>
+                                {years.map((year) => (
+                                  <SelectItem key={year} value={year}>{year}</SelectItem>
+                                ))}
+                              </SelectContent>
+                            </Select>
+                          </div>
+                        </div>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
+                </div>
 
+                <div className="bg-white dark:bg-slate-800 rounded-2xl border p-6 space-y-5">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="w-10 h-10 rounded-xl bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center">
+                      <MapPin className="h-5 w-5 text-orange-600 dark:text-orange-400" />
+                    </div>
+                    <div>
+                      <h3 className="font-bold">Home Address</h3>
+                      <p className="text-xs text-muted-foreground">Your residential address for verification</p>
+                    </div>
+                  </div>
                   <FormField
                     control={form.control}
                     name="directorAddress"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Home Address</FormLabel>
                         <FormControl>
-                          <Textarea placeholder="Enter your full home address including postcode" className="min-h-[80px]" {...field} data-testid="input-director-address" />
+                          <Textarea 
+                            placeholder="Enter your full home address including postcode" 
+                            className="min-h-[100px] text-base resize-none" 
+                            {...field} 
+                            data-testid="input-director-address" 
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
-                </form>
-              </Form>
-            </div>
+                </div>
+              </form>
+            </Form>
 
             <Button
               size="lg"
-              className="w-full py-6 text-lg rounded-xl"
+              className="w-full py-6 text-lg rounded-xl mt-6"
               onClick={async () => {
                 const valid = await form.trigger(["directorFirstName", "directorLastName", "directorEmail", "directorPhone", "directorDob", "directorAddress"]);
                 if (valid) setStep(3);
               }}
               data-testid="button-continue-step-2"
             >
-              Continue
+              Continue to Business Details
               <ChevronRight className="ml-2 h-5 w-5" />
             </Button>
+
+            <p className="text-center text-sm text-muted-foreground mt-4 flex items-center justify-center gap-2">
+              <Lock className="h-4 w-4" />
+              Your information is encrypted and secure
+            </p>
           </div>
         )}
 
@@ -651,23 +784,32 @@ export default function FundingApply() {
                 <ChevronRight className="h-4 w-4 rotate-180" /> Back
               </button>
               <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-medium mb-3">
-                Step 3 of 4 - Business Details
+                Step 3 of 4
               </div>
-              <h2 className="text-3xl font-black mb-2">Tell us about your business</h2>
-              <p className="text-muted-foreground">A few details about your company to find the best options.</p>
+              <h2 className="text-3xl font-black mb-2">About your business</h2>
+              <p className="text-muted-foreground">Help us understand your business better.</p>
             </div>
 
-            <div className="bg-white dark:bg-slate-800 rounded-xl border p-6 mb-8">
-              <Form {...form}>
-                <form className="space-y-5">
+            <Form {...form}>
+              <form className="space-y-6">
+                <div className="bg-white dark:bg-slate-800 rounded-2xl border p-6 space-y-5">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center">
+                      <Briefcase className="h-5 w-5 text-indigo-600 dark:text-indigo-400" />
+                    </div>
+                    <div>
+                      <h3 className="font-bold">Company Details</h3>
+                      <p className="text-xs text-muted-foreground">Your registered and trading names</p>
+                    </div>
+                  </div>
                   <FormField
                     control={form.control}
                     name="limitedCompanyName"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Limited Company Name (if applicable)</FormLabel>
+                        <FormLabel>Limited Company Name <span className="text-muted-foreground font-normal">(if applicable)</span></FormLabel>
                         <FormControl>
-                          <Input placeholder="Leave blank if sole trader" className="py-5" {...field} data-testid="input-company-name" />
+                          <Input placeholder="Leave blank if sole trader" className="h-12 text-base" {...field} data-testid="input-company-name" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -681,37 +823,62 @@ export default function FundingApply() {
                       <FormItem>
                         <FormLabel>Trading Name</FormLabel>
                         <FormControl>
-                          <Input placeholder="Your business trading name" className="py-5" {...field} data-testid="input-trading-name" />
+                          <Input placeholder="e.g. Sarah's Coffee House" className="h-12 text-base" {...field} data-testid="input-trading-name" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
+                </div>
 
+                <div className="bg-white dark:bg-slate-800 rounded-2xl border p-6 space-y-5">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="w-10 h-10 rounded-xl bg-teal-100 dark:bg-teal-900/30 flex items-center justify-center">
+                      <Store className="h-5 w-5 text-teal-600 dark:text-teal-400" />
+                    </div>
+                    <div>
+                      <h3 className="font-bold">Business Location</h3>
+                      <p className="text-xs text-muted-foreground">Where your business operates from</p>
+                    </div>
+                  </div>
                   <FormField
                     control={form.control}
                     name="businessAddress"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Business Address</FormLabel>
                         <FormControl>
-                          <Textarea placeholder="Enter your full business address including postcode" className="min-h-[80px]" {...field} data-testid="input-business-address" />
+                          <Textarea 
+                            placeholder="Enter your full business address including postcode" 
+                            className="min-h-[100px] text-base resize-none" 
+                            {...field} 
+                            data-testid="input-business-address" 
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
+                </div>
 
+                <div className="bg-white dark:bg-slate-800 rounded-2xl border p-6 space-y-5">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center">
+                      <PoundSterling className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
+                    </div>
+                    <div>
+                      <h3 className="font-bold">Monthly Revenue</h3>
+                      <p className="text-xs text-muted-foreground">Approximate turnover helps us find the best rates</p>
+                    </div>
+                  </div>
                   <FormField
                     control={form.control}
                     name="monthlyRevenue"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Approximate Monthly Revenue</FormLabel>
                         <Select onValueChange={field.onChange} defaultValue={field.value}>
                           <FormControl>
-                            <SelectTrigger className="py-5" data-testid="select-monthly-revenue">
-                              <SelectValue placeholder="Select monthly revenue" />
+                            <SelectTrigger className="h-12 text-base" data-testid="select-monthly-revenue">
+                              <SelectValue placeholder="Select your typical monthly revenue" />
                             </SelectTrigger>
                           </FormControl>
                           <SelectContent>
@@ -727,22 +894,27 @@ export default function FundingApply() {
                       </FormItem>
                     )}
                   />
-                </form>
-              </Form>
-            </div>
+                </div>
+              </form>
+            </Form>
 
             <Button
               size="lg"
-              className="w-full py-6 text-lg rounded-xl"
+              className="w-full py-6 text-lg rounded-xl mt-6"
               onClick={async () => {
                 const valid = await form.trigger(["tradingName", "businessAddress"]);
                 if (valid) setStep(4);
               }}
               data-testid="button-continue-step-3"
             >
-              Continue
+              Almost Done - Final Step
               <ChevronRight className="ml-2 h-5 w-5" />
             </Button>
+
+            <p className="text-center text-sm text-muted-foreground mt-4 flex items-center justify-center gap-2">
+              <Shield className="h-4 w-4" />
+              Your business data is protected
+            </p>
           </div>
         )}
 
