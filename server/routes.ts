@@ -413,7 +413,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         leadStatus: "Hot Lead - Funding Application"
       };
       
-      const webhookResult = await sendFundingToGHL(ghlData);
+      const webhookResult = await sendToGHL(ghlData);
       
       res.json({
         ...application,
@@ -451,7 +451,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         testSubmission: true
       };
 
-      const result = await sendFundingToGHL(testData);
+      const result = await sendToGHL(testData);
 
       if (result.success) {
         res.json({ success: true, message: "Test funding webhook sent successfully", data: testData });
