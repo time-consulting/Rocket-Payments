@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useMutation } from "@tanstack/react-query";
 import { Rocket, Shield, Clock, CheckCircle, ChevronRight, PoundSterling, TrendingUp, Building2, User, Users, Plus, Trash2, ArrowRight, Lock, Banknote, ShoppingCart, Wrench, Target, HelpCircle } from "lucide-react";
+import coffeeOwnerImage from "@assets/stock_images/happy_woman_business_37f99ae0.jpg";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -355,18 +356,25 @@ export default function FundingApply() {
                   </div>
                   
                   <div className="bg-white dark:bg-slate-700 rounded-2xl shadow-xl overflow-hidden">
-                    <div className="aspect-[4/5] bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
-                      <div className="text-center p-8">
-                        <div className="w-32 h-32 mx-auto bg-primary/10 rounded-full flex items-center justify-center mb-6">
-                          <Building2 className="h-16 w-16 text-primary" />
+                    <div className="relative">
+                      <img 
+                        src={coffeeOwnerImage} 
+                        alt="Sarah, happy coffee shop owner who received funding"
+                        className="w-full aspect-[4/5] object-cover"
+                      />
+                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent p-6">
+                        <div className="flex items-center gap-2 mb-3">
+                          <div className="flex -space-x-1">
+                            <div className="w-2 h-2 bg-green-400 rounded-full" />
+                            <div className="w-2 h-2 bg-green-400 rounded-full" />
+                            <div className="w-2 h-2 bg-green-400 rounded-full" />
+                          </div>
+                          <span className="text-xs text-white/80">Joined this week</span>
                         </div>
-                        <div className="space-y-2">
-                          <p className="text-sm text-muted-foreground">Joined this week</p>
-                          <p className="text-lg font-medium italic px-4">
-                            "The funding helped us renovate our second location just in time for the summer rush."
-                          </p>
-                          <p className="text-sm font-semibold">— Sarah, Coffee House Owner</p>
-                        </div>
+                        <p className="text-white text-lg font-medium italic leading-snug">
+                          "The funding helped us renovate our second location just in time for the summer rush."
+                        </p>
+                        <p className="text-white/90 text-sm font-semibold mt-2">— Sarah, Coffee House Owner</p>
                       </div>
                     </div>
                   </div>
