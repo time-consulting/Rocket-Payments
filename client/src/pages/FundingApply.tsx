@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useMutation } from "@tanstack/react-query";
 import { Rocket, Shield, Clock, CheckCircle, ChevronRight, PoundSterling, TrendingUp, Building2, User, Users, Plus, Trash2, ArrowRight, Lock, Banknote, ShoppingCart, Wrench, Target, HelpCircle } from "lucide-react";
-import coffeeOwnerImage from "@assets/stock_images/woman_face_portrait__9e313cf0.jpg";
+import coffeeOwnerVideo from "@assets/generated_videos/woman_serving_coffee_in_cafe.mp4";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -357,9 +357,12 @@ export default function FundingApply() {
                   
                   <div className="bg-white dark:bg-slate-700 rounded-2xl shadow-xl overflow-hidden">
                     <div className="relative">
-                      <img 
-                        src={coffeeOwnerImage} 
-                        alt="Sarah, happy coffee shop owner who received funding"
+                      <video 
+                        src={coffeeOwnerVideo} 
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
                         className="w-full aspect-[4/5] object-cover"
                       />
                       <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent p-6">
