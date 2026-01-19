@@ -11,6 +11,7 @@
   <url><loc>https://rocketpayments.co.uk/bookings</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://rocketpayments.co.uk/business-funding</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://rocketpayments.co.uk/calculate-savings</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://rocketpayments.co.uk/funding-apply</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   
   <!-- Product Pages -->
   <url><loc>https://rocketpayments.co.uk/products/rocket-go</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
