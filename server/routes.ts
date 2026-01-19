@@ -34,6 +34,36 @@ async function sendToGHL(data: any) {
   }
 }
 
+// Helper function to send funding applications to separate GHL webhook
+async function sendFundingToGHL(data: any) {
+  const webhookUrl = process.env.GHL_FUNDING_WEBHOOK_URL;
+  
+  if (!webhookUrl) {
+    console.error("GHL_FUNDING_WEBHOOK_URL not configured");
+    return { success: false, error: "Funding webhook URL not configured" };
+  }
+
+  try {
+    const response = await fetch(webhookUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+      throw new Error(`GHL funding webhook failed: ${response.status} ${response.statusText}`);
+    }
+
+    console.log("✅ Successfully sent funding application to GHL:", data.email || data.tradingName);
+    return { success: true, status: response.status };
+  } catch (error: any) {
+    console.error("❌ Failed to send funding to GHL:", error.message);
+    return { success: false, error: error.message };
+  }
+}
+
 export async function registerRoutes(app: Express): Promise<Server> {
   // Quote request endpoint (for Bookings and Business Funding pages)
   app.post("/api/quote", async (req, res) => {
@@ -359,7 +389,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         leadStatus: "Hot Lead - Funding Application"
       };
       
-      const webhookResult = await sendToGHL(ghlData);
+      const webhookResult = await sendFundingToGHL(ghlData);
       
       res.json({
         ...application,
@@ -368,6 +398,42 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error: any) {
       console.error("Funding application error:", error);
       res.status(400).json({ error: error.message || "Invalid request data" });
+    }
+  });
+
+  // Test funding webhook endpoint - sends sample funding application data to GHL
+  app.post("/api/test-funding-webhook", async (_req, res) => {
+    try {
+      const testData = {
+        firstName: "Sarah",
+        lastName: "Johnson",
+        email: "sarah.test@coffeehouse.com",
+        phone: "07700900123",
+        dateOfBirth: "1985-06-15",
+        homeAddress: "123 High Street, Tunbridge Wells, Kent, TN1 2AB",
+        companyName: "Sarah's Coffee House Ltd",
+        tradingName: "Sarah's Coffee House",
+        businessAddress: "45 The Pantiles, Tunbridge Wells, Kent, TN2 5TN",
+        isDojoCustomer: "yes",
+        monthlyRevenue: "25k-50k",
+        fundingAmount: "£50,000",
+        fundingPurpose: "Business Growth",
+        shareholders: "[]",
+        source: "TEST - Business Funding Application Funnel",
+        leadStatus: "TEST - Hot Lead - Funding Application",
+        testSubmission: true
+      };
+
+      const result = await sendFundingToGHL(testData);
+
+      if (result.success) {
+        res.json({ success: true, message: "Test funding webhook sent successfully", data: testData });
+      } else {
+        res.status(500).json({ success: false, error: result.error, data: testData });
+      }
+    } catch (error: any) {
+      console.error("Test funding webhook error:", error);
+      res.status(500).json({ error: error.message || "Failed to send test funding webhook" });
     }
   });
 
