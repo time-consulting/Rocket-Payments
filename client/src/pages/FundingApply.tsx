@@ -4,7 +4,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useMutation } from "@tanstack/react-query";
 import { Rocket, Shield, Clock, CheckCircle, ChevronRight, PoundSterling, TrendingUp, Building2, User, Users, Plus, Trash2, ArrowRight, Lock, Banknote, ShoppingCart, Wrench, Target, HelpCircle } from "lucide-react";
-import coffeeOwnerVideo from "@assets/generated_videos/woman_serving_coffee_in_cafe.mp4";
+import { motion } from "framer-motion";
+import businessOwnerImage from "@assets/Gemini_Generated_Image_rxtiylrxtiylrxti_(1)_1768834328814.png";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -345,7 +346,19 @@ export default function FundingApply() {
 
               <div className="hidden lg:flex items-center justify-center p-12 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900">
                 <div className="relative max-w-md">
-                  <div className="absolute -top-4 -right-4 bg-white dark:bg-slate-700 rounded-xl shadow-lg p-4 z-10">
+                  <motion.div 
+                    className="absolute -top-4 -right-4 bg-white dark:bg-slate-700 rounded-xl shadow-lg p-4 z-10"
+                    animate={{ 
+                      rotate: [0, -3, 3, -3, 3, 0],
+                      scale: [1, 1.02, 1, 1.02, 1]
+                    }}
+                    transition={{ 
+                      duration: 2,
+                      repeat: Infinity,
+                      repeatDelay: 3,
+                      ease: "easeInOut"
+                    }}
+                  >
                     <div className="flex items-center gap-2">
                       <TrendingUp className="h-5 w-5 text-green-500" />
                       <div>
@@ -353,16 +366,13 @@ export default function FundingApply() {
                         <div className="text-xl font-black text-green-600">£50,000</div>
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
                   
                   <div className="bg-white dark:bg-slate-700 rounded-2xl shadow-xl overflow-hidden">
                     <div className="relative">
-                      <video 
-                        src={coffeeOwnerVideo} 
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
+                      <img 
+                        src={businessOwnerImage} 
+                        alt="Sarah, happy business owner who received funding"
                         className="w-full aspect-[4/5] object-cover"
                       />
                       <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent p-6">
