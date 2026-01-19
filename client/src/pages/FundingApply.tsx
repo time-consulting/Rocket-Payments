@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useMutation } from "@tanstack/react-query";
 import { Rocket, Shield, Clock, CheckCircle, ChevronRight, PoundSterling, TrendingUp, Building2, User, Users, Plus, Trash2, ArrowRight, Lock, Banknote, ShoppingCart, Wrench, Target, HelpCircle } from "lucide-react";
-import coffeeOwnerImage from "@assets/stock_images/happy_woman_business_37f99ae0.jpg";
+import coffeeOwnerImage from "@assets/stock_images/smiling_woman_barist_3d650540.jpg";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
