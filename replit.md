@@ -6,6 +6,24 @@ Rocket Payments is a comprehensive payment processing platform marketing website
 ## User Preferences
 Preferred communication style: Simple, everyday language.
 
+## Recent Changes (January 2026)
+
+**Standalone Funding Application Funnel**
+- Created new standalone funding application page at `/funding-apply` with no main site navigation
+- Multi-step form capturing: Director info, Business info, Shareholder info
+- Large clickable funding amount cards for easy selection (£5k-£250k+)
+- Trust badges and explainers: "No hard credit search", "Just a quote"
+- Dojo/Rocket customer check question for eligibility
+- Clear next steps after submission (Open Banking link, 3 pricing offers, funds in 24hrs)
+- Database table `funding_applications` stores all applications
+- GHL webhook integration sends leads automatically
+- Designed as email/SMS campaign landing page (standalone, no site navigation)
+
+**EPOS Partners & Industry Guides (December 2025)**
+- EPOS Partners page (`/epos-partners`) with 30+ verified UK partners
+- Industry insight guides for Google Reserve, Experience Economy, Rocket Intelligence
+- Internal linking between guides and integrations
+
 ## System Architecture
 
 ### Frontend Architecture
