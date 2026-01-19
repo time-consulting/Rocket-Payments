@@ -60,3 +60,35 @@ export const insertInterestRegistrationSchema = createInsertSchema(interestRegis
 
 export type InsertInterestRegistration = z.infer<typeof insertInterestRegistrationSchema>;
 export type InterestRegistration = typeof interestRegistrations.$inferSelect;
+
+export const fundingApplications = pgTable("funding_applications", {
+  id: varchar("id").primaryKey(),
+  // Director Info
+  directorFirstName: text("director_first_name").notNull(),
+  directorLastName: text("director_last_name").notNull(),
+  directorEmail: text("director_email").notNull(),
+  directorPhone: text("director_phone").notNull(),
+  directorDob: text("director_dob").notNull(),
+  directorAddress: text("director_address").notNull(),
+  // Business Info
+  limitedCompanyName: text("limited_company_name"),
+  tradingName: text("trading_name").notNull(),
+  businessAddress: text("business_address").notNull(),
+  isDojoCustomer: text("is_dojo_customer").notNull(),
+  monthlyRevenue: text("monthly_revenue"),
+  fundingAmount: text("funding_amount"),
+  fundingPurpose: text("funding_purpose"),
+  // Shareholder Info (JSON string for multiple shareholders)
+  shareholders: text("shareholders"),
+  // Status
+  status: text("status").notNull().default("pending"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+export const insertFundingApplicationSchema = createInsertSchema(fundingApplications).omit({
+  id: true,
+  createdAt: true,
+});
+
+export type InsertFundingApplication = z.infer<typeof insertFundingApplicationSchema>;
+export type FundingApplication = typeof fundingApplications.$inferSelect;

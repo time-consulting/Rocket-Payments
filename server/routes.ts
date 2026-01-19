@@ -1,7 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { insertQuoteRequestSchema, insertFreeTerminalLeadSchema, insertInterestRegistrationSchema } from "@shared/schema";
+import { insertQuoteRequestSchema, insertFreeTerminalLeadSchema, insertInterestRegistrationSchema, insertFundingApplicationSchema } from "@shared/schema";
 import { z } from "zod";
 
 // Helper function to send data to Go High Level webhook
@@ -328,6 +328,54 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const registrations = await storage.getAllInterestRegistrations();
       res.json(registrations);
+    } catch (error: any) {
+      res.status(500).json({ error: error.message || "Internal server error" });
+    }
+  });
+
+  // Funding application endpoint
+  app.post("/api/funding-application", async (req, res) => {
+    try {
+      const validatedData = insertFundingApplicationSchema.parse(req.body);
+      const application = await storage.createFundingApplication(validatedData);
+      
+      // Send to GHL webhook with funding-specific data
+      const ghlData = {
+        firstName: validatedData.directorFirstName,
+        lastName: validatedData.directorLastName,
+        email: validatedData.directorEmail,
+        phone: validatedData.directorPhone,
+        dateOfBirth: validatedData.directorDob,
+        homeAddress: validatedData.directorAddress,
+        companyName: validatedData.limitedCompanyName || validatedData.tradingName,
+        tradingName: validatedData.tradingName,
+        businessAddress: validatedData.businessAddress,
+        isDojoCustomer: validatedData.isDojoCustomer,
+        monthlyRevenue: validatedData.monthlyRevenue || "Not provided",
+        fundingAmount: validatedData.fundingAmount || "Not provided",
+        fundingPurpose: validatedData.fundingPurpose || "Not provided",
+        shareholders: validatedData.shareholders || "[]",
+        source: "Business Funding Application Funnel",
+        leadStatus: "Hot Lead - Funding Application"
+      };
+      
+      const webhookResult = await sendToGHL(ghlData);
+      
+      res.json({
+        ...application,
+        webhookSent: webhookResult.success
+      });
+    } catch (error: any) {
+      console.error("Funding application error:", error);
+      res.status(400).json({ error: error.message || "Invalid request data" });
+    }
+  });
+
+  // Get all funding applications (for admin purposes)
+  app.get("/api/funding-applications", async (_req, res) => {
+    try {
+      const applications = await storage.getAllFundingApplications();
+      res.json(applications);
     } catch (error: any) {
       res.status(500).json({ error: error.message || "Internal server error" });
     }

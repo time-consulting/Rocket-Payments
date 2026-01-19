@@ -1,4 +1,4 @@
-import { type QuoteRequest, type InsertQuoteRequest, type FreeTerminalLead, type InsertFreeTerminalLead, type InterestRegistration, type InsertInterestRegistration, quoteRequests, freeTerminalLeads, interestRegistrations } from "@shared/schema";
+import { type QuoteRequest, type InsertQuoteRequest, type FreeTerminalLead, type InsertFreeTerminalLead, type InterestRegistration, type InsertInterestRegistration, type FundingApplication, type InsertFundingApplication, quoteRequests, freeTerminalLeads, interestRegistrations, fundingApplications } from "@shared/schema";
 import { randomUUID } from "crypto";
 import { db } from "./db";
 import { desc, eq } from "drizzle-orm";
@@ -15,6 +15,9 @@ export interface IStorage {
   updateInterestRegistration(id: string, data: Partial<InsertInterestRegistration>): Promise<InterestRegistration | undefined>;
   getInterestRegistrationByEmail(email: string): Promise<InterestRegistration | undefined>;
   getAllInterestRegistrations(): Promise<InterestRegistration[]>;
+  
+  createFundingApplication(application: InsertFundingApplication): Promise<FundingApplication>;
+  getAllFundingApplications(): Promise<FundingApplication[]>;
 }
 
 export class DbStorage implements IStorage {
@@ -73,6 +76,19 @@ export class DbStorage implements IStorage {
 
   async getAllInterestRegistrations(): Promise<InterestRegistration[]> {
     return await db.select().from(interestRegistrations).orderBy(desc(interestRegistrations.createdAt));
+  }
+
+  async createFundingApplication(insertApplication: InsertFundingApplication): Promise<FundingApplication> {
+    const id = randomUUID();
+    const [application] = await db.insert(fundingApplications).values({
+      ...insertApplication,
+      id,
+    }).returning();
+    return application;
+  }
+
+  async getAllFundingApplications(): Promise<FundingApplication[]> {
+    return await db.select().from(fundingApplications).orderBy(desc(fundingApplications.createdAt));
   }
 }
 

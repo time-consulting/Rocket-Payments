@@ -42,6 +42,7 @@ import QAPage from "@/pages/QAPage";
 import QuestionsIndex from "@/pages/QuestionsIndex";
 import IndustryGuidePage from "@/pages/IndustryGuidePage";
 import EposPartnersPage from "@/pages/EposPartnersPage";
+import FundingApply from "@/pages/FundingApply";
 
 function ScrollToTop() {
   const [location] = useLocation();
@@ -166,7 +167,7 @@ function Router() {
 
 function QuickCaptureWrapper() {
   const [location] = useLocation();
-  const excludedPages = ["/free-terminal-thank-you", "/thank-you", "/calculate-savings"];
+  const excludedPages = ["/free-terminal-thank-you", "/thank-you", "/calculate-savings", "/funding-apply"];
   
   if (excludedPages.includes(location)) {
     return null;
@@ -175,7 +176,35 @@ function QuickCaptureWrapper() {
   return <QuickCapture />;
 }
 
+function StandalonePage({ children }: { children: React.ReactNode }) {
+  return (
+    <HelmetProvider>
+      <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+          <ScrollToTop />
+          {children}
+          <Toaster />
+        </TooltipProvider>
+      </QueryClientProvider>
+    </HelmetProvider>
+  );
+}
+
 function App() {
+  const [location] = useLocation();
+  
+  const standalonePages = ["/funding-apply"];
+  
+  if (standalonePages.includes(location)) {
+    return (
+      <StandalonePage>
+        <Switch>
+          <Route path="/funding-apply" component={FundingApply} />
+        </Switch>
+      </StandalonePage>
+    );
+  }
+  
   return (
     <HelmetProvider>
       <QueryClientProvider client={queryClient}>
