@@ -81,7 +81,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
         businessType: validatedData.businessType,
         monthlyVolume: validatedData.monthlyVolume,
         message: validatedData.message,
-        source: "Quote Form (Bookings/Business Funding)"
+        source: "website",
+        form_completed: "quote",
+        product: "card machine",
+        lead_action: "Quote request"
       };
       
       const webhookResult = await sendToGHL(ghlData);
@@ -119,7 +122,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
         currentProvider: validatedData.currentProvider || "Not provided",
         monthlyFees: validatedData.monthlyFees || "Not provided",
         industryType: validatedData.industryType || "Not provided",
-        source: "Free Terminal Offer Page",
+        source: "website",
+        form_completed: "Free Terminal Offer",
+        product: "card machine",
+        lead_action: "Free terminal request",
         leadStatus: "Hot Lead - Free Terminal Claim"
       };
       
@@ -158,7 +164,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
         monthlyTurnover: "£50,000 - £100,000",
         currentProvider: "Worldpay",
         estimatedSavings: "£3,847",
-        source: "Savings Calculator - Test"
+        source: "website",
+        form_completed: "Savings Calculator (complete)",
+        product: "card machine",
+        lead_action: "Quote request"
       };
 
       const result = await sendToGHL(testData);
@@ -192,7 +201,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
         businessNeeds: Array.isArray(businessNeeds) ? businessNeeds.join(", ") : (businessNeeds || ""),
         monthlyTurnover: monthlyTurnover || "Not provided yet",
         currentProvider: currentProvider || "Not provided yet",
-        source: "Savings Calculator - Partial (Early Lead Capture)",
+        source: "website",
+        form_completed: "Savings Calculator (partial)",
+        product: "card machine",
+        lead_action: "Quote request",
         leadStatus: "Partial - In Progress"
       };
 
@@ -245,7 +257,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
         monthlyTurnover,
         currentProvider,
         estimatedSavings,
-        source: "Savings Calculator - Complete",
+        source: "website",
+        form_completed: "Savings Calculator (complete)",
+        product: "card machine",
+        lead_action: "Quote request",
         leadStatus: "Complete"
       };
 
@@ -298,7 +313,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
             email: updated.email,
             phone: updated.mobile || "",
             companyName: updated.businessName || "",
-            source: "Quick Interest Registration",
+            source: "website",
+            form_completed: "Quick Interest Form",
+            product: "card machine",
+            lead_action: "Quote request",
             leadStatus: "Complete - Interest Registered"
           };
           
@@ -334,7 +352,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
           email,
           phone: mobile || "",
           companyName: businessName || "",
-          source: "Quick Interest Registration",
+          source: "website",
+          form_completed: "Quick Interest Form",
+          product: "card machine",
+          lead_action: "Quote request",
           leadStatus: "Complete - Interest Registered"
         };
         
@@ -385,7 +406,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
         fundingAmount: validatedData.fundingAmount || "Not provided",
         fundingPurpose: validatedData.fundingPurpose || "Not provided",
         shareholders: validatedData.shareholders || "[]",
-        source: "Business Funding Application Funnel",
+        source: "website",
+        form_completed: "Funding Application",
+        product: "business funding",
+        lead_action: "Application complete",
         leadStatus: "Hot Lead - Funding Application"
       };
       
@@ -419,7 +443,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
         fundingAmount: "£50,000",
         fundingPurpose: "Business Growth",
         shareholders: "[]",
-        source: "TEST - Business Funding Application Funnel",
+        source: "website",
+        form_completed: "Funding Application",
+        product: "business funding",
+        lead_action: "Application complete",
         leadStatus: "TEST - Hot Lead - Funding Application",
         testSubmission: true
       };
