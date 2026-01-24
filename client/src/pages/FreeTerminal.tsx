@@ -14,7 +14,7 @@ import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import { SEO } from "@/components/SEO";
 import { Check, ArrowRight, Sparkles, Shield, TrendingDown, Zap, Clock, DollarSign } from "lucide-react";
-import offerBanner from "@assets/Untitled_-_2025-12-04T163007.261_1764865824511.png";
+import offerBanner from "@assets/1769278817985_1769279050357.png";
 import rocketGoPub from "@assets/rocket go pub_1762112531205.png";
 import rocketGoHero from "@assets/hero image rocket go_1762112582495.png";
 import rocketGoAuthorised from "@assets/rocket go authorised_1762112584527.png";
@@ -38,7 +38,14 @@ type FormData = z.infer<typeof formSchema>;
 export default function FreeTerminal() {
   const [, navigate] = useLocation();
   const [step, setStep] = useState(1);
-  const [timeLeft, setTimeLeft] = useState(Math.floor(5.2 * 60 * 60));
+  const getTimeLeftInCycle = () => {
+    const cycleDurationMs = 4.3 * 24 * 60 * 60 * 1000;
+    const startDate = new Date('2026-01-01T00:00:00Z').getTime();
+    const now = Date.now();
+    const elapsed = (now - startDate) % cycleDurationMs;
+    return Math.floor((cycleDurationMs - elapsed) / 1000);
+  };
+  const [timeLeft, setTimeLeft] = useState(getTimeLeftInCycle());
   const [monthlyFees, setMonthlyFees] = useState(100);
   const { toast } = useToast();
 
@@ -89,15 +96,24 @@ export default function FreeTerminal() {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setTimeLeft((prev) => Math.max(0, prev - 1));
+      setTimeLeft((prev) => {
+        if (prev <= 1) {
+          return getTimeLeftInCycle();
+        }
+        return prev - 1;
+      });
     }, 1000);
     return () => clearInterval(timer);
   }, []);
 
   const formatTime = (seconds: number) => {
-    const hours = Math.floor(seconds / 3600);
+    const days = Math.floor(seconds / 86400);
+    const hours = Math.floor((seconds % 86400) / 3600);
     const minutes = Math.floor((seconds % 3600) / 60);
     const secs = seconds % 60;
+    if (days > 0) {
+      return `${days}d ${hours}h ${minutes}m ${secs}s`;
+    }
     return `${hours}h ${minutes}m ${secs}s`;
   };
 
@@ -156,7 +172,7 @@ export default function FreeTerminal() {
             <div className="space-y-4 lg:space-y-8 relative z-10">
               <div className="inline-block">
                 <span className="bg-primary/10 text-primary border border-primary/30 px-4 py-2 rounded-full text-xs lg:text-sm font-black uppercase tracking-wider animate-pulse">
-                  Limited Time Offer • Ends 14th December
+                  Limited Time Offer • Ends in {formatTime(timeLeft)}
                 </span>
               </div>
 
