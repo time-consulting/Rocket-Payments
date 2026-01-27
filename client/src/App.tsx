@@ -43,6 +43,7 @@ import QuestionsIndex from "@/pages/QuestionsIndex";
 import IndustryGuidePage from "@/pages/IndustryGuidePage";
 import EposPartnersPage from "@/pages/EposPartnersPage";
 import FundingApply from "@/pages/FundingApply";
+import DojoPartnerOffer from "@/pages/DojoPartnerOffer";
 
 function ScrollToTop() {
   const [location] = useLocation();
@@ -167,7 +168,7 @@ function Router() {
 
 function QuickCaptureWrapper() {
   const [location] = useLocation();
-  const excludedPages = ["/free-terminal-thank-you", "/thank-you", "/calculate-savings", "/funding-apply"];
+  const excludedPages = ["/free-terminal-thank-you", "/thank-you", "/calculate-savings", "/funding-apply", "/dojo-partner-offer"];
   
   if (excludedPages.includes(location)) {
     return null;
@@ -193,13 +194,14 @@ function StandalonePage({ children }: { children: React.ReactNode }) {
 function App() {
   const [location] = useLocation();
   
-  const standalonePages = ["/funding-apply"];
+  const standalonePages = ["/funding-apply", "/dojo-partner-offer"];
   
   if (standalonePages.includes(location)) {
     return (
       <StandalonePage>
         <Switch>
           <Route path="/funding-apply" component={FundingApply} />
+          <Route path="/dojo-partner-offer" component={DojoPartnerOffer} />
         </Switch>
       </StandalonePage>
     );
