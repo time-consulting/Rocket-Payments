@@ -457,7 +457,7 @@ export default function DojoPartnerOffer() {
                     <div className="text-xs opacity-80">Terminal Cost</div>
                   </div>
                   <div className="bg-white/10 rounded-xl p-4">
-                    <div className="text-2xl font-black text-[#00d4aa]">0.99%</div>
+                    <div className="text-2xl font-black text-[#00d4aa]">0.29%</div>
                     <div className="text-xs opacity-80">From Per Transaction</div>
                   </div>
                   <div className="bg-white/10 rounded-xl p-4">
@@ -563,7 +563,7 @@ export default function DojoPartnerOffer() {
             </div>
             <p>
               Exclusive partnership offer from Rocket Payments. Terminal subject to credit approval. 
-              Rates from 0.99% depending on business type and volume.
+              Rates from 0.29% depending on business type and volume.
             </p>
             <p className="mt-2">
               © {new Date().getFullYear()} Rocket Payments. All rights reserved.
