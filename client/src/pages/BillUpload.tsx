@@ -12,16 +12,17 @@ import { useToast } from "@/hooks/use-toast";
 import { SEO } from "@/components/SEO";
 import { 
   Check, 
-  ArrowRight, 
   Upload, 
   Shield, 
   TrendingDown, 
   Clock, 
-  FileText, 
-  Zap, 
   PoundSterling,
   AlertCircle,
-  Sparkles
+  Sparkles,
+  Eye,
+  FileSearch,
+  BadgePercent,
+  ArrowRight
 } from "lucide-react";
 
 const formSchema = z.object({
@@ -30,7 +31,6 @@ const formSchema = z.object({
   mobile: z.string().min(10, "Valid mobile number required"),
   email: z.string().email("Valid email required"),
   industryType: z.string().optional(),
-  currentProvider: z.string().optional(),
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -52,7 +52,6 @@ export default function BillUpload() {
       mobile: "",
       email: "",
       industryType: "",
-      currentProvider: "",
     },
   });
 
@@ -217,299 +216,310 @@ export default function BillUpload() {
           </div>
         </div>
 
-        <div className="pt-16 pb-8 px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-8 pt-8">
-              <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
-                <Sparkles className="w-4 h-4 text-amber-300" />
-                <span className="text-white font-medium text-sm">Average savings: £4,200/year</span>
-              </div>
-              
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-4">
-                Stop Overpaying for{" "}
-                <span className="text-amber-300">Card Processing</span>
-              </h1>
-              
-              <p className="text-xl text-white/80 max-w-2xl mx-auto">
-                Upload your bill. Get your exact savings in 2 hours. It's that simple.
-              </p>
-            </div>
+        <div className="pt-16 min-h-screen flex items-center">
+          <div className="w-full px-4 py-8">
+            <div className="max-w-6xl mx-auto">
+              <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+                <div className="text-white space-y-6">
+                  <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2">
+                    <Sparkles className="w-4 h-4 text-amber-300" />
+                    <span className="font-medium text-sm">2,500+ UK businesses already saving</span>
+                  </div>
+                  
+                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight">
+                    Are You Overpaying for{" "}
+                    <span className="text-amber-300">Card Processing?</span>
+                  </h1>
+                  
+                  <p className="text-xl text-white/90">
+                    Most businesses are paying <span className="font-bold text-amber-300">40-60% more</span> than they should. Upload your highest bill and we'll show you exactly where you're losing money.
+                  </p>
 
-            <Card className="p-6 md:p-8 bg-white shadow-2xl max-w-xl mx-auto">
-              {step === 1 ? (
-                <div className="space-y-6">
-                  <div className="text-center">
-                    <h2 className="text-2xl md:text-3xl font-black mb-2">
-                      Upload Your Highest Bill
-                    </h2>
-                    <p className="text-muted-foreground">
-                      The higher the bill, the better rates we can get you
-                    </p>
+                  <div className="space-y-4 pt-4">
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0">
+                        <Eye className="w-6 h-6 text-amber-300" />
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-lg">We Expose Hidden Fees</h3>
+                        <p className="text-white/70">Your provider hides charges in complex statements. We find every single one.</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0">
+                        <FileSearch className="w-6 h-6 text-amber-300" />
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-lg">Line-by-Line Comparison</h3>
+                        <p className="text-white/70">We match your exact transactions so you see real savings, not estimates.</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0">
+                        <BadgePercent className="w-6 h-6 text-amber-300" />
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-lg">Higher Bill = Better Rates</h3>
+                        <p className="text-white/70">The more you process, the better rates we can negotiate. Upload your biggest month.</p>
+                      </div>
+                    </div>
                   </div>
 
-                  <div 
-                    className={`relative border-3 border-dashed rounded-2xl p-10 text-center cursor-pointer transition-all ${
-                      uploadedFile 
-                        ? "border-green-500 bg-green-50" 
-                        : "border-primary/50 hover:border-primary hover:bg-primary/5"
-                    }`}
-                    onClick={() => !isUploading && fileInputRef.current?.click()}
-                    style={{ borderWidth: '3px' }}
-                  >
-                    <input
-                      ref={fileInputRef}
-                      type="file"
-                      accept=".pdf,.jpg,.jpeg,.png"
-                      onChange={handleFileChange}
-                      className="hidden"
-                      data-testid="input-file-upload"
-                    />
-                    
-                    {isUploading ? (
-                      <div className="py-6">
-                        <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-                        <p className="font-bold text-lg">Uploading your bill...</p>
-                        <p className="text-muted-foreground text-sm mt-1">This won't take long</p>
-                      </div>
-                    ) : uploadedFile ? (
-                      <div className="py-4">
-                        <div className="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4">
-                          <Check className="w-10 h-10 text-green-600" />
+                  <div className="flex items-center gap-6 pt-4">
+                    <div className="text-center">
+                      <div className="text-3xl font-black text-amber-300">£4,200</div>
+                      <div className="text-white/60 text-sm">Avg. yearly savings</div>
+                    </div>
+                    <div className="w-px h-12 bg-white/20" />
+                    <div className="text-center">
+                      <div className="text-3xl font-black text-amber-300">2 hrs</div>
+                      <div className="text-white/60 text-sm">Quote turnaround</div>
+                    </div>
+                    <div className="w-px h-12 bg-white/20" />
+                    <div className="text-center">
+                      <div className="text-3xl font-black text-amber-300">Free</div>
+                      <div className="text-white/60 text-sm">No obligation</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <Card className="p-6 md:p-8 bg-white shadow-2xl">
+                    {step === 1 ? (
+                      <div className="space-y-5">
+                        <div className="text-center">
+                          <h2 className="text-2xl md:text-3xl font-black mb-2">
+                            Upload Your Highest Bill
+                          </h2>
+                          <p className="text-muted-foreground">
+                            Just your merchant statement - takes 10 seconds
+                          </p>
                         </div>
-                        <p className="font-bold text-lg text-green-700 mb-1">{uploadedFile.name}</p>
-                        <p className="text-green-600">Bill uploaded successfully!</p>
+
+                        <div 
+                          className={`relative border-2 border-dashed rounded-2xl p-8 text-center cursor-pointer transition-all ${
+                            uploadedFile 
+                              ? "border-green-500 bg-green-50" 
+                              : "border-primary/50 hover:border-primary hover:bg-primary/5"
+                          }`}
+                          onClick={() => !isUploading && fileInputRef.current?.click()}
+                        >
+                          <input
+                            ref={fileInputRef}
+                            type="file"
+                            accept=".pdf,.jpg,.jpeg,.png"
+                            onChange={handleFileChange}
+                            className="hidden"
+                            data-testid="input-file-upload"
+                          />
+                          
+                          {isUploading ? (
+                            <div className="py-4">
+                              <div className="w-14 h-14 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+                              <p className="font-bold text-lg">Uploading...</p>
+                            </div>
+                          ) : uploadedFile ? (
+                            <div className="py-2">
+                              <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-3">
+                                <Check className="w-8 h-8 text-green-600" />
+                              </div>
+                              <p className="font-bold text-green-700">{uploadedFile.name}</p>
+                              <p className="text-green-600 text-sm">Uploaded!</p>
+                            </div>
+                          ) : (
+                            <div className="py-2">
+                              <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                                <Upload className="w-8 h-8 text-primary" />
+                              </div>
+                              <Button size="lg" className="h-14 px-8 text-lg font-bold mb-3">
+                                <Upload className="mr-2 h-5 w-5" />
+                                Upload Your Bill
+                              </Button>
+                              <p className="text-muted-foreground text-sm">
+                                PDF, JPG or PNG (max 10MB)
+                              </p>
+                            </div>
+                          )}
+                        </div>
+
+                        <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
+                          <div className="flex gap-3">
+                            <AlertCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                            <div>
+                              <p className="font-bold text-amber-800 text-sm">
+                                Why your highest bill?
+                              </p>
+                              <p className="text-amber-700 text-sm mt-1">
+                                More volume = more negotiating power = better rates for you. We want to get you the best deal possible.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center justify-center gap-4 text-xs text-muted-foreground pt-2">
+                          <span className="flex items-center gap-1">
+                            <Shield className="w-3 h-3" /> 256-bit Encrypted
+                          </span>
+                          <span className="flex items-center gap-1">
+                            <TrendingDown className="w-3 h-3" /> No Obligation
+                          </span>
+                        </div>
                       </div>
                     ) : (
-                      <div className="py-4">
-                        <div className="w-20 h-20 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                          <Upload className="w-10 h-10 text-primary" />
+                      <div className="space-y-5">
+                        <div className="text-center">
+                          <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-3">
+                            <Check className="w-6 h-6 text-green-600" />
+                          </div>
+                          <h2 className="text-2xl font-black mb-1">
+                            Bill Received!
+                          </h2>
+                          <p className="text-muted-foreground text-sm">
+                            Where should we send your savings quote?
+                          </p>
                         </div>
-                        <p className="font-black text-xl mb-2">
-                          Click to Upload Your Bill
-                        </p>
-                        <p className="text-muted-foreground mb-4">
-                          PDF, JPG or PNG (max 10MB)
-                        </p>
-                        <Button size="lg" className="h-14 px-8 text-lg font-bold">
-                          <Upload className="mr-2 h-5 w-5" />
-                          Choose File
-                        </Button>
+
+                        <Form {...form}>
+                          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                            <FormField
+                              control={form.control}
+                              name="businessName"
+                              render={({ field }) => (
+                                <FormItem>
+                                  <FormLabel className="font-semibold">Business Name *</FormLabel>
+                                  <FormControl>
+                                    <Input
+                                      placeholder="Your Business Name"
+                                      className="h-12"
+                                      data-testid="input-business-name"
+                                      {...field}
+                                    />
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>
+                              )}
+                            />
+
+                            <FormField
+                              control={form.control}
+                              name="contactName"
+                              render={({ field }) => (
+                                <FormItem>
+                                  <FormLabel className="font-semibold">Your Name *</FormLabel>
+                                  <FormControl>
+                                    <Input
+                                      placeholder="Full Name"
+                                      className="h-12"
+                                      data-testid="input-contact-name"
+                                      {...field}
+                                    />
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>
+                              )}
+                            />
+
+                            <div className="grid grid-cols-2 gap-4">
+                              <FormField
+                                control={form.control}
+                                name="mobile"
+                                render={({ field }) => (
+                                  <FormItem>
+                                    <FormLabel className="font-semibold">Mobile *</FormLabel>
+                                    <FormControl>
+                                      <Input
+                                        placeholder="07XXX XXXXXX"
+                                        type="tel"
+                                        className="h-12"
+                                        data-testid="input-mobile"
+                                        {...field}
+                                      />
+                                    </FormControl>
+                                    <FormMessage />
+                                  </FormItem>
+                                )}
+                              />
+
+                              <FormField
+                                control={form.control}
+                                name="email"
+                                render={({ field }) => (
+                                  <FormItem>
+                                    <FormLabel className="font-semibold">Email *</FormLabel>
+                                    <FormControl>
+                                      <Input
+                                        type="email"
+                                        placeholder="you@business.com"
+                                        className="h-12"
+                                        data-testid="input-email"
+                                        {...field}
+                                      />
+                                    </FormControl>
+                                    <FormMessage />
+                                  </FormItem>
+                                )}
+                              />
+                            </div>
+
+                            <FormField
+                              control={form.control}
+                              name="industryType"
+                              render={({ field }) => (
+                                <FormItem>
+                                  <FormLabel className="font-semibold">Industry (Optional)</FormLabel>
+                                  <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                    <FormControl>
+                                      <SelectTrigger className="h-12" data-testid="select-industry">
+                                        <SelectValue placeholder="Select your industry" />
+                                      </SelectTrigger>
+                                    </FormControl>
+                                    <SelectContent>
+                                      <SelectItem value="restaurant">Restaurant / Cafe</SelectItem>
+                                      <SelectItem value="pub-bar">Pub / Bar</SelectItem>
+                                      <SelectItem value="hotel">Hotel / B&B</SelectItem>
+                                      <SelectItem value="retail">Retail</SelectItem>
+                                      <SelectItem value="salon">Salon / Spa</SelectItem>
+                                      <SelectItem value="healthcare">Healthcare / Dental</SelectItem>
+                                      <SelectItem value="trades">Trades / Services</SelectItem>
+                                      <SelectItem value="mobile">Mobile / Market Trader</SelectItem>
+                                      <SelectItem value="other">Other</SelectItem>
+                                    </SelectContent>
+                                  </Select>
+                                  <FormMessage />
+                                </FormItem>
+                              )}
+                            />
+
+                            <Button
+                              type="submit"
+                              size="lg"
+                              className="w-full h-14 text-lg font-bold"
+                              disabled={mutation.isPending}
+                              data-testid="button-submit"
+                            >
+                              {mutation.isPending ? (
+                                "Submitting..."
+                              ) : (
+                                <>
+                                  Get My Savings Quote
+                                  <ArrowRight className="ml-2 h-5 w-5" />
+                                </>
+                              )}
+                            </Button>
+
+                            <p className="text-center text-xs text-muted-foreground">
+                              <Shield className="w-3 h-3 inline mr-1" />
+                              Your details are secure & never shared
+                            </p>
+                          </form>
+                        </Form>
                       </div>
                     )}
-                  </div>
-
-                  <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
-                    <div className="flex gap-3">
-                      <AlertCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
-                      <div>
-                        <p className="font-bold text-amber-800 text-sm">
-                          Pro tip: Upload your highest month
-                        </p>
-                        <p className="text-amber-700 text-sm mt-1">
-                          Higher processing volume = better rates we can negotiate for you. Find your busiest month from the last 6 months.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-center gap-4 text-xs text-muted-foreground">
-                    <span className="flex items-center gap-1">
-                      <Shield className="w-3 h-3" /> 100% Secure
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <Clock className="w-3 h-3" /> 2hr Response
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <TrendingDown className="w-3 h-3" /> No Obligation
-                    </span>
-                  </div>
+                  </Card>
                 </div>
-              ) : (
-                <div className="space-y-5">
-                  <div className="text-center">
-                    <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-3">
-                      <Check className="w-6 h-6 text-green-600" />
-                    </div>
-                    <h2 className="text-2xl font-black mb-1">
-                      Bill Uploaded!
-                    </h2>
-                    <p className="text-muted-foreground text-sm">
-                      Now tell us where to send your savings quote
-                    </p>
-                  </div>
-
-                  <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-                      <FormField
-                        control={form.control}
-                        name="businessName"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="font-semibold">Business Name *</FormLabel>
-                            <FormControl>
-                              <Input
-                                placeholder="Your Business Name"
-                                className="h-12"
-                                data-testid="input-business-name"
-                                {...field}
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-
-                      <FormField
-                        control={form.control}
-                        name="contactName"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="font-semibold">Your Name *</FormLabel>
-                            <FormControl>
-                              <Input
-                                placeholder="Full Name"
-                                className="h-12"
-                                data-testid="input-contact-name"
-                                {...field}
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-
-                      <div className="grid grid-cols-2 gap-4">
-                        <FormField
-                          control={form.control}
-                          name="mobile"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel className="font-semibold">Mobile *</FormLabel>
-                              <FormControl>
-                                <Input
-                                  placeholder="07XXX XXXXXX"
-                                  type="tel"
-                                  className="h-12"
-                                  data-testid="input-mobile"
-                                  {...field}
-                                />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-
-                        <FormField
-                          control={form.control}
-                          name="email"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel className="font-semibold">Email *</FormLabel>
-                              <FormControl>
-                                <Input
-                                  type="email"
-                                  placeholder="you@business.com"
-                                  className="h-12"
-                                  data-testid="input-email"
-                                  {...field}
-                                />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-                      </div>
-
-                      <FormField
-                        control={form.control}
-                        name="industryType"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="font-semibold">Industry (Optional)</FormLabel>
-                            <Select onValueChange={field.onChange} defaultValue={field.value}>
-                              <FormControl>
-                                <SelectTrigger className="h-12" data-testid="select-industry">
-                                  <SelectValue placeholder="Select your industry" />
-                                </SelectTrigger>
-                              </FormControl>
-                              <SelectContent>
-                                <SelectItem value="restaurant">Restaurant / Cafe</SelectItem>
-                                <SelectItem value="pub-bar">Pub / Bar</SelectItem>
-                                <SelectItem value="hotel">Hotel / B&B</SelectItem>
-                                <SelectItem value="retail">Retail</SelectItem>
-                                <SelectItem value="salon">Salon / Spa</SelectItem>
-                                <SelectItem value="healthcare">Healthcare / Dental</SelectItem>
-                                <SelectItem value="trades">Trades / Services</SelectItem>
-                                <SelectItem value="mobile">Mobile / Market Trader</SelectItem>
-                                <SelectItem value="other">Other</SelectItem>
-                              </SelectContent>
-                            </Select>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-
-                      <Button
-                        type="submit"
-                        size="lg"
-                        className="w-full h-14 text-lg font-bold"
-                        disabled={mutation.isPending}
-                        data-testid="button-submit"
-                      >
-                        {mutation.isPending ? (
-                          "Submitting..."
-                        ) : (
-                          <>
-                            <PoundSterling className="mr-2 h-5 w-5" />
-                            Get My Savings Quote
-                          </>
-                        )}
-                      </Button>
-
-                      <p className="text-center text-xs text-muted-foreground">
-                        <Shield className="w-3 h-3 inline mr-1" />
-                        Your details are secure & never shared with third parties
-                      </p>
-                    </form>
-                  </Form>
-                </div>
-              )}
-            </Card>
-
-            <div className="mt-10 grid md:grid-cols-3 gap-4 max-w-3xl mx-auto">
-              {[
-                {
-                  icon: Upload,
-                  title: "1. Upload Bill",
-                  desc: "Takes 10 seconds"
-                },
-                {
-                  icon: Zap,
-                  title: "2. We Analyse",
-                  desc: "Find hidden fees"
-                },
-                {
-                  icon: PoundSterling,
-                  title: "3. Get Savings",
-                  desc: "Exact quote in 2hrs"
-                }
-              ].map((item, i) => (
-                <div key={i} className="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-xl p-4">
-                  <div className="w-10 h-10 rounded-lg bg-white/20 flex items-center justify-center flex-shrink-0">
-                    <item.icon className="w-5 h-5 text-white" />
-                  </div>
-                  <div className="text-white">
-                    <div className="font-bold text-sm">{item.title}</div>
-                    <div className="text-white/70 text-xs">{item.desc}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-8 text-center">
-              <p className="text-white/60 text-sm">
-                Trusted by 2,500+ UK businesses | Average savings £4,200/year
-              </p>
+              </div>
             </div>
           </div>
         </div>
