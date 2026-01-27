@@ -89,6 +89,7 @@ function Router() {
       <Route path="/guides/:slug" component={GuidePage} />
       <Route path="/questions" component={QuestionsIndex} />
       <Route path="/questions/:slug" component={QAPage} />
+      <Route path="/upload-bill" component={BillUpload} />
       <Route path="/:slug">{(params) => {
         const locationSlugs = ["card-machines-maidstone", "card-machines-canterbury", "card-machines-tunbridge-wells", "card-machines-ashford", "card-machines-dover", "card-machines-folkestone", "card-machines-margate", "card-machines-ramsgate", "card-machines-gravesend", "card-machines-dartford", "card-machines-sevenoaks", "card-machines-tonbridge", "card-machines-brighton", "card-machines-eastbourne", "card-machines-hastings", "card-machines-lewes", "card-machines-bexhill", "card-machines-crowborough"];
         if (locationSlugs.includes(params.slug || "")) {
@@ -162,7 +163,6 @@ function Router() {
           ]}
         />
       </Route>
-      <Route path="/upload-bill" component={BillUpload} />
       <Route component={NotFound} />
     </Switch>
   );
