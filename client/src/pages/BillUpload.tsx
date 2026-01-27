@@ -212,7 +212,7 @@ export default function BillUpload() {
         <div className="fixed top-0 left-0 right-0 bg-amber-500 text-white py-2.5 px-4 text-center z-50">
           <div className="flex items-center justify-center gap-2">
             <Clock className="w-4 h-4" />
-            <span className="font-bold text-sm">LIMITED TIME: Free bill analysis - usually £149</span>
+            <span className="font-bold text-sm">LIMITED TIME OFFER: Free Terminal When You Switch - Worth £299</span>
           </div>
         </div>
 
