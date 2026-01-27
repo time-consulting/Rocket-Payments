@@ -37,8 +37,24 @@ export default function DojoPartnerOffer() {
     return Math.floor((cycleDurationMs - elapsed) / 1000);
   };
   const [timeLeft, setTimeLeft] = useState(getTimeLeftInCycle());
-  const [spotsLeft] = useState(Math.floor(Math.random() * 5) + 3);
+  const [spotsLeft, setSpotsLeft] = useState(5);
   const { toast } = useToast();
+
+  // Spots countdown: 5 -> 4 -> 3 within first 45 seconds
+  useEffect(() => {
+    const timer1 = setTimeout(() => {
+      setSpotsLeft(4);
+    }, 15000); // 15 seconds
+
+    const timer2 = setTimeout(() => {
+      setSpotsLeft(3);
+    }, 30000); // 30 seconds
+
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+    };
+  }, []);
 
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
