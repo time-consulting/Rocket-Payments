@@ -44,6 +44,7 @@ import IndustryGuidePage from "@/pages/IndustryGuidePage";
 import EposPartnersPage from "@/pages/EposPartnersPage";
 import FundingApply from "@/pages/FundingApply";
 import DojoPartnerOffer from "@/pages/DojoPartnerOffer";
+import BillUpload from "@/pages/BillUpload";
 
 function ScrollToTop() {
   const [location] = useLocation();
@@ -161,6 +162,7 @@ function Router() {
           ]}
         />
       </Route>
+      <Route path="/upload-bill" component={BillUpload} />
       <Route component={NotFound} />
     </Switch>
   );
@@ -168,7 +170,7 @@ function Router() {
 
 function QuickCaptureWrapper() {
   const [location] = useLocation();
-  const excludedPages = ["/free-terminal-thank-you", "/thank-you", "/calculate-savings", "/funding-apply", "/dojo-partner-offer"];
+  const excludedPages = ["/free-terminal-thank-you", "/thank-you", "/calculate-savings", "/funding-apply", "/dojo-partner-offer", "/upload-bill"];
   
   if (excludedPages.includes(location)) {
     return null;

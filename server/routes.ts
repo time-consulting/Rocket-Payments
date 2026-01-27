@@ -3,6 +3,7 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertQuoteRequestSchema, insertFreeTerminalLeadSchema, insertInterestRegistrationSchema, insertFundingApplicationSchema } from "@shared/schema";
 import { z } from "zod";
+import { registerObjectStorageRoutes } from "./replit_integrations/object_storage";
 
 // Helper function to send data to Go High Level webhook
 async function sendToGHL(data: any) {
@@ -65,6 +66,9 @@ async function sendFundingToGHL(data: any) {
 }
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // Register object storage routes for file uploads
+  registerObjectStorageRoutes(app);
+
   // Quote request endpoint (for Bookings and Business Funding pages)
   app.post("/api/quote", async (req, res) => {
     try {
@@ -503,6 +507,58 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(applications);
     } catch (error: any) {
       res.status(500).json({ error: error.message || "Internal server error" });
+    }
+  });
+
+  // Bill comparison lead endpoint
+  app.post("/api/bill-comparison-lead", async (req, res) => {
+    try {
+      const { 
+        businessName, 
+        contactName, 
+        mobile, 
+        email, 
+        industryType, 
+        currentProvider,
+        uploadedFilePath,
+        uploadedFileName
+      } = req.body;
+
+      if (!businessName || !contactName || !mobile || !email) {
+        return res.status(400).json({ error: "Missing required fields" });
+      }
+
+      // Send to GHL webhook with bill comparison identifiers
+      const nameParts = (contactName || "").trim().split(" ");
+      const firstName = nameParts[0] || "";
+      const lastName = nameParts.slice(1).join(" ") || "";
+
+      const ghlData = {
+        firstName,
+        lastName,
+        email,
+        phone: mobile,
+        companyName: businessName,
+        industryType: industryType || "Not provided",
+        currentProvider: currentProvider || "Not provided",
+        uploadedFileName: uploadedFileName || "No file uploaded",
+        uploadedFilePath: uploadedFilePath || "",
+        source: "website",
+        form_completed: "Bill Comparison Upload",
+        product: "card machine",
+        lead_action: "Bill comparison request",
+        leadStatus: "Hot Lead - Bill Uploaded"
+      };
+      
+      const webhookResult = await sendToGHL(ghlData);
+      
+      res.json({
+        success: true,
+        webhookSent: webhookResult.success
+      });
+    } catch (error: any) {
+      console.error("Bill comparison lead error:", error);
+      res.status(400).json({ error: error.message || "Invalid request data" });
     }
   });
 
