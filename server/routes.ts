@@ -533,6 +533,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const firstName = nameParts[0] || "";
       const lastName = nameParts.slice(1).join(" ") || "";
 
+      // Build the full download URL for the uploaded file
+      const appUrl = process.env.REPLIT_DEV_DOMAIN 
+        ? `https://${process.env.REPLIT_DEV_DOMAIN}`
+        : process.env.REPLIT_DOMAINS?.split(',')[0] 
+          ? `https://${process.env.REPLIT_DOMAINS.split(',')[0]}`
+          : "https://rocketpayments.co.uk";
+      
+      const fileDownloadUrl = uploadedFilePath 
+        ? `${appUrl}${uploadedFilePath}`
+        : "";
+
       const ghlData = {
         firstName,
         lastName,
@@ -543,6 +554,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         currentProvider: currentProvider || "Not provided",
         uploadedFileName: uploadedFileName || "No file uploaded",
         uploadedFilePath: uploadedFilePath || "",
+        billDownloadUrl: fileDownloadUrl,
         source: "website",
         form_completed: "Bill Comparison Upload",
         product: "card machine",
