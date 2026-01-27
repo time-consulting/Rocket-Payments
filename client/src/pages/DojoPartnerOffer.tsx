@@ -193,7 +193,7 @@ export default function DojoPartnerOffer() {
                   {[
                     "FREE Dojo card machine (worth £179)",
                     "No monthly terminal fees",
-                    "Rates from just 0.99%",
+                    "Rates from just 0.29%",
                     "Next-day delivery available",
                     "24/7 UK support included",
                   ].map((benefit, i) => (
