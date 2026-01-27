@@ -3,8 +3,9 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
-import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card } from "@/components/ui/card";
 import { useMutation } from "@tanstack/react-query";
 import { useToast } from "@/hooks/use-toast";
@@ -17,12 +18,17 @@ import rocketLogo from "@assets/rocket_payments_PNG_1769521713004.png";
 const formSchema = z.object({
   businessName: z.string().min(2, "Business name required"),
   mobile: z.string().min(10, "Valid mobile number required"),
+  email: z.string().email("Valid email required").optional().or(z.literal("")),
+  currentProvider: z.string().optional(),
+  monthlyFees: z.string().optional(),
+  industryType: z.string().optional(),
 });
 
 type FormData = z.infer<typeof formSchema>;
 
 export default function DojoPartnerOffer() {
   const [submitted, setSubmitted] = useState(false);
+  const [step, setStep] = useState(1);
   const getTimeLeftInCycle = () => {
     const cycleDurationMs = 2.5 * 24 * 60 * 60 * 1000;
     const startDate = new Date('2026-01-01T00:00:00Z').getTime();
@@ -39,19 +45,19 @@ export default function DojoPartnerOffer() {
     defaultValues: {
       businessName: "",
       mobile: "",
+      email: "",
+      currentProvider: "",
+      monthlyFees: "",
+      industryType: "",
     },
   });
 
   const mutation = useMutation({
     mutationFn: async (data: FormData) => {
-      const response = await fetch("/api/free-terminal-lead", {
+      const response = await fetch("/api/dojo-partner-lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...data,
-          currentProvider: "Dojo Partner Offer",
-          industryType: "Dojo Partnership Funnel",
-        }),
+        body: JSON.stringify(data),
       });
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
@@ -97,7 +103,19 @@ export default function DojoPartnerOffer() {
   const time = formatTime(timeLeft);
 
   const onSubmit = (data: FormData) => {
-    mutation.mutate(data);
+    if (step < 3) {
+      setStep(step + 1);
+    } else {
+      const cleanedData = {
+        businessName: data.businessName,
+        mobile: data.mobile,
+        email: data.email || undefined,
+        currentProvider: data.currentProvider || undefined,
+        monthlyFees: data.monthlyFees || undefined,
+        industryType: data.industryType || undefined,
+      };
+      mutation.mutate(cleanedData as FormData);
+    }
   };
 
   if (submitted) {
@@ -154,7 +172,7 @@ export default function DojoPartnerOffer() {
               <img src={rocketLogo} alt="Rocket Payments" className="h-10 md:h-12" />
             </div>
 
-            <div className="grid lg:grid-cols-2 gap-8 items-center">
+            <div className="grid lg:grid-cols-2 gap-8 items-start">
               <div className="space-y-6 text-white">
                 <div className="inline-block">
                   <span className="bg-red-500 text-white px-4 py-2 rounded-full text-sm font-black uppercase tracking-wider animate-pulse">
@@ -212,61 +230,200 @@ export default function DojoPartnerOffer() {
                     </p>
                   </div>
 
+                  <div className="flex justify-between mb-6">
+                    {[1, 2, 3].map((s) => (
+                      <div
+                        key={s}
+                        className={`flex-1 h-2 rounded-full mx-1 transition-all ${
+                          s <= step ? "bg-[#00d4aa]" : "bg-gray-200"
+                        }`}
+                      />
+                    ))}
+                  </div>
+
                   <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-                      <FormField
-                        control={form.control}
-                        name="businessName"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormControl>
-                              <Input
-                                placeholder="Your Business Name"
-                                className="h-14 text-lg border-2 focus:border-[#00d4aa]"
-                                data-testid="input-business-name"
-                                {...field}
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
+                      {step === 1 && (
+                        <div className="space-y-4 animate-in fade-in slide-in-from-right duration-300">
+                          <h3 className="text-lg font-black text-[#004d40]">Step 1: Your Details</h3>
+                          <FormField
+                            control={form.control}
+                            name="businessName"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel className="font-bold">Business Name *</FormLabel>
+                                <FormControl>
+                                  <Input
+                                    placeholder="Your Business Name"
+                                    className="h-14 text-lg border-2 focus:border-[#00d4aa]"
+                                    data-testid="input-business-name"
+                                    {...field}
+                                  />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
 
-                      <FormField
-                        control={form.control}
-                        name="mobile"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormControl>
-                              <Input
-                                placeholder="Your Mobile Number"
-                                type="tel"
-                                className="h-14 text-lg border-2 focus:border-[#00d4aa]"
-                                data-testid="input-mobile"
-                                {...field}
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
+                          <FormField
+                            control={form.control}
+                            name="mobile"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel className="font-bold">Mobile Number *</FormLabel>
+                                <FormControl>
+                                  <Input
+                                    placeholder="07XXX XXXXXX"
+                                    type="tel"
+                                    className="h-14 text-lg border-2 focus:border-[#00d4aa]"
+                                    data-testid="input-mobile"
+                                    {...field}
+                                  />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                        </div>
+                      )}
 
-                      <Button
-                        type="submit"
-                        size="lg"
-                        className="w-full h-16 text-xl font-black bg-[#00d4aa] hover:bg-[#00b894] text-[#004d40] shadow-xl"
-                        disabled={mutation.isPending}
-                        data-testid="button-claim-offer"
-                      >
-                        {mutation.isPending ? (
-                          "Securing Your Spot..."
-                        ) : (
-                          <>
-                            <Phone className="mr-2 h-6 w-6" />
-                            Call Me Back Now
-                          </>
+                      {step === 2 && (
+                        <div className="space-y-4 animate-in fade-in slide-in-from-right duration-300">
+                          <h3 className="text-lg font-black text-[#004d40]">Step 2: Current Provider</h3>
+                          <FormField
+                            control={form.control}
+                            name="currentProvider"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel className="font-bold">Who's Your Current Provider?</FormLabel>
+                                <FormControl>
+                                  <Input
+                                    {...field}
+                                    value={field.value || ""}
+                                    placeholder="e.g., Worldpay, SumUp, Zettle"
+                                    className="h-14 text-lg border-2 focus:border-[#00d4aa]"
+                                    data-testid="input-provider"
+                                  />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+
+                          <FormField
+                            control={form.control}
+                            name="monthlyFees"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel className="font-bold">Approximate Monthly Fees</FormLabel>
+                                <Select onValueChange={field.onChange} defaultValue={field.value || undefined}>
+                                  <FormControl>
+                                    <SelectTrigger className="h-14 text-lg border-2" data-testid="select-monthly-fees">
+                                      <SelectValue placeholder="Select range" />
+                                    </SelectTrigger>
+                                  </FormControl>
+                                  <SelectContent>
+                                    <SelectItem value="under-25">Under £25</SelectItem>
+                                    <SelectItem value="25-50">£25 - £50</SelectItem>
+                                    <SelectItem value="50-100">£50 - £100</SelectItem>
+                                    <SelectItem value="over-100">Over £100</SelectItem>
+                                    <SelectItem value="not-sure">Not sure</SelectItem>
+                                  </SelectContent>
+                                </Select>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                        </div>
+                      )}
+
+                      {step === 3 && (
+                        <div className="space-y-4 animate-in fade-in slide-in-from-right duration-300">
+                          <h3 className="text-lg font-black text-[#004d40]">Step 3: Final Details</h3>
+                          <FormField
+                            control={form.control}
+                            name="email"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel className="font-bold">Email Address</FormLabel>
+                                <FormControl>
+                                  <Input
+                                    {...field}
+                                    value={field.value || ""}
+                                    type="email"
+                                    placeholder="your@email.com"
+                                    className="h-14 text-lg border-2 focus:border-[#00d4aa]"
+                                    data-testid="input-email"
+                                  />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+
+                          <FormField
+                            control={form.control}
+                            name="industryType"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel className="font-bold">Industry Type</FormLabel>
+                                <Select onValueChange={field.onChange} defaultValue={field.value || undefined}>
+                                  <FormControl>
+                                    <SelectTrigger className="h-14 text-lg border-2" data-testid="select-industry">
+                                      <SelectValue placeholder="Select your industry" />
+                                    </SelectTrigger>
+                                  </FormControl>
+                                  <SelectContent>
+                                    <SelectItem value="restaurant">Restaurant / Café</SelectItem>
+                                    <SelectItem value="retail">Retail</SelectItem>
+                                    <SelectItem value="healthcare">Healthcare / Dental</SelectItem>
+                                    <SelectItem value="mobile">Mobile / Market Trader</SelectItem>
+                                    <SelectItem value="services">Professional Services</SelectItem>
+                                    <SelectItem value="other">Other</SelectItem>
+                                  </SelectContent>
+                                </Select>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                        </div>
+                      )}
+
+                      <div className="flex gap-3 pt-2">
+                        {step > 1 && (
+                          <Button
+                            type="button"
+                            variant="outline"
+                            size="lg"
+                            onClick={() => setStep(step - 1)}
+                            className="flex-1 h-14"
+                            data-testid="button-back"
+                          >
+                            Back
+                          </Button>
                         )}
-                      </Button>
+                        <Button
+                          type="submit"
+                          size="lg"
+                          className={`${step === 1 ? 'w-full' : 'flex-1'} h-16 text-xl font-black bg-[#00d4aa] hover:bg-[#00b894] text-[#004d40] shadow-xl`}
+                          disabled={mutation.isPending}
+                          data-testid="button-claim-offer"
+                        >
+                          {mutation.isPending ? (
+                            "Securing Your Spot..."
+                          ) : step === 3 ? (
+                            <>
+                              <Phone className="mr-2 h-6 w-6" />
+                              Call Me Back Now
+                            </>
+                          ) : (
+                            <>
+                              Continue
+                              <ArrowRight className="ml-2 h-5 w-5" />
+                            </>
+                          )}
+                        </Button>
+                      </div>
 
                       <p className="text-center text-sm text-muted-foreground">
                         <Shield className="w-4 h-4 inline mr-1" />

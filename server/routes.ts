@@ -150,6 +150,38 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Dojo Partner Offer lead endpoint
+  app.post("/api/dojo-partner-lead", async (req, res) => {
+    try {
+      const validatedData = insertFreeTerminalLeadSchema.parse(req.body);
+      const lead = await storage.createFreeTerminalLead(validatedData);
+      
+      // Send to GHL webhook with Dojo-specific identifiers
+      const ghlData = {
+        companyName: validatedData.businessName,
+        phone: validatedData.mobile,
+        email: validatedData.email || "",
+        currentProvider: validatedData.currentProvider || "Not provided",
+        monthlyFees: validatedData.monthlyFees || "Not provided",
+        industryType: validatedData.industryType || "Not provided",
+        source: "website",
+        form_completed: "Dojo Partner Offer",
+        product: "Dojo card machine",
+        lead_action: "Dojo partnership claim",
+        leadStatus: "Hot Lead - Dojo Partner Offer"
+      };
+      
+      const webhookResult = await sendToGHL(ghlData);
+      
+      res.json({
+        ...lead,
+        webhookSent: webhookResult.success
+      });
+    } catch (error: any) {
+      res.status(400).json({ error: error.message || "Invalid request data" });
+    }
+  });
+
   // Test webhook endpoint - sends sample data to GHL
   app.post("/api/test-webhook", async (_req, res) => {
     try {
