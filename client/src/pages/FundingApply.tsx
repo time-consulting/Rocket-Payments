@@ -17,6 +17,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { SEO, serviceSchemas } from "@/components/SEO";
 
 const shareholderSchema = z.object({
   fullName: z.string().min(2, "Full name is required"),
@@ -263,6 +264,13 @@ export default function FundingApply() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 flex flex-col">
+      <SEO
+        title="Apply for Business Funding | Quick Approval | Rocket Payments"
+        description="Apply for business funding from £5,000 to £500,000. No hard credit search, 90% approval rate. Receive up to 3 competitive offers. Funds in as little as 24 hours."
+        keywords="apply business funding UK, merchant cash advance application, business loan application, quick business finance, funding approval, business funding application form"
+        canonical="https://rocketpayments.co.uk/funding/apply"
+        structuredData={serviceSchemas.businessFunding}
+      />
       <header className="p-4 md:p-6 flex justify-between items-center border-b bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm sticky top-0 z-50">
         <div className="flex items-center gap-2">
           <Rocket className="h-8 w-8 text-primary" />

@@ -1,5 +1,5 @@
 import { useParams, Link } from "wouter";
-import { Helmet } from "react-helmet-async";
+import { SEO } from "@/components/SEO";
 import { getPillarBySlug, pillarPages } from "@/data/pillarContent";
 import { getGuideBySlug } from "@/data/industryGuides";
 import { Button } from "@/components/ui/button";
@@ -79,22 +79,14 @@ export default function GuidePage() {
 
   return (
     <>
-      <Helmet>
-        <title>{guide.metaTitle}</title>
-        <meta name="description" content={guide.metaDescription} />
-        <meta name="keywords" content={guide.keywords} />
-        <meta property="og:title" content={guide.metaTitle} />
-        <meta property="og:description" content={guide.metaDescription} />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content={`https://rocketpayments.co.uk/guides/${guide.slug}`} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={guide.metaTitle} />
-        <meta name="twitter:description" content={guide.metaDescription} />
-        <link rel="canonical" href={`https://rocketpayments.co.uk/guides/${guide.slug}`} />
-        <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
-        <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
-        <script type="application/ld+json">{JSON.stringify(howToSchema)}</script>
-      </Helmet>
+      <SEO
+        title={guide.metaTitle}
+        description={guide.metaDescription}
+        keywords={guide.keywords}
+        canonical={`https://rocketpayments.co.uk/guides/${guide.slug}`}
+        ogType="article"
+        structuredData={[faqSchema, articleSchema, howToSchema]}
+      />
 
       <main className="min-h-screen">
         {/* Hero Section */}

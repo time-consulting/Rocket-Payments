@@ -1,0 +1,60 @@
+# Rocket Payments
+
+> UK payment processing company offering card machines, merchant services, business funding, and booking systems for UK businesses.
+
+## About
+
+Rocket Payments is a UK-based payment processing provider serving over 110,000 businesses. We offer free card payment terminals, competitive transaction rates starting from 0.29%, and business funding from £5,000 to £500,000. Based in Kent, serving businesses across the UK.
+
+## Products
+
+### Card Payment Terminals
+- **Rocket Go** — Portable 4G card machine for in-person payments. Free with merchant account. Accepts contactless, chip & PIN, Apple Pay, Google Pay.
+- **Rocket Pocket** — All-in-one ordering and payment device with built-in printer. Ideal for restaurants and hospitality.
+- **Rocket Wired** — Countertop card machine with ethernet connection. Best for fixed retail locations.
+- **Tap to Pay on iPhone** — Accept contactless payments using an iPhone. No additional hardware needed.
+
+### Online Payments
+- **Payment Links** — Send payment links via SMS, email, or WhatsApp. No website needed.
+- **Online Payments** — Full payment gateway for ecommerce with 3D Secure and fraud protection.
+
+### Business Growth
+- **Flex Funds** — Merchant cash advance from £5,000 to £500,000. Repay through card sales.
+- **Sidekick** — Digital business management tool with analytics and insights.
+- **Rocket Bookings** — Restaurant and hospitality reservation system. Commission-free alternative to OpenTable.
+
+## Pricing
+- UK Debit Cards: from 0.29% per transaction
+- UK Credit Cards: from 0.67% per transaction
+- International Cards: from 0.9% per transaction
+- No monthly fees, no setup fees, no cancellation fees
+- Free card terminal included
+
+## Business Funding
+- Merchant Cash Advance: £5,000 to £500,000
+- Business Loans available
+- Approval within 24-48 hours
+- Repayments flex with your card turnover
+- Available to businesses with regular card payments
+
+## Integrations
+Compatible with 600+ EPOS systems including ICRTouch, Goodtill, Lightspeed, Square POS, and more.
+
+## Service Areas
+- Primary: Kent, East Sussex, South East England
+- Coverage: All of United Kingdom
+- Key locations: Maidstone, Canterbury, Tunbridge Wells, Brighton, Eastbourne, Hastings, Ashford, Dover, Folkestone
+
+## Contact
+- Website: https://rocketpayments.co.uk
+- Free quote: https://rocketpayments.co.uk/calculate-savings
+- Business funding: https://rocketpayments.co.uk/business-funding
+
+## Key Facts
+- 110,000+ businesses served
+- 1.8 billion transactions processed annually
+- 99.99% uptime
+- PCI DSS Level 1 certified (P2PE)
+- Next-day payment settlement
+- 24/7 UK-based support
+- 4.9/5 average rating

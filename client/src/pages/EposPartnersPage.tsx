@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { Helmet } from "react-helmet-async";
+import { SEO } from "@/components/SEO";
 import { eposPartners, getFeaturedPartners } from "@/data/eposPartners";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -14,14 +14,12 @@ export default function EposPartnersPage() {
 
   return (
     <>
-      <Helmet>
-        <title>EPOS Partners | 600+ Integrations | Rocket Payments</title>
-        <meta name="description" content="Rocket Payments integrates with 600+ EPOS systems including ICR Touch, Goodtill, Power EPOS, Tevalis, Zonal. Connect your till to your card machine." />
-        <meta name="keywords" content="EPOS integration UK, card machine EPOS, integrated payments, ICR Touch integration, Goodtill integration, hospitality EPOS" />
-        <meta property="og:title" content="EPOS Partners | 600+ Integrations | Rocket Payments" />
-        <meta property="og:description" content="Rocket Payments integrates with 600+ EPOS systems. Connect your till to your card machine for faster service and fewer errors." />
-        <link rel="canonical" href="https://rocketpayments.co.uk/epos-partners" />
-      </Helmet>
+      <SEO
+        title="EPOS Partners | 600+ Integrations | Rocket Payments"
+        description="Rocket Payments integrates with 600+ EPOS systems including ICR Touch, Goodtill, Power EPOS, Tevalis, Zonal. Connect your till to your card machine."
+        keywords="EPOS integration UK, card machine EPOS, integrated payments, ICR Touch integration, Goodtill integration, hospitality EPOS"
+        canonical="https://rocketpayments.co.uk/epos-partners"
+      />
 
       <main className="min-h-screen">
         {/* Hero Section */}

@@ -1,5 +1,5 @@
 import { useLocation, Link } from "wouter";
-import { Helmet } from "react-helmet-async";
+import { SEO } from "@/components/SEO";
 import { getLocationBySlug, locationPages } from "@/data/locationPages";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -104,22 +104,13 @@ export default function LocationPage() {
 
   return (
     <>
-      <Helmet>
-        <title>{location.metaTitle}</title>
-        <meta name="description" content={location.metaDescription} />
-        <meta name="keywords" content={location.keywords} />
-        <meta property="og:title" content={location.metaTitle} />
-        <meta property="og:description" content={location.metaDescription} />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={`https://rocketpayments.co.uk/${location.slug}`} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={location.metaTitle} />
-        <meta name="twitter:description" content={location.metaDescription} />
-        <link rel="canonical" href={`https://rocketpayments.co.uk/${location.slug}`} />
-        <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
-        <script type="application/ld+json">{JSON.stringify(localBusinessSchema)}</script>
-        <script type="application/ld+json">{JSON.stringify(serviceSchema)}</script>
-      </Helmet>
+      <SEO
+        title={location.metaTitle}
+        description={location.metaDescription}
+        keywords={location.keywords}
+        canonical={`https://rocketpayments.co.uk/${location.slug}`}
+        structuredData={[faqSchema, localBusinessSchema, serviceSchema]}
+      />
 
       <main className="min-h-screen">
         {/* Hero Section */}

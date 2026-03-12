@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Sparkles, CreditCard, BarChart3, Settings, FileText, ArrowRight, Zap, Shield } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { SEO } from "@/components/SEO";
 
 import hubPhonesImage from "@assets/2400x1118_1761941919387.png";
 import insightPhoneImage from "@assets/hero_1761941919388.webp";
@@ -47,6 +48,12 @@ export default function Sidekick() {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Sidekick App | Manage Your Business Payments | Rocket Payments"
+        description="The Sidekick app puts your business in your pocket. Real-time payment insights, manage terminals, view reports, and control your merchant account from anywhere."
+        keywords="business payment app, merchant services app, payment insights, manage card machine, payment reporting app, business analytics app, merchant dashboard"
+        canonical="https://rocketpayments.co.uk/sidekick"
+      />
       {/* Apple-Style Hero */}
       <section className="relative pt-24 pb-20 md:pt-40 md:pb-32 overflow-hidden bg-background">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-background to-background" />

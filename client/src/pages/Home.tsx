@@ -16,6 +16,7 @@ import { ArrowRight, Sparkles, Cloud, TrendingUp, Zap, Star, CheckCircle, Rocket
 
 import heroImage from "@assets/hero image rocket go_1761926380440.png";
 import offerBanner from "@assets/offer banner rocket go device_1761930053366.png";
+import rocketGoHero from "@assets/stock_images/Remove background project (1).png";
 import costaLogo from "@assets/Costa-Coffee-Logo_1761930744749.jpg";
 import treatzLogo from "@assets/Treatz.jpg_1761930744750.webp";
 import cuppLogo from "@assets/ac9be535-cd26-4913-893c-607ef9c65ec9_1761930744747.jpeg";
@@ -44,24 +45,50 @@ import petCareImage from "@assets/generated_images/Pet_care_veterinary_clinic_c4
 import photographyImage from "@assets/generated_images/Photography_studio_workspace_ea798d9e.png";
 import cafeImage from "@assets/generated_images/Cozy_café_coffee_shop_87bbf65d.png";
 
-function ParallaxHero() {
-  const [scrollY, setScrollY] = useState(0);
-  
+
+const CYCLE_MS = 3 * 24 * 60 * 60 * 1000; // 3 days in ms
+
+function CountdownTimer() {
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, mins: 0, secs: 0 });
+
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const calc = () => {
+      // Rolling 3-day window: time remaining until next 3-day boundary from a fixed epoch
+      const epoch = new Date('2026-01-01T00:00:00').getTime();
+      const elapsed = (Date.now() - epoch) % CYCLE_MS;
+      const diff = CYCLE_MS - elapsed;
+      setTimeLeft({
+        days: Math.floor(diff / 86400000),
+        hours: Math.floor((diff % 86400000) / 3600000),
+        mins: Math.floor((diff % 3600000) / 60000),
+        secs: Math.floor((diff % 60000) / 1000),
+      });
+    };
+    calc();
+    const id = setInterval(calc, 1000);
+    return () => clearInterval(id);
   }, []);
 
+  const units = [
+    { v: timeLeft.days, label: 'days' },
+    { v: timeLeft.hours, label: 'hrs' },
+    { v: timeLeft.mins, label: 'min' },
+    { v: timeLeft.secs, label: 'sec' },
+  ];
+
   return (
-    <div 
-      className="absolute inset-0 overflow-hidden"
-      style={{ transform: `translateY(${scrollY * 0.5}px)` }}
-    >
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-primary/15" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(var(--primary-rgb,59,130,246),0.35),transparent_40%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_70%,rgba(var(--primary-rgb,59,130,246),0.3),transparent_40%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(var(--primary-rgb,59,130,246),0.2),transparent_60%)]" />
+    <div className="flex items-center gap-2 md:gap-3">
+      {units.map(({ v, label }, i) => (
+        <div key={label} className="flex items-center gap-2 md:gap-3">
+          <div className="text-center">
+            <div className="text-2xl md:text-3xl font-black text-white tabular-nums leading-none">
+              {String(v).padStart(2, '0')}
+            </div>
+            <div className="text-[9px] md:text-[10px] font-bold text-white/50 uppercase tracking-wider mt-0.5">{label}</div>
+          </div>
+          {i < 3 && <span className="text-xl md:text-2xl font-black text-white/30 -mt-3">:</span>}
+        </div>
+      ))}
     </div>
   );
 }
@@ -147,11 +174,11 @@ function SwitchPriceAnimation() {
   }, [isVisible]);
 
   return (
-    <div ref={ref} className="text-6xl md:text-8xl font-black">
+    <div ref={ref} className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-none">
       {showFree ? (
-        <span className="inline-block animate-[scaleIn_0.5s_ease-out]">FREE</span>
+        <span className="inline-block animate-[scaleIn_0.5s_ease-out] bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">FREE</span>
       ) : (
-        <span>£{price.toLocaleString()}</span>
+        <span className="text-white/70">£{price.toLocaleString()}</span>
       )}
     </div>
   );
@@ -284,6 +311,277 @@ function AutoScrollProducts({ products }: { products: any[] }) {
   );
 }
 
+const TOTAL_FRAMES = 120;
+
+function HeroSection() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const framesRef = useRef<HTMLImageElement[]>([]);
+  const loadedCountRef = useRef(0);
+  const rafRef = useRef<number | null>(null);
+  const currentFrameRef = useRef(-1);
+  const [textVisible, setTextVisible] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [loaded, setLoaded] = useState(false);
+
+  // Preload all frames
+  useEffect(() => {
+    const timer = setTimeout(() => setTextVisible(true), 400);
+
+    const frames: HTMLImageElement[] = [];
+    for (let i = 1; i <= TOTAL_FRAMES; i++) {
+      const img = new Image();
+      const num = String(i).padStart(4, '0');
+      img.src = `/hero-frames/frame_${num}.jpg`;
+      img.onload = () => {
+        loadedCountRef.current++;
+        if (loadedCountRef.current === TOTAL_FRAMES) {
+          setLoaded(true);
+          drawFrame(0); // show first frame (exploded)
+        }
+      };
+      frames.push(img);
+    }
+    framesRef.current = frames;
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  function drawFrame(frameIndex: number) {
+    const canvas = canvasRef.current;
+    const frames = framesRef.current;
+    if (!canvas || !frames[frameIndex]) return;
+    if (currentFrameRef.current === frameIndex) return;
+    currentFrameRef.current = frameIndex;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const dpr = window.devicePixelRatio || 1;
+    const w = canvas.offsetWidth;
+    const h = canvas.offsetHeight;
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    ctx.scale(dpr, dpr);
+
+    const img = frames[frameIndex];
+    // Cover-fit
+    const scale = Math.max(w / img.naturalWidth, h / img.naturalHeight);
+    const iw = img.naturalWidth * scale;
+    const ih = img.naturalHeight * scale;
+    const ix = (w - iw) / 2;
+    const iy = (h - ih) / 2;
+
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, w, h);
+    ctx.drawImage(img, ix, iy, iw, ih);
+  }
+
+  useEffect(() => {
+    if (!loaded) return;
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const scrub = () => {
+      const rect = section.getBoundingClientRect();
+      const sectionScrollHeight = section.offsetHeight - window.innerHeight;
+      const scrolled = Math.max(0, -rect.top);
+      const progress = Math.min(1, scrolled / sectionScrollHeight);
+      setScrollProgress(progress);
+
+      // Forward: frame 0 = assembled, last frame = exploded
+      const frameIndex = Math.round(progress * (TOTAL_FRAMES - 1));
+
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      rafRef.current = requestAnimationFrame(() => drawFrame(frameIndex));
+    };
+
+    window.addEventListener('scroll', scrub, { passive: true });
+    scrub();
+
+    return () => {
+      window.removeEventListener('scroll', scrub);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, [loaded]);
+
+  // Intro: visible at 0%, fully gone by 20%
+  const introOpacity = Math.max(0, 1 - scrollProgress * 5);
+  // Mid: fades in 35–50%, out 65–80%
+  const midOpacity = scrollProgress > 0.35 && scrollProgress < 0.80
+    ? scrollProgress < 0.50
+      ? (scrollProgress - 0.35) / 0.15
+      : scrollProgress > 0.65
+        ? 1 - (scrollProgress - 0.65) / 0.15
+        : 1
+    : 0;
+  // CTAs: fade in from 80%
+  const ctaOpacity = scrollProgress > 0.80 ? (scrollProgress - 0.80) * 5 : 0;
+
+  return (
+    <section
+      ref={sectionRef}
+      className="relative"
+      style={{ height: '300vh', background: 'linear-gradient(to bottom, #ffffff 85%, #0a0f1a 100%)' }}
+    >
+      <div className="sticky top-0 h-screen w-full overflow-hidden bg-white">
+
+        {/* Top edge gradient — nav blends in */}
+        <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white to-transparent pointer-events-none z-20" />
+
+        {/* CANVAS — frame sequence drawn by scroll */}
+        <canvas
+          ref={canvasRef}
+          className="absolute inset-0 w-full h-full"
+          style={{ background: '#ffffff' }}
+        />
+
+        {/* LOADING OVERLAY — first frame shown instantly, fades out once canvas ready */}
+        <div
+          className="absolute inset-0 z-10 pointer-events-none"
+          style={{
+            opacity: loaded ? 0 : 1,
+            transition: loaded ? 'opacity 0.6s ease' : 'none',
+          }}
+        >
+          <img
+            src="/hero-frames/frame_0001.jpg"
+            className="w-full h-full object-contain"
+            style={{ background: '#ffffff' }}
+            alt=""
+          />
+        </div>
+
+        {/* INTRO — headline top-left, fades out by 20% scroll */}
+        <div
+          className="absolute inset-x-0 top-0 z-10 flex flex-col pointer-events-none"
+          style={{
+            opacity: textVisible ? introOpacity : 0,
+            transition: textVisible ? 'none' : 'opacity 0.8s ease',
+          }}
+        >
+          {/* Top gradient so text sits above device */}
+          <div className="absolute inset-x-0 top-0 h-64 bg-gradient-to-b from-white/95 via-white/50 to-transparent pointer-events-none" />
+          <div className="relative px-6 md:px-16 pt-24 md:pt-28 space-y-3 md:space-y-4 max-w-2xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-white/90 backdrop-blur-sm rounded-full border border-primary/20 shadow-md pointer-events-auto">
+              <Sparkles className="h-3 w-3 text-primary animate-pulse" />
+              <span className="text-[10px] md:text-xs font-black tracking-widest text-primary">UK'S #1 PAYMENTS PROVIDER</span>
+            </div>
+            <h1
+              className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black leading-[0.9] tracking-tighter text-gray-900"
+              data-testid="text-hero-headline"
+            >
+              Payment<br />
+              <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+                Paradise
+              </span>
+            </h1>
+            <p className="text-sm sm:text-base md:text-xl font-semibold text-gray-500 max-w-sm">
+              Fast, reliable payments with stellar support.<br className="hidden md:block" /> Join 110,000+ businesses.
+            </p>
+            {/* Scroll hint inline with text */}
+            <div className="flex items-center gap-2 pt-1">
+              <div className="w-px h-6 bg-gradient-to-b from-gray-400 to-transparent animate-pulse" />
+              <span className="text-[10px] font-semibold tracking-widest text-gray-400 uppercase">Scroll to reveal</span>
+            </div>
+          </div>
+        </div>
+
+        {/* SAVINGS CTA — bottom-right, fades with intro */}
+        <div
+          className="absolute top-24 md:top-28 right-6 md:right-12 z-20 pointer-events-none hidden sm:block"
+          style={{ opacity: textVisible ? introOpacity : 0, transition: textVisible ? 'none' : 'opacity 0.8s ease' }}
+        >
+          <Link href="/calculate-savings" className="pointer-events-auto block group">
+            <div className="bg-white/90 backdrop-blur-md rounded-2xl shadow-xl border border-gray-100 p-4 md:p-5 w-56 md:w-64 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+              {/* Mini savings illustration */}
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-[10px] font-black tracking-widest text-primary uppercase">Your savings</span>
+                <TrendingUp className="h-4 w-4 text-primary" />
+              </div>
+              <div className="space-y-1 mb-4">
+                <div className="flex justify-between items-baseline">
+                  <span className="text-xs text-gray-400">Current fees</span>
+                  <span className="text-sm font-bold text-gray-400 line-through">£3,200/yr</span>
+                </div>
+                <div className="flex justify-between items-baseline">
+                  <span className="text-xs text-gray-900 font-bold">With Rocket</span>
+                  <span className="text-lg font-black text-primary">£1,840/yr</span>
+                </div>
+                {/* Progress bar */}
+                <div className="h-1.5 bg-gray-100 rounded-full mt-2 overflow-hidden">
+                  <div className="h-full w-[57%] bg-gradient-to-r from-primary to-primary/60 rounded-full" />
+                </div>
+                <p className="text-[10px] text-gray-400 text-right">avg. 42% saving</p>
+              </div>
+              <div className="flex items-center justify-between bg-primary/10 rounded-xl px-3 py-2 group-hover:bg-primary/20 transition-colors">
+                <span className="text-xs font-black text-primary">Calculate yours</span>
+                <ArrowRight className="h-3.5 w-3.5 text-primary group-hover:translate-x-1 transition-transform" />
+              </div>
+            </div>
+          </Link>
+        </div>
+
+        {/* MID-SCROLL HEADLINE — technology desire */}
+        <div
+          className="absolute inset-0 z-10 flex flex-col items-center justify-center pointer-events-none"
+          style={{ opacity: midOpacity }}
+        >
+          <div className="text-center px-6 space-y-3">
+            <p className="text-xs md:text-sm font-black tracking-[0.25em] text-primary uppercase">Built for business</p>
+            <h2 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-black leading-[0.85] tracking-tighter text-gray-900">
+              The engine<br />
+              <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+                behind every sale.
+              </span>
+            </h2>
+            <p className="text-sm md:text-lg font-semibold text-gray-500 pt-2 max-w-sm mx-auto">
+              Enterprise-grade payment technology — engineered for speed, built to last.
+            </p>
+          </div>
+        </div>
+
+        {/* CTAs — fade in at 80%+ scroll */}
+        <div
+          className="absolute inset-x-0 bottom-0 z-20 flex flex-col items-center pointer-events-none"
+          style={{
+            opacity: ctaOpacity,
+            paddingBottom: 'max(env(safe-area-inset-bottom), 1.5rem)',
+          }}
+        >
+          <div className="absolute inset-x-0 bottom-0 h-52 bg-gradient-to-t from-white via-white/85 to-transparent pointer-events-none" />
+          <div className="relative text-center space-y-1 mb-5 px-6">
+            <p className="text-xl sm:text-2xl md:text-3xl font-black text-gray-900 tracking-tight">Ready to launch?</p>
+            <p className="text-sm text-gray-500 font-medium">No fixed contracts. Switch for FREE.</p>
+          </div>
+          <div className="relative flex flex-col sm:flex-row gap-3 px-6 w-full max-w-sm sm:max-w-none sm:w-auto pointer-events-auto">
+            <Link href="/calculate-savings" className="w-full sm:w-auto">
+              <Button
+                size="lg"
+                className="w-full text-base px-8 py-5 rounded-full hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-primary/40"
+                data-testid="button-hero-get-started"
+              >
+                Calculate Savings
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
+            <Link href="/products" className="w-full sm:w-auto">
+              <Button
+                size="lg"
+                variant="outline"
+                className="w-full text-base px-8 py-5 rounded-full hover:scale-105 transition-all duration-300 border-gray-300 text-gray-800 bg-white/70 backdrop-blur-sm"
+                data-testid="button-hero-view-products"
+              >
+                View Products
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function Home() {
   const partnerLogos = [
     { name: "Costa Coffee", logo: costaLogo },
@@ -376,145 +674,240 @@ export default function Home() {
         keywords={`card payment processing UK, merchant services UK, payment terminal, card machine UK, business funding UK, business loans UK, merchant cash advance, contactless payments UK, Dojo alternative, ${localKeywords}`}
         structuredData={[faqSchemas.home, faqSchemas.businessFunding, serviceSchemas.cardTerminal, serviceSchemas.merchantServices, serviceSchemas.businessFunding]}
       />
-      <div className="flex flex-col overflow-hidden">
-        {/* Epic Full-Screen Hero */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <ParallaxHero />
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8 py-32 w-full">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-10">
-              <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-primary/20 to-primary/10 rounded-full border border-primary/30 shadow-xl animate-in fade-in slide-in-from-top-4 duration-700">
-                <Sparkles className="h-5 w-5 text-primary animate-pulse" />
-                <span className="text-sm font-black tracking-wide text-primary">UK'S #1 PAYMENTS PROVIDER</span>
-              </div>
-              
-              <div className="space-y-6 animate-in fade-in slide-in-from-bottom-8 duration-1000">
-                <h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black leading-[0.9] tracking-tighter" data-testid="text-hero-headline">
-                  Payment<br />
-                  <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">Paradise</span>
-                </h1>
-                <p className="text-xl md:text-2xl lg:text-3xl font-semibold text-muted-foreground leading-tight max-w-2xl">
-                  Fast, reliable payments with stellar support. Join 110,000+ businesses.
-                </p>
-              </div>
-              
-              <div className="flex flex-wrap gap-4 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200">
-                <Link href="/calculate-savings">
-                  <Button size="lg" className="text-xl px-12 py-7 rounded-full hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-primary/50" data-testid="button-hero-get-started">
-                    Calculate Savings
-                    <ArrowRight className="ml-2 h-6 w-6" />
-                  </Button>
-                </Link>
-                <Link href="/products">
-                  <Button size="lg" variant="outline" className="text-xl px-12 py-7 rounded-full hover:scale-105 transition-all duration-300" data-testid="button-hero-view-products">
-                    View Products
-                  </Button>
-                </Link>
-              </div>
-            </div>
-
-            <div className="relative animate-in fade-in slide-in-from-right-8 duration-1000 delay-400">
-              <div className="absolute -inset-12 bg-gradient-to-r from-primary/30 via-primary/20 to-primary/30 rounded-3xl blur-3xl opacity-70 animate-pulse" />
-              <img
-                src={heroImage}
-                alt="Rocket Go payment terminal processing a contactless card payment in a UK business"
-                className="relative w-full h-auto rounded-3xl shadow-2xl hover:scale-[1.02] transition-transform duration-700"
-                data-testid="img-hero"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Scroll-Driven Video Hero — must be OUTSIDE overflow-hidden or sticky breaks */}
+      <HeroSection />
+      <div className="flex flex-col" style={{ overflowX: 'clip' }}>
 
       {/* 3D Bubble Section Divider */}
-      <section className="relative pt-0 pb-16 md:pb-24 bg-gradient-to-b from-primary/20 via-background to-background overflow-hidden">
+      <section className="relative pt-0 pb-0 bg-[#0a0f1a] overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-transparent" />
         
-        {/* Trusted By - comes first */}
-        <div className="relative max-w-6xl mx-auto px-6 md:px-8 pt-16 md:pt-20">
-          <div className="relative group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 rounded-[2rem] blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-500" />
-            <div className="relative bg-gradient-to-br from-white to-gray-50 dark:from-stone-900 dark:to-stone-800 rounded-[2rem] p-8 md:p-10 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)] border border-gray-100 dark:border-stone-700">
-              <p className="text-center text-xs font-black text-muted-foreground tracking-wider mb-6">TRUSTED BY LEADING BUSINESSES</p>
-              <div className="relative overflow-hidden">
-                <div className="logo-scroll flex gap-12 items-center py-2">
-                  {[...partnerLogos, ...partnerLogos, ...partnerLogos].map((partner, i) => (
-                    <div key={i} className="flex-shrink-0 hover:scale-110 transition-transform duration-300">
-                      <img 
-                        src={partner.logo} 
-                        alt={partner.name}
-                        className="h-8 md:h-10 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity duration-300"
-                      />
+        {/* Social proof + Switch for FREE — unified dark editorial section */}
+        <div className="relative overflow-hidden bg-[#0a0f1a] mt-0">
+          {/* Subtle teal glow orbs */}
+          <div className="absolute top-0 left-1/4 w-[600px] h-[400px] bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
+          <div className="absolute bottom-0 right-1/4 w-[500px] h-[300px] bg-primary/8 rounded-full blur-[100px] pointer-events-none" />
+          {/* Fine grid overlay */}
+          <div className="absolute inset-0 opacity-[0.04] pointer-events-none"
+            style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
+
+          <div className="relative max-w-7xl mx-auto px-6 md:px-8 pt-20 md:pt-28 pb-24 md:pb-32">
+
+            {/* Stat row */}
+            <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-6 mb-16 md:mb-20">
+              {[
+                { num: '110,000+', label: 'Businesses trust us' },
+                { num: '£3,000', label: 'Exit fee cover' },
+                { num: '24/7', label: 'UK-based support' },
+                { num: '0%', label: 'Fixed contracts' },
+              ].map(({ num, label }) => (
+                <div key={num} className="text-center">
+                  <div className="text-3xl md:text-4xl font-black text-white tabular-nums">{num}</div>
+                  <div className="text-xs font-semibold text-white/40 tracking-wider uppercase mt-1">{label}</div>
+                </div>
+              ))}
+            </div>
+
+            {/* Logo strip — white island so JPEG backgrounds disappear */}
+            <div className="relative mb-16 md:mb-20 -mx-6 md:-mx-8">
+              {/* Dark-to-white top fade */}
+              <div className="h-10 bg-gradient-to-b from-[#0a0f1a] to-white pointer-events-none" />
+              {/* White panel */}
+              <div className="bg-white py-8 px-6 md:px-8">
+                <p className="text-center text-[10px] font-black text-gray-400 tracking-[0.3em] uppercase mb-8">Trusted by leading businesses</p>
+                {/* Contained carousel — max-width keeps 4 logos looking intentional */}
+                <div className="relative max-w-2xl mx-auto">
+                  <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+                  <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+                  <div className="overflow-hidden">
+                    <div className="logo-scroll flex gap-16 items-center py-1">
+                      {[...partnerLogos, ...partnerLogos, ...partnerLogos].map((partner, i) => (
+                        <div key={i} className="flex-shrink-0" style={{ mixBlendMode: 'multiply' }}>
+                          <img
+                            src={partner.logo}
+                            alt={partner.name}
+                            className="h-10 md:h-12 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity duration-300"
+                          />
+                        </div>
+                      ))}
                     </div>
-                  ))}
+                  </div>
                 </div>
               </div>
+              {/* White-to-dark bottom fade */}
+              <div className="h-10 bg-gradient-to-b from-white to-[#0a0f1a] pointer-events-none" />
             </div>
-          </div>
-        </div>
 
-        {/* Switch for FREE bubble - comes second with reduced padding */}
-        <div className="relative max-w-4xl mx-auto px-6 md:px-8 mt-8 md:mt-12 z-20">
-          <div className="relative group">
-            <div className="absolute -inset-4 bg-gradient-to-r from-primary via-primary/80 to-primary rounded-[3rem] blur-3xl opacity-60 group-hover:opacity-80 transition-opacity duration-500 animate-pulse" />
-            <div className="relative bg-gradient-to-br from-primary to-primary/90 rounded-[3rem] p-10 md:p-16 shadow-[0_40px_100px_-30px_rgba(0,0,0,0.5)] border-2 border-primary-foreground/10 backdrop-blur-sm overflow-hidden transform hover:scale-[1.02] transition-all duration-500">
-              <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent pointer-events-none" />
-              <div className="absolute top-0 right-0 w-96 h-96 bg-primary-foreground/5 rounded-full blur-3xl" />
-              <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary-foreground/5 rounded-full blur-3xl" />
-              
-              <div className="relative text-center space-y-6">
-                <div className="space-y-3">
-                  <h2 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase leading-[1.1] text-primary-foreground">
-                    Switch for
-                  </h2>
-                  <SwitchPriceAnimation />
-                  <p className="text-lg md:text-xl font-bold text-primary-foreground/95">
-                    £3,000 cover towards your exit fees
-                  </p>
-                </div>
-                <Link href="/calculate-savings">
-                  <Button size="lg" variant="secondary" className="text-base px-10 py-6 rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
-                    Calculate Your Savings
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Button>
-                </Link>
+            {/* Editorial "Switch for FREE" */}
+            <div className="text-center">
+              <p className="text-xs font-black tracking-[0.3em] text-primary uppercase mb-4">No contracts. No catch.</p>
+              <h2 className="text-6xl sm:text-7xl md:text-8xl lg:text-[10rem] font-black leading-[0.85] tracking-tighter text-white mb-3">
+                Switch
+              </h2>
+              <div className="flex items-baseline justify-center gap-4 mb-6">
+                <span className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white/30">for</span>
+                <SwitchPriceAnimation />
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Products - Apple-Style Auto-Scroll */}
-      <section className="py-20 md:py-32 bg-background overflow-hidden">
-        <div className="max-w-[1400px] mx-auto">
-          <div className="text-left mb-12 px-6 md:px-8">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight" data-testid="text-products-headline">
-              The latest. <span className="text-muted-foreground font-normal">Take a look at what's new right now.</span>
-            </h2>
-          </div>
-
-          <div className="relative">
-            <AutoScrollProducts products={products} />
-          </div>
-        </div>
-      </section>
-
-      {/* Offer Banner - Cinematic */}
-      <section className="py-20 md:py-32 bg-gradient-to-b from-background to-muted/20">
-        <div className="max-w-6xl mx-auto px-6 md:px-8">
-          <AnimatedSection>
-            <div className="relative group overflow-hidden rounded-3xl">
-              <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-primary/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-              <Link href="/products/rocket-go">
-                <img 
-                  src={offerBanner} 
-                  alt="Limited time offer - Rocket Go card machine for £79 with free delivery"
-                  className="relative w-full h-auto hover:scale-[1.02] transition-transform duration-700 shadow-2xl cursor-pointer"
-                />
+              <p className="text-base md:text-lg text-white/50 font-medium mb-10">
+                We cover up to £3,000 of your exit fees. No risk, no excuses.
+              </p>
+              <Link href="/calculate-savings">
+                <Button size="lg" className="text-base px-10 py-6 rounded-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-[0_0_40px_rgba(45,212,191,0.3)] hover:shadow-[0_0_60px_rgba(45,212,191,0.5)] hover:scale-105 transition-all duration-300">
+                  Calculate Your Savings
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
               </Link>
             </div>
-          </AnimatedSection>
+
+          </div>
+        </div>
+      </section>
+
+      {/* Products — seamless dark→light reveal with 3D card entrance */}
+      <section className="overflow-hidden" style={{ background: 'linear-gradient(to bottom, #0a0f1a 0%, #0a0f1a 80px, #f5f5f7 80px, #f5f5f7 100%)', paddingBottom: '5rem' }}>
+
+        {/* Header — slides up from dark into light */}
+        <AnimatedSection>
+        <div className="max-w-[1400px] mx-auto px-6 md:px-8 pt-16 mb-10 md:mb-14 flex items-end justify-between">
+          <div>
+            <p className="text-xs font-black tracking-[0.25em] text-primary uppercase mb-3">Our range</p>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black leading-[0.95] tracking-tight text-gray-900" data-testid="text-products-headline">
+              The right device<br />
+              <span className="text-gray-400 font-normal">for every business.</span>
+            </h2>
+          </div>
+          <Link href="/products" className="hidden md:inline-flex items-center gap-2 text-sm font-bold text-gray-500 hover:text-gray-900 transition-colors group">
+            View all
+            <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </div>
+        </AnimatedSection>
+
+        {/* Snap-scroll card rail — each card flies up staggered */}
+        <div
+          className="flex gap-4 md:gap-5 overflow-x-auto pb-6 px-6 md:px-8 scrollbar-hide snap-x snap-mandatory"
+          style={{ scrollPaddingLeft: '1.5rem' }}
+        >
+          {products.map((product, index) => (
+            <AnimatedSection key={index} delay={index * 80}>
+            <Link href={product.link} className="flex-shrink-0 snap-start block" data-testid={`card-product-${index}`}>
+              <div className="w-[300px] sm:w-[340px] md:w-[380px] rounded-[2rem] overflow-hidden bg-white shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group cursor-pointer">
+                {/* Image — full bleed, tall */}
+                <div
+                  className="relative h-[300px] md:h-[340px] flex items-end justify-center overflow-hidden"
+                  style={{ backgroundColor: product.imageBg }}
+                >
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="h-[260px] md:h-[300px] w-auto object-contain transition-transform duration-700 group-hover:scale-105 group-hover:-translate-y-2"
+                  />
+                  <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-white/40 to-transparent pointer-events-none" />
+                </div>
+                {/* Text */}
+                <div className="p-6 space-y-1">
+                  <p className="text-xs font-black tracking-[0.2em] text-primary uppercase">{product.name}</p>
+                  <h3 className="text-xl md:text-2xl font-black text-gray-900 leading-tight">{product.tagline}</h3>
+                  <p className="text-sm text-gray-400 leading-relaxed pt-1">{product.description}</p>
+                  <div className="pt-4 inline-flex items-center gap-1.5 text-sm font-bold text-gray-900 group-hover:gap-3 transition-all duration-300">
+                    Learn more <ArrowRight className="h-4 w-4" />
+                  </div>
+                </div>
+              </div>
+            </Link>
+            </AnimatedSection>
+          ))}
+          {/* View all card */}
+          <Link href="/products" className="flex-shrink-0 snap-start self-stretch">
+            <div className="w-[200px] md:w-[240px] h-full min-h-[440px] rounded-[2rem] border-2 border-dashed border-gray-200 hover:border-primary/40 flex flex-col items-center justify-center gap-4 text-center px-8 transition-all duration-300 group cursor-pointer">
+              <div className="w-12 h-12 rounded-full bg-gray-100 group-hover:bg-primary/10 flex items-center justify-center transition-colors duration-300">
+                <ArrowRight className="h-5 w-5 text-gray-400 group-hover:text-primary -rotate-45 transition-colors duration-300" />
+              </div>
+              <div>
+                <p className="text-sm font-black text-gray-900">View all</p>
+                <p className="text-xs text-gray-400 mt-1">products</p>
+              </div>
+            </div>
+          </Link>
+        </div>
+
+        {/* Mobile "View all" link */}
+        <div className="md:hidden text-center mt-4 px-6 pb-8">
+          <Link href="/products" className="inline-flex items-center gap-2 text-sm font-bold text-gray-500">
+            View all products <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+
+      </section>
+
+      {/* Offer Banner — full-bleed coded component */}
+      <section className="relative overflow-hidden bg-[#0d3d2e]">
+        {/* Background texture layers */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0d3d2e] via-[#0d4433] to-[#092b1f] pointer-events-none" />
+        <div className="absolute top-0 right-0 w-[70%] h-full bg-gradient-to-l from-primary/10 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
+          style={{ backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
+
+        <div className="relative max-w-7xl mx-auto px-6 md:px-8">
+          <div className="grid md:grid-cols-2 items-center min-h-[340px] md:min-h-[400px]">
+
+            {/* Left — copy */}
+            <div className="py-12 md:py-16 space-y-6 z-10">
+              {/* Eyebrow with live dot */}
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/20 border border-primary/30">
+                <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                <span className="text-xs font-black text-primary tracking-widest uppercase">Limited time offer</span>
+              </div>
+
+              {/* Main headline */}
+              <div>
+                <div className="flex items-center gap-3 mb-2">
+                  <span className="text-lg md:text-xl font-bold text-white/30 line-through">Was £189</span>
+                </div>
+                <h2 className="text-5xl sm:text-6xl md:text-7xl font-black leading-[0.9] tracking-tight">
+                  <span className="text-white/50">Terminal</span><br />
+                  <span className="text-white/50 text-3xl sm:text-4xl font-bold">now </span>
+                  <span className="text-primary">£0</span>
+                </h2>
+                <div className="mt-4 space-y-2 max-w-sm">
+                  <div className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
+                    <p className="text-sm md:text-base text-white/60 font-medium">£0/month — no device rental fees, ever</p>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
+                    <p className="text-sm md:text-base text-white/60 font-medium">Free next-day delivery. No hidden fees.</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Countdown */}
+              <div className="space-y-2">
+                <p className="text-[10px] font-black tracking-[0.25em] text-white/30 uppercase">Offer ends in</p>
+                <CountdownTimer />
+              </div>
+
+              {/* CTA */}
+              <Link href="/products/rocket-go">
+                <Button className="mt-2 bg-primary hover:bg-primary/90 text-primary-foreground text-base px-8 py-5 rounded-full shadow-[0_0_30px_rgba(45,212,191,0.4)] hover:shadow-[0_0_50px_rgba(45,212,191,0.6)] hover:scale-105 transition-all duration-300">
+                  Get the deal
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+            </div>
+
+            {/* Right — device, oversized, bleeding off edge */}
+            <div className="relative hidden md:flex items-end justify-end h-full">
+              <img
+                src={rocketGoHero}
+                alt="Rocket Go card machine"
+                className="absolute right-0 bottom-0 h-[460px] w-auto object-contain"
+                style={{ transform: 'translateX(3%)' }}
+              />
+            </div>
+
+          </div>
         </div>
       </section>
 
@@ -1093,7 +1486,7 @@ export default function Home() {
           </AnimatedSection>
         </div>
       </section>
-      </div>
+      </div>{/* end overflow-x:clip wrapper */}
     </>
   );
 }

@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Zap, DollarSign, TrendingUp, Clock, Shield, CheckCircle2, ArrowRight, Sparkles, RefreshCw } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { SEO, serviceSchemas } from "@/components/SEO";
 
 import performanceImage from "@assets/1080x656 (1)_1761941488556.webp";
 import approvedImage from "@assets/1080x656_1761941488556.webp";
@@ -45,6 +46,13 @@ function AnimatedSection({ children, delay = 0 }: { children: React.ReactNode; d
 export default function FlexFunds() {
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Flex Funds | Always-On Business Finance | Rocket Payments"
+        description="Keep your business moving with Flex Funds – an always-on financial safety net. Fast approval, 90% acceptance rate, revenue-based payments. Get funds from week one."
+        keywords="flex funds, business cash advance, revolving credit facility, revenue based finance, always on funding, merchant cash advance UK, flexible business finance"
+        canonical="https://rocketpayments.co.uk/flex-funds"
+        structuredData={serviceSchemas.businessFunding}
+      />
       {/* Hero Section with Gradient */}
       <section className="relative pt-20 pb-16 md:pt-32 md:pb-24 overflow-hidden">
         {/* Animated gradient background */}

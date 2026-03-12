@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, Loader2 } from "lucide-react";
 import flowerShopImage from "@assets/Gemini_Generated_Image_od39gwod39gwod39_1762433958101.png";
+import { SEO } from "@/components/SEO";
 
 interface FormData {
   businessType: string;
@@ -182,6 +183,12 @@ export default function CalculateSavings() {
 
   return (
     <div className="min-h-screen bg-background flex">
+      <SEO
+        title="Calculate Your Savings | Free Quote | Rocket Payments"
+        description="See how much you could save on card processing fees with Rocket Payments. Get a free, no-obligation quote in minutes. Compare rates from 0.29% with transparent pricing."
+        keywords="card payment savings calculator, compare card machine rates, payment processing quote, merchant services quote, card terminal comparison UK"
+        canonical="https://rocketpayments.co.uk/calculate-savings"
+      />
       {/* Left Side - Questions */}
       <div className="w-full lg:w-1/2 flex flex-col justify-center p-8 lg:p-16">
         <div className="max-w-xl mx-auto w-full">

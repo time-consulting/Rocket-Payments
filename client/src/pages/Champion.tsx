@@ -25,6 +25,7 @@ import {
 import championHero from "@assets/champion - GO_1762164001426.png";
 import championAlt from "@assets/The Innovator Pocket_1762164754335.png";
 import rocketGoDevice from "@assets/rocket go device on stand - white bk_1761931715066.png";
+import { SEO, serviceSchemas } from "@/components/SEO";
 
 interface FormData {
   businessType: string;
@@ -309,6 +310,13 @@ export default function Champion() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-amber-50/30 via-stone-50 to-amber-50/30 dark:from-stone-950 dark:via-stone-900 dark:to-stone-950">
+      <SEO
+        title="Champion Card Terminal | Premium Card Machine UK | Rocket Payments"
+        description="Meet the Champion – our premium card payment terminal with built-in receipt printer, WiFi & 4G. Process contactless, chip & PIN, Apple Pay & Google Pay. Free with account."
+        keywords="champion card terminal, premium card machine UK, card payment terminal, contactless card machine, receipt printer terminal, business card machine, free card machine"
+        canonical="https://rocketpayments.co.uk/champion"
+        structuredData={serviceSchemas.cardTerminal}
+      />
       {/* Scroll Progress Bar */}
       <div className="fixed top-0 left-0 right-0 h-1 bg-stone-200/30 dark:bg-stone-800/30 z-50">
         <div 

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Check, Sparkles, Star, Calendar, Users, TrendingUp, Shield, Clock, Zap } from "lucide-react";
+import { SEO, serviceSchemas } from "@/components/SEO";
 
 import googleBookingImage from "@assets/810x720 (1)_1761945989566.webp";
 import protectTurnoverImage from "@assets/810x720_1761945989567.webp";
@@ -157,7 +158,13 @@ export default function Bookings() {
 
   return (
     <div className="min-h-screen bg-background overflow-hidden">
-      {/* Epic Hero */}
+      <SEO
+        title="Bookings & Reservations | Restaurant Booking System | Rocket Payments"
+        description="Streamline your hospitality bookings with Rocket Payments. Google Reserve integration, deposit collection, no-show protection. Manage reservations alongside payments in one system."
+        keywords="restaurant booking system UK, hospitality reservations, Google Reserve, booking deposits, no-show protection, table booking system, hospitality payments"
+        canonical="https://rocketpayments.co.uk/bookings"
+        structuredData={serviceSchemas.merchantServices}
+      />
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-primary/10">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(var(--primary-rgb,59,130,246),0.4),transparent_50%)]" />

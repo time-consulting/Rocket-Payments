@@ -1,5 +1,5 @@
 import { useRoute, Link } from "wouter";
-import { Helmet } from "react-helmet-async";
+import { SEO } from "@/components/SEO";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -65,25 +65,14 @@ export default function BlogPost() {
 
   return (
     <>
-      <Helmet>
-        <title>{post.metaTitle}</title>
-        <meta name="description" content={post.metaDescription} />
-        <meta name="keywords" content={post.keywords} />
-        <link rel="canonical" href={`https://rocketpayments.co.uk/blog/${post.slug}`} />
-        <meta property="og:title" content={post.metaTitle} />
-        <meta property="og:description" content={post.metaDescription} />
-        <meta property="og:url" content={`https://rocketpayments.co.uk/blog/${post.slug}`} />
-        <meta property="og:type" content="article" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={post.metaTitle} />
-        <meta name="twitter:description" content={post.metaDescription} />
-        <script type="application/ld+json">
-          {JSON.stringify(faqStructuredData)}
-        </script>
-        <script type="application/ld+json">
-          {JSON.stringify(articleStructuredData)}
-        </script>
-      </Helmet>
+      <SEO
+        title={post.metaTitle}
+        description={post.metaDescription}
+        keywords={post.keywords}
+        canonical={`https://rocketpayments.co.uk/blog/${post.slug}`}
+        ogType="article"
+        structuredData={[faqStructuredData, articleStructuredData]}
+      />
 
       <div className="min-h-screen bg-background">
         <section className="relative pt-20 pb-12 md:pt-28 md:pb-16 overflow-hidden">

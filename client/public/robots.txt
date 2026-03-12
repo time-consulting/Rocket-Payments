@@ -1,16 +1,70 @@
+# Rocket Payments - robots.txt
+# Last updated: 2026-03-12
+
+# Default rules for all crawlers
 User-agent: *
 Allow: /
-
-# Sitemaps
-Sitemap: https://rocketpayments.co.uk/sitemap.xml
-
-# Crawl-delay for polite crawling
 Crawl-delay: 1
 
-# Disallow admin and thank you pages
+# Disallow admin, thank you, and application pages
+Disallow: /thank-you
+Disallow: /free-terminal-thank-you
+Disallow: /funding-apply
+Disallow: /dojo-partner-offer
+Disallow: /upload-bill
+
+# Allow all content sections
+Allow: /blog/
+Allow: /blog/*
+Allow: /guides/
+Allow: /guides/*
+Allow: /questions/
+Allow: /questions/*
+Allow: /products/
+Allow: /products/*
+
+# === AI Search Engine Bots ===
+# Explicitly allow AI crawlers for AI search citations
+
+# OpenAI / ChatGPT
+User-agent: GPTBot
+Allow: /
+Disallow: /thank-you
+Disallow: /free-terminal-thank-you
+Disallow: /funding-apply
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Google AI (Gemini / AI Overviews)
+User-agent: Google-Extended
+Allow: /
+
+# Anthropic / Claude
+User-agent: ClaudeBot
+Allow: /
 Disallow: /thank-you
 Disallow: /free-terminal-thank-you
 
-# Allow all blog content
-Allow: /blog/
-Allow: /blog/*
+User-agent: anthropic-ai
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+Disallow: /thank-you
+Disallow: /free-terminal-thank-you
+
+# Common AI crawlers
+User-agent: Bytespider
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# === Sitemaps ===
+Sitemap: https://rocketpayments.co.uk/sitemap.xml
+
+# === AI-readable content ===
+# llms.txt provides structured information for AI search engines
+# Available at: https://rocketpayments.co.uk/llms.txt
