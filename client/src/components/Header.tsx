@@ -83,10 +83,10 @@ export function Header() {
   // Landing page focused header (for /free-terminal)
   if (isLandingPage) {
     return (
-      <header className="sticky top-0 z-50 w-full py-4 md:py-6">
+      <header className="sticky top-0 z-50 w-full py-4 lg:py-6">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           {/* Desktop: Landing page header with logos - thicker padding */}
-          <div className="hidden md:flex items-center justify-between bg-card border border-border rounded-full px-8 py-5 shadow-lg gap-6">
+          <div className="hidden lg:flex items-center justify-between bg-card border border-border rounded-full px-8 py-5 shadow-lg gap-6">
             <Link href="/" className="flex items-center gap-3 hover-elevate active-elevate-2 rounded-lg px-2 py-1 -ml-2 transition-transform flex-shrink-0" data-testid="link-home">
               <Rocket className="h-9 w-9 text-primary" />
               <span className="text-2xl font-black text-foreground">ROCKET</span>
@@ -127,7 +127,7 @@ export function Header() {
           </div>
 
           {/* Mobile: Landing page header - thicker */}
-          <div className="flex md:hidden flex-col gap-3 bg-card border border-border rounded-3xl px-4 py-3 shadow-lg">
+          <div className="flex lg:hidden flex-col gap-3 bg-card border border-border rounded-3xl px-4 py-3 shadow-lg">
             {/* Top row: Logo, Theme, Button */}
             <div className="flex items-center justify-between">
               <Link href="/" className="flex items-center gap-2" data-testid="link-home">
@@ -174,10 +174,10 @@ export function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-50 w-full py-4 md:py-6">
+    <header className="sticky top-0 z-50 w-full py-4 lg:py-6">
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         {/* Desktop: White rounded pill container */}
-        <div className="hidden md:flex items-center justify-between bg-card border border-border rounded-full px-6 py-3 shadow-md">
+        <div className="hidden lg:flex items-center justify-between bg-card border border-border rounded-full px-6 py-3 shadow-md">
           <Link href="/" className="flex items-center gap-2 hover-elevate active-elevate-2 rounded-lg px-2 py-1 -ml-2 transition-transform" data-testid="link-home">
             <Rocket className="h-7 w-7 text-primary" />
             <span className="text-xl font-black text-foreground">ROCKET</span>
@@ -295,7 +295,7 @@ export function Header() {
         </div>
 
         {/* Mobile: Simple header */}
-        <div className="flex md:hidden items-center justify-between bg-card border border-border rounded-full px-4 py-2 shadow-md">
+        <div className="flex lg:hidden items-center justify-between bg-card border border-border rounded-full px-4 py-2 shadow-md">
           <Link href="/" className="flex items-center gap-2" data-testid="link-home">
             <Rocket className="h-6 w-6 text-primary" />
             <span className="text-lg font-black text-foreground">ROCKET</span>
@@ -316,7 +316,7 @@ export function Header() {
       </div>
 
       {isMobileMenuOpen && (
-        <div className="md:hidden mt-4 mx-6">
+        <div className="lg:hidden mt-4 mx-6">
           <div className="bg-card border border-border rounded-2xl shadow-lg p-4">
             <nav className="flex flex-col gap-3">
               {/* Mobile Products Section - Stacked Categories */}
