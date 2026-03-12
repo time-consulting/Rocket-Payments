@@ -174,7 +174,7 @@ function SwitchPriceAnimation() {
   }, [isVisible]);
 
   return (
-    <div ref={ref} className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-none">
+    <div ref={ref} className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-none">
       {showFree ? (
         <span className="inline-block animate-[scaleIn_0.5s_ease-out] bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">FREE</span>
       ) : (
@@ -529,13 +529,13 @@ function HeroSection() {
         >
           <div className="text-center px-6 space-y-3">
             <p className="text-xs md:text-sm font-black tracking-[0.25em] text-primary uppercase">Built for business</p>
-            <h2 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-black leading-[0.85] tracking-tighter text-gray-900">
+            <h2 className="text-[2rem] sm:text-5xl md:text-8xl lg:text-9xl font-black leading-[0.9] tracking-tighter text-gray-900">
               The engine<br />
               <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
                 behind every sale.
               </span>
             </h2>
-            <p className="text-sm md:text-lg font-semibold text-gray-500 pt-2 max-w-sm mx-auto">
+            <p className="text-xs sm:text-sm md:text-lg font-semibold text-gray-500 pt-2 max-w-xs sm:max-w-sm mx-auto">
               Enterprise-grade payment technology — engineered for speed, built to last.
             </p>
           </div>
@@ -741,7 +741,7 @@ export default function Home() {
             {/* Editorial "Switch for FREE" */}
             <div className="text-center">
               <p className="text-xs font-black tracking-[0.3em] text-primary uppercase mb-4">No contracts. No catch.</p>
-              <h2 className="text-6xl sm:text-7xl md:text-8xl lg:text-[10rem] font-black leading-[0.85] tracking-tighter text-white mb-3">
+              <h2 className="text-5xl sm:text-7xl md:text-8xl lg:text-[10rem] font-black leading-[0.85] tracking-tighter text-white mb-3">
                 Switch
               </h2>
               <div className="flex items-baseline justify-center gap-4 mb-6">
@@ -897,13 +897,22 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* Right — device, oversized, bleeding off edge */}
+            {/* Right — device, oversized, bleeding off edge (desktop) */}
             <div className="relative hidden md:flex items-end justify-end h-full">
               <img
                 src={rocketGoHero}
                 alt="Rocket Go card machine"
                 className="absolute right-0 bottom-0 h-[460px] w-auto object-contain"
                 style={{ transform: 'translateX(3%)' }}
+              />
+            </div>
+
+            {/* Mobile device image — centred below copy */}
+            <div className="md:hidden flex justify-center pb-10 -mt-4">
+              <img
+                src={rocketGoHero}
+                alt="Rocket Go card machine"
+                className="h-[260px] w-auto object-contain"
               />
             </div>
 
