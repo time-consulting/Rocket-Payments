@@ -327,6 +327,7 @@ function HeroSection() {
   const [textVisible, setTextVisible] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [loaded, setLoaded] = useState(false);
+  const [firstFrameDrawn, setFirstFrameDrawn] = useState(false);
 
   // Preload frames — mobile loads every 3rd frame (40 total), desktop loads all 120
   useEffect(() => {
@@ -357,6 +358,7 @@ function HeroSection() {
         // Start showing canvas once first frame is ready
         if (loadedCountRef.current === 1) {
           drawFrame(0);
+          setFirstFrameDrawn(true);
         }
       };
     });
@@ -461,12 +463,12 @@ function HeroSection() {
           style={{ background: '#ffffff' }}
         />
 
-        {/* LOADING OVERLAY — first frame shown instantly, fades out once canvas ready */}
+        {/* LOADING OVERLAY — first frame shown instantly via preloaded img, fades out once canvas has drawn frame 1 */}
         <div
           className="absolute inset-0 z-10 pointer-events-none"
           style={{
-            opacity: loaded ? 0 : 1,
-            transition: loaded ? 'opacity 0.6s ease' : 'none',
+            opacity: firstFrameDrawn ? 0 : 1,
+            transition: firstFrameDrawn ? 'opacity 0.4s ease' : 'none',
           }}
         >
           <img
@@ -474,6 +476,8 @@ function HeroSection() {
             className="w-full h-full object-contain"
             style={{ background: '#ffffff' }}
             alt=""
+            loading="eager"
+            fetchPriority="high"
           />
         </div>
 
