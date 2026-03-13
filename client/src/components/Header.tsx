@@ -25,12 +25,21 @@ export function Header() {
     { name: "Silverstone", logo: silverstoneLogo },
   ];
 
+  const [isDesktop, setIsDesktop] = useState(() => window.innerWidth >= 1024);
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   const productCategories = [
@@ -86,7 +95,7 @@ export function Header() {
       <header className="sticky top-0 z-50 w-full py-4 lg:py-6">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           {/* Desktop: Landing page header with logos - thicker padding */}
-          <div className="hidden lg:flex items-center justify-between bg-card border border-border rounded-full px-8 py-5 shadow-lg gap-6">
+          {isDesktop && <div className="flex items-center justify-between bg-card border border-border rounded-full px-8 py-5 shadow-lg gap-6">
             <Link href="/" className="flex items-center gap-3 hover-elevate active-elevate-2 rounded-lg px-2 py-1 -ml-2 transition-transform flex-shrink-0" data-testid="link-home">
               <Rocket className="h-9 w-9 text-primary" />
               <span className="text-2xl font-black text-foreground">ROCKET</span>
@@ -124,10 +133,10 @@ export function Header() {
                 Claim offer
               </Button>
             </div>
-          </div>
+          </div>}
 
           {/* Mobile: Landing page header - thicker */}
-          <div className="flex lg:hidden flex-col gap-3 bg-card border border-border rounded-3xl px-4 py-3 shadow-lg">
+          {!isDesktop && <div className="flex flex-col gap-3 bg-card border border-border rounded-3xl px-4 py-3 shadow-lg">
             {/* Top row: Logo, Theme, Button */}
             <div className="flex items-center justify-between">
               <Link href="/" className="flex items-center gap-2" data-testid="link-home">
@@ -167,7 +176,7 @@ export function Header() {
                 </div>
               </div>
             </div>
-          </div>
+          </div>}
         </div>
       </header>
     );
@@ -177,7 +186,7 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full py-4 lg:py-6">
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         {/* Desktop: White rounded pill container */}
-        <div className="hidden lg:flex items-center justify-between bg-card border border-border rounded-full px-6 py-3 shadow-md">
+        {isDesktop && <div className="flex items-center justify-between bg-card border border-border rounded-full px-6 py-3 shadow-md">
           <Link href="/" className="flex items-center gap-2 hover-elevate active-elevate-2 rounded-lg px-2 py-1 -ml-2 transition-transform" data-testid="link-home">
             <Rocket className="h-7 w-7 text-primary" />
             <span className="text-xl font-black text-foreground">ROCKET</span>
@@ -292,10 +301,10 @@ export function Header() {
               </Button>
             </Link>
           </div>
-        </div>
+        </div>}
 
         {/* Mobile: Simple header */}
-        <div className="flex lg:hidden items-center justify-between bg-card border border-border rounded-full px-4 py-2 shadow-md">
+        {!isDesktop && <div className="flex items-center justify-between bg-card border border-border rounded-full px-4 py-2 shadow-md">
           <Link href="/" className="flex items-center gap-2" data-testid="link-home">
             <Rocket className="h-6 w-6 text-primary" />
             <span className="text-lg font-black text-foreground">ROCKET</span>
@@ -312,11 +321,11 @@ export function Header() {
               {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
           </div>
-        </div>
+        </div>}
       </div>
 
-      {isMobileMenuOpen && (
-        <div className="lg:hidden mt-4 mx-6">
+      {!isDesktop && isMobileMenuOpen && (
+        <div className="mt-4 mx-6">
           <div className="bg-card border border-border rounded-2xl shadow-lg p-4">
             <nav className="flex flex-col gap-3">
               {/* Mobile Products Section - Stacked Categories */}

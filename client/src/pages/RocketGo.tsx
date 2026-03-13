@@ -8,8 +8,54 @@ import heroImage from "@assets/hero image rocket go_1761942966646.png";
 import pubImage from "@assets/rocket go pub_1761942966648.png";
 import outdoorImage from "@assets/tap rocket go_1761942966648.png";
 import approvedImage from "@assets/terminal approved_1761942966648.png";
-import offerBanner from "@assets/offer banner rocket go device_1761942983114.png";
+import rocketGoHero from "@assets/stock_images/Remove background project (1).png";
 import switchBanner from "@assets/switch for free banner_1761942983115.png";
+
+const CYCLE_MS = 3 * 24 * 60 * 60 * 1000;
+
+function CountdownTimer() {
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, mins: 0, secs: 0 });
+
+  useEffect(() => {
+    const calc = () => {
+      const epoch = new Date('2026-01-01T00:00:00').getTime();
+      const elapsed = (Date.now() - epoch) % CYCLE_MS;
+      const diff = CYCLE_MS - elapsed;
+      setTimeLeft({
+        days: Math.floor(diff / 86400000),
+        hours: Math.floor((diff % 86400000) / 3600000),
+        mins: Math.floor((diff % 3600000) / 60000),
+        secs: Math.floor((diff % 60000) / 1000),
+      });
+    };
+    calc();
+    const id = setInterval(calc, 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  const units = [
+    { v: timeLeft.days, label: 'days' },
+    { v: timeLeft.hours, label: 'hrs' },
+    { v: timeLeft.mins, label: 'min' },
+    { v: timeLeft.secs, label: 'sec' },
+  ];
+
+  return (
+    <div className="flex items-center gap-2 md:gap-3">
+      {units.map(({ v, label }, i) => (
+        <div key={label} className="flex items-center gap-2 md:gap-3">
+          <div className="text-center">
+            <div className="text-2xl md:text-3xl font-black text-white tabular-nums leading-none">
+              {String(v).padStart(2, '0')}
+            </div>
+            <div className="text-[9px] md:text-[10px] font-bold text-white/50 uppercase tracking-wider mt-0.5">{label}</div>
+          </div>
+          {i < 3 && <span className="text-xl md:text-2xl font-black text-white/30 -mt-3">:</span>}
+        </div>
+      ))}
+    </div>
+  );
+}
 
 function AnimatedSection({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
   const [isVisible, setIsVisible] = useState(false);
@@ -167,19 +213,65 @@ export default function RocketGo() {
         </div>
       </section>
 
-      {/* Offer Banner - Creative Integration */}
-      <section className="py-20 bg-background">
-        <div className="max-w-6xl mx-auto px-6 md:px-8">
-          <AnimatedSection>
-            <div className="relative group overflow-hidden rounded-3xl">
-              <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-primary/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+      {/* Offer Banner */}
+      <section className="relative overflow-hidden rounded-3xl mx-6 md:mx-8 my-16 max-w-7xl lg:mx-auto">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0d3d2e] via-[#0d4433] to-[#092b1f] pointer-events-none" />
+        <div className="absolute top-0 right-0 w-[70%] h-full bg-gradient-to-l from-primary/10 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
+          style={{ backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
+
+        <div className="relative max-w-7xl mx-auto px-6 md:px-8">
+          <div className="grid md:grid-cols-2 items-center min-h-[340px] md:min-h-[400px]">
+
+            {/* Left — copy */}
+            <div className="py-12 md:py-16 space-y-6 z-10">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/20 border border-primary/30">
+                <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                <span className="text-xs font-black text-primary tracking-widest uppercase">Limited time offer</span>
+              </div>
+              <div>
+                <div className="flex items-center gap-3 mb-2">
+                  <span className="text-lg md:text-xl font-bold text-white/30 line-through">Was £189</span>
+                </div>
+                <h2 className="text-5xl sm:text-6xl md:text-7xl font-black leading-[0.9] tracking-tight">
+                  <span className="text-white/50">Terminal</span><br />
+                  <span className="text-white/50 text-3xl sm:text-4xl font-bold">now </span>
+                  <span className="text-primary">£0</span>
+                </h2>
+                <div className="mt-4 space-y-2 max-w-sm">
+                  <div className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
+                    <p className="text-sm md:text-base text-white/60 font-medium">£0/month — no device rental fees, ever</p>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
+                    <p className="text-sm md:text-base text-white/60 font-medium">Free next-day delivery. No hidden fees.</p>
+                  </div>
+                </div>
+              </div>
+              <div className="space-y-2">
+                <p className="text-[10px] font-black tracking-[0.25em] text-white/30 uppercase">Offer ends in</p>
+                <CountdownTimer />
+              </div>
+              <Link href="/calculate-savings">
+                <Button className="mt-2 bg-primary hover:bg-primary/90 text-primary-foreground text-base px-8 py-5 rounded-full shadow-[0_0_30px_rgba(45,212,191,0.4)] hover:shadow-[0_0_50px_rgba(45,212,191,0.6)] hover:scale-105 transition-all duration-300">
+                  Get the deal
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+            </div>
+
+            {/* Right — device */}
+            <div className="relative flex items-end justify-center md:justify-end pb-8 md:pb-0 md:h-full">
               <img
-                src={offerBanner}
-                alt="Limited time offer - £79 card machine"
-                className="relative w-full h-auto hover:scale-[1.02] transition-transform duration-700 shadow-2xl"
+                src={rocketGoHero}
+                alt="Rocket Go card machine"
+                className="h-[220px] sm:h-[260px] md:h-[460px] w-auto object-contain md:absolute md:right-0 md:bottom-0"
+                style={{ transform: 'translateX(3%)' }}
               />
             </div>
-          </AnimatedSection>
+
+          </div>
         </div>
       </section>
 
