@@ -493,7 +493,7 @@ function HeroSection() {
               <span className="text-[10px] md:text-xs font-black tracking-widest text-primary">UK'S #1 PAYMENTS PROVIDER</span>
             </div>
             <h1
-              className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black leading-[0.9] tracking-tighter text-gray-900"
+              className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black leading-[0.9] tracking-tighter text-gray-900 drop-shadow-[0_2px_12px_rgba(255,255,255,0.9)]"
               data-testid="text-hero-headline"
             >
               Payment<br />
@@ -501,7 +501,7 @@ function HeroSection() {
                 Paradise
               </span>
             </h1>
-            <p className="text-sm sm:text-base md:text-xl font-semibold text-gray-500 max-w-sm">
+            <p className="text-sm sm:text-base md:text-xl font-semibold text-gray-700 max-w-sm drop-shadow-[0_1px_8px_rgba(255,255,255,1)]">
               Fast, reliable payments with stellar support.<br className="hidden md:block" /> Join 110,000+ businesses.
             </p>
             {/* Scroll hint inline with text */}
@@ -553,14 +553,14 @@ function HeroSection() {
           style={{ opacity: midOpacity }}
         >
           <div className="text-center px-6 space-y-3">
-            <p className="text-xs md:text-sm font-black tracking-[0.25em] text-primary uppercase">Built for business</p>
-            <h2 className="text-[2rem] sm:text-5xl md:text-8xl lg:text-9xl font-black leading-[0.9] tracking-tighter text-gray-900">
+            <p className="text-xs md:text-sm font-black tracking-[0.25em] text-primary uppercase drop-shadow-[0_1px_6px_rgba(255,255,255,1)]">Built for business</p>
+            <h2 className="text-[2.5rem] sm:text-5xl md:text-8xl lg:text-9xl font-black leading-[0.9] tracking-tighter text-gray-900 drop-shadow-[0_2px_16px_rgba(255,255,255,0.95)]">
               The engine<br />
               <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
                 behind every sale.
               </span>
             </h2>
-            <p className="text-xs sm:text-sm md:text-lg font-semibold text-gray-500 pt-2 max-w-xs sm:max-w-sm mx-auto">
+            <p className="text-sm sm:text-sm md:text-lg font-semibold text-gray-700 pt-2 max-w-xs sm:max-w-sm mx-auto drop-shadow-[0_1px_8px_rgba(255,255,255,1)]">
               Enterprise-grade payment technology — engineered for speed, built to last.
             </p>
           </div>
