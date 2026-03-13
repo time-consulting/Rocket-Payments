@@ -1481,6 +1481,86 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Why Rocket — Consultant Positioning */}
+      <section className="py-24 md:py-32 bg-gradient-to-b from-background to-muted/30">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
+          <AnimatedSection>
+            <div className="text-center space-y-4 mb-16">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full border border-primary/20">
+                <Users className="h-4 w-4 text-primary" />
+                <span className="text-sm font-semibold text-primary uppercase tracking-widest">Why Rocket Payments</span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-black tracking-tight">
+                We work for you.<br className="hidden md:block" /> Not the payment network.
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                Most businesses go direct to a provider and accept whatever rate they're given. We sit on your side of the table — analysing your bill, matching the right product to your business, and making sure you're not overpaying.
+              </p>
+            </div>
+
+            {/* Mortgage broker analogy */}
+            <div className="bg-primary/5 border border-primary/15 rounded-2xl p-8 md:p-10 mb-12 max-w-3xl mx-auto text-center">
+              <p className="text-lg md:text-xl font-semibold text-foreground leading-relaxed">
+                "Think of us like a mortgage broker — except for your card payments. We don't work for the bank. We work for your business."
+              </p>
+            </div>
+
+            {/* Value pillars grid */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                {
+                  icon: TrendingUp,
+                  title: "Bill Analysis",
+                  desc: "We analyse your current processing statement line by line. Most businesses are overpaying by 40–60% without realising. We show you exactly where."
+                },
+                {
+                  icon: Zap,
+                  title: "Cashflow Matching",
+                  desc: "Faster settlement means money in your account sooner. For businesses watching cashflow closely, next-day settlement can be the difference."
+                },
+                {
+                  icon: Cloud,
+                  title: "Multi-Network Signal",
+                  desc: "Our devices carry a multi-network SIM — automatically switching between networks. Essential for outdoor markets, remote venues, and mobile businesses."
+                },
+                {
+                  icon: Shield,
+                  title: "P2PE Compliance — 2 Steps",
+                  desc: "Point-to-point encryption means your annual compliance questionnaire shrinks from 300 questions to just 2. We handle the rest."
+                },
+                {
+                  icon: Sparkles,
+                  title: "Insight & Analytics",
+                  desc: "Real-time transaction data, staff performance, and sales trends in a clean app. Know your business as well as your best accountant does."
+                },
+                {
+                  icon: CheckCircle,
+                  title: "Right Product, Right Business",
+                  desc: "A market trader needs something different from a restaurant or a salon. We match device, rate structure, and integration to your specific operation."
+                }
+              ].map(({ icon: Icon, title, desc }) => (
+                <div key={title} className="bg-background rounded-xl border p-6 space-y-3 hover:border-primary/30 transition-colors">
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                    <Icon className="h-5 w-5 text-primary" />
+                  </div>
+                  <h3 className="font-bold text-lg">{title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">{desc}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="text-center mt-12">
+              <Link href="/calculate-savings">
+                <Button size="lg" className="rounded-full px-10 py-6 text-lg font-bold">
+                  Get your free bill analysis
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
       {/* Final Epic CTA */}
       <section className="relative py-40 md:py-52 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-primary/90">
