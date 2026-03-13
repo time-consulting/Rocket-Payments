@@ -328,7 +328,6 @@ function HeroSection() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [loaded, setLoaded] = useState(false);
   const [firstFrameDrawn, setFirstFrameDrawn] = useState(false);
-  const [microloadDone, setMicroloadDone] = useState(false);
 
   // Preload frames — mobile loads every 3rd frame (40 total), desktop loads all 120
   useEffect(() => {
@@ -360,8 +359,6 @@ function HeroSection() {
         if (loadedCountRef.current === 1) {
           drawFrame(0);
           setFirstFrameDrawn(true);
-          // Allow microload to exit once canvas is ready (min 800ms for brand moment)
-          setTimeout(() => setMicroloadDone(true), 800);
         }
       };
     });
@@ -484,76 +481,6 @@ function HeroSection() {
           />
         </div>
 
-        {/* BRANDED MICRO-LOAD SCREEN — shows instantly, fades out once canvas is ready */}
-        {!microloadDone && (
-          <div
-            className="absolute inset-0 z-30 flex flex-col items-center justify-center pointer-events-none"
-            style={{
-              background: '#0a0f1a',
-              opacity: microloadDone ? 0 : 1,
-              transition: 'opacity 0.8s ease',
-            }}
-          >
-            {/* Ambient glow orbs */}
-            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full pointer-events-none"
-              style={{ background: 'radial-gradient(ellipse, rgba(16,185,129,0.15) 0%, transparent 70%)' }} />
-            <div className="absolute bottom-1/3 right-1/4 w-[300px] h-[200px] rounded-full pointer-events-none"
-              style={{ background: 'radial-gradient(ellipse, rgba(16,185,129,0.08) 0%, transparent 70%)' }} />
-
-            {/* Content */}
-            <div className="relative flex flex-col items-center gap-6 px-8 text-center">
-              {/* Logo mark */}
-              <div className="flex items-center gap-3 mb-2">
-                <Rocket className="h-10 w-10 text-primary" />
-                <span className="text-2xl font-black text-white tracking-widest uppercase">Rocket</span>
-              </div>
-
-              {/* Headline */}
-              <div className="space-y-1">
-                <p className="text-4xl sm:text-5xl font-black text-white leading-[0.95] tracking-tighter">
-                  Payment
-                </p>
-                <p className="text-4xl sm:text-5xl font-black leading-[0.95] tracking-tighter"
-                  style={{ background: 'linear-gradient(135deg, #10b981, #34d399)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-                  Paradise.
-                </p>
-              </div>
-
-              {/* Subline */}
-              <p className="text-sm text-white/40 font-medium tracking-widest uppercase max-w-[220px]">
-                The engine behind every sale
-              </p>
-
-              {/* Pulsing dots loader */}
-              <div className="flex items-center gap-2 mt-2">
-                {[0, 1, 2].map(i => (
-                  <div
-                    key={i}
-                    className="w-1.5 h-1.5 rounded-full bg-primary"
-                    style={{
-                      animation: 'pulse 1.2s ease-in-out infinite',
-                      animationDelay: `${i * 0.2}s`,
-                    }}
-                  />
-                ))}
-              </div>
-            </div>
-
-            {/* Bottom stat strip */}
-            <div className="absolute bottom-12 left-0 right-0 flex items-center justify-center gap-8 px-8">
-              {[
-                { num: '110,000+', label: 'Businesses' },
-                { num: '0.29%', label: 'From' },
-                { num: '24/7', label: 'Support' },
-              ].map(({ num, label }) => (
-                <div key={num} className="text-center">
-                  <div className="text-base font-black text-white/70 tabular-nums">{num}</div>
-                  <div className="text-[9px] font-bold text-white/30 uppercase tracking-widest mt-0.5">{label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
 
         {/* INTRO — headline top-left, fades out by 20% scroll */}
         <div

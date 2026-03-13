@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Switch, Route, useLocation } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
@@ -8,6 +8,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { QuickCapture } from "@/components/QuickCapture";
+import { Rocket } from "lucide-react";
 import Home from "@/pages/Home";
 import Products from "@/pages/Products";
 import ProductDetail from "@/pages/ProductDetail";
@@ -45,6 +46,88 @@ import EposPartnersPage from "@/pages/EposPartnersPage";
 import FundingApply from "@/pages/FundingApply";
 import DojoPartnerOffer from "@/pages/DojoPartnerOffer";
 import BillUpload from "@/pages/BillUpload";
+
+function SplashScreen({ onDone }: { onDone: () => void }) {
+  const [fading, setFading] = useState(false);
+
+  useEffect(() => {
+    // Start fade after 1.6s brand moment
+    const fadeTimer = setTimeout(() => setFading(true), 1600);
+    // Unmount after fade completes
+    const doneTimer = setTimeout(() => onDone(), 1600 + 700);
+    return () => { clearTimeout(fadeTimer); clearTimeout(doneTimer); };
+  }, []);
+
+  return (
+    <div
+      className="fixed inset-0 z-[9999] flex flex-col items-center justify-center overflow-hidden"
+      style={{
+        background: '#0a0f1a',
+        opacity: fading ? 0 : 1,
+        transition: fading ? 'opacity 0.7s ease' : 'none',
+        pointerEvents: fading ? 'none' : 'auto',
+      }}
+    >
+      {/* Ambient glow */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] rounded-full pointer-events-none"
+        style={{ background: 'radial-gradient(ellipse, rgba(16,185,129,0.18) 0%, transparent 65%)' }} />
+      <div className="absolute bottom-1/4 right-1/3 w-[300px] h-[200px] rounded-full pointer-events-none"
+        style={{ background: 'radial-gradient(ellipse, rgba(16,185,129,0.07) 0%, transparent 70%)' }} />
+
+      {/* Core content */}
+      <div className="relative flex flex-col items-center gap-5 text-center px-8">
+        {/* Logo */}
+        <div className="flex items-center gap-3">
+          <Rocket className="h-10 w-10 text-primary" />
+          <span className="text-2xl font-black text-white tracking-[0.2em] uppercase">Rocket</span>
+        </div>
+
+        {/* Hero copy */}
+        <div className="space-y-0.5 mt-1">
+          <p className="text-5xl sm:text-6xl font-black text-white leading-[0.9] tracking-tighter">
+            Payment
+          </p>
+          <p
+            className="text-5xl sm:text-6xl font-black leading-[0.9] tracking-tighter"
+            style={{ background: 'linear-gradient(135deg, #10b981 0%, #34d399 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}
+          >
+            Paradise.
+          </p>
+        </div>
+
+        {/* Subline */}
+        <p className="text-xs text-white/35 font-semibold tracking-[0.25em] uppercase mt-1">
+          The engine behind every sale
+        </p>
+
+        {/* Pulsing dots */}
+        <div className="flex items-center gap-2 mt-3">
+          {[0, 1, 2].map(i => (
+            <div
+              key={i}
+              className="w-1.5 h-1.5 rounded-full bg-primary/70"
+              style={{ animation: 'pulse 1.4s ease-in-out infinite', animationDelay: `${i * 0.22}s` }}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Bottom stat strip */}
+      <div className="absolute bottom-10 left-0 right-0 flex items-center justify-center gap-10 px-8">
+        {[
+          { num: '110,000+', label: 'Businesses' },
+          { num: '0.29%', label: 'From' },
+          { num: '24/7', label: 'Support' },
+        ].map(({ num, label }) => (
+          <div key={num} className="text-center">
+            <div className="text-sm font-black text-white/60 tabular-nums">{num}</div>
+            <div className="text-[9px] font-bold text-white/25 uppercase tracking-widest mt-0.5">{label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 function ScrollToTop() {
   const [location] = useLocation();
@@ -195,6 +278,7 @@ function StandalonePage({ children }: { children: React.ReactNode }) {
 
 function App() {
   const [location] = useLocation();
+  const [splashDone, setSplashDone] = useState(false);
   
   const standalonePages = ["/funding-apply", "/dojo-partner-offer"];
   
@@ -208,12 +292,13 @@ function App() {
       </StandalonePage>
     );
   }
-  
+
   return (
     <HelmetProvider>
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
           <ScrollToTop />
+          {!splashDone && <SplashScreen onDone={() => setSplashDone(true)} />}
           <div className="flex flex-col min-h-screen">
             <Header />
             <QuickCaptureWrapper />
