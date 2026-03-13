@@ -702,7 +702,7 @@ export default function Home() {
         description="UK's leading card payment processing company. Low-cost merchant services from 0.5%, free payment terminals, business funding & loans. Serving Kent, East Sussex & nationwide. Dojo alternative with better rates. 99.99% uptime, next-day deposits."
         canonical="https://rocketpayments.co.uk"
         keywords={`card payment processing UK, merchant services UK, payment terminal, card machine UK, business funding UK, business loans UK, merchant cash advance, contactless payments UK, Dojo alternative, ${localKeywords}`}
-        structuredData={[faqSchemas.home, faqSchemas.businessFunding, serviceSchemas.cardTerminal, serviceSchemas.merchantServices, serviceSchemas.businessFunding]}
+        structuredData={[faqSchemas.home, faqSchemas.businessFunding, serviceSchemas.cardTerminal, serviceSchemas.merchantServices]}
       />
       {/* Scroll-Driven Video Hero — must be OUTSIDE overflow-hidden or sticky breaks */}
       <HeroSection />

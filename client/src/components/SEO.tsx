@@ -9,6 +9,7 @@ interface SEOProps {
   noIndex?: boolean;
   keywords?: string;
   structuredData?: object | object[];
+  breadcrumbs?: { name: string; url: string }[];
 }
 
 const organizationSchema = {
@@ -361,6 +362,97 @@ export const faqSchemas = {
   }
 };
 
+export const productFaqSchemas = {
+  cardMachine: {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I get a free card machine in the UK?",
+        "acceptedAnswer": { "@type": "Answer", "text": "With Rocket Payments you get a free card machine when you sign up for a merchant account. There are no upfront costs, no monthly rental fees, and no long-term contracts. Simply apply online, get approved within 24 hours, and your terminal ships free next day." }
+      },
+      {
+        "@type": "Question",
+        "name": "What card machine is better than Dojo?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Rocket Go and Rocket Pocket offer comparable hardware to Dojo card machines but with lower transaction fees starting from 0.29%, no monthly fees, and no exit fees. Rocket Payments also covers up to £3,000 of exit fees if you switch from another provider." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does the Rocket Go card machine work without WiFi?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Rocket Go uses 4G connectivity built-in so it works anywhere with a mobile signal — outdoor markets, festivals, events, and pop-ups. It also connects to WiFi when available for faster speeds." }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does the Rocket Go battery last?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Rocket Go has an all-day battery designed to last a full business day of heavy use. The device can process hundreds of transactions on a single charge." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I accept Apple Pay and Google Pay with Rocket Payments?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. All Rocket Payments terminals accept Apple Pay, Google Pay, Samsung Pay, and all contactless-enabled cards as standard. There are no extra fees for digital wallet payments." }
+      },
+      {
+        "@type": "Question",
+        "name": "When do card payment funds arrive in my account?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Rocket Payments offers next-day settlement. Funds from card transactions taken today are deposited into your business bank account by 6am the following morning, 7 days a week including weekends and bank holidays." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there a monthly fee for a Rocket Payments card machine?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. Rocket Payments charges no monthly fee for the card machine. You only pay a small percentage per transaction. This makes it far more cost-effective than providers who charge £20-£40 per month in rental fees." }
+      }
+    ]
+  },
+  businessFundingFaq: {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much business funding can I get from Rocket Payments?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Rocket Payments offers business funding from £5,000 to £500,000 through its Flex Funds merchant cash advance product. The amount you qualify for is based on your average monthly card turnover." }
+      },
+      {
+        "@type": "Question",
+        "name": "How quickly can I get business funding?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Most Rocket Payments Flex Funds applications are approved within 24 hours and funded within 48 hours of approval. This is significantly faster than traditional bank loans which can take weeks or months." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need good credit to get a merchant cash advance?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. Rocket Payments Flex Funds is based on your card processing turnover, not your credit score. If your business processes regular card payments, you may qualify even with less-than-perfect credit history." }
+      },
+      {
+        "@type": "Question",
+        "name": "How does repayment work for a merchant cash advance?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Repayments are automatically taken as a small fixed percentage of your daily card sales. When sales are high you repay more, when sales are slow you repay less. There are no fixed monthly payments and no risk of missed payment fees." }
+      }
+    ]
+  },
+  tapToPayFaq: {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Can I use my iPhone as a card machine in the UK?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. With Rocket Payments' Tap to Pay on iPhone feature, you can accept contactless card payments, Apple Pay, and Google Pay directly on your iPhone — no card reader or extra hardware needed. Requires iPhone XS or later running iOS 16+." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is Tap to Pay on iPhone secure?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Tap to Pay on iPhone uses the same secure NFC chip and encryption as traditional card terminals. Cardholder data is never stored on the device. It is fully PCI DSS compliant." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the transaction limit for contactless payments in the UK?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The standard contactless limit in the UK is £100 per transaction for physical cards. However, there is no limit for Apple Pay, Google Pay, or Samsung Pay when the customer authenticates with Face ID, Touch ID, or PIN." }
+      }
+    ]
+  }
+};
+
 export function SEO({
   title,
   description,
@@ -370,6 +462,7 @@ export function SEO({
   noIndex = false,
   keywords,
   structuredData,
+  breadcrumbs,
 }: SEOProps) {
   const fullTitle = title.includes("Rocket Payments")
     ? title
@@ -377,11 +470,24 @@ export function SEO({
 
   const defaultKeywords = "card payment processing UK, merchant services UK, payment terminal, card machine UK, contactless payments, business funding UK, business loans UK, merchant cash advance, Dojo alternative, card machine Kent, card machine East Sussex, payment terminal Maidstone, card payments Canterbury, business funding Brighton, Tunbridge Wells card machine, Ashford payment processing, Dover merchant services, Hastings card payments, Eastbourne business funding";
 
+  const breadcrumbSchema = breadcrumbs && breadcrumbs.length > 0 ? {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": breadcrumbs.map((item, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "name": item.name,
+      "item": item.url
+    }))
+  } : null;
+
   const allStructuredData = structuredData 
     ? Array.isArray(structuredData) 
       ? [organizationSchema, localBusinessSchema, ...structuredData]
       : [organizationSchema, localBusinessSchema, structuredData]
     : [organizationSchema, localBusinessSchema];
+
+  const finalStructuredData = breadcrumbSchema ? [...allStructuredData, breadcrumbSchema] : allStructuredData;
 
   return (
     <Helmet>
@@ -408,7 +514,7 @@ export function SEO({
       <meta name="geo.region" content="GB" />
       <meta name="geo.placename" content="United Kingdom" />
       
-      {allStructuredData.map((schema, index) => (
+      {finalStructuredData.map((schema, index) => (
         <script key={index} type="application/ld+json">
           {JSON.stringify(schema)}
         </script>

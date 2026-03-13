@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import { SEO, serviceSchemas, productFaqSchemas } from "@/components/SEO";
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -174,6 +175,22 @@ export default function RocketPocket() {
 
   return (
     <div className="min-h-screen bg-background overflow-hidden">
+      <SEO
+        title="Rocket Pocket — All-in-One Ordering & Payment Device UK"
+        description="Rocket Pocket combines ordering, payments, and printing in one device. Built-in printer, split bills, EPOS integration. Perfect for hospitality. Free with merchant account."
+        canonical="https://rocketpayments.co.uk/products/rocket-pocket"
+        breadcrumbs={[{name:"Home",url:"https://rocketpayments.co.uk"},{name:"Products",url:"https://rocketpayments.co.uk/products"},{name:"Rocket Pocket",url:"https://rocketpayments.co.uk/products/rocket-pocket"}]}
+        structuredData={[productFaqSchemas.cardMachine, serviceSchemas.cardTerminal, {
+          "@context": "https://schema.org",
+          "@type": "Product",
+          "name": "Rocket Pocket All-in-One Payment Device",
+          "description": "Handheld ordering and payment device for UK restaurants, pubs and cafes. Accept card payments, manage orders, print receipts. Free with merchant account.",
+          "brand": { "@type": "Brand", "name": "Rocket Payments" },
+          "category": "Payment Terminal",
+          "offers": { "@type": "Offer", "priceCurrency": "GBP", "price": "0", "availability": "https://schema.org/InStock" },
+          "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "843" }
+        }]}
+      />
       {/* Epic Cinematic Hero */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-primary/10">

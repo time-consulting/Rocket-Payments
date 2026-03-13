@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import { SEO, serviceSchemas, productFaqSchemas } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Smartphone, CreditCard, Lock, Download, ArrowRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
@@ -65,6 +66,21 @@ function FloatingImage({ src, alt, className }: { src: string; alt: string; clas
 export default function TapToPay() {
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Tap to Pay on iPhone UK — Accept Card Payments Without a Terminal"
+        description="Turn your iPhone into a card machine. Accept contactless payments, Apple Pay, Google Pay with no extra hardware. Instant setup. Powered by Rocket Payments."
+        canonical="https://rocketpayments.co.uk/products/tap-to-pay"
+        breadcrumbs={[{name:"Home",url:"https://rocketpayments.co.uk"},{name:"Products",url:"https://rocketpayments.co.uk/products"},{name:"Tap to Pay",url:"https://rocketpayments.co.uk/products/tap-to-pay"}]}
+        structuredData={[productFaqSchemas.tapToPayFaq, serviceSchemas.cardTerminal, {
+          "@context": "https://schema.org",
+          "@type": "SoftwareApplication",
+          "name": "Tap to Pay on iPhone — Rocket Payments",
+          "description": "Accept contactless card payments directly on your iPhone. No card reader needed. Works with Apple Pay, Google Pay and all contactless cards.",
+          "applicationCategory": "FinanceApplication",
+          "operatingSystem": "iOS",
+          "offers": { "@type": "Offer", "priceCurrency": "GBP", "price": "0", "description": "No hardware cost" }
+        }]}
+      />
       {/* Headline Section */}
       <section className="pt-20 pb-12 md:pt-32 md:pb-16 bg-background">
         <div className="max-w-4xl mx-auto text-center px-6 md:px-8">

@@ -52,7 +52,7 @@ export default function Sidekick() {
         title="Sidekick App | Manage Your Business Payments | Rocket Payments"
         description="The Sidekick app puts your business in your pocket. Real-time payment insights, manage terminals, view reports, and control your merchant account from anywhere."
         keywords="business payment app, merchant services app, payment insights, manage card machine, payment reporting app, business analytics app, merchant dashboard"
-        canonical="https://rocketpayments.co.uk/sidekick"
+        canonical="https://rocketpayments.co.uk/products/sidekick"
       />
       {/* Apple-Style Hero */}
       <section className="relative pt-24 pb-20 md:pt-40 md:pb-32 overflow-hidden bg-background">

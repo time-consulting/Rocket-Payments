@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import { SEO, serviceSchemas, productFaqSchemas } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Sparkles, Zap, Shield, Wifi, Clock, CreditCard, TrendingUp, CheckCircle2, ArrowRight, Lock, Settings } from "lucide-react";
@@ -93,6 +94,23 @@ function AnimatedSection({ children, delay = 0 }: { children: React.ReactNode; d
 export default function RocketGo() {
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Rocket Go — Portable 4G Card Machine UK"
+        description="The Rocket Go portable card machine. 4G connectivity, all-day battery, next-day settlements. From 0.29%. Free terminal — no monthly fees, no contracts."
+        canonical="https://rocketpayments.co.uk/products/rocket-go"
+        breadcrumbs={[{name:"Home",url:"https://rocketpayments.co.uk"},{name:"Products",url:"https://rocketpayments.co.uk/products"},{name:"Rocket Go",url:"https://rocketpayments.co.uk/products/rocket-go"}]}
+        breadcrumbs={[{name:"Home",url:"https://rocketpayments.co.uk"},{name:"Products",url:"https://rocketpayments.co.uk/products"},{name:"Rocket Go",url:"https://rocketpayments.co.uk/products/rocket-go"}]}
+        structuredData={[productFaqSchemas.cardMachine, serviceSchemas.cardTerminal, {
+          "@context": "https://schema.org",
+          "@type": "Product",
+          "name": "Rocket Go Portable Card Machine",
+          "description": "4G portable card machine for UK businesses. Accept all major cards, Apple Pay, Google Pay. Next-day settlements. Free terminal with merchant account.",
+          "brand": { "@type": "Brand", "name": "Rocket Payments" },
+          "category": "Payment Terminal",
+          "offers": { "@type": "Offer", "priceCurrency": "GBP", "price": "0", "availability": "https://schema.org/InStock" },
+          "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "1247" }
+        }]}
+      />
       {/* Epic Cinematic Hero */}
       <section className="relative pt-20 pb-16 md:pt-32 md:pb-20 overflow-hidden">
         {/* Animated gradient mesh */}

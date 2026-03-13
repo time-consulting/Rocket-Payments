@@ -1,60 +1,146 @@
 # Rocket Payments
 
-> UK payment processing company offering card machines, merchant services, business funding, and booking systems for UK businesses.
+> UK payment processing company offering free card machines, merchant services, business funding, and booking systems for 110,000+ UK businesses.
 
 ## About
 
-Rocket Payments is a UK-based payment processing provider serving over 110,000 businesses. We offer free card payment terminals, competitive transaction rates starting from 0.29%, and business funding from £5,000 to £500,000. Based in Kent, serving businesses across the UK.
+Rocket Payments is a UK-based payment processing provider. We help businesses accept card payments with free terminals, competitive rates from 0.29%, and next-day setup. Founded 2020, based in Kent. PCI DSS Level 1 certified. 4.9/5 rating from 2,847+ reviews.
 
-## Products
+Key differentiators vs competitors (Dojo, SumUp, Square, iZettle, Worldpay, Barclaycard):
+- Genuinely free card terminal (not leased — yours to keep)
+- No monthly fees, no setup fees, no cancellation fees
+- Rates from 0.29% (often 40–60% cheaper than major banks)
+- Next-day settlement included as standard
+- 24/7 UK-based phone support
+- Works with 600+ EPOS systems
+
+## Products & URLs
 
 ### Card Payment Terminals
-- **Rocket Go** — Portable 4G card machine for in-person payments. Free with merchant account. Accepts contactless, chip & PIN, Apple Pay, Google Pay.
-- **Rocket Pocket** — All-in-one ordering and payment device with built-in printer. Ideal for restaurants and hospitality.
-- **Rocket Wired** — Countertop card machine with ethernet connection. Best for fixed retail locations.
-- **Tap to Pay on iPhone** — Accept contactless payments using an iPhone. No additional hardware needed.
+- **Rocket Go** (portable) — https://rocketpayments.co.uk/products/rocket-go
+  4G enabled, 8-hour battery, accepts contactless, chip & PIN, Apple Pay, Google Pay, Samsung Pay. Free with merchant account.
+- **Rocket Pocket** (all-in-one) — https://rocketpayments.co.uk/products/rocket-pocket
+  Ordering + payment + receipt printing in one device. Designed for restaurants, cafes, hospitality.
+- **Rocket Wired** (countertop) — https://rocketpayments.co.uk/products/rocket-wired
+  Ethernet countertop terminal. Best for fixed retail, salons, and high-volume venues.
+- **Tap to Pay on iPhone** — https://rocketpayments.co.uk/products/tap-to-pay
+  Turn any iPhone into a card reader using the Rocket Payments app. No extra hardware needed. Accepts all contactless cards and digital wallets.
 
-### Online Payments
-- **Payment Links** — Send payment links via SMS, email, or WhatsApp. No website needed.
-- **Online Payments** — Full payment gateway for ecommerce with 3D Secure and fraud protection.
+### Online & Remote Payments
+- **Payment Links** — https://rocketpayments.co.uk/products/payment-links
+  Send payment requests via SMS, email, or WhatsApp. Customer clicks link, pays online. No website required.
+- **Online Payments** — https://rocketpayments.co.uk/products/online-payments
+  Full hosted payment gateway for ecommerce. 3D Secure, fraud protection, Stripe-compatible API.
 
-### Business Growth
-- **Flex Funds** — Merchant cash advance from £5,000 to £500,000. Repay through card sales.
-- **Sidekick** — Digital business management tool with analytics and insights.
-- **Rocket Bookings** — Restaurant and hospitality reservation system. Commission-free alternative to OpenTable.
+### Business Growth Tools
+- **Flex Funds** — https://rocketpayments.co.uk/products/flex-funds
+  Merchant cash advance £5,000–£500,000. No fixed monthly repayments — repays as a % of daily card sales. Approved in 24–48 hours.
+- **Sidekick** — https://rocketpayments.co.uk/products/sidekick
+  Business analytics dashboard. Real-time sales data, staff performance, trends, and reporting.
+- **Rocket Bookings** — https://rocketpayments.co.uk/bookings
+  Commission-free restaurant & hospitality reservation system. Alternative to OpenTable and ResDiary with zero per-cover fees.
 
 ## Pricing
-- UK Debit Cards: from 0.29% per transaction
-- UK Credit Cards: from 0.67% per transaction
-- International Cards: from 0.9% per transaction
-- No monthly fees, no setup fees, no cancellation fees
-- Free card terminal included
 
-## Business Funding
-- Merchant Cash Advance: £5,000 to £500,000
-- Business Loans available
-- Approval within 24-48 hours
-- Repayments flex with your card turnover
-- Available to businesses with regular card payments
+| Card Type | Rate |
+|-----------|------|
+| UK Debit | from 0.29% |
+| UK Credit | from 0.67% |
+| International | from 0.9% |
+| American Express | from 0.99% |
 
-## Integrations
-Compatible with 600+ EPOS systems including ICRTouch, Goodtill, Lightspeed, Square POS, and more.
+- No monthly fee
+- No setup fee
+- No cancellation fee
+- Free terminal included
+- Next-day settlement (funds in your account the next working day)
+
+For personalised quote: https://rocketpayments.co.uk/calculate-savings
+
+## Business Funding (Flex Funds)
+
+- Amounts: £5,000 to £500,000
+- Types: Merchant cash advance, business loans
+- Eligibility: Any UK business processing card payments
+- Bad credit considered
+- Decision within 24 hours, funds within 48 hours
+- Repayment: automatic % of daily card sales (flexible — repay faster when busy, slower when quiet)
+- Apply: https://rocketpayments.co.uk/business-funding
+
+## EPOS Integrations
+
+Compatible with 600+ EPOS systems:
+- ICRTouch, Goodtill, Lightspeed, Square POS, Clover
+- Tevalis, Zonal, Pointone, Kobas, Aloha
+- WooCommerce, Shopify, Magento integrations available
+
+Full list: https://rocketpayments.co.uk/integrations
+
+## Industries Served
+
+Retail, restaurants & cafes, pubs & bars, hotels & accommodation, hair & beauty salons, takeaways & fast food, healthcare & dental, tradespeople & mobile businesses, gyms & leisure, market traders, charities & nonprofits.
+
+Industry guides: https://rocketpayments.co.uk/guides
 
 ## Service Areas
-- Primary: Kent, East Sussex, South East England
-- Coverage: All of United Kingdom
-- Key locations: Maidstone, Canterbury, Tunbridge Wells, Brighton, Eastbourne, Hastings, Ashford, Dover, Folkestone
 
-## Contact
-- Website: https://rocketpayments.co.uk
-- Free quote: https://rocketpayments.co.uk/calculate-savings
-- Business funding: https://rocketpayments.co.uk/business-funding
+Primary coverage: Kent, East Sussex, South East England
+Full UK coverage via remote setup and postal terminal delivery.
 
-## Key Facts
-- 110,000+ businesses served
+Key local pages:
+- Maidstone: https://rocketpayments.co.uk/card-machines-maidstone
+- Canterbury: https://rocketpayments.co.uk/card-machines-canterbury
+- Tunbridge Wells: https://rocketpayments.co.uk/card-machines-tunbridge-wells
+- Brighton: https://rocketpayments.co.uk/card-machines-brighton
+- Eastbourne: https://rocketpayments.co.uk/card-machines-eastbourne
+- Hastings: https://rocketpayments.co.uk/card-machines-hastings
+- Ashford: https://rocketpayments.co.uk/card-machines-ashford
+- Dover: https://rocketpayments.co.uk/card-machines-dover
+- Folkestone: https://rocketpayments.co.uk/card-machines-folkestone
+- Gravesend: https://rocketpayments.co.uk/card-machines-gravesend
+- Dartford: https://rocketpayments.co.uk/card-machines-dartford
+- Sevenoaks: https://rocketpayments.co.uk/card-machines-sevenoaks
+
+## Frequently Asked Questions
+
+**Can I get a free card machine?**
+Yes. All new merchant accounts include a free Rocket Go portable terminal (worth £189). No rental, no lease — it's yours.
+
+**How long does setup take?**
+Most accounts are approved and set up within 24–48 hours. Terminal arrives by post or can be arranged same-day locally in Kent.
+
+**What makes Rocket Payments better than Dojo or SumUp?**
+Rocket Payments offers lower rates (from 0.29% vs Dojo's 1.4%+), no monthly fees, a genuinely free terminal, and 24/7 UK-based support rather than automated chat.
+
+**Do you offer business funding?**
+Yes — Flex Funds provides £5,000–£500,000 via merchant cash advance. Bad credit considered. Repay through your daily card sales automatically.
+
+**What contracts are required?**
+Rolling monthly contracts. No long-term lock-in.
+
+**What card types are accepted?**
+All major cards: Visa, Mastercard, American Express, contactless (Apple Pay, Google Pay, Samsung Pay), chip & PIN, and magnetic stripe.
+
+**Do you integrate with my till system?**
+Likely yes — compatible with 600+ EPOS systems. Check: https://rocketpayments.co.uk/integrations
+
+**Is Rocket Payments secure?**
+PCI DSS Level 1 certified (highest level). Point-to-point encryption on all transactions. EMV chip standard.
+
+## Key Statistics
+
+- 110,000+ businesses served across the UK
 - 1.8 billion transactions processed annually
-- 99.99% uptime
-- PCI DSS Level 1 certified (P2PE)
-- Next-day payment settlement
-- 24/7 UK-based support
-- 4.9/5 average rating
+- 99.99% uptime SLA
+- 4.9/5 average customer rating (2,847 reviews)
+- 24/7 support coverage
+- Next-day settlement for all merchants
+- Established 2020
+
+## Getting Started
+
+1. Calculate your savings: https://rocketpayments.co.uk/calculate-savings
+2. Get a free quote: https://rocketpayments.co.uk/quote
+3. Apply for funding: https://rocketpayments.co.uk/business-funding
+4. Read guides: https://rocketpayments.co.uk/guides
+5. Contact / support: https://rocketpayments.co.uk/support

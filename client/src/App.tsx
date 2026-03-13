@@ -278,7 +278,15 @@ function StandalonePage({ children }: { children: React.ReactNode }) {
 
 function App() {
   const [location] = useLocation();
-  const [splashDone, setSplashDone] = useState(false);
+  // Only show splash once per browser session — skip on return visits to protect Core Web Vitals
+  const [splashDone, setSplashDone] = useState(() => {
+    try { return !!sessionStorage.getItem('rp_splash_done'); } catch { return false; }
+  });
+
+  const handleSplashDone = () => {
+    try { sessionStorage.setItem('rp_splash_done', '1'); } catch {}
+    setSplashDone(true);
+  };
   
   const standalonePages = ["/funding-apply", "/dojo-partner-offer"];
   
@@ -298,7 +306,7 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
           <ScrollToTop />
-          {!splashDone && <SplashScreen onDone={() => setSplashDone(true)} />}
+          {!splashDone && <SplashScreen onDone={handleSplashDone} />}
           <div className="flex flex-col min-h-screen">
             <Header />
             <QuickCaptureWrapper />

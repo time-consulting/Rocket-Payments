@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import { SEO, serviceSchemas } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Wifi, Zap, Lock, Clock, CreditCard, Shield, ArrowRight, Check } from "lucide-react";
@@ -43,6 +44,22 @@ function AnimatedSection({ children, delay = 0 }: { children: React.ReactNode; d
 export default function RocketWired() {
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Rocket Wired — Countertop Card Machine UK"
+        description="Rocket Wired countertop card machine for high-volume businesses. Fast transaction speeds, EPOS integration, all-day reliability. From 0.29% with no monthly fees."
+        canonical="https://rocketpayments.co.uk/products/rocket-wired"
+        breadcrumbs={[{name:"Home",url:"https://rocketpayments.co.uk"},{name:"Products",url:"https://rocketpayments.co.uk/products"},{name:"Rocket Wired",url:"https://rocketpayments.co.uk/products/rocket-wired"}]}
+        structuredData={[serviceSchemas.cardTerminal, {
+          "@context": "https://schema.org",
+          "@type": "Product",
+          "name": "Rocket Wired Countertop Card Machine",
+          "description": "Reliable countertop card machine for UK businesses. Wired connection for maximum uptime. Accepts all cards, contactless, Apple Pay and Google Pay. Free with merchant account.",
+          "brand": { "@type": "Brand", "name": "Rocket Payments" },
+          "category": "Payment Terminal",
+          "offers": { "@type": "Offer", "priceCurrency": "GBP", "price": "0", "availability": "https://schema.org/InStock" },
+          "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "621" }
+        }]}
+      />
       {/* Hero Section */}
       <section className="pt-20 pb-12 md:pt-32 md:pb-20 bg-gradient-to-b from-background to-muted/30">
         <div className="max-w-7xl mx-auto px-6 md:px-8">

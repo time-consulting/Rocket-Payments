@@ -48,7 +48,7 @@ export default function PaymentLinks() {
         title="Payment Links | Send & Get Paid Instantly | Rocket Payments"
         description="Send secure payment links via WhatsApp, SMS or email. No website needed. Accept cards and digital wallets. Create branded payment links in seconds. PCI compliant."
         keywords="payment links UK, send payment link, pay by link, remote payments, payment link generator, WhatsApp payment link, SMS payment, digital payment link"
-        canonical="https://rocketpayments.co.uk/payment-links"
+        canonical="https://rocketpayments.co.uk/products/payment-links"
         structuredData={serviceSchemas.merchantServices}
       />
       {/* Hero Section */}

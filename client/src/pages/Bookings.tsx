@@ -163,6 +163,7 @@ export default function Bookings() {
         description="Streamline your hospitality bookings with Rocket Payments. Google Reserve integration, deposit collection, no-show protection. Manage reservations alongside payments in one system."
         keywords="restaurant booking system UK, hospitality reservations, Google Reserve, booking deposits, no-show protection, table booking system, hospitality payments"
         canonical="https://rocketpayments.co.uk/bookings"
+        breadcrumbs={[{name:"Home",url:"https://rocketpayments.co.uk"},{name:"Bookings",url:"https://rocketpayments.co.uk/bookings"}]}
         structuredData={serviceSchemas.merchantServices}
       />
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
