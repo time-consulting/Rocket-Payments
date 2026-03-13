@@ -10,7 +10,6 @@ import pubImage from "@assets/rocket go pub_1761942966648.png";
 import outdoorImage from "@assets/tap rocket go_1761942966648.png";
 import approvedImage from "@assets/terminal approved_1761942966648.png";
 import rocketGoHero from "@assets/stock_images/Remove background project (1).png";
-import switchBanner from "@assets/switch for free banner_1761942983115.png";
 
 const CYCLE_MS = 3 * 24 * 60 * 60 * 1000;
 
@@ -95,8 +94,8 @@ export default function RocketGo() {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="Rocket Go � Portable 4G Card Machine UK"
-        description="The Rocket Go portable card machine. 4G connectivity, all-day battery, next-day settlements. From 0.29%. Free terminal � no monthly fees, no contracts."
+        title="Rocket Go � Portable 4G Card Machine UK"
+        description="The Rocket Go portable card machine. 4G connectivity, all-day battery, next-day settlements. From 0.29%. Free terminal � no monthly fees, no contracts."
         canonical="https://rocketpayments.co.uk/products/rocket-go"
         breadcrumbs={[{name:"Home",url:"https://rocketpayments.co.uk"},{name:"Products",url:"https://rocketpayments.co.uk/products"},{name:"Rocket Go",url:"https://rocketpayments.co.uk/products/rocket-go"}]}
         breadcrumbs={[{name:"Home",url:"https://rocketpayments.co.uk"},{name:"Products",url:"https://rocketpayments.co.uk/products"},{name:"Rocket Go",url:"https://rocketpayments.co.uk/products/rocket-go"}]}
@@ -533,19 +532,64 @@ export default function RocketGo() {
         </div>
       </section>
 
-      {/* Switch Banner */}
-      <section className="py-20 bg-muted/20">
-        <div className="max-w-6xl mx-auto px-6 md:px-8">
-          <AnimatedSection>
-            <div className="relative group overflow-hidden rounded-3xl">
-              <div className="absolute -inset-4 bg-gradient-to-r from-green-500/20 to-green-500/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+      {/* Free Terminal Offer — matches homepage */}
+      <section className="relative py-0 overflow-hidden bg-[#0a0f1a]">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_50%,rgba(16,185,129,0.15),transparent_60%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_50%,rgba(16,185,129,0.08),transparent_60%)]" />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-6 md:px-8">
+          <div className="grid md:grid-cols-2 items-center min-h-[340px] md:min-h-[400px]">
+            {/* Left — copy */}
+            <div className="py-12 md:py-16 space-y-6 z-10">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/20 border border-primary/30">
+                <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                <span className="text-xs font-black text-primary tracking-widest uppercase">Limited time offer</span>
+              </div>
+              <div>
+                <div className="flex items-center gap-3 mb-2">
+                  <span className="text-lg md:text-xl font-bold text-white/30 line-through">Was £189</span>
+                </div>
+                <h2 className="text-5xl sm:text-6xl md:text-7xl font-black leading-[0.9] tracking-tight">
+                  <span className="text-white/50">Terminal</span><br />
+                  <span className="text-white/50 text-3xl sm:text-4xl font-bold">now </span>
+                  <span className="text-primary">£0</span>
+                </h2>
+                <div className="mt-4 space-y-2 max-w-sm">
+                  {[
+                    "£0/month — no device rental fees, ever",
+                    "Free next-day delivery. No hidden fees.",
+                    "Multi-network 4G SIM included",
+                    "Next-day settlement as standard",
+                  ].map(line => (
+                    <div key={line} className="flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
+                      <p className="text-sm md:text-base text-white/60 font-medium">{line}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="space-y-2">
+                <p className="text-[10px] font-black tracking-[0.25em] text-white/30 uppercase">Offer ends in</p>
+                <CountdownTimer />
+              </div>
+              <Link href="/calculate-savings">
+                <Button className="mt-2 bg-primary hover:bg-primary/90 text-primary-foreground text-base px-8 py-5 rounded-full shadow-[0_0_30px_rgba(45,212,191,0.4)] hover:shadow-[0_0_50px_rgba(45,212,191,0.6)] hover:scale-105 transition-all duration-300">
+                  Get the deal
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+            </div>
+            {/* Right — device */}
+            <div className="relative flex items-end justify-center md:justify-end pb-8 md:pb-0 md:h-full">
               <img
-                src={switchBanner}
-                alt="Switch for free with £3,000 towards exit fees"
-                className="relative w-full h-auto hover:scale-[1.02] transition-transform duration-700 shadow-2xl"
+                src={rocketGoHero}
+                alt="Rocket Go card machine — free with merchant account"
+                className="h-[220px] sm:h-[260px] md:h-[460px] w-auto object-contain md:absolute md:right-0 md:bottom-0"
+                style={{ transform: 'translateX(3%)' }}
               />
             </div>
-          </AnimatedSection>
+          </div>
         </div>
       </section>
 
