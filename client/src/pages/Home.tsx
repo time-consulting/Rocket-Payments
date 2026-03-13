@@ -897,22 +897,13 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* Right — device, oversized, bleeding off edge (desktop) */}
-            <div className="relative hidden md:flex items-end justify-end h-full">
+            {/* Right — device, scales across breakpoints */}
+            <div className="relative flex items-end justify-center md:justify-end pb-8 md:pb-0 md:h-full">
               <img
                 src={rocketGoHero}
                 alt="Rocket Go card machine"
-                className="absolute right-0 bottom-0 h-[460px] w-auto object-contain"
+                className="h-[220px] sm:h-[260px] md:h-[460px] w-auto object-contain md:absolute md:right-0 md:bottom-0"
                 style={{ transform: 'translateX(3%)' }}
-              />
-            </div>
-
-            {/* Mobile device image — centred below copy */}
-            <div className="md:hidden flex justify-center pb-10 -mt-4">
-              <img
-                src={rocketGoHero}
-                alt="Rocket Go card machine"
-                className="h-[260px] w-auto object-contain"
               />
             </div>
 
