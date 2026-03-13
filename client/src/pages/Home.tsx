@@ -316,43 +316,69 @@ const TOTAL_FRAMES = 120;
 function HeroSection() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
-  const framesRef = useRef<HTMLImageElement[]>([]);
+  // frameMap: sparse array where frameMap[i] = loaded Image for actual frame number
+  const frameMapRef = useRef<Map<number, HTMLImageElement>>(new Map());
+  // sorted list of actual frame numbers we're loading
+  const frameIndicesRef = useRef<number[]>([]);
   const loadedCountRef = useRef(0);
+  const totalToLoadRef = useRef(0);
   const rafRef = useRef<number | null>(null);
   const currentFrameRef = useRef(-1);
   const [textVisible, setTextVisible] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [loaded, setLoaded] = useState(false);
 
-  // Preload all frames
+  // Preload frames — mobile loads every 3rd frame (40 total), desktop loads all 120
   useEffect(() => {
     const timer = setTimeout(() => setTextVisible(true), 400);
 
-    const frames: HTMLImageElement[] = [];
-    for (let i = 1; i <= TOTAL_FRAMES; i++) {
+    const isMobile = window.innerWidth < 768;
+    const step = isMobile ? 3 : 1;
+
+    // Build list of 1-based frame numbers to load
+    const indices: number[] = [];
+    for (let i = 1; i <= TOTAL_FRAMES; i += step) indices.push(i);
+    // Always include the last frame
+    if (indices[indices.length - 1] !== TOTAL_FRAMES) indices.push(TOTAL_FRAMES);
+
+    frameIndicesRef.current = indices;
+    totalToLoadRef.current = indices.length;
+
+    indices.forEach((frameNum) => {
       const img = new Image();
-      const num = String(i).padStart(4, '0');
+      const num = String(frameNum).padStart(4, '0');
       img.src = `/hero-frames/frame_${num}.jpg`;
       img.onload = () => {
+        frameMapRef.current.set(frameNum, img);
         loadedCountRef.current++;
-        if (loadedCountRef.current === TOTAL_FRAMES) {
+        if (loadedCountRef.current === totalToLoadRef.current) {
           setLoaded(true);
-          drawFrame(0); // show first frame (exploded)
+        }
+        // Start showing canvas once first frame is ready
+        if (loadedCountRef.current === 1) {
+          drawFrame(0);
         }
       };
-      frames.push(img);
-    }
-    framesRef.current = frames;
+    });
 
     return () => clearTimeout(timer);
   }, []);
 
-  function drawFrame(frameIndex: number) {
+  function drawFrame(progressIndex: number) {
     const canvas = canvasRef.current;
-    const frames = framesRef.current;
-    if (!canvas || !frames[frameIndex]) return;
-    if (currentFrameRef.current === frameIndex) return;
-    currentFrameRef.current = frameIndex;
+    if (!canvas) return;
+
+    // Map progressIndex (0..indices.length-1) to nearest loaded frame number
+    const indices = frameIndicesRef.current;
+    if (indices.length === 0) return;
+    const clampedIdx = Math.max(0, Math.min(indices.length - 1, progressIndex));
+    const frameNum = indices[clampedIdx];
+
+    if (currentFrameRef.current === frameNum) return;
+
+    const img = frameMapRef.current.get(frameNum);
+    if (!img) return;
+    currentFrameRef.current = frameNum;
 
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
@@ -364,7 +390,6 @@ function HeroSection() {
     canvas.height = h * dpr;
     ctx.scale(dpr, dpr);
 
-    const img = frames[frameIndex];
     // Cover-fit
     const scale = Math.max(w / img.naturalWidth, h / img.naturalHeight);
     const iw = img.naturalWidth * scale;
@@ -378,7 +403,6 @@ function HeroSection() {
   }
 
   useEffect(() => {
-    if (!loaded) return;
     const section = sectionRef.current;
     if (!section) return;
 
@@ -389,11 +413,12 @@ function HeroSection() {
       const progress = Math.min(1, scrolled / sectionScrollHeight);
       setScrollProgress(progress);
 
-      // Forward: frame 0 = assembled, last frame = exploded
-      const frameIndex = Math.round(progress * (TOTAL_FRAMES - 1));
+      const indices = frameIndicesRef.current;
+      if (indices.length === 0) return;
+      const progressIndex = Math.round(progress * (indices.length - 1));
 
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
-      rafRef.current = requestAnimationFrame(() => drawFrame(frameIndex));
+      rafRef.current = requestAnimationFrame(() => drawFrame(progressIndex));
     };
 
     window.addEventListener('scroll', scrub, { passive: true });
@@ -403,7 +428,7 @@ function HeroSection() {
       window.removeEventListener('scroll', scrub);
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
-  }, [loaded]);
+  }, []);
 
   // Intro: visible at 0%, fully gone by 20%
   const introOpacity = Math.max(0, 1 - scrollProgress * 5);
