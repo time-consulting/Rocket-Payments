@@ -162,7 +162,7 @@ export default function Pricing() {
   return (
     <>
       <SEO
-        title="Card Payment Fees UK | Cheaper Than Dojo Rates | Merchant Account Pricing | Rocket Payments"
+        title="Card Machine Pricing UK | Rocket Payments"
         description="Card machine fees from 0.5% — cheaper than Dojo. No hidden charges, free terminal offer & next-day deposits. Compare our transparent pricing."
         canonical="https://rocketpayments.co.uk/pricing"
         breadcrumbs={[{name:"Home",url:"https://rocketpayments.co.uk"},{name:"Pricing",url:"https://rocketpayments.co.uk/pricing"}]}

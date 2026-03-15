@@ -183,7 +183,7 @@ export default function Quote() {
   return (
     <>
       <SEO
-        title="Get Card Machine Quote UK | Compare vs Dojo Rates | Free Quote Kent & East Sussex | Rocket Payments"
+        title="Free Card Machine Quote UK | Rocket Payments"
         description="Get your free card machine quote in 24 hours. Rates from 0.5%, cheaper than Dojo. No obligation, custom pricing for your business. Apply now."
         canonical="https://rocketpayments.co.uk/quote"
         keywords="card machine quote UK, compare Dojo rates, payment processing quote Kent, merchant account quote East Sussex, switch from Dojo, card payment rates Maidstone, business card machine quote Canterbury, merchant services quote Brighton, business funding quote UK"

@@ -698,7 +698,7 @@ export default function Home() {
   return (
     <>
       <SEO
-        title="Card Payment Processing UK | Merchant Services & Business Funding | Rocket Payments"
+        title="Card Payment Processing UK | Rocket Payments"
         description="Card payment processing from 0.5% with free terminals. UK merchant services, business funding & next-day deposits. Switch today — we cover exit fees."
         canonical="https://rocketpayments.co.uk"
         keywords={`card payment processing UK, merchant services UK, payment terminal, card machine UK, business funding UK, business loans UK, merchant cash advance, contactless payments UK, Dojo alternative, ${localKeywords}`}
