@@ -243,7 +243,7 @@ export default function Products() {
     <>
       <SEO
         title="Card Machines UK | Dojo Alternative | Payment Terminals Kent & East Sussex | Rocket Payments"
-        description="Best card machines for UK businesses - Dojo quality at lower rates. Portable & countertop payment terminals, contactless card readers. Free terminal offer. Serving Kent, East Sussex & all UK. Rates from 0.5%."
+        description="Portable & countertop card machines from 0.5%. Free terminal offer, contactless readers & EPOS integration. Dojo alternative with better rates."
         canonical="https://rocketpayments.co.uk/products"
         keywords="card machine UK, Dojo alternative, Dojo card machine alternative, payment terminal Kent, card machine East Sussex, contactless card reader, portable card machine, best card machine UK, card machine Maidstone, card machine Canterbury, card machine Brighton, card machine Tunbridge Wells"
         structuredData={[serviceSchemas.cardTerminal, serviceSchemas.paymentGateway]}

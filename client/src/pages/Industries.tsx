@@ -116,7 +116,7 @@ export default function Industries() {
     <>
       <SEO
         title="Payment Solutions by Industry UK | Restaurant, Retail & Service Payments Kent & East Sussex | Rocket Payments"
-        description="Specialist payment processing for UK businesses in Kent, East Sussex & nationwide. Restaurant card machines, retail EPOS, business funding. Dojo alternative with better rates. Serving Maidstone, Canterbury, Brighton, Hastings & more."
+        description="Payment solutions for restaurants, retail, healthcare & services. Rates from 0.5%, free terminals & EPOS integration. Get a quote today."
         canonical="https://rocketpayments.co.uk/industries"
         keywords="restaurant payment Kent, retail card machine East Sussex, cafe card payment Brighton, pub card terminal Maidstone, salon payment Canterbury, takeaway card reader Hastings, small business payments Tunbridge Wells, EPOS integration Kent, Dojo alternative restaurant, business funding hospitality UK"
       />

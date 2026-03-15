@@ -163,7 +163,7 @@ export default function Pricing() {
     <>
       <SEO
         title="Card Payment Fees UK | Cheaper Than Dojo Rates | Merchant Account Pricing | Rocket Payments"
-        description="Cheapest card machine fees in the UK from 0.5% - lower than Dojo. No monthly fees, no hidden charges. Compare our transparent pricing vs Dojo: debit cards 0.5%, credit cards 0.9%. Free terminal with merchant account."
+        description="Card machine fees from 0.5% — cheaper than Dojo. No hidden charges, free terminal offer & next-day deposits. Compare our transparent pricing."
         canonical="https://rocketpayments.co.uk/pricing"
         breadcrumbs={[{name:"Home",url:"https://rocketpayments.co.uk"},{name:"Pricing",url:"https://rocketpayments.co.uk/pricing"}]}
         keywords="card payment fees UK, card machine fees, merchant account fees UK, cheapest card payment provider UK, Dojo alternative, Dojo vs Rocket Payments, payment processing costs Kent, merchant services East Sussex, card transaction fees, compare Dojo rates, best card machine deal UK"
