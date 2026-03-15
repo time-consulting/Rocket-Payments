@@ -468,6 +468,11 @@ export function SEO({
     ? title
     : `${title} | Rocket Payments`;
 
+  // Auto-generate canonical URL if not explicitly provided
+  const canonicalUrl = canonical || (typeof window !== 'undefined' 
+    ? `https://rocketpayments.co.uk${window.location.pathname.replace(/\/$/, '') || '/'}`
+    : undefined);
+
   const defaultKeywords = "card payment processing UK, merchant services UK, payment terminal, card machine UK, contactless payments, business funding UK, business loans UK, merchant cash advance, Dojo alternative, card machine Kent, card machine East Sussex, payment terminal Maidstone, card payments Canterbury, business funding Brighton, Tunbridge Wells card machine, Ashford payment processing, Dover merchant services, Hastings card payments, Eastbourne business funding";
 
   const breadcrumbSchema = breadcrumbs && breadcrumbs.length > 0 ? {
@@ -496,7 +501,7 @@ export function SEO({
       <meta name="keywords" content={keywords || defaultKeywords} />
       {noIndex && <meta name="robots" content="noindex, nofollow" />}
       {!noIndex && <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />}
-      {canonical && <link rel="canonical" href={canonical} />}
+      {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
       
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
@@ -504,7 +509,7 @@ export function SEO({
       <meta property="og:image" content={ogImage} />
       <meta property="og:locale" content="en_GB" />
       <meta property="og:site_name" content="Rocket Payments" />
-      {canonical && <meta property="og:url" content={canonical} />}
+      {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
       
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
