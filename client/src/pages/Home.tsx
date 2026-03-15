@@ -1167,7 +1167,7 @@ export default function Home() {
               <Link href="/industries">
                 <div className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-2xl hover:shadow-primary/20 transition-all duration-500">
                   <div className="aspect-[4/5] overflow-hidden bg-muted">
-                    <img src={qsrImage} alt="Quick Service" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-testid="img-industry-0" />
+                    <img src={qsrImage} alt="Quick Service" loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-testid="img-industry-0" />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6">
                     <h3 className="text-2xl md:text-3xl font-black text-white mb-2">Quick Service</h3>
@@ -1186,7 +1186,7 @@ export default function Home() {
               <Link href="/industries">
                 <div className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-2xl hover:shadow-primary/20 transition-all duration-500">
                   <div className="aspect-[4/5] overflow-hidden bg-muted">
-                    <img src={cafeImage} alt="Café & Coffee" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-testid="img-industry-cafe" />
+                    <img src={cafeImage} alt="Café & Coffee" loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-testid="img-industry-cafe" />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6">
                     <h3 className="text-2xl md:text-3xl font-black text-white mb-2">Café & Coffee</h3>
@@ -1205,7 +1205,7 @@ export default function Home() {
               <Link href="/industries">
                 <div className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-2xl hover:shadow-primary/20 transition-all duration-500">
                   <div className="aspect-[4/5] overflow-hidden bg-muted">
-                    <img src={retailImage} alt="Retail" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-testid="img-industry-1" />
+                    <img src={retailImage} alt="Retail" loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-testid="img-industry-1" />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6">
                     <h3 className="text-2xl md:text-3xl font-black text-white mb-2">Retail</h3>
@@ -1224,7 +1224,7 @@ export default function Home() {
               <Link href="/industries">
                 <div className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-2xl hover:shadow-primary/20 transition-all duration-500">
                   <div className="aspect-[4/5] overflow-hidden bg-muted">
-                    <img src={fsrImage} alt="Hospitality" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-testid="img-industry-2" />
+                    <img src={fsrImage} alt="Hospitality" loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-testid="img-industry-2" />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6">
                     <h3 className="text-2xl md:text-3xl font-black text-white mb-2">Hospitality</h3>
@@ -1244,7 +1244,7 @@ export default function Home() {
               <Link href="/industries">
                 <div className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-2xl hover:shadow-primary/20 transition-all duration-500">
                   <div className="aspect-[4/5] overflow-hidden bg-muted">
-                    <img src={petCareImage} alt="Pet Care" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-testid="img-industry-petcare" />
+                    <img src={petCareImage} alt="Pet Care" loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-testid="img-industry-petcare" />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6">
                     <h3 className="text-2xl md:text-3xl font-black text-white mb-2">Pet Care</h3>
@@ -1263,7 +1263,7 @@ export default function Home() {
               <Link href="/industries">
                 <div className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-2xl hover:shadow-primary/20 transition-all duration-500">
                   <div className="aspect-[4/5] overflow-hidden bg-muted">
-                    <img src={photographyImage} alt="Photography" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-testid="img-industry-photography" />
+                    <img src={photographyImage} alt="Photography" loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-testid="img-industry-photography" />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6">
                     <h3 className="text-2xl md:text-3xl font-black text-white mb-2">Photography</h3>
@@ -1282,7 +1282,7 @@ export default function Home() {
               <Link href="/industries">
                 <div className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-2xl hover:shadow-primary/20 transition-all duration-500">
                   <div className="aspect-[4/5] overflow-hidden bg-muted">
-                    <img src={beautyImage} alt="Beauty" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-testid="img-industry-3" />
+                    <img src={beautyImage} alt="Beauty" loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-testid="img-industry-3" />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6">
                     <h3 className="text-2xl md:text-3xl font-black text-white mb-2">Beauty</h3>
@@ -1301,7 +1301,7 @@ export default function Home() {
               <Link href="/industries">
                 <div className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-2xl hover:shadow-primary/20 transition-all duration-500">
                   <div className="aspect-[4/5] overflow-hidden bg-muted">
-                    <img src={mechanicsImage} alt="Mechanics" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-testid="img-industry-4" />
+                    <img src={mechanicsImage} alt="Mechanics" loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-testid="img-industry-4" />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6">
                     <h3 className="text-2xl md:text-3xl font-black text-white mb-2">Mechanics</h3>
@@ -1321,7 +1321,7 @@ export default function Home() {
               <Link href="/industries">
                 <div className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-2xl hover:shadow-primary/20 transition-all duration-500">
                   <div className="aspect-[4/5] overflow-hidden bg-muted">
-                    <img src={taxiImage} alt="Taxis" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-testid="img-industry-5" />
+                    <img src={taxiImage} alt="Taxis" loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-testid="img-industry-5" />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6">
                     <h3 className="text-2xl md:text-3xl font-black text-white mb-2">Taxis</h3>
@@ -1340,7 +1340,7 @@ export default function Home() {
               <Link href="/industries">
                 <div className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-2xl hover:shadow-primary/20 transition-all duration-500">
                   <div className="aspect-[4/5] overflow-hidden bg-muted">
-                    <img src={footballImage} alt="Football Clubs" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-testid="img-industry-6" />
+                    <img src={footballImage} alt="Football Clubs" loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-testid="img-industry-6" />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6">
                     <h3 className="text-2xl md:text-3xl font-black text-white mb-2">Football Clubs</h3>
@@ -1359,7 +1359,7 @@ export default function Home() {
               <Link href="/industries">
                 <div className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-2xl hover:shadow-primary/20 transition-all duration-500">
                   <div className="aspect-[4/5] overflow-hidden bg-muted">
-                    <img src={mobileTraderImage} alt="Mobile Trader" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-testid="img-industry-7" />
+                    <img src={mobileTraderImage} alt="Mobile Trader" loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-testid="img-industry-7" />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6">
                     <h3 className="text-2xl md:text-3xl font-black text-white mb-2">Mobile Trader</h3>
@@ -1378,7 +1378,7 @@ export default function Home() {
               <Link href="/industries">
                 <div className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-2xl hover:shadow-primary/20 transition-all duration-500">
                   <div className="aspect-[4/5] overflow-hidden bg-muted">
-                    <img src={groceryImage} alt="Grocery Stores" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-testid="img-industry-8" />
+                    <img src={groceryImage} alt="Grocery Stores" loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-testid="img-industry-8" />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6">
                     <h3 className="text-2xl md:text-3xl font-black text-white mb-2">Grocery Stores</h3>
