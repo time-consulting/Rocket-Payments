@@ -475,7 +475,7 @@ function HeroSection() {
             src="/hero-frames/frame_0001.jpg"
             className="w-full h-full object-contain"
             style={{ background: '#ffffff' }}
-            alt=""
+            alt="Rocket Payments card terminal for UK businesses"
             loading="eager"
             fetchPriority="high"
           />
