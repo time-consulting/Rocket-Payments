@@ -208,7 +208,7 @@ export default function BusinessFunding() {
     <div className="min-h-screen bg-background overflow-hidden">
       <SEO
         title="Business Funding UK | Rocket Payments"
-        description="Get fast, flexible business funding from £5,000 to £500,000. Approved in 24 hours, funds in 48 hours. No credit score impact. Repay through daily card sales. Join 20,000+ funded UK businesses."
+        description="Business funding from £5,000 to £500,000. Approved in 24 hours, funds in 48. No credit score impact. Repay through daily card sales."
         keywords="business funding UK, merchant cash advance, small business loan, fast business finance, flexible business funding, revenue based finance UK, cash advance for business"
         canonical="https://rocketpayments.co.uk/business-funding"
         breadcrumbs={[{name:"Home",url:"https://rocketpayments.co.uk"},{name:"Business Funding",url:"https://rocketpayments.co.uk/business-funding"}]}

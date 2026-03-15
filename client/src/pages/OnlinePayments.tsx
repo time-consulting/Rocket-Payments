@@ -47,7 +47,7 @@ export default function OnlinePayments() {
     <div className="min-h-screen bg-background">
       <SEO
         title="Online Payment Gateway UK | Rocket Payments"
-        description="Easy online payment integration for your website or app. Accept all major cards, Apple Pay & Google Pay. PCI compliant, fraud protected. 50+ partner integrations. No rebuild required."
+        description="Online payment gateway for UK businesses. Accept cards, Apple Pay & Google Pay. PCI compliant with 50+ integrations. Start accepting payments today."
         keywords="online payments UK, ecommerce payment gateway, payment integration, online card processing, WooCommerce payments, website payments, secure checkout"
         canonical="https://rocketpayments.co.uk/products/online-payments"
         structuredData={serviceSchemas.paymentGateway}

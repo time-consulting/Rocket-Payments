@@ -47,7 +47,7 @@ export default function Integrations() {
     <div className="min-h-screen bg-background">
       <SEO
         title="EPOS & Payment Integrations UK | Rocket Payments"
-        description="Seamless payment integrations with 50+ EPOS, POS and ecommerce platforms. Plug-and-play with WooCommerce, Shopify, iZettle and more. Keep using your existing systems."
+        description="50+ EPOS & POS integrations including WooCommerce and Shopify. Plug-and-play card machine integration. Keep using your existing systems."
         keywords="payment integration UK, EPOS integration, POS payment integration, WooCommerce payments, Shopify payments UK, card machine integration, till integration"
         canonical="https://rocketpayments.co.uk/integrations"
         structuredData={serviceSchemas.merchantServices}

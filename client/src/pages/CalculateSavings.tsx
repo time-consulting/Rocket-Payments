@@ -185,7 +185,7 @@ export default function CalculateSavings() {
     <div className="min-h-screen bg-background flex">
       <SEO
         title="Calculate Your Savings | Free Quote | Rocket Payments"
-        description="See how much you could save on card processing fees with Rocket Payments. Get a free, no-obligation quote in minutes. Compare rates from 0.29% with transparent pricing."
+        description="Calculate your card processing savings with Rocket Payments. Free, no-obligation quote in minutes. Rates from 0.29% with transparent pricing."
         keywords="card payment savings calculator, compare card machine rates, payment processing quote, merchant services quote, card terminal comparison UK"
         canonical="https://rocketpayments.co.uk/calculate-savings"
       />

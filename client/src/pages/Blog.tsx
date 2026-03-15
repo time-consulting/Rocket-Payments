@@ -43,7 +43,7 @@ export default function Blog() {
     <>
       <SEO
         title="Card Payment Guides UK | Rocket Payments Blog"
-        description="Expert guides on card machines for every UK industry. Compare Worldpay, Square, SumUp, Dojo alternatives. FREE Tap to Pay for barbers, salons, taxi drivers. EPOS integration and restaurant bookings."
+        description="Expert guides on card machines for every UK industry. Compare Dojo, Square & SumUp alternatives. Free Tap to Pay and EPOS integration tips."
         canonical="https://rocketpayments.co.uk/blog"
         keywords="card machine UK, Worldpay alternative, Square alternative, SumUp alternative, Dojo alternative, EPOS integration, restaurant booking system, OpenTable alternative, card payment by industry, Tap to Pay free, card machine Kent, East Sussex"
       />

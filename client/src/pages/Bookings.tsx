@@ -160,7 +160,7 @@ export default function Bookings() {
     <div className="min-h-screen bg-background overflow-hidden">
       <SEO
         title="Restaurant Booking System UK | Rocket Payments"
-        description="Streamline your hospitality bookings with Rocket Payments. Google Reserve integration, deposit collection, no-show protection. Manage reservations alongside payments in one system."
+        description="Restaurant booking system with Google Reserve, deposit collection & no-show protection. Commission-free bookings. Start your free trial."
         keywords="restaurant booking system UK, hospitality reservations, Google Reserve, booking deposits, no-show protection, table booking system, hospitality payments"
         canonical="https://rocketpayments.co.uk/bookings"
         breadcrumbs={[{name:"Home",url:"https://rocketpayments.co.uk"},{name:"Bookings",url:"https://rocketpayments.co.uk/bookings"}]}
