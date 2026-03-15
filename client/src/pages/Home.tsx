@@ -756,6 +756,7 @@ export default function Home() {
                           <img
                             src={partner.logo}
                             alt={partner.name}
+                            loading="lazy"
                             className="h-10 md:h-12 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity duration-300"
                           />
                         </div>
@@ -830,6 +831,7 @@ export default function Home() {
                   <img
                     src={product.image}
                     alt={product.name}
+                    loading="lazy"
                     className="h-[260px] md:h-[300px] w-auto object-contain transition-transform duration-700 group-hover:scale-105 group-hover:-translate-y-2"
                   />
                   <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-white/40 to-transparent pointer-events-none" />
@@ -932,6 +934,7 @@ export default function Home() {
               <img
                 src={rocketGoHero}
                 alt="Rocket Go card machine"
+                loading="lazy"
                 className="h-[220px] sm:h-[260px] md:h-[460px] w-auto object-contain md:absolute md:right-0 md:bottom-0"
                 style={{ transform: 'translateX(3%)' }}
               />
@@ -1467,6 +1470,7 @@ export default function Home() {
                       <img
                         src={testimonial.image}
                         alt={testimonial.name}
+                        loading="lazy"
                         className="w-14 h-14 rounded-full object-cover"
                       />
                       <div>
