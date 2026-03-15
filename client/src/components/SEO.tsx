@@ -483,9 +483,9 @@ export function SEO({
 
   const allStructuredData = structuredData 
     ? Array.isArray(structuredData) 
-      ? [organizationSchema, localBusinessSchema, ...structuredData]
-      : [organizationSchema, localBusinessSchema, structuredData]
-    : [organizationSchema, localBusinessSchema];
+      ? [localBusinessSchema, ...structuredData]
+      : [localBusinessSchema, structuredData]
+    : [localBusinessSchema];
 
   const finalStructuredData = breadcrumbSchema ? [...allStructuredData, breadcrumbSchema] : allStructuredData;
 
