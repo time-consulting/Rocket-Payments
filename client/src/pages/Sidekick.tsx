@@ -97,6 +97,7 @@ export default function Sidekick() {
               <img
                 src={hubPhonesImage}
                 alt="Sidekick Hub Interface"
+                loading="lazy"
                 className="relative w-full h-auto rounded-3xl shadow-2xl hover:scale-[1.01] transition-transform duration-700"
               />
             </div>
@@ -174,6 +175,7 @@ export default function Sidekick() {
                   <img
                     src={insightPhoneImage}
                     alt="Business insights and analytics"
+                    loading="lazy"
                     className="relative w-full h-auto rounded-3xl shadow-2xl hover:scale-[1.02] transition-transform duration-700"
                   />
                 </div>
@@ -225,6 +227,7 @@ export default function Sidekick() {
                 <img
                   src={manageUsersImage}
                   alt="Effortless admin management"
+                  loading="lazy"
                   className="relative w-full h-auto rounded-3xl shadow-2xl hover:scale-[1.02] transition-transform duration-700"
                 />
               </div>

@@ -300,6 +300,7 @@ function AutoScrollProducts({ products }: { products: any[] }) {
                 <img
                   src={product.image}
                   alt={product.name}
+                  loading="lazy"
                   className="h-[240px] md:h-[300px] w-auto object-contain transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
@@ -999,8 +1000,8 @@ export default function Home() {
                     <img
                       src={rocketPocketImage}
                       alt="Rocket Pocket"
-                      className="w-full h-auto transform group-hover:scale-105 transition-transform duration-1000"
                       loading="lazy"
+                      className="w-full h-auto transform group-hover:scale-105 transition-transform duration-1000"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                   </div>
@@ -1070,8 +1071,8 @@ export default function Home() {
                     <img
                       src={fundingSuccessImage}
                       alt="Business Funding Success"
-                      className="w-full h-auto transform group-hover:scale-105 transition-transform duration-1000"
                       loading="lazy"
+                      className="w-full h-auto transform group-hover:scale-105 transition-transform duration-1000"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                   </div>
@@ -1088,8 +1089,8 @@ export default function Home() {
                     <img
                       src={bookingsImage}
                       alt="Bookings & Reservations"
-                      className="w-full h-auto transform group-hover:scale-105 transition-transform duration-1000"
                       loading="lazy"
+                      className="w-full h-auto transform group-hover:scale-105 transition-transform duration-1000"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                   </div>

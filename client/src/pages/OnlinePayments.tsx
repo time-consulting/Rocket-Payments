@@ -96,6 +96,7 @@ export default function OnlinePayments() {
                 <img
                   src={customerImage}
                   alt="Reduce admin time"
+                  loading="lazy"
                   className="relative w-full h-auto rounded-3xl shadow-2xl hover:scale-[1.03] transition-transform duration-700"
                 />
               </div>
@@ -124,6 +125,7 @@ export default function OnlinePayments() {
                 <img
                   src={integrationsImage}
                   alt="Easy integration with popular platforms"
+                  loading="lazy"
                   className="relative w-full h-auto rounded-3xl shadow-2xl hover:scale-[1.02] transition-transform duration-700"
                 />
               </div>
@@ -152,6 +154,7 @@ export default function OnlinePayments() {
                 <img
                   src={encryptedImage}
                   alt="Serve more customers securely"
+                  loading="lazy"
                   className="relative w-full h-auto rounded-3xl shadow-2xl hover:scale-[1.03] transition-transform duration-700"
                 />
               </div>

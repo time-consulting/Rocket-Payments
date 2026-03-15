@@ -64,6 +64,7 @@ function VideoPlayer() {
           <img
             src={videoCoverImage}
             alt="Video thumbnail"
+            loading="lazy"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-black/30 flex items-center justify-center transition-all duration-300 group-hover:bg-black/40">
@@ -212,6 +213,7 @@ export default function Bookings() {
             <img
               src={managementTabletImage}
               alt="Bookings management platform"
+              loading="lazy"
               className="rounded-3xl w-full max-w-6xl mx-auto shadow-2xl"
               style={{ transform: `translateY(${heroParallax * 0.3}px)` }}
             />
@@ -317,6 +319,7 @@ export default function Bookings() {
                 <img
                   src={googleBookingImage}
                   alt="Book with Google"
+                  loading="lazy"
                   className="relative rounded-3xl w-full h-auto shadow-2xl hover:scale-[1.02] transition-transform duration-700"
                 />
               </div>
@@ -346,6 +349,7 @@ export default function Bookings() {
                   <img 
                     src={experienceGroupImage} 
                     alt="Fine dining experience" 
+                    loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                 </div>
@@ -364,6 +368,7 @@ export default function Bookings() {
                   <img 
                     src={chefCookingImage} 
                     alt="Chef cooking experience" 
+                    loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                 </div>
@@ -384,6 +389,7 @@ export default function Bookings() {
                   <img 
                     src={pubGroupImage} 
                     alt="Pub quiz night" 
+                    loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                 </div>
@@ -402,6 +408,7 @@ export default function Bookings() {
                   <img 
                     src={neonRestaurantImage} 
                     alt="Premium dining experience" 
+                    loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                 </div>
@@ -455,6 +462,7 @@ export default function Bookings() {
                     <img 
                       src={feature.image} 
                       alt={feature.title}
+                      loading="lazy"
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
                   </div>

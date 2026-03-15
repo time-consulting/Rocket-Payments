@@ -408,6 +408,7 @@ export default function FundingApply() {
                       <img 
                         src={businessOwnerImage} 
                         alt="Sarah, happy business owner who received funding"
+                        loading="lazy"
                         className="w-full aspect-[4/5] object-cover"
                       />
                       <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent p-6">

@@ -58,7 +58,7 @@ function FloatingImage({ src, alt, className }: { src: string; alt: string; clas
       className={`transition-transform duration-200 ${className}`}
       style={{ transform: `translateY(${offset}px)` }}
     >
-      <img src={src} alt={alt} className="w-full h-auto" />
+      <img src={src} alt={alt} className="w-full h-auto" loading="lazy" />
     </div>
   );
 }
@@ -106,6 +106,7 @@ export default function TapToPay() {
                 <img
                   src={heroImage}
                   alt="Tap to Pay on iPhone"
+                  loading="lazy"
                   className="relative w-full max-w-5xl h-auto object-contain rounded-3xl shadow-2xl hover:scale-[1.02] transition-transform duration-700"
                   data-testid="img-hero"
                 />
@@ -141,6 +142,7 @@ export default function TapToPay() {
                 <img
                   src={watchImage}
                   alt="Accept payments from Apple Watch"
+                  loading="lazy"
                   className="relative w-full max-w-2xl h-auto rounded-3xl shadow-2xl hover:scale-[1.03] transition-transform duration-700"
                 />
               </div>
@@ -169,6 +171,7 @@ export default function TapToPay() {
                 <img
                   src={cardTapImage}
                   alt="Contactless card payment"
+                  loading="lazy"
                   className="relative w-full max-w-4xl h-auto rounded-3xl shadow-2xl hover:scale-[1.02] transition-transform duration-700"
                 />
               </div>

@@ -580,6 +580,7 @@ export default function CalculateSavings() {
         <img
           src={flowerShopImage}
           alt="Blooming Success - Flora's Flowers, London, UK"
+          loading="lazy"
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute bottom-12 left-12 z-20 text-white">

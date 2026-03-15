@@ -114,6 +114,7 @@ export default function Integrations() {
               <img
                 src={integrationChecklistImage}
                 alt="Integrated payments features"
+                loading="lazy"
                 className="relative w-full h-auto rounded-3xl shadow-2xl hover:scale-[1.02] transition-transform duration-700 border border-border/50"
               />
             </div>
@@ -160,6 +161,7 @@ export default function Integrations() {
                 <img
                   src={takingsReportImage}
                   alt="Quick integration setup"
+                  loading="lazy"
                   className="relative w-full h-auto rounded-3xl shadow-2xl hover:scale-[1.02] transition-transform duration-700 border border-border/50"
                 />
               </div>
@@ -175,6 +177,7 @@ export default function Integrations() {
                   <img
                     src={revenueGrowthImage}
                     alt="Uninterrupted payment processing"
+                    loading="lazy"
                     className="relative w-full h-auto rounded-3xl shadow-2xl hover:scale-[1.02] transition-transform duration-700 border border-border/50"
                   />
                 </div>

@@ -183,9 +183,9 @@ export default function DojoPartnerOffer() {
         <div className="pt-14 pb-8 px-4">
           <div className="max-w-6xl mx-auto">
             <div className="flex items-center justify-center gap-4 mb-8 pt-6">
-              <img src={dojoLogo} alt="Dojo" className="h-8 md:h-10" />
+              <img src={dojoLogo} alt="Dojo" className="h-8 md:h-10" loading="lazy" />
               <span className="text-white text-2xl font-light">×</span>
-              <img src={rocketLogo} alt="Rocket Payments" className="h-10 md:h-12" />
+              <img src={rocketLogo} alt="Rocket Payments" className="h-10 md:h-12" loading="lazy" />
             </div>
 
             <div className="grid lg:grid-cols-2 gap-8 items-start">
@@ -225,6 +225,7 @@ export default function DojoPartnerOffer() {
                 <img
                   src={dojoOfferBanner}
                   alt="Dojo card machine offer - get your terminal for £0"
+                  loading="lazy"
                   className="rounded-2xl shadow-2xl mt-6"
                   data-testid="img-dojo-offer"
                 />
@@ -573,9 +574,9 @@ export default function DojoPartnerOffer() {
         <footer className="bg-[#002820] py-8 px-4 text-center text-white/60 text-sm">
           <div className="max-w-4xl mx-auto">
             <div className="flex items-center justify-center gap-4 mb-4">
-              <img src={dojoLogo} alt="Dojo" className="h-6 opacity-60" />
+              <img src={dojoLogo} alt="Dojo" className="h-6 opacity-60" loading="lazy" />
               <span>×</span>
-              <img src={rocketLogo} alt="Rocket Payments" className="h-8 opacity-60" />
+              <img src={rocketLogo} alt="Rocket Payments" className="h-8 opacity-60" loading="lazy" />
             </div>
             <p>
               Exclusive partnership offer from Rocket Payments. Terminal subject to credit approval. 

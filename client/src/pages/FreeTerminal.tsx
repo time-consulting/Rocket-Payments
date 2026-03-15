@@ -224,6 +224,7 @@ export default function FreeTerminal() {
               <img
                 src={offerBanner}
                 alt="Free Rocket Go card machine worth £189 - limited time offer for UK businesses"
+                loading="lazy"
                 className="relative rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-700"
                 data-testid="img-offer-banner"
               />
@@ -335,6 +336,7 @@ export default function FreeTerminal() {
                 <img
                   src={rocketGoHerop}
                   alt="Rocket Go portable payment terminal with touchscreen display"
+                  loading="lazy"
                   className="relative w-full max-w-md hover:scale-[1.02] transition-transform duration-700"
                   data-testid="img-rocket-go-hero"
                 />
@@ -433,6 +435,7 @@ export default function FreeTerminal() {
                 <img
                   src={rocketGoDevice}
                   alt="Rocket Go card machine with built-in 4G connectivity for reliable payments anywhere"
+                  loading="lazy"
                   className="w-full h-80 object-contain bg-gradient-to-br from-muted/30 to-muted/10 p-8 hover:scale-105 transition-transform duration-700"
                   data-testid="img-feature-4g"
                 />
@@ -449,6 +452,7 @@ export default function FreeTerminal() {
                 <img
                   src={tapRocketGo}
                   alt="Contactless tap payment on Rocket Go terminal with EPOS integration"
+                  loading="lazy"
                   className="w-full h-80 object-cover hover:scale-105 transition-transform duration-700"
                   data-testid="img-feature-epos"
                 />
@@ -465,6 +469,7 @@ export default function FreeTerminal() {
                 <img
                   src={rocketGoPub}
                   alt="Pub staff using Rocket Go payment terminal with 10-hour battery life"
+                  loading="lazy"
                   className="w-full h-80 object-cover hover:scale-105 transition-transform duration-700"
                   data-testid="img-feature-battery"
                 />

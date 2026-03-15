@@ -116,7 +116,7 @@ export default function ProductDetail() {
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
           <Card className="overflow-hidden">
             <div className="aspect-[4/5] bg-muted/30">
-              <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
+              <img src={product.image} alt={product.name} className="w-full h-full object-cover" loading="lazy" />
             </div>
           </Card>
 

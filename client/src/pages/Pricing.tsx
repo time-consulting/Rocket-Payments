@@ -207,6 +207,7 @@ export default function Pricing() {
                 <img
                   src={offerBanner}
                   alt="Limited time offer - £79 card machine"
+                  loading="lazy"
                   className="relative w-full h-auto hover:scale-[1.02] transition-transform duration-700 shadow-2xl"
                 />
               </div>
@@ -218,6 +219,7 @@ export default function Pricing() {
                 <img
                   src={switchBanner}
                   alt="Switch for FREE - £3,000 towards exit fees"
+                  loading="lazy"
                   className="relative w-full h-auto hover:scale-[1.02] transition-transform duration-700 shadow-2xl"
                 />
               </div>

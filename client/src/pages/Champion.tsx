@@ -409,6 +409,7 @@ export default function Champion() {
               <img
                 src={championHero}
                 alt="The Champion Terminal"
+                loading="lazy"
                 className={`relative w-full rounded-3xl shadow-2xl transition-all duration-2000 ${
                   unveiled ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
                 }`}
@@ -678,6 +679,7 @@ export default function Champion() {
             <img
               src={championAlt}
               alt="The Innovator - Rocket Go terminal on champion pedestal with Roman columns and VICTOR OMNIUM banners"
+              loading="lazy"
               className="relative w-full rounded-3xl shadow-2xl"
               data-testid="img-champion-alt"
             />

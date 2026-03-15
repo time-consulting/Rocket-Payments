@@ -128,6 +128,7 @@ function StickyImageSection({
           <img
             src={image}
             alt={title}
+            loading="lazy"
             className="rounded-3xl w-full h-auto shadow-2xl hover:scale-[1.02] transition-transform duration-700"
           />
         )}
@@ -238,6 +239,7 @@ export default function RocketPocket() {
             <img
               src={heroImage}
               alt="Rocket Pocket in action"
+              loading="lazy"
               className="rounded-3xl w-full max-w-5xl mx-auto shadow-2xl"
               style={{ transform: `translateY(${heroParallax * 0.3}px)` }}
             />
@@ -451,6 +453,7 @@ export default function RocketPocket() {
               <img
                 src={qrPaymentImage}
                 alt="Business efficiency"
+                loading="lazy"
                 className="rounded-3xl w-full h-auto shadow-2xl hover:scale-[1.02] transition-transform duration-700"
               />
             </AnimatedSection>
@@ -479,6 +482,7 @@ export default function RocketPocket() {
                   <img 
                     src={qsrImage} 
                     alt="Quick-service restaurants" 
+                    loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                 </div>
@@ -503,6 +507,7 @@ export default function RocketPocket() {
                   <img 
                     src={fsrImage} 
                     alt="Full-service restaurants" 
+                    loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                 </div>
@@ -542,6 +547,7 @@ export default function RocketPocket() {
                   <img 
                     src={rocketGoImage} 
                     alt="Rocket Go" 
+                    loading="lazy"
                     className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700"
                   />
                 </div>
@@ -566,6 +572,7 @@ export default function RocketPocket() {
                   <img 
                     src={rocketWiredImage} 
                     alt="Rocket Wired" 
+                    loading="lazy"
                     className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700"
                   />
                 </div>

@@ -89,6 +89,7 @@ export default function RocketWired() {
                 <img
                   src={deviceSideImage}
                   alt="Rocket Wired Payment Terminal"
+                  loading="lazy"
                   className="relative w-full h-auto rounded-3xl hover:scale-[1.02] transition-transform duration-700"
                 />
               </div>
@@ -117,6 +118,7 @@ export default function RocketWired() {
                 <img
                   src={deviceFrontImage}
                   alt="Rocket Wired Interface"
+                  loading="lazy"
                   className="relative w-full h-auto rounded-3xl shadow-2xl hover:scale-[1.03] transition-transform duration-700"
                 />
               </div>

@@ -163,6 +163,7 @@ function CarouselImages({ images }: { images: { src: string; alt: string }[] }) 
               <img
                 src={image.src}
                 alt={image.alt}
+                loading="lazy"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -337,6 +338,7 @@ export default function Products() {
                   <img 
                     src={partner.logo} 
                     alt={partner.name}
+                    loading="lazy"
                     className="h-8 md:h-10 w-auto object-contain opacity-40 grayscale hover:opacity-70 hover:grayscale-0 transition-all duration-300"
                   />
                 </div>

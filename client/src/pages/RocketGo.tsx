@@ -161,6 +161,7 @@ export default function RocketGo() {
               <img
                 src={heroImage}
                 alt="Rocket Go in action at coffee shop"
+                loading="lazy"
                 className="relative w-full h-auto rounded-3xl shadow-2xl hover:scale-[1.01] transition-transform duration-700"
                 data-testid="img-hero"
               />
@@ -283,6 +284,7 @@ export default function RocketGo() {
               <img
                 src={rocketGoHero}
                 alt="Rocket Go card machine"
+                loading="lazy"
                 className="h-[220px] sm:h-[260px] md:h-[460px] w-auto object-contain md:absolute md:right-0 md:bottom-0"
                 style={{ transform: 'translateX(3%)' }}
               />
@@ -370,6 +372,7 @@ export default function RocketGo() {
                 <img
                   src={approvedImage}
                   alt="Secure payment approved"
+                  loading="lazy"
                   className="relative w-full h-auto rounded-3xl shadow-2xl hover:scale-[1.02] transition-transform duration-700"
                 />
               </div>
@@ -389,6 +392,7 @@ export default function RocketGo() {
                   <img
                     src={outdoorImage}
                     alt="Portable payments outdoors"
+                    loading="lazy"
                     className="relative w-full h-auto rounded-3xl shadow-2xl hover:scale-[1.02] transition-transform duration-700"
                   />
                 </div>
@@ -466,6 +470,7 @@ export default function RocketGo() {
                 <img
                   src={pubImage}
                   alt="Rocket Go with EPOS integration"
+                  loading="lazy"
                   className="relative w-full h-auto rounded-3xl shadow-2xl hover:scale-[1.02] transition-transform duration-700"
                 />
               </div>
@@ -585,6 +590,7 @@ export default function RocketGo() {
               <img
                 src={rocketGoHero}
                 alt="Rocket Go card machine — free with merchant account"
+                loading="lazy"
                 className="h-[220px] sm:h-[260px] md:h-[460px] w-auto object-contain md:absolute md:right-0 md:bottom-0"
                 style={{ transform: 'translateX(3%)' }}
               />
