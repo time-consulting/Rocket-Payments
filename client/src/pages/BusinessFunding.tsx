@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Check, Sparkles, Star, Clock, Wallet, TrendingUp, Shield, Zap, Heart } from "lucide-react";
-import { SEO, serviceSchemas } from "@/components/SEO";
+import { SEO, serviceSchemas, faqSchemas } from "@/components/SEO";
 
 import balanceImage from "@assets/1080x680_1761948535089.webp";
 import hairSalonCustomerImage from "@assets/1080x900_1761948535091.webp";
@@ -212,7 +212,7 @@ export default function BusinessFunding() {
         keywords="business funding UK, merchant cash advance, small business loan, fast business finance, flexible business funding, revenue based finance UK, cash advance for business"
         canonical="https://rocketpayments.co.uk/business-funding"
         breadcrumbs={[{name:"Home",url:"https://rocketpayments.co.uk"},{name:"Business Funding",url:"https://rocketpayments.co.uk/business-funding"}]}
-        structuredData={serviceSchemas.businessFunding}
+        structuredData={[serviceSchemas.businessFunding, faqSchemas.businessFunding]}
       />
       {/* Epic Hero */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
