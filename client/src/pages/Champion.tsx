@@ -311,7 +311,7 @@ export default function Champion() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-amber-50/30 via-stone-50 to-amber-50/30 dark:from-stone-950 dark:via-stone-900 dark:to-stone-950">
       <SEO
-        title="Champion Card Terminal | Premium Card Machine UK | Rocket Payments"
+        title="Champion Card Terminal UK | Rocket Payments"
         description="Meet the Champion – our premium card payment terminal with built-in receipt printer, WiFi & 4G. Process contactless, chip & PIN, Apple Pay & Google Pay. Free with account."
         keywords="champion card terminal, premium card machine UK, card payment terminal, contactless card machine, receipt printer terminal, business card machine, free card machine"
         canonical="https://rocketpayments.co.uk/champion"

@@ -169,7 +169,7 @@ export default function DojoPartnerOffer() {
   return (
     <>
       <SEO
-        title="Exclusive Dojo Partner Offer | FREE Card Machine | Rocket Payments"
+        title="Dojo Partner Offer | Free Card Machine | Rocket Payments"
         description="Claim your FREE Dojo card machine through our exclusive partnership. Limited spots available. No monthly fees, rates from 0.99%. Call back within 5 minutes."
         canonical="https://rocketpayments.co.uk/dojo-partner-offer"
         keywords="Dojo card machine, free Dojo terminal, Dojo partner offer, Dojo payment terminal free, join Dojo, Dojo rates, Dojo alternative"

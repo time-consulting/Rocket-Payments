@@ -11,7 +11,7 @@ export default function GuidesIndex() {
   return (
     <>
       <SEO
-        title="Ultimate Guides | Card Payments, Business Funding & More | Rocket Payments"
+        title="Business Payment Guides UK | Rocket Payments"
         description="Comprehensive guides to card payments, business funding, and payment processing in the UK. Expert advice for UK businesses from Rocket Payments."
         keywords="card payment guide, business funding guide, payment processing UK, merchant services guide, card machine guide"
         canonical="https://rocketpayments.co.uk/guides"
