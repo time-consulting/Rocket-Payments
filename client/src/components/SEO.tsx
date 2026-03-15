@@ -475,10 +475,32 @@ export function SEO({
 
   const defaultKeywords = "card payment processing UK, merchant services UK, payment terminal, card machine UK, contactless payments, business funding UK, business loans UK, merchant cash advance, Dojo alternative, card machine Kent, card machine East Sussex, payment terminal Maidstone, card payments Canterbury, business funding Brighton, Tunbridge Wells card machine, Ashford payment processing, Dover merchant services, Hastings card payments, Eastbourne business funding";
 
-  const breadcrumbSchema = breadcrumbs && breadcrumbs.length > 0 ? {
+  // Auto-generate breadcrumbs from URL path if not explicitly provided
+  const autoBreadcrumbs = (() => {
+    if (breadcrumbs && breadcrumbs.length > 0) return breadcrumbs;
+    if (typeof window === 'undefined') return null;
+    const path = window.location.pathname;
+    if (path === '/' || path === '') return null;
+    const segments = path.split('/').filter(Boolean);
+    const items: Array<{name: string; url: string}> = [
+      { name: 'Home', url: 'https://rocketpayments.co.uk/' }
+    ];
+    let currentPath = '';
+    segments.forEach((segment) => {
+      currentPath += `/${segment}`;
+      const name = segment
+        .split('-')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
+      items.push({ name, url: `https://rocketpayments.co.uk${currentPath}` });
+    });
+    return items;
+  })();
+
+  const breadcrumbSchema = autoBreadcrumbs && autoBreadcrumbs.length > 0 ? {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    "itemListElement": breadcrumbs.map((item, i) => ({
+    "itemListElement": autoBreadcrumbs.map((item, i) => ({
       "@type": "ListItem",
       "position": i + 1,
       "name": item.name,
