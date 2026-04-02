@@ -1,0 +1,29 @@
+﻿ M client/src/hooks/use-upload.ts
+ M client/src/lib/queryClient.ts
+ M client/src/pages/BillUpload.tsx
+ M client/src/pages/BlogPost.tsx
+ M client/src/pages/Bookings.tsx
+ M client/src/pages/BusinessFunding.tsx
+ M client/src/pages/CalculateSavings.tsx
+ M client/src/pages/Champion.tsx
+ M client/src/pages/FlexFunds.tsx
+ M client/src/pages/FundingApply.tsx
+ M client/src/pages/GuidePage.tsx
+ M client/src/pages/GuidesIndex.tsx
+ M client/src/pages/IndustryGuidePage.tsx
+ M client/src/pages/Integrations.tsx
+ M client/src/pages/OnlinePayments.tsx
+ M client/src/pages/PaymentLinks.tsx
+ M client/src/pages/ProductDetail.tsx
+ M client/src/pages/Resources.tsx
+ M client/src/pages/RocketGo.tsx
+ M client/src/pages/RocketPocket.tsx
+ M client/src/pages/RocketWired.tsx
+ M client/src/pages/Sidekick.tsx
+ M client/src/pages/SimplePage.tsx
+ M client/src/pages/TapToPay.tsx
+ M client/src/pages/ThankYou.tsx
+ M client/src/pages/not-found.tsx
+?? .env
+?? "attached_assets/generated_videos/rocket Go explode.mp4"
+?? git_status.txt

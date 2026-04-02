@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p '/c/Users/darre/.claude/plugins/cache/local/scroll-stop-prompter/1.0.0/skills/scroll-stop-prompter/assets')",
+      "Bash(cp '/c/Users/darre/.antigravity/ROCKETPAYMENTS/3d website asset generator/3D Website Asset Generator/SKILL.md' '/c/Users/darre/.claude/plugins/cache/local/scroll-stop-prompter/1.0.0/skills/scroll-stop-prompter/SKILL.md')",
+      "Bash(cp '/c/Users/darre/.antigravity/ROCKETPAYMENTS/3d website asset generator/3D Website Asset Generator/assets/prompt-page-template.html' '/c/Users/darre/.claude/plugins/cache/local/scroll-stop-prompter/1.0.0/skills/scroll-stop-prompter/assets/prompt-page-template.html')",
+      "Bash(git -C /c/Users/darre/.antigravity/ROCKETPAYMENTS remote set-url origin https://github.com/time-consulting/Rocket-Payments.git)",
+      "Bash(git -C /c/Users/darre/.antigravity/ROCKETPAYMENTS pull origin main)",
+      "Bash(git -C /c/Users/darre/.antigravity/ROCKETPAYMENTS pull origin master)",
+      "Bash(git fetch:*)",
+      "Bash(git reset:*)"
+    ]
+  }
+}
