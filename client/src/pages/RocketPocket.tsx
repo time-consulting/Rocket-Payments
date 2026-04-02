@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { useState, useEffect, useRef } from "react";
+import { SEO, serviceSchemas } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -173,7 +174,15 @@ export default function RocketPocket() {
   const heroParallax = scrollY * 0.5;
 
   return (
-    <div className="min-h-screen bg-background overflow-hidden">
+    <>
+      <SEO
+        title="Rocket Pocket EPOS & Card Machine | Smart Payment Terminal UK"
+        description="Rocket Pocket all-in-one EPOS and card machine. Built-in receipt printer, orders & payments in one device. Perfect for restaurants, cafes & retail. Free with merchant account."
+        canonical="https://rocketpayments.co.uk/products/rocket-pocket"
+        keywords="Rocket Pocket EPOS, all-in-one card machine, smart payment terminal, EPOS card reader, restaurant payment terminal, receipt printer card machine"
+        structuredData={serviceSchemas.cardTerminal}
+      />
+      <div className="min-h-screen bg-background overflow-hidden">
       {/* Epic Cinematic Hero */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-primary/10">
@@ -605,5 +614,6 @@ export default function RocketPocket() {
         </div>
       </section>
     </div>
+    </>
   );
 }

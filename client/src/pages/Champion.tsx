@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { SEO, serviceSchemas } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -308,7 +309,15 @@ export default function Champion() {
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-amber-50/30 via-stone-50 to-amber-50/30 dark:from-stone-950 dark:via-stone-900 dark:to-stone-950">
+    <>
+      <SEO
+        title="The Champion Card Machine | Best Payment Terminal UK 2025"
+        description="The Champion by Rocket Payments — the #1 rated payment terminal in the UK. Free terminal, zero monthly fees, up to £3,000 exit cost coverage. Rates from 0.5%."
+        canonical="https://rocketpayments.co.uk/the-champion"
+        keywords="champion card machine, best payment terminal UK, free card machine, zero monthly fees terminal, switch payment provider, Dojo alternative"
+        structuredData={serviceSchemas.cardTerminal}
+      />
+      <div className="min-h-screen bg-gradient-to-b from-amber-50/30 via-stone-50 to-amber-50/30 dark:from-stone-950 dark:via-stone-900 dark:to-stone-950">
       {/* Scroll Progress Bar */}
       <div className="fixed top-0 left-0 right-0 h-1 bg-stone-200/30 dark:bg-stone-800/30 z-50">
         <div 
@@ -1095,5 +1104,6 @@ export default function Champion() {
         </div>
       </section>
     </div>
+    </>
   );
 }

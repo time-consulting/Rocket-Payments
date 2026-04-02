@@ -2,6 +2,7 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { FileText, BookOpen, HelpCircle, Phone, ArrowRight } from "lucide-react";
+import { SEO } from "@/components/SEO";
 
 export default function Resources() {
   const resourceCategories = [
@@ -52,7 +53,14 @@ export default function Resources() {
   ];
 
   return (
-    <div className="py-16 md:py-24">
+    <>
+      <SEO
+        title="Resources & Support | Rocket Payments Help Centre"
+        description="Guides, documentation and support for Rocket Payments. Get started with your card machine, integrate with EPOS systems, and access 24/7 technical support."
+        canonical="https://rocketpayments.co.uk/resources"
+        keywords="payment terminal support, card machine help, EPOS integration guide, Rocket Payments support, payment processing help"
+      />
+      <div className="py-16 md:py-24">
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         <div className="text-center mb-16 space-y-4">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold" data-testid="text-resources-headline">
@@ -144,5 +152,6 @@ export default function Resources() {
         </div>
       </div>
     </div>
+    </>
   );
 }

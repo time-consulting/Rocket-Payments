@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { SEO } from "@/components/SEO";
 
 interface SimplePageProps {
   title: string;
@@ -10,7 +11,13 @@ interface SimplePageProps {
 
 export default function SimplePage({ title, description, content }: SimplePageProps) {
   return (
-    <div className="py-16 md:py-24">
+    <>
+      <SEO
+        title={`${title} | Rocket Payments`}
+        description={description}
+        canonical={`https://rocketpayments.co.uk/${title.toLowerCase().replace(/\s+/g, '-')}`}
+      />
+      <div className="py-16 md:py-24">
       <div className="max-w-4xl mx-auto px-6 md:px-8">
         <div className="text-center mb-12 space-y-4">
           <h1 className="text-4xl md:text-5xl font-bold">{title}</h1>
@@ -37,5 +44,6 @@ export default function SimplePage({ title, description, content }: SimplePagePr
         </div>
       </div>
     </div>
+    </>
   );
 }

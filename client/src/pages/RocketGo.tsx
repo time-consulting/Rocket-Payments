@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Sparkles, Zap, Shield, Wifi, Clock, CreditCard, TrendingUp, CheckCircle2, ArrowRight, Lock, Settings } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { SEO, serviceSchemas } from "@/components/SEO";
 
 import heroImage from "@assets/hero image rocket go_1761942966646.png";
 import pubImage from "@assets/rocket go pub_1761942966648.png";
@@ -46,7 +47,15 @@ function AnimatedSection({ children, delay = 0 }: { children: React.ReactNode; d
 
 export default function RocketGo() {
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <SEO
+        title="Rocket Go Portable Card Machine | Wireless Payment Terminal UK"
+        description="Rocket Go portable card machine with 4G, WiFi & all-day battery. Accept contactless, chip & PIN, Apple Pay & Google Pay. Free with merchant account. Rates from 0.5%."
+        canonical="https://rocketpayments.co.uk/products/rocket-go"
+        keywords="Rocket Go card machine, portable payment terminal, wireless card reader UK, 4G card machine, contactless payment terminal, mobile card reader, Dojo Go alternative"
+        structuredData={serviceSchemas.cardTerminal}
+      />
+      <div className="min-h-screen bg-background">
       {/* Epic Cinematic Hero */}
       <section className="relative pt-20 pb-16 md:pt-32 md:pb-20 overflow-hidden">
         {/* Animated gradient mesh */}
@@ -483,5 +492,6 @@ export default function RocketGo() {
         </div>
       </section>
     </div>
+    </>
   );
 }

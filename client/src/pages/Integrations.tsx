@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Sparkles, Zap, Shield, TrendingUp, CreditCard, Clock, CheckCircle2, Settings, Phone, ArrowRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { SEO, serviceSchemas } from "@/components/SEO";
 
 import integrationChecklistImage from "@assets/filters_focal(532x546_533x547)_1761942642537.webp";
 import takingsReportImage from "@assets/filters_focal(540x440_541x441)_1761942642538.webp";
@@ -43,7 +44,15 @@ function AnimatedSection({ children, delay = 0 }: { children: React.ReactNode; d
 
 export default function Integrations() {
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <SEO
+        title="EPOS Integrations | Connect Card Machine to Your Till System"
+        description="Integrate Rocket card machines with 600+ EPOS systems. Quick setup, uninterrupted payments, and simplified cashing up. Works with your preferred EPOS provider."
+        canonical="https://rocketpayments.co.uk/integrations"
+        keywords="EPOS integration, card machine EPOS, payment terminal integration, integrated payments UK, connect card machine to till, EPOS compatible card reader"
+        structuredData={serviceSchemas.merchantServices}
+      />
+      <div className="min-h-screen bg-background">
       {/* Cinematic Hero */}
       <section className="relative pt-24 pb-20 md:pt-40 md:pb-32 overflow-hidden">
         {/* Animated gradient mesh background */}
@@ -385,5 +394,6 @@ export default function Integrations() {
         </div>
       </section>
     </div>
+    </>
   );
 }

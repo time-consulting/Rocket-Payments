@@ -17,6 +17,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { SEO } from "@/components/SEO";
 
 const shareholderSchema = z.object({
   fullName: z.string().min(2, "Full name is required"),
@@ -262,7 +263,14 @@ export default function FundingApply() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 flex flex-col">
+    <>
+      <SEO
+        title="Apply for Business Funding | Merchant Cash Advance | Rocket Payments"
+        description="Apply for flexible business funding with Rocket Payments. Get a merchant cash advance with no fixed repayments — pay back as a percentage of card sales."
+        canonical="https://rocketpayments.co.uk/funding/apply"
+        keywords="business funding application, merchant cash advance UK, business loan, flexible funding, Rocket Payments funding"
+      />
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 flex flex-col">
       <header className="p-4 md:p-6 flex justify-between items-center border-b bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm sticky top-0 z-50">
         <div className="flex items-center gap-2">
           <Rocket className="h-8 w-8 text-primary" />
@@ -1064,5 +1072,6 @@ export default function FundingApply() {
         )}
       </div>
     </div>
+    </>
   );
 }

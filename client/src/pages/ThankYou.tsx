@@ -3,6 +3,7 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Check, ArrowRight, Phone, Mail, Rocket } from "lucide-react";
+import { SEO } from "@/components/SEO";
 
 export default function ThankYou() {
   const [confettiVisible, setConfettiVisible] = useState(true);
@@ -13,7 +14,13 @@ export default function ThankYou() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background via-primary/5 to-background flex items-center justify-center px-4 py-20">
+    <>
+      <SEO
+        title="Thank You | Rocket Payments"
+        description="Thank you for choosing Rocket Payments. Our team will be in touch shortly."
+        canonical="https://rocketpayments.co.uk/thank-you"
+      />
+      <div className="min-h-screen bg-gradient-to-b from-background via-primary/5 to-background flex items-center justify-center px-4 py-20">
       {confettiVisible && (
         <div className="fixed inset-0 pointer-events-none overflow-hidden z-50">
           {[...Array(50)].map((_, i) => (
@@ -116,5 +123,6 @@ export default function ThankYou() {
         </Card>
       </div>
     </div>
+    </>
   );
 }

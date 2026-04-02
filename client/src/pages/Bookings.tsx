@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { SEO } from "@/components/SEO";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -156,7 +157,14 @@ export default function Bookings() {
   const heroParallax = scrollY * 0.5;
 
   return (
-    <div className="min-h-screen bg-background overflow-hidden">
+    <>
+      <SEO
+        title="Rocket Bookings - Restaurant Reservation System UK | Zero Commission"
+        description="Free restaurant booking system with zero commission fees. Google Reserve integration, table management, and payment processing built-in. OpenTable alternative for UK restaurants."
+        canonical="https://rocketpayments.co.uk/bookings"
+        keywords="restaurant booking system UK, restaurant reservation system, OpenTable alternative, zero commission bookings, Google Reserve restaurant, table management software, restaurant payments"
+      />
+      <div className="min-h-screen bg-background overflow-hidden">
       {/* Epic Hero */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-primary/10">
@@ -561,6 +569,7 @@ export default function Bookings() {
           </AnimatedSection>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 }

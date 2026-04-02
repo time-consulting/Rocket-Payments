@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Sparkles, CreditCard, BarChart3, Settings, FileText, ArrowRight, Zap, Shield } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { SEO, serviceSchemas } from "@/components/SEO";
 
 import hubPhonesImage from "@assets/2400x1118_1761941919387.png";
 import insightPhoneImage from "@assets/hero_1761941919388.webp";
@@ -46,7 +47,15 @@ export default function Sidekick() {
   const [videoLoaded, setVideoLoaded] = useState(false);
 
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <SEO
+        title="Sidekick Business Management Hub | Rocket Payments Dashboard"
+        description="Manage your payments, track transactions & view real-time insights from one powerful dashboard. Sidekick gives you complete control of your business payments."
+        canonical="https://rocketpayments.co.uk/products/sidekick"
+        keywords="payment dashboard, business management hub, transaction tracking, payment insights, merchant dashboard, payment analytics UK"
+        structuredData={serviceSchemas.merchantServices}
+      />
+      <div className="min-h-screen bg-background">
       {/* Apple-Style Hero */}
       <section className="relative pt-24 pb-20 md:pt-40 md:pb-32 overflow-hidden bg-background">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-background to-background" />
@@ -333,5 +342,6 @@ export default function Sidekick() {
         </div>
       </section>
     </div>
+    </>
   );
 }

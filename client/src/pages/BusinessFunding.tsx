@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { SEO, faqSchemas, serviceSchemas } from "@/components/SEO";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";

@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { Helmet } from "react-helmet-async";
+import { SEO } from "@/components/SEO";
 import { pillarPages } from "@/data/pillarContent";
 import { industryGuides } from "@/data/industryGuides";
 import { Button } from "@/components/ui/button";
@@ -10,14 +10,24 @@ import { Footer } from "@/components/Footer";
 export default function GuidesIndex() {
   return (
     <>
-      <Helmet>
-        <title>Ultimate Guides | Card Payments, Business Funding & More | Rocket Payments</title>
-        <meta name="description" content="Comprehensive guides to card payments, business funding, and payment processing in the UK. Expert advice for UK businesses from Rocket Payments." />
-        <meta name="keywords" content="card payment guide, business funding guide, payment processing UK, merchant services guide, card machine guide" />
-        <meta property="og:title" content="Ultimate Guides | Card Payments, Business Funding & More | Rocket Payments" />
-        <meta property="og:description" content="Comprehensive guides to card payments, business funding, and payment processing in the UK." />
-        <link rel="canonical" href="https://rocketpayments.co.uk/guides" />
-      </Helmet>
+      <SEO
+        title="Ultimate Guides | Card Payments, Business Funding & More | Rocket Payments"
+        description="Comprehensive guides to card payments, business funding, and payment processing in the UK. Expert advice for UK businesses from Rocket Payments."
+        canonical="https://rocketpayments.co.uk/guides"
+        keywords="card payment guide, business funding guide, payment processing UK, merchant services guide, card machine guide"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "name": "Ultimate Guides for UK Businesses",
+          "description": "Comprehensive guides to card payments, business funding, and payment processing in the UK.",
+          "url": "https://rocketpayments.co.uk/guides",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Rocket Payments",
+            "url": "https://rocketpayments.co.uk"
+          }
+        }}
+      />
 
       <main className="min-h-screen">
         {/* Hero Section */}

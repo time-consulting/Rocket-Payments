@@ -1,10 +1,17 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Home, ArrowLeft } from "lucide-react";
+import { SEO } from "@/components/SEO";
 
 export default function NotFound() {
   return (
-    <div className="min-h-[80vh] flex items-center justify-center px-6">
+    <>
+      <SEO
+        title="Page Not Found | Rocket Payments"
+        description="The page you're looking for could not be found. Return to the Rocket Payments homepage."
+        noIndex={true}
+      />
+      <div className="min-h-[80vh] flex items-center justify-center px-6">
       <div className="text-center space-y-6 max-w-md">
         <div className="space-y-2">
           <h1 className="text-8xl font-bold text-primary" data-testid="text-404">404</h1>
@@ -28,5 +35,6 @@ export default function NotFound() {
         </div>
       </div>
     </div>
+    </>
   );
 }

@@ -1,5 +1,5 @@
 import { useLocation, Link } from "wouter";
-import { Helmet } from "react-helmet-async";
+import { SEO } from "@/components/SEO";
 import { getGuideBySlug, industryGuides } from "@/data/industryGuides";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -67,21 +67,14 @@ export default function IndustryGuidePage() {
 
   return (
     <>
-      <Helmet>
-        <title>{guide.metaTitle}</title>
-        <meta name="description" content={guide.metaDescription} />
-        <meta name="keywords" content={guide.keywords} />
-        <meta property="og:title" content={guide.metaTitle} />
-        <meta property="og:description" content={guide.metaDescription} />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content={`https://rocketpayments.co.uk/guides/${guide.slug}`} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={guide.metaTitle} />
-        <meta name="twitter:description" content={guide.metaDescription} />
-        <link rel="canonical" href={`https://rocketpayments.co.uk/guides/${guide.slug}`} />
-        <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
-        <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
-      </Helmet>
+      <SEO
+        title={guide.metaTitle}
+        description={guide.metaDescription}
+        canonical={`https://rocketpayments.co.uk/guides/${guide.slug}`}
+        keywords={guide.keywords}
+        ogType="article"
+        structuredData={[faqSchema, articleSchema]}
+      />
 
       <main className="min-h-screen">
         {/* Hero Section */}

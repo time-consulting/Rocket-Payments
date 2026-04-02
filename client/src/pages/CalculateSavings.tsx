@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
+import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -181,7 +182,14 @@ export default function CalculateSavings() {
   };
 
   return (
-    <div className="min-h-screen bg-background flex">
+    <>
+      <SEO
+        title="Calculate Your Card Payment Savings | Free Quote | Rocket Payments"
+        description="Find out how much you could save on card payment processing fees. Our free savings calculator compares your current rates with Rocket Payments' low-cost solutions."
+        canonical="https://rocketpayments.co.uk/calculate-savings"
+        keywords="card payment savings calculator, payment processing fees, compare card machine rates, merchant services savings, UK payment calculator"
+      />
+      <div className="min-h-screen bg-background flex">
       {/* Left Side - Questions */}
       <div className="w-full lg:w-1/2 flex flex-col justify-center p-8 lg:p-16">
         <div className="max-w-xl mx-auto w-full">
@@ -581,5 +589,6 @@ export default function CalculateSavings() {
         </div>
       </div>
     </div>
+    </>
   );
 }

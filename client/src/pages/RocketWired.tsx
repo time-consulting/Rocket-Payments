@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Wifi, Zap, Lock, Clock, CreditCard, Shield, ArrowRight, Check } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { SEO, serviceSchemas } from "@/components/SEO";
 
 import deviceSideImage from "@assets/A35 side_1761940331053.png";
 import deviceFrontImage from "@assets/A35_1761940331054.png";
@@ -42,7 +43,15 @@ function AnimatedSection({ children, delay = 0 }: { children: React.ReactNode; d
 
 export default function RocketWired() {
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <SEO
+        title="Rocket Wired Countertop Card Machine | Fixed Payment Terminal UK"
+        description="Rocket Wired countertop card machine for high-volume businesses. Ethernet-connected, ultra-fast processing. Accept contactless, chip & PIN, Apple Pay. Free with merchant account."
+        canonical="https://rocketpayments.co.uk/products/rocket-wired"
+        keywords="countertop card machine, wired payment terminal, fixed card reader UK, ethernet card machine, high volume payment terminal, reception card machine"
+        structuredData={serviceSchemas.cardTerminal}
+      />
+      <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="pt-20 pb-12 md:pt-32 md:pb-20 bg-gradient-to-b from-background to-muted/30">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
@@ -292,5 +301,6 @@ export default function RocketWired() {
         </div>
       </section>
     </div>
+    </>
   );
 }

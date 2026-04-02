@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Smartphone, Lock, CheckCircle, CreditCard, Shield, MessageSquare, Zap, ArrowRight, Mail, Send } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { SEO, serviceSchemas } from "@/components/SEO";
 
 import shareLinksImage from "@assets/810x720_1761941137171.webp";
 import phoneScreenImage from "@assets/tap to pay watch_1761941137172.webp";
@@ -42,7 +43,15 @@ function AnimatedSection({ children, delay = 0 }: { children: React.ReactNode; d
 
 export default function PaymentLinks() {
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <SEO
+        title="Payment Links UK | Send Payment Requests via SMS & Email"
+        description="Create and send payment links to customers via SMS, email or WhatsApp. Accept card payments without a website or terminal. Instant setup, no monthly fees."
+        canonical="https://rocketpayments.co.uk/products/payment-links"
+        keywords="payment links UK, pay by link, send payment request, SMS payment link, email payment link, no website payments"
+        structuredData={serviceSchemas.paymentGateway}
+      />
+      <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="pt-20 pb-12 md:pt-32 md:pb-20 bg-gradient-to-b from-background to-muted/30 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
@@ -398,5 +407,6 @@ export default function PaymentLinks() {
         </div>
       </section>
     </div>
+    </>
   );
 }

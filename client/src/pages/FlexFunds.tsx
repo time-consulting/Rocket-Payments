@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Zap, DollarSign, TrendingUp, Clock, Shield, CheckCircle2, ArrowRight, Sparkles, RefreshCw } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { SEO, serviceSchemas } from "@/components/SEO";
 
 import performanceImage from "@assets/1080x656 (1)_1761941488556.webp";
 import approvedImage from "@assets/1080x656_1761941488556.webp";
@@ -44,7 +45,15 @@ function AnimatedSection({ children, delay = 0 }: { children: React.ReactNode; d
 
 export default function FlexFunds() {
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <SEO
+        title="FlexFunds Business Funding UK | Merchant Cash Advance"
+        description="Get business funding from £5,000 to £500,000 based on card turnover. Flexible repayments, quick approval. No fixed monthly payments. Perfect for UK SMEs."
+        canonical="https://rocketpayments.co.uk/flex-funds"
+        keywords="merchant cash advance UK, business funding, flexible business loan, cash advance for businesses, turnover-based funding, small business finance UK"
+        structuredData={serviceSchemas.businessFunding}
+      />
+      <div className="min-h-screen bg-background">
       {/* Hero Section with Gradient */}
       <section className="relative pt-20 pb-16 md:pt-32 md:pb-24 overflow-hidden">
         {/* Animated gradient background */}
@@ -411,5 +420,6 @@ export default function FlexFunds() {
         </div>
       </section>
     </div>
+    </>
   );
 }

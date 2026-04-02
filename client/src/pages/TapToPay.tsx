@@ -2,6 +2,7 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Smartphone, CreditCard, Lock, Download, ArrowRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { SEO, serviceSchemas } from "@/components/SEO";
 
 import heroImage from "@assets/tap to pay hero_1761939459439.webp";
 import watchImage from "@assets/tap to pay watch_1761939459439.webp";
@@ -64,7 +65,15 @@ function FloatingImage({ src, alt, className }: { src: string; alt: string; clas
 
 export default function TapToPay() {
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <SEO
+        title="Tap to Pay on iPhone | Accept Contactless Payments on Your Phone"
+        description="Turn your iPhone into a card machine with Tap to Pay. Accept contactless payments, Apple Pay & Google Pay directly on your phone. No extra hardware needed. UK businesses."
+        canonical="https://rocketpayments.co.uk/products/tap-to-pay"
+        keywords="Tap to Pay iPhone UK, phone card reader, contactless payment iPhone, accept payments on phone, mobile payment UK, softPOS"
+        structuredData={serviceSchemas.paymentGateway}
+      />
+      <div className="min-h-screen bg-background">
       {/* Headline Section */}
       <section className="pt-20 pb-12 md:pt-32 md:pb-16 bg-background">
         <div className="max-w-4xl mx-auto text-center px-6 md:px-8">
@@ -359,5 +368,6 @@ export default function TapToPay() {
         </div>
       </section>
     </div>
+    </>
   );
 }

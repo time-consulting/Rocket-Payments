@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Lock, Smartphone, Code, CreditCard, Clock, Zap, Shield, CheckCircle, ArrowRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { SEO, serviceSchemas } from "@/components/SEO";
 
 import customerImage from "@assets/810x750 (1)_1761940740068.webp";
 import encryptedImage from "@assets/810x750_1761940740068.webp";
@@ -43,7 +44,15 @@ function AnimatedSection({ children, delay = 0 }: { children: React.ReactNode; d
 
 export default function OnlinePayments() {
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <SEO
+        title="Online Payment Processing UK | Secure eCommerce Gateway"
+        description="Accept online payments with Rocket's secure payment gateway. PCI DSS compliant, 3D Secure, real-time fraud protection. Integrate with any website. No monthly fees."
+        canonical="https://rocketpayments.co.uk/products/online-payments"
+        keywords="online payment gateway UK, ecommerce payment processing, accept payments online, secure payment gateway, PCI compliant payments, card not present payments"
+        structuredData={serviceSchemas.paymentGateway}
+      />
+      <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="pt-20 pb-12 md:pt-32 md:pb-20 bg-gradient-to-b from-background to-muted/30">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
@@ -292,5 +301,6 @@ export default function OnlinePayments() {
         </div>
       </section>
     </div>
+    </>
   );
 }

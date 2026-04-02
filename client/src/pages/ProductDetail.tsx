@@ -2,6 +2,7 @@ import { useRoute, Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ArrowRight, Check } from "lucide-react";
+import { SEO } from "@/components/SEO";
 
 import rocketGoImage from "@assets/generated_images/Rocket_Go_product_shot_ed6f0f19.png";
 import rocketPocketImage from "@assets/generated_images/Rocket_Pocket_mobile_payment_3b62149f.png";
@@ -110,8 +111,34 @@ export default function ProductDetail() {
     );
   }
 
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": product.name,
+    "description": product.description,
+    "brand": {
+      "@type": "Brand",
+      "name": "Rocket Payments"
+    },
+    "offers": {
+      "@type": "Offer",
+      "availability": "https://schema.org/InStock",
+      "priceCurrency": "GBP",
+      "url": `https://rocketpayments.co.uk/products/${slug}`
+    }
+  };
+
   return (
-    <div className="py-16 md:py-24">
+    <>
+      <SEO
+        title={`${product.name} - ${product.tagline} | Rocket Payments`}
+        description={product.description}
+        canonical={`https://rocketpayments.co.uk/products/${slug}`}
+        keywords={`${product.name}, card machine, payment terminal, Rocket Payments, UK`}
+        ogType="product"
+        structuredData={productSchema}
+      />
+      <div className="py-16 md:py-24">
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
           <Card className="overflow-hidden">
@@ -167,5 +194,6 @@ export default function ProductDetail() {
         </Card>
       </div>
     </div>
+    </>
   );
 }
