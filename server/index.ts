@@ -1,8 +1,13 @@
 import express, { type Request, Response, NextFunction } from "express";
+import compression from "compression";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
 
 const app = express();
+
+// Enable gzip/brotli compression for all responses
+// Fixes Ahrefs "Not compressed" warning and improves page load performance
+app.use(compression({ threshold: 1024 }));
 
 declare module 'http' {
   interface IncomingMessage {
