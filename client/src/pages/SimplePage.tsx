@@ -15,7 +15,7 @@ export default function SimplePage({ title, description, content }: SimplePagePr
       <SEO
         title={`${title} | Rocket Payments`}
         description={description}
-        canonical={`https://rocketpayments.co.uk/${title.toLowerCase().replace(/\s+/g, '-')}`}
+        canonical={`https://www.rocketpayments.co.uk/${title.toLowerCase().replace(/\s+/g, '-')}`}
       />
       <div className="py-16 md:py-24">
       <div className="max-w-4xl mx-auto px-6 md:px-8">

@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://rocketpayments.co.uk/sitemap.xml
+Sitemap: https://www.rocketpayments.co.uk/sitemap.xml
 
 # Crawl-delay for polite crawling
 Crawl-delay: 1

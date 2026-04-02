@@ -1,134 +1,134 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Main Pages -->
-  <url><loc>https://rocketpayments.co.uk/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://rocketpayments.co.uk/products</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://rocketpayments.co.uk/pricing</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://rocketpayments.co.uk/quote</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://rocketpayments.co.uk/free-terminal</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://rocketpayments.co.uk/industries</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://rocketpayments.co.uk/integrations</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://rocketpayments.co.uk/bookings</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://rocketpayments.co.uk/business-funding</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://rocketpayments.co.uk/calculate-savings</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://rocketpayments.co.uk/funding-apply</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/products</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/pricing</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/quote</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/free-terminal</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/industries</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/integrations</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/bookings</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/business-funding</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/calculate-savings</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/funding-apply</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   
   <!-- Product Pages -->
-  <url><loc>https://rocketpayments.co.uk/products/rocket-go</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://rocketpayments.co.uk/products/rocket-pocket</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://rocketpayments.co.uk/products/rocket-wired</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://rocketpayments.co.uk/products/tap-to-pay</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://rocketpayments.co.uk/products/online-payments</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://rocketpayments.co.uk/products/payment-links</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://rocketpayments.co.uk/products/flex-funds</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/products/rocket-go</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/products/rocket-pocket</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/products/rocket-wired</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/products/tap-to-pay</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/products/online-payments</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/products/payment-links</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/products/flex-funds</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   
   <!-- Ultimate Guides (Pillar Content) -->
-  <url><loc>https://rocketpayments.co.uk/guides</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://rocketpayments.co.uk/guides/ultimate-guide-card-payments-uk</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://rocketpayments.co.uk/guides/complete-guide-business-funding-uk</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://rocketpayments.co.uk/guides/how-to-choose-card-machine-business</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://rocketpayments.co.uk/guides/payment-processing-fees-explained</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/guides</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/guides/ultimate-guide-card-payments-uk</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/guides/complete-guide-business-funding-uk</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/guides/how-to-choose-card-machine-business</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/guides/payment-processing-fees-explained</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   
   <!-- FAQ/Q&A Pages -->
-  <url><loc>https://rocketpayments.co.uk/questions</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://rocketpayments.co.uk/questions/how-much-does-a-card-machine-cost-uk</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://rocketpayments.co.uk/questions/what-is-the-cheapest-card-machine-uk</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://rocketpayments.co.uk/questions/can-i-use-my-phone-as-card-machine</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://rocketpayments.co.uk/questions/what-percentage-do-card-machines-take</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://rocketpayments.co.uk/questions/how-do-i-set-up-tap-to-pay</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://rocketpayments.co.uk/questions/how-long-to-receive-card-payments</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://rocketpayments.co.uk/questions/are-card-payment-fees-tax-deductible</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://rocketpayments.co.uk/questions/what-is-merchant-cash-advance-uk</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://rocketpayments.co.uk/questions/how-much-business-funding-can-i-get</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://rocketpayments.co.uk/questions/how-quickly-get-business-funding</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://rocketpayments.co.uk/questions/business-funding-bad-credit</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://rocketpayments.co.uk/questions/is-sumup-or-zettle-better</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://rocketpayments.co.uk/questions/dojo-alternative-uk</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://rocketpayments.co.uk/questions/how-to-switch-card-machine-provider</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://rocketpayments.co.uk/questions/what-is-contactless-payment-limit-uk</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://rocketpayments.co.uk/questions/what-is-pci-compliance</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://rocketpayments.co.uk/questions/how-does-epos-integration-work</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://rocketpayments.co.uk/questions/do-i-need-internet-for-card-machine</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://rocketpayments.co.uk/questions/can-i-accept-cards-without-business-account</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://rocketpayments.co.uk/questions/what-documents-need-card-machine</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://rocketpayments.co.uk/questions/best-card-machine-small-business</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://rocketpayments.co.uk/questions/card-machine-for-market-stall</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://rocketpayments.co.uk/questions/card-machine-for-restaurant</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/questions</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/questions/how-much-does-a-card-machine-cost-uk</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/questions/what-is-the-cheapest-card-machine-uk</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/questions/can-i-use-my-phone-as-card-machine</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/questions/what-percentage-do-card-machines-take</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/questions/how-do-i-set-up-tap-to-pay</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/questions/how-long-to-receive-card-payments</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/questions/are-card-payment-fees-tax-deductible</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/questions/what-is-merchant-cash-advance-uk</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/questions/how-much-business-funding-can-i-get</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/questions/how-quickly-get-business-funding</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/questions/business-funding-bad-credit</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/questions/is-sumup-or-zettle-better</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/questions/dojo-alternative-uk</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/questions/how-to-switch-card-machine-provider</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/questions/what-is-contactless-payment-limit-uk</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/questions/what-is-pci-compliance</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/questions/how-does-epos-integration-work</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/questions/do-i-need-internet-for-card-machine</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/questions/can-i-accept-cards-without-business-account</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/questions/what-documents-need-card-machine</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/questions/best-card-machine-small-business</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/questions/card-machine-for-market-stall</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/questions/card-machine-for-restaurant</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   
   <!-- Location Pages (Kent & East Sussex) -->
-  <url><loc>https://rocketpayments.co.uk/card-machines-maidstone</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://rocketpayments.co.uk/card-machines-canterbury</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://rocketpayments.co.uk/card-machines-tunbridge-wells</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://rocketpayments.co.uk/card-machines-ashford</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://rocketpayments.co.uk/card-machines-dover</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://rocketpayments.co.uk/card-machines-folkestone</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://rocketpayments.co.uk/card-machines-margate</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://rocketpayments.co.uk/card-machines-ramsgate</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://rocketpayments.co.uk/card-machines-gravesend</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://rocketpayments.co.uk/card-machines-dartford</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://rocketpayments.co.uk/card-machines-sevenoaks</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://rocketpayments.co.uk/card-machines-tonbridge</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://rocketpayments.co.uk/card-machines-brighton</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://rocketpayments.co.uk/card-machines-eastbourne</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://rocketpayments.co.uk/card-machines-hastings</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://rocketpayments.co.uk/card-machines-lewes</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://rocketpayments.co.uk/card-machines-bexhill</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://rocketpayments.co.uk/card-machines-crowborough</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/card-machines-maidstone</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/card-machines-canterbury</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/card-machines-tunbridge-wells</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/card-machines-ashford</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/card-machines-dover</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/card-machines-folkestone</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/card-machines-margate</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/card-machines-ramsgate</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/card-machines-gravesend</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/card-machines-dartford</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/card-machines-sevenoaks</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/card-machines-tonbridge</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/card-machines-brighton</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/card-machines-eastbourne</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/card-machines-hastings</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/card-machines-lewes</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/card-machines-bexhill</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/card-machines-crowborough</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   
   <!-- Blog & Industry Pages -->
-  <url><loc>https://rocketpayments.co.uk/blog</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://rocketpayments.co.uk/blog/card-machine-for-barbers-uk</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://rocketpayments.co.uk/blog/card-machine-for-hair-salons-uk</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://rocketpayments.co.uk/blog/card-machine-for-taxi-drivers-uk</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://rocketpayments.co.uk/blog/card-machine-for-food-trucks-uk</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://rocketpayments.co.uk/blog/card-machine-for-market-traders-uk</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://rocketpayments.co.uk/blog/card-machine-for-personal-trainers-uk</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://rocketpayments.co.uk/blog/card-machine-for-mobile-beauticians-uk</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://rocketpayments.co.uk/blog/card-machine-for-tradespeople-uk</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://rocketpayments.co.uk/blog/card-machine-for-restaurants-uk</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://rocketpayments.co.uk/blog/card-machine-for-retail-shops-uk</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://rocketpayments.co.uk/blog/card-machine-for-pubs-bars-uk</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://rocketpayments.co.uk/blog/card-machine-for-takeaways-uk</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/blog</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/blog/card-machine-for-barbers-uk</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/blog/card-machine-for-hair-salons-uk</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/blog/card-machine-for-taxi-drivers-uk</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/blog/card-machine-for-food-trucks-uk</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/blog/card-machine-for-market-traders-uk</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/blog/card-machine-for-personal-trainers-uk</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/blog/card-machine-for-mobile-beauticians-uk</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/blog/card-machine-for-tradespeople-uk</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/blog/card-machine-for-restaurants-uk</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/blog/card-machine-for-retail-shops-uk</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/blog/card-machine-for-pubs-bars-uk</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/blog/card-machine-for-takeaways-uk</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   
   <!-- Competitor Comparison Pages -->
-  <url><loc>https://rocketpayments.co.uk/blog/worldpay-alternative-uk</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://rocketpayments.co.uk/blog/teya-alternative-uk</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://rocketpayments.co.uk/blog/barclaycard-alternative-uk</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://rocketpayments.co.uk/blog/take-payments-alternative-uk</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://rocketpayments.co.uk/blog/square-alternative-uk</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://rocketpayments.co.uk/blog/sumup-alternative-uk</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://rocketpayments.co.uk/blog/paypal-alternative-uk</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://rocketpayments.co.uk/blog/dojo-card-machine-uk</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/blog/worldpay-alternative-uk</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/blog/teya-alternative-uk</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/blog/barclaycard-alternative-uk</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/blog/take-payments-alternative-uk</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/blog/square-alternative-uk</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/blog/sumup-alternative-uk</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/blog/paypal-alternative-uk</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/blog/dojo-card-machine-uk</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   
   <!-- Rocket Bookings Pages -->
-  <url><loc>https://rocketpayments.co.uk/blog/opentable-alternative-uk</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://rocketpayments.co.uk/blog/resdiary-alternative-uk</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://rocketpayments.co.uk/blog/the-fork-alternative-uk</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://rocketpayments.co.uk/blog/resos-alternative-uk</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://rocketpayments.co.uk/blog/restaurant-reservation-system-uk</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/blog/opentable-alternative-uk</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/blog/resdiary-alternative-uk</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/blog/the-fork-alternative-uk</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/blog/resos-alternative-uk</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/blog/restaurant-reservation-system-uk</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   
   <!-- EPOS Integration Pages -->
-  <url><loc>https://rocketpayments.co.uk/blog/epos-card-machine-integration-uk</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://rocketpayments.co.uk/blog/best-epos-system-small-business-uk</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/blog/epos-card-machine-integration-uk</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/blog/best-epos-system-small-business-uk</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   
   <!-- EPOS Partners Page -->
-  <url><loc>https://rocketpayments.co.uk/epos-partners</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/epos-partners</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   
   <!-- Industry & Trend Guides -->
-  <url><loc>https://rocketpayments.co.uk/guides/google-reserve-restaurant-bookings-uk</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://rocketpayments.co.uk/guides/experience-dining-restaurant-trends-uk</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://rocketpayments.co.uk/guides/rocket-intelligence-restaurant-data-insights</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://rocketpayments.co.uk/guides/business-funding-hospitality-growth-trends</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://rocketpayments.co.uk/guides/epos-integration-payment-terminals-guide</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://rocketpayments.co.uk/guides/icr-touch-integration-rocket-payments</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://rocketpayments.co.uk/guides/goodtill-integration-rocket-payments</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://rocketpayments.co.uk/guides/restaurant-reservation-software-uk-guide</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/guides/google-reserve-restaurant-bookings-uk</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/guides/experience-dining-restaurant-trends-uk</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/guides/rocket-intelligence-restaurant-data-insights</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/guides/business-funding-hospitality-growth-trends</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/guides/epos-integration-payment-terminals-guide</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/guides/icr-touch-integration-rocket-payments</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/guides/goodtill-integration-rocket-payments</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/guides/restaurant-reservation-software-uk-guide</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   
   <!-- Info Pages -->
-  <url><loc>https://rocketpayments.co.uk/about</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://rocketpayments.co.uk/support</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://rocketpayments.co.uk/contact</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://rocketpayments.co.uk/privacy</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
-  <url><loc>https://rocketpayments.co.uk/terms</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
-  <url><loc>https://rocketpayments.co.uk/compliance</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/about</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/support</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/contact</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/privacy</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/terms</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://www.rocketpayments.co.uk/compliance</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
 </urlset>
