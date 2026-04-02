@@ -61,7 +61,7 @@ export default function FreeTerminalThankYou() {
       <SEO
         title="Thank You - Your Free Terminal is Reserved"
         description="Your free card machine worth £189 has been reserved. Our team will call you within the hour to complete your application."
-        canonical="https://rocketpayments.co.uk/free-terminal-thank-you"
+        canonical="https://www.rocketpayments.co.uk/free-terminal-thank-you"
         noIndex={true}
       />
       <div className="min-h-screen bg-gradient-to-b from-background via-primary/5 to-background flex items-center justify-center px-4 py-20">

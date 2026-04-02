@@ -18,7 +18,7 @@ export default function ThankYou() {
       <SEO
         title="Thank You | Rocket Payments"
         description="Thank you for choosing Rocket Payments. Our team will be in touch shortly."
-        canonical="https://rocketpayments.co.uk/thank-you"
+        canonical="https://www.rocketpayments.co.uk/thank-you"
       />
       <div className="min-h-screen bg-gradient-to-b from-background via-primary/5 to-background flex items-center justify-center px-4 py-20">
       {confettiVisible && (
